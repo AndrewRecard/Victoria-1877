@@ -1,0 +1,99 @@
+﻿REPLACE:pmg_government_administration_bureaucrat_professionalism = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	ai_selection = most_productive
+
+	production_methods = {
+		pm_hereditary_bureaucrats
+		pm_professional_bureaucrats
+		pm_private_subcontracting
+	}
+}
+
+pmg_defense_agencies_financial_districts = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	ai_selection = most_productive
+
+	production_methods = {
+		pm_no_defense_agencies
+		pm_private_defense_agencies
+	}
+}
+
+REPLACE:pmg_training = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_military.dds"
+	ai_selection = most_productive
+
+	production_methods = {
+		pm_no_organization
+		pm_general_training
+		pm_advanced_tactics_training
+		pm_training_streamlining
+		pm_nco_incorporation
+		pm_mobile_warfare_tactics
+		pm_corporate_paramilitary_doctrine
+	}
+}
+
+REPLACE:pmg_naval_theory = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_military.dds"
+	ai_selection = most_productive
+
+	production_methods = {
+		pm_no_naval_theory
+		pm_power_of_the_purse
+		pm_jeune_ecole
+		pm_sea_lane_strategies
+		pm_battlefleet_tactics
+		pm_maritime_security_contracting
+	}
+}
+
+REPLACE:pmg_ownership_building_company_headquarter = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	ai_selection = most_productive
+
+	production_methods = {
+		pm_company_headquarter_privately_owned
+		pm_company_headquarter_privately_owned_aristocrats
+		pm_company_headquarter_privately_owned_aristocrats_commercial_agriculture
+		pm_company_headquarter_privately_owned_shopkeepers
+		pm_company_headquarter_privately_owned_academics
+		pm_company_headquarter_privately_owned_bureaucrats
+		pm_company_headquarter_principle_divine_economics_2
+		pm_company_headquarter_principle_divine_economics_2_aristocrats
+		pm_company_headquarter_principle_divine_economics_2_aristocrats_commercial_agriculture
+		pm_company_headquarter_principle_divine_economics_2_shopkeepers
+		pm_company_headquarter_principle_divine_economics_2_academics
+		pm_company_headquarter_principle_divine_economics_2_bureaucrats
+		pm_company_headquarter_government_run
+		pm_company_headquarter_worker_cooperative
+		pm_company_headquarter_sovereign_trust
+	}
+}
+
+REPLACE:pmg_urban_clergy = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_ownership.dds"
+	production_methods = {
+		pm_state_urban_clergy
+		pm_free_urban_clergy
+		pm_no_urban_clergy
+		pm_urban_trusts
+	}
+}
+
+REPLACE:pmg_base_building_power_bloc_statue = {
+	texture = "gfx/interface/icons/generic_icons/mixed_icon_base.dds"
+	ai_selection = most_productive
+	is_hidden_when_unavailable = yes
+
+	production_methods = {
+		pm_power_bloc_statue_corporate_hegemony
+		pm_power_bloc_statue_sovereign_empire
+		pm_power_bloc_statue_military_treaty
+		pm_power_bloc_statue_ideological_union
+		pm_power_bloc_statue_trade_league
+		pm_power_bloc_statue_religious
+		pm_power_bloc_prestige_only
+		pm_monument_no_effects
+	}
+}

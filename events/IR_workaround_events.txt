@@ -1,0 +1,10 @@
+﻿namespace = ir_workaround_events
+
+ir_workaround_events.1 = {
+	type = country_event
+	hidden = yes
+
+	immediate = {
+		apply_electoral_clientelism_effect = yes
+	}
+}

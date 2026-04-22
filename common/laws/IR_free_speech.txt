@@ -1,0 +1,47 @@
+﻿INJECT:law_outlawed_dissent = {
+	disallowing_laws = {
+		law_guaranteed_liberties
+	}
+	modifier = {
+		country_institution_cost_institution_home_affairs_mult = 0.2
+		country_legitimacy_ideological_incoherence_mult = 0.15
+		country_radicalism_increases_full_acceptance_mult = -0.15
+		country_leverage_resistance_mult = -0.5
+		country_academics_pol_str_mult = -0.2
+		country_agitator_slots_add = -1
+	}
+}
+
+INJECT:law_censorship = {
+	modifier = {
+		country_institution_cost_institution_home_affairs_mult = 0.1
+		country_legitimacy_ideological_incoherence_mult = 0.05
+		country_leverage_resistance_mult = -0.25
+		country_academics_pol_str_mult = -0.1
+		country_radicalism_increases_full_acceptance_mult = -0.1
+	}
+}
+
+INJECT:law_right_of_assembly = {
+	modifier = {
+		country_support_separatism_resistance_mult = 0.1
+		country_society_tech_research_speed_mult = 0.05
+		country_legitimacy_ideological_incoherence_mult = -0.05
+	}
+}
+
+INJECT:law_protected_speech = {
+	disallowing_laws = {
+		law_directorate
+	}
+	modifier = {
+		country_tech_spread_mult = -0.25
+		country_society_tech_research_speed_mult = 0.1
+		country_legitimacy_ideological_incoherence_mult = -0.15
+		country_radicalism_increases_full_acceptance_mult = 0.05
+		country_leverage_resistance_mult = 0.25
+		country_agitator_slots_add = 1
+		country_institution_cost_institution_home_affairs_mult = -0.1
+		country_academics_pol_str_mult = 0.1
+	}
+}

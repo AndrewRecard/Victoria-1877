@@ -1,0 +1,86 @@
+﻿has_propertarian_ideology = {
+	custom_tooltip = {
+		text = has_propertarian_ideology_tt
+		OR = {
+			has_ideology = ideology:ideology_molinarist_leader
+			has_ideology = ideology:ideology_minarchist_leader
+			has_ideology = ideology:ideology_monopolist_leader
+		}
+	}
+}
+
+not_propertarian_or_market_liberal = {
+	custom_tooltip = {
+		text = not_propertarian_or_market_liberal_tt
+		NOR = {
+			has_ideology = ideology:ideology_molinarist_leader
+			has_ideology = ideology:ideology_minarchist_leader
+			has_ideology = ideology:ideology_monopolist_leader
+			has_ideology = ideology:ideology_market_liberal
+		}
+	}
+}
+
+propertarian_or_market_liberal = {
+	custom_tooltip = {
+		text = propertarian_or_market_liberal_tt
+		OR = {
+			has_ideology = ideology:ideology_molinarist_leader
+			has_ideology = ideology:ideology_minarchist_leader
+			has_ideology = ideology:ideology_monopolist_leader
+			has_ideology = ideology:ideology_market_liberal
+		}
+	}
+}
+
+has_socialist_fascist_ideology = {
+	custom_tooltip = {
+		text = has_socialist_fascist_ideology_tt
+		OR = {
+			has_ideology = ideology:ideology_communist
+			has_ideology = ideology:ideology_vanguardist
+			has_ideology = ideology:ideology_anarchist
+			has_ideology = ideology:ideology_nihilist
+			has_ideology = ideology:ideology_utopian
+			has_ideology = ideology:ideology_fascist
+			has_ideology = ideology:ideology_integralist
+		}
+	}
+}
+
+REPLACE:ideology_market_liberal_valid_trigger = {
+	OR = {
+		is_interest_group_type = ig_petty_bourgeoisie
+		is_interest_group_type = ig_landowners
+		is_interest_group_type = ig_intelligentsia
+		is_interest_group_type = ig_industrialists
+	}
+	NOT = {
+		owner = {
+			any_political_movement = {
+				is_political_movement_type = movement_propertarian
+			}
+		}
+	}
+}
+
+ideology_minarchist_valid_trigger = {
+	NOT = {
+		is_interest_group_type = ig_trade_unions
+	}
+}
+
+ideology_molinarist_valid_trigger = {
+	NOR = {
+		is_interest_group_type = ig_trade_unions
+		is_interest_group_type = ig_landowners
+	}
+}
+
+ideology_monopolist_valid_trigger = {
+	NOR = {
+		is_interest_group_type = ig_trade_unions
+		is_interest_group_type = ig_rural_folk
+	}
+}
+

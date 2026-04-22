@@ -1,0 +1,155 @@
+﻿INJECT:amendment_religious_workhouses = {
+	modifier = {
+		interest_group_ig_devout_approval_add = 1
+		country_clergymen_pol_str_mult = 0.1
+		state_conversion_mult = 0.25
+		interest_group_ig_devout_pop_attraction_mult = -0.15
+	}
+}
+
+INJECT:amendment_tradition_of_free_elections = {
+	modifier = {
+		country_enactment_success_chance_law_directorate_add = -0.1
+		country_enactment_success_chance_law_anarchy_add = 0.1
+		country_enactment_success_chance_law_single_party_state_add = -0.1
+	}
+}
+
+REPLACE:amendment_generic_sponsor_polstr_increase_negotiation_1 = {
+
+	sponsor_modifier = {
+		interest_group_pol_str_mult = 0.15
+	}
+
+	possible = {
+		always = yes
+	}
+
+	would_sponsor = {
+		always = yes
+	}
+
+	ai_will_revoke = {
+		always = yes
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.1
+}
+
+REPLACE:amendment_generic_sponsor_polstr_increase_negotiation_2 = {
+
+	sponsor_modifier = {
+		interest_group_pol_str_mult = 0.2
+		interest_group_in_government_approval_add = 1
+		interest_group_in_opposition_approval_add = -1
+	}
+
+	possible = {
+		always = yes
+	}
+
+	would_sponsor = {
+		always = yes
+	}
+
+	ai_will_revoke = {
+		always = yes
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.2
+}
+
+REPLACE:amendment_generic_sponsor_polstr_increase_negotiation_3 = {
+
+	sponsor_modifier = {
+		interest_group_pol_str_mult = 0.25
+		interest_group_in_government_approval_add = 2
+		interest_group_in_opposition_approval_add = -2
+	}
+
+	possible = {
+		always = yes
+	}
+
+	would_sponsor = {
+		always = yes
+	}
+
+	ai_will_revoke = {
+		always = yes
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.3
+}
+
+REPLACE:amendment_electoral_clientelism = {
+
+	parent = law_oligarchy
+
+	allowed_laws = {
+		law_oligarchy
+		law_landed_voting
+		law_wealth_voting
+		law_census_voting
+		law_universal_suffrage
+		law_managed_democracy
+		law_oligopoly
+	}
+
+	modifier = {
+		country_authority_mult = 0.10
+		country_electoral_confidence_impact_mult = -0.25
+	}
+
+	possible = {
+		modifier:country_forbid_electoral_fraud_bool = no
+	}
+
+	can_repeal = {
+		NOT = {
+			has_law_or_variant = law_type:law_directorate
+		}
+		legitimacy >= legitimacy_to_repeal_amendment
+		hidden_trigger = {
+			has_variable = electoral_fraud_abolish_var
+		}
+		trigger_if = {
+			limit = {
+				has_variable = electoral_fraud_abolish_var
+			}
+			custom_tooltip = {
+				text = caciquismo_can_be_abolished_tt
+				var:electoral_fraud_abolish_var >= 5
+			}
+		}
+	}
+
+	ai_will_revoke = {
+		always = no
+	}
+
+	would_sponsor = {
+		OR = {
+			is_interest_group_type = ig_landowners
+			is_interest_group_type = ig_industrialists
+			AND = {
+				exists = scope:approval
+				scope:approval > 0
+			}
+		}
+	}
+
+	amendment_activism_multiplier = 0.5
+}

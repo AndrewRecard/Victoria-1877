@@ -1,0 +1,15 @@
+﻿movement_support_high_wealth = {
+	name = POP_HIGH_WEALTH
+}
+
+movement_support_red_blue_scare = {
+	name = POP_RED_BLUE_SCARE
+}
+
+movement_support_high_taxes = {
+	name = POP_HIGH_TAXES
+}
+
+movement_support_many_companies = {
+	name = COUNTRY_MANY_COMPANIES
+}

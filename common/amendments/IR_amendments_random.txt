@@ -1,0 +1,498 @@
+﻿amendment_anatomy_act = {
+
+	parent = law_total_separation
+
+	allowed_laws = {
+		law_charitable_health_system
+		law_private_health_insurance
+		law_public_health_insurance
+	}
+
+	modifier = {
+		interest_group_ig_devout_approval_add = -1
+		interest_group_ig_intelligentsia_approval_add = 1
+		country_weekly_innovation_add = 5
+		country_weekly_innovation_max_add = 5
+		country_clergymen_pol_str_mult = -0.1
+	}
+
+	possible = {
+		always = yes
+	}
+
+	would_sponsor = {
+		is_interest_group_type = ig_intelligentsia
+	}
+
+	ai_will_revoke = {
+		any_interest_group = {
+			is_in_government = yes
+			law_stance = {
+				law = law_type:law_total_separation
+				value < neutral
+			}
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.25
+}
+
+amendment_agricultural_exemption = {
+
+	parent = law_child_labor_allowed
+
+	allowed_laws = {
+		law_restricted_child_labor
+	}
+
+	modifier = {
+		country_aristocrats_pol_str_mult = 0.1
+		country_farmers_pol_str_mult = 0.1
+		interest_group_ig_landowners_approval_add = 1
+		interest_group_ig_rural_folk_approval_add = 1
+		state_farmers_mortality_mult = 0.03
+		state_peasants_mortality_mult = 0.03
+		state_laborers_mortality_mult = 0.01
+	}
+
+	possible = {
+		always = yes
+	}
+
+	would_sponsor = {
+		OR = {
+			is_interest_group_type = ig_rural_folk
+			is_interest_group_type = ig_landowners
+		}
+	}
+
+	ai_will_revoke = {
+		any_interest_group = {
+			is_in_government = yes
+			law_stance = {
+				law = law_type:law_compulsory_primary_school
+				value > neutral
+			}
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.25
+}
+	
+amendment_pauper_apprenticeships = {
+
+	parent = law_child_labor_allowed
+
+	allowed_laws = {
+		law_restricted_child_labor
+	}
+
+	modifier = {
+		country_capitalists_pol_str_mult = 0.1
+		interest_group_ig_industrialists_approval_add = 1
+		interest_group_ig_trade_unions_approval_add = -1
+		state_machinists_mortality_mult = 0.02
+		state_education_access_add = 0.05
+	}
+
+	possible = {
+		always = yes
+	}
+
+	would_sponsor = {
+		is_interest_group_type = ig_industrialists
+	}
+
+	ai_will_revoke = {
+		OR = {
+			any_interest_group = {
+				is_in_government = yes
+				law_stance = {
+					law = law_type:law_compulsory_primary_school
+					value > neutral
+				}
+			}
+			any_interest_group = {
+				is_in_government = yes
+				law_stance = {
+					law = law_type:law_poor_laws
+					value < neutral
+				}
+			}
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.25
+}
+
+amendment_union_infiltrators = {
+
+	parent = law_combination_acts
+
+	allowed_laws = {
+		law_secret_police
+	}
+
+	modifier = {
+		country_institution_cost_institution_home_affairs_mult = 0.05
+		interest_group_ig_industrialists_approval_add = 1
+		interest_group_ig_trade_unions_approval_add = -1
+		state_pop_support_movement_socialist_mult = -0.15
+		state_pop_support_movement_communist_mult = -0.15
+		state_pop_support_movement_anarchist_mult = -0.15
+	}
+
+	possible = {
+		always = yes
+	}
+
+	would_sponsor = {
+		is_interest_group_type = ig_industrialists
+	}
+
+	ai_will_revoke = {
+		any_interest_group = {
+			is_in_government = yes
+			is_interest_group_type = ig_trade_unions
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.25
+}
+
+amendment_moral_policing = {
+
+	parent = law_state_religion
+
+	allowed_laws = {
+		law_secret_police
+	}
+
+	modifier = {
+		country_institution_cost_institution_home_affairs_mult = 0.05
+		interest_group_ig_devout_approval_add = 1
+		interest_group_ig_intelligentsia_approval_add = -1
+		country_academics_pol_str_mult = -0.15
+		building_group_bg_arts_throughput_add = -0.1
+		state_conversion_mult = 0.25
+
+	}
+
+	possible = {
+		always = yes
+	}
+
+	would_sponsor = {
+		is_interest_group_type = ig_devout
+	}
+
+	ai_will_revoke = {
+		any_interest_group = {
+			is_in_government = yes
+			law_stance = {
+				law = law_type:law_state_religion
+				value < neutral
+			}
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.25
+}
+
+amendment_civic_literacy_acts = {
+
+	parent = law_right_of_assembly
+
+	allowed_laws = {
+		law_public_schools
+	}
+
+	modifier = {
+		country_institution_cost_institution_schools_mult = 0.05
+		country_authority_add = -50
+		state_pop_pol_str_add = 1
+		state_dependent_political_participation_add = 0.05
+		political_movement_pop_attraction_mult = 0.05
+
+	}
+
+	possible = {
+		NOR = {
+			has_law_or_variant = law_type:law_censorship
+			has_law_or_variant = law_type:law_outlawed_dissent
+		}
+	}
+
+	would_sponsor = {
+		is_interest_group_type = ig_trade_unions
+	}
+
+	ai_will_revoke = {
+		any_interest_group = {
+			is_in_government = yes
+			law_stance = {
+				law = law_type:law_right_of_assembly
+				value < neutral
+			}
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.25
+}
+
+amendment_comprehensive_care_provisions = {
+
+	parent = law_public_health_insurance
+
+	allowed_laws = {
+		law_private_health_insurance
+	}
+
+	modifier = {
+		country_institution_cost_institution_health_system_mult = 0.1
+		interest_group_ig_trade_unions_approval_add = 1
+		interest_group_ig_industrialists_approval_add = -1
+		state_mortality_mult = -0.05
+		state_mortality_wealth_mult = 0.001
+		state_lower_strata_standard_of_living_add = 1
+	}
+
+	possible = {
+		always = yes
+	}
+
+	would_sponsor = {
+		OR = {
+			is_interest_group_type = ig_trade_unions
+			is_interest_group_type = ig_devout
+		}
+	}
+
+	ai_will_revoke = {
+		any_interest_group = {
+			is_in_government = yes
+			law_stance = {
+				law = law_type:law_public_health_insurance
+				value < neutral
+			}
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.25
+}
+
+amendment_independent_auditors = {
+
+	parent = law_appointed_bureaucrats
+
+	allowed_laws = {
+		law_private_administration
+	}
+
+	modifier = {
+		country_institution_cost_institution_civil_service_mult = 0.1
+		state_tax_waste_add = -0.01
+		country_bureaucrats_pol_str_mult = 0.1
+	}
+
+	possible = {
+		always = yes
+	}
+
+	would_sponsor = {
+		always = yes
+	}
+
+	ai_will_revoke = {
+		any_interest_group = {
+			is_in_government = yes
+			law_stance = {
+				law = law_type:law_private_administration
+				value > neutral
+			}
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.25
+}
+
+amendment_anti_trust_acts = {
+
+	parent = law_interventionism
+
+	allowed_laws = {
+		law_laissez_faire
+	}
+
+	modifier = {
+		country_authority_add = 50
+		state_capitalists_investment_pool_efficiency_mult = -0.1
+		state_shopkeepers_investment_pool_efficiency_mult = 0.1
+		building_urban_center_throughput_add = 0.1
+		country_capitalists_pol_str_mult = -0.1
+		interest_group_ig_industrialists_approval_add = -1
+		interest_group_ig_petty_bourgeoisie_approval_add = 1
+	}
+
+	possible = {
+		always = yes
+	}
+
+	would_sponsor = {
+		NOT = {
+			leader = {
+				OR = {
+					has_ideology = ideology:ideology_market_liberal
+					has_propertarian_ideology = yes
+				}
+			}
+		}
+		OR = {
+			is_interest_group_type = ig_trade_unions
+			is_interest_group_type = ig_petty_bourgeoisie
+			AND = {
+				is_interest_group_type = ig_rural_folk
+				owner = {
+					has_law_or_variant = law_type:law_commercialized_agriculture
+				}
+			}
+			leader = {
+				has_ideology = ideology:ideology_protectionist
+			}
+		}
+	}
+
+	ai_will_revoke = {
+		any_interest_group = {
+			is_in_government = yes
+			law_stance = {
+				law = law_type:law_laissez_faire
+				value < neutral
+			}
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.25
+}
+
+amendment_native_homesteading = {
+
+	parent = law_homesteading
+
+	allowed_laws = {
+		law_national_supremacy
+		law_ethnostate
+	}
+
+	modifier = {
+		interest_group_ig_rural_folk_approval_add = 1
+		country_mass_migration_attraction_mult = -0.15
+		building_group_bg_agriculture_allowed_collectivization_add = 0.1
+		building_group_bg_ranching_allowed_collectivization_add = 0.1
+	}
+
+	possible = {
+		NOR = {
+			has_law_or_variant = law_type:law_tenant_farmers
+			has_law_or_variant = law_type:law_serfdom
+		}
+	}
+
+	would_sponsor = {
+		is_interest_group_type = ig_rural_folk
+	}
+
+	ai_will_revoke = {
+		any_interest_group = {
+			is_in_government = yes
+			law_stance = {
+				law = law_type:law_laissez_faire
+				value > neutral
+			}
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.25
+}
+
+amendment_racial_science_institutes = {
+
+	parent = law_ethnostate
+
+	allowed_laws = {
+		law_ethnostate
+	}
+
+	modifier = {
+		country_authority_add = 50
+		interest_group_ig_intelligentsia_approval_add = 1
+		country_academics_pol_str_mult = 0.15
+		country_influence_mult = -0.05
+		country_acceptance_no_shared_heritage_trait_add = -5
+		country_acceptance_no_shared_language_trait_add = -5
+	}
+
+	possible = {
+		always = yes
+	}
+
+	would_sponsor = {
+		is_interest_group_type = ig_intelligentsia
+	}
+
+	ai_will_revoke = {
+		any_interest_group = {
+			is_in_government = yes
+			law_stance = {
+				law = law_type:law_multicultural
+				value > neutral
+			}
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
+	}
+
+	amendment_activism_multiplier = 0.25
+}

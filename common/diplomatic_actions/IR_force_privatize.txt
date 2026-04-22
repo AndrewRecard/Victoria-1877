@@ -1,0 +1,142 @@
+﻿force_privatize = {
+	groups = {
+		power_bloc_leader
+	}
+	show_in_lens = no
+
+	texture = "gfx/interface/icons/invention_icons/corporate_management.dds"
+
+	selectable = {
+		is_power_bloc_leader = yes
+		power_bloc ?= {
+			modifier:power_bloc_leader_can_force_privatize_bool = yes
+		}
+	}
+
+	potential = {
+		power_bloc ?= {
+			scope:target_country.power_bloc ?= this
+		}
+	}
+
+	possible = {
+		scope:target_country = {
+			NOT = {
+				has_law_or_variant = law_type:law_directorate
+			}
+		}
+
+		power_bloc = {
+			current_cohesion_percentage >= 0.5
+		}
+		scope:target_country = {
+			tenure_in_current_power_bloc_years >= 2
+		}
+		prestige >= {
+			value = scope:target_country.prestige
+			multiply = 3
+		}
+		NOT = {
+			scope:target_country ?= {
+				is_diplomatic_play_ally_of = ROOT
+			}
+		}
+	}
+
+	accept_effect = {
+		scope:target_country = {
+			activate_law = law_type:law_directorate
+			if = {
+				limit = {
+					NOT = {
+						has_law_or_variant = law_type:law_private_administration
+					}
+				}
+				activate_law = law_type:law_private_administration
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_law_or_variant = law_type:law_private_defense_agencies
+					}
+				}
+				activate_law = law_type:law_private_defense_agencies
+			}
+			if = {
+				limit = {
+					OR = {
+						has_law_or_variant = law_type:law_religious_schools
+						has_law_or_variant = law_type:law_public_schools
+					}
+				}
+				activate_law = law_type:law_private_schools
+			}
+			if = {
+				limit = {
+					OR = {
+						has_law_or_variant = law_type:law_public_health_insurance
+						has_law_or_variant = law_type:law_charitable_health_system
+					}
+				}
+				activate_law = law_type:law_private_health_insurance
+			}
+			if = {
+				limit = {
+					OR = {
+						has_law_or_variant = law_type:law_wage_subsidies
+						has_law_or_variant = law_type:law_old_age_pension
+					}
+				}
+				activate_law = law_type:law_poor_laws
+			}
+			add_modifier = {
+				name = installed_regime
+				days = normal_modifier_time
+				multiplier = 0.2
+			}
+			change_relations = {
+				country = root
+				value = -25
+			}
+			if = {
+				limit = {
+					is_subject_of = root
+				}
+				add_liberty_desire = 20
+			}
+		}
+
+		power_bloc = {
+			add_cohesion_percent = scaled_cohesion_cost
+		}
+	}
+
+	ai = {
+		evaluation_chance = {
+			value = 0.05
+		}
+
+		will_propose = {
+			power_bloc = { current_cohesion_percentage >= 0.75 }
+			OR = {
+				"ai_ideological_opinion(scope:target_country)" <= -25
+				has_attitude = {
+					who = scope:target_country
+					attitude = domineering
+				}
+			}
+		}
+
+		propose_score = {
+			value = 10
+			if = {
+				limit = {
+					ruler ?= {
+						has_propertarian_ideology = yes
+					}
+				}
+				add = 100
+			}
+		}
+	}
+}

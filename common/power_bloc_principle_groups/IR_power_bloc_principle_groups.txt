@@ -1,0 +1,19 @@
+﻿REPLACE:principle_group_companies = {
+	primary_for_identity = identity_corporate_hegemony
+	levels = {
+		principle_companies_1
+		principle_companies_2
+		principle_companies_3
+	}
+}
+
+REPLACE:principle_group_foreign_investment = {
+	primary_for_identity = identity_corporate_hegemony
+	unlocking_identity = identity_corporate_hegemony
+	levels = {
+		principle_foreign_investment_1
+		principle_foreign_investment_2
+		principle_foreign_investment_3
+	}
+}
+

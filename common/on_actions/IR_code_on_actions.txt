@@ -1,0 +1,115 @@
+﻿on_yearly_pulse_country = {
+    on_actions = {
+        entrenched_entitlements_timer_effect
+    }
+}
+
+on_acquired_technology = {
+    events = {
+        propertarian_origins.1
+    }
+}
+
+entrenched_entitlements_timer_effect = {
+    effect = {
+        if = {
+            limit = {
+                NOT = {
+                    has_variable = entrenched_entitlements_var
+                }
+                has_variable = entrenched_entitlement_years
+            }
+            change_variable = {
+                name = entrenched_entitlement_years
+                add = 1
+            }
+            if = {
+                limit = {
+                    var:entrenched_entitlement_years = 10
+                }
+                trigger_event = { id = ir_law_events.2 }
+            } else_if = {
+                limit = { var:entrenched_entitlement_years = 15 }
+                trigger_event = { id = ir_law_events.3 }
+            }
+        } else_if = {
+            limit = {
+                has_variable = entrenched_entitlements_var
+            }
+            remove_variable = entrenched_entitlement_years
+        }
+    }
+}
+
+on_secession_start = {
+    on_actions = {
+        fix_special_laws_on_action
+    }
+}
+
+on_revolution_start = {
+    on_actions = {
+        fix_special_laws_on_action
+    }
+}
+
+fix_special_laws_on_action = {
+    effect = {
+        scope:target = {
+            fix_special_laws_effect = yes
+        }
+    }
+}
+
+on_half_yearly_pulse_country = {
+    on_actions = {
+        evaluate_police_synergy
+        sovereign_monopoly_conversion_effect
+    }
+}
+
+evaluate_police_synergy = {
+    effect  = {
+        if = {
+            limit = {
+                has_law_or_variant = law_type:law_private_defense_agencies
+                has_law_or_variant = law_type:law_militarized_police
+                NOT = {
+                    has_modifier = ir_private_militarized_police
+                }
+            }
+            add_modifier = {
+                name = ir_private_militarized_police
+            }
+        }else_if = {
+            limit = {
+                has_modifier = ir_private_militarized_police
+                NOT = {
+                    has_law_or_variant = law_type:law_private_defense_agencies
+                    has_law_or_variant = law_type:law_militarized_police
+                }
+            }
+            remove_modifier = ir_private_militarized_police
+        }
+    }
+}
+
+sovereign_monopoly_conversion_effect = {
+    effect = {
+        if = {
+            limit = {
+                has_law = law_type:law_sovereign_monopoly
+            }
+            add_modifier = {
+                name = ir_sm_throughput_modifier
+                multiplier = sovereign_monopoly_throughput_conversion
+                months = 6
+            }
+            add_modifier = {
+                name = ir_sm_construction_modifier
+                multiplier = sovereign_monopoly_construction_conversion
+                months = 6
+            }
+        }
+    }
+}

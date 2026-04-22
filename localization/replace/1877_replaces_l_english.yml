@@ -1,0 +1,15 @@
+﻿l_english:
+  ## DESCRIPTION REPLACES
+ law_religious_schools_desc:1 "Allowing the [GetInterestGroupVariant('ig_devout',GetPlayer).GetNameNoIcon] to manage the curriculum ensures a loyal and morally healthy population."
+ law_private_schools_desc:1 "By investing in our most prestigious institutions, our academic elite will ensure we remain ahead of the curve."
+ law_corporatized_unions_desc:2 "Labor associations have been brought under the direct control of the state, serving foremostly as a means to facilitate collaboration between classes."
+ law_right_to_associate_desc:1 "No special restrictions or institutions are enforced regarding the formation and activity of labor associations."
+ law_sul_syndicalism_desc:1 "A radically egalitarian form of labor organization where industrial unions have assumed control over the economy."
+ law_no_police_desc:1 "Communities are entrusted to police themselves with the benefit of reducing the visibility of any state overreach."
+ law_local_police_desc:1 "The preservation of peace is delegated to locally appointed sheriffs, typically a prominent businessman or aristocrat, with minimal procedural overhead."
+ law_dedicated_police_desc:1 "A professionalized civilian constabulary is established, allowing public order to be maintained with greater efficiency and civic trust."
+ law_militarized_police_desc:1 "Blurring the line between our military and police forces can be exceptional at quelling unrest, though it comes at costs often visible in the streets or heard at night."
+ law_guaranteed_liberties_desc:1 "The state's home affairs bureau is solely focused on addressing the grievances of the citizens, and is forbidden from investigating or arresting them without due cause.\n\n#bold Declaration of the Rights of Man; #italic Article 9#!:#!\n• As all persons are held innocent until they shall have been declared guilty, if arrest shall be deemed indispensable, all harshness not essential to the securing of the prisoner's person shall be severely repressed by law."
+ principle_group_foreign_investment: "Franchising"
+ principle_group_foreign_investment_desc: "Franchising establishes an international framework for commercial licensing, standardizing industry practices across foreign markets."
+ progress_bar_complete:1 "The #bold Progress Bar#! has reached #variable 100%#!"

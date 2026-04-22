@@ -1,0 +1,43 @@
+﻿amendment_entrenched_entitlements = {
+
+	parent = law_wage_subsidies
+
+	allowed_laws = {
+		law_wage_subsidies
+		law_old_age_pension
+	}
+
+	modifier = {
+		state_pop_pol_str_add = 1
+		interest_group_ig_trade_unions_pop_attraction_mult = -0.1
+		state_pop_support_movement_labor_mult = -0.15
+		country_enactment_success_chance_law_no_social_security_add = -0.10
+		country_enactment_success_chance_law_poor_laws_add = -0.10
+		country_enactment_success_chance_law_wage_subsidies_add = -0.10
+	}
+
+	possible = {
+		always = yes
+	}
+
+	would_sponsor = {
+		OR = {
+			is_interest_group_type = ig_trade_unions
+			is_interest_group_type = ig_petty_bourgeoisie
+			AND = {
+				is_interest_group_type = ig_armed_forces
+				has_ideology = ideology:ideology_loyalist_2
+			}
+		}
+	}
+
+	ai_will_revoke = {
+		always = no
+	}
+
+	can_repeal = {
+		always = no
+	}
+
+	amendment_activism_multiplier = 0.1
+}

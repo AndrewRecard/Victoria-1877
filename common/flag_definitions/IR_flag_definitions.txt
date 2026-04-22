@@ -1,0 +1,25 @@
+﻿INJECT:FRA = {
+	flag_definition = {
+		coa = FRA_directorate
+		subject_canton = FRA_directorate
+		priority = 50
+		trigger = {
+			scope:actor ?= {
+				has_law_or_variant = law_type:law_directorate
+			}
+		}
+	}
+}
+
+INJECT:GBR = {
+	flag_definition = {
+		coa = GBR_directorate
+		subject_canton = GBR_directorate
+		priority = 50
+		trigger = {
+			scope:actor ?= {
+				has_law_or_variant = law_type:law_directorate
+			}
+		}
+	}
+}

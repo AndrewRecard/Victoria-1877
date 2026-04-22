@@ -1,0 +1,104 @@
+﻿ir_defense_incorporation_bar = {
+ 	name = "ir_defense_incorporation_bar"
+ 	desc = "ir_defense_incorporation_bar_desc"
+
+ 	default_green = yes
+
+ 	monthly_progress = {
+		add = {
+			value = 1
+			desc = monthly_progress
+		}
+
+		if = {
+			limit = {
+				has_journal_entry = je_defense_incorporation
+			}
+			add = {
+				desc = officers_radicals
+				add = {
+					every_scope_pop = {
+						limit = { is_pop_type = officers }
+						add = {
+							value = total_size
+							multiply = pop_radical_fraction
+						}
+					}
+				}
+				divide = {
+					every_scope_pop = {
+						limit = { is_pop_type = officers }
+						add = total_size
+						min = 1
+					}
+				}
+				multiply = -1
+			}
+
+			add = {
+				desc = officers_loyalists
+				add = {
+					every_scope_pop = {
+						limit = { is_pop_type = officers }
+						add = {
+							value = total_size
+							multiply = pop_loyalist_fraction
+						}
+					}
+				}
+				divide = {
+					every_scope_pop = {
+						limit = { is_pop_type = officers }
+						add = total_size
+						min = 1
+					}
+				}
+				multiply = 1
+			}
+		}
+
+
+		if = {
+			limit = {
+				ig:ig_armed_forces = {
+					ig_counts_as_marginal = no
+				}
+			}
+			add = {
+				value = ig:ig_armed_forces.ig_clout
+				multiply = 2
+				desc = "armed_forces_clout"
+			}
+			add = {
+				value = ig:ig_armed_forces.ig_approval
+				multiply = 0.05
+				desc = "armed_forces_approval"
+			}
+
+		}else = {
+			add = {
+				value = -0.5
+				desc = "armed_forces_marginalized"
+			}
+		}
+
+		if = {
+			limit = {
+				ig:ig_armed_forces = {
+					leader = {
+						propertarian_or_market_liberal = yes
+					}
+				}
+			}
+			add = {
+				value = 2
+				desc = "propertarian_armed_forces_leader"
+			}
+		}
+	}
+
+ 	start_value = 0
+ 	min_value = 0
+ 	max_value = 100
+}
+

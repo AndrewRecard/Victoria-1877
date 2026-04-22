@@ -1,0 +1,458 @@
+﻿law_directorate = {
+	group = lawgroup_governance_principles
+	icon = "gfx/interface/icons/law_icons/state_capitalism.dds"
+
+	progressiveness = -50
+
+	is_visible = {
+		always = yes
+	}
+
+	unlocking_technologies = {
+		shareholder_primacy
+	}
+
+	unlocking_laws = {
+		law_private_administration
+	}
+
+	disallowing_laws = {
+		law_traditionalism
+		law_industry_banned
+		law_extraction_economy
+		law_serfdom
+		law_women_in_the_fields
+	}
+
+	modifier = {
+		country_authority_add = -100
+		country_free_charters_add = 2
+		country_legitimacy_headofstate_add = 10
+		country_legitimacy_govt_total_clout_add = 10
+		interest_group_ig_industrialists_pol_str_mult = 0.25
+		state_pop_support_movement_propertarian_add = 2
+	}
+
+	on_deactivate = {
+		crown_land_republic_effect = yes
+		if = {
+			limit = {
+				has_law = law_type:law_sovereign_monopoly
+			}
+			activate_law = law_type:law_interventionism
+		}
+		activate_law = law_type:law_census_voting
+		activate_law = law_type:law_right_to_associate
+		remove_variable = public_liquidation_completed
+		if = {
+			limit = {
+				has_modifier = ir_free_market_commons_modifier
+			}
+			remove_modifier = ir_free_market_commons_modifier
+		}
+		ig:ig_intelligentsia = {
+			remove_ideology = ideology_market_rationalist
+			add_ideology = ideology_republican
+		}
+	}
+
+	on_activate = {
+		crown_land_republic_effect = yes
+		custom_tooltip = directorate_unlocks_tt
+		custom_tooltip = directorate_unlocks_2_tt
+		trigger_event = {
+			id = ir_law_events.4
+			popup = yes
+		}
+		custom_tooltip = {
+			text = propertarian_split_effect_tt
+			propertarian_split_effect = yes
+		}
+		if = {
+			limit = {
+				OR = {
+					has_law_or_variant = law_type:law_command_economy
+					has_law_or_variant = law_type:law_cooperative_ownership
+				}
+			}
+			activate_law = law_type:law_interventionism
+		}
+		if = {
+			limit = {
+				has_law_or_variant = law_type:law_collectivized_agriculture
+			}
+			activate_law = law_type:law_homesteading
+		}
+		if = {
+			limit = {
+				ig:ig_intelligentsia = {
+					has_ideology = ideology:ideology_republican
+				}
+			}
+			ig:ig_intelligentsia = {
+				remove_ideology = ideology_republican
+				add_ideology = ideology_market_rationalist
+			}
+		}else_if = {
+			limit = {
+				ig:ig_intelligentsia = {
+					has_ideology = ideology:ideology_constitutionalist
+				}
+			}
+			ig:ig_intelligentsia = {
+				remove_ideology = ideology_constitutionalist
+				add_ideology = ideology_market_rationalist
+			}
+		}
+		if = {
+			limit = {
+				has_law_or_variant = law_type:law_protected_speech
+			}
+			activate_law = law_type:law_right_of_assembly
+		}
+		if = {
+			limit = {
+				NOT = {
+					any_political_movement = {
+						is_political_movement_type = movement_propertarian
+					}
+				}
+			}
+			create_political_movement = {
+				type = movement_propertarian
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_law= law_type:law_public_health_insurance
+				}
+				OR = {
+					has_law = law_type:law_private_schools
+					has_law = law_type:law_no_schools
+				}
+				OR = {
+					has_law = law_type:law_poor_laws
+					has_law = law_type:law_no_social_security
+				}
+				has_law = law_type:law_private_defense_agencies
+			}
+			add_modifier = {
+				name = ir_free_market_commons_modifier
+			}
+			set_variable = public_liquidation_completed
+		}else = {
+			add_journal_entry = {
+				type = je_public_liquidation
+			}
+		}
+	}
+
+	can_enact = {
+		trigger_if = {
+			limit = {
+				is_subject = no
+			}
+			NOT = { has_government_type = gov_chartered_company }
+		}
+	}
+
+	can_impose = {
+		OR = {
+			AND = {
+				is_in_same_power_bloc = scope:target_country
+				AND = {
+					# Changed to governance_principles!
+					modifier:country_can_impose_same_lawgroup_governance_principles_in_power_bloc_bool = yes
+					has_law = scope:law
+				}
+			}
+			can_impose_law_default = yes
+		}
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+
+		if = {
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
+			add = 750
+		}
+	}
+
+	ai_impose_chance = {
+		value = 0
+
+		if = {
+			limit = {
+				has_law = law_type:law_directorate
+				has_strategy = ai_strategy_reactionary_agenda
+				power_bloc ?= { has_identity = identity:identity_corporate_hegemony }
+				scope:target_country = {
+					# AI won't bother trying to impose this on Council Republics unless very aggressive
+					NOT = { has_law_or_variant = law_type:law_council_republic }
+				}
+			}
+
+			add = base_impose_law_weight
+		}
+
+		if = {
+			limit = {
+				scope:target_country = {
+					c:BIC ?= ROOT
+					OR = {
+						has_journal_entry = je_british_dictate_plantations
+						has_journal_entry = je_british_dictate_military
+						has_journal_entry = je_british_dictate_universities
+					}
+				}
+			}
+			multiply = 0
+		}
+	}
+}
+
+INJECT:law_monarchy = {
+	modifier = {
+		state_decree_cost_mult = -0.1
+		state_pop_support_movement_royalist_absolutist_add = 2
+		state_pop_support_movement_royalist_constitutional_add = 2
+		country_authority_add = -50
+	}
+}
+
+INJECT:law_colonial_administration = {
+	modifier = {
+		country_free_charters_add = 1
+		country_aristocrats_pol_str_mult = 0.5
+		country_capitalists_pol_str_mult = 0.5
+		country_authority_add = 50
+	}
+}
+
+INJECT:law_presidential_republic = {
+	modifier = {
+		country_bureaucrats_pol_str_mult = 0.25
+		country_officers_pol_str_mult = 0.25
+		state_pop_support_movement_liberal_add = 2
+		state_pop_support_movement_positivist_add = 2
+		country_institution_cost_institution_home_affairs_mult = -0.15
+	}
+}
+
+INJECT:law_parliamentary_republic = {
+	modifier = {
+		country_loyalists_from_legitimacy_mult = 0.15
+		country_radicals_from_legitimacy_mult = 0.15
+		state_pop_support_movement_radical_add = 2
+		state_pop_support_movement_labor_add = 2
+		state_pop_pol_str_add = 1
+	}
+}
+
+INJECT:law_theocracy = {
+	modifier = {
+		interest_group_ig_devout_pol_str_mult = -0.25
+		country_authority_add = -50
+		state_conversion_mult = 0.25
+		country_acceptance_state_religion_add = 10
+		country_clergymen_pol_str_mult = 0.25
+		state_pop_support_movement_religious_majority_add = 2
+	}
+}
+
+REPLACE:law_council_republic = {
+	group = lawgroup_governance_principles
+
+	icon = "gfx/interface/icons/law_icons/council_republic.dds"
+
+	progressiveness = 200
+
+	unlocking_technologies = {
+		socialism
+	}
+
+	can_enact = {
+		trigger_if ={
+			limit = {
+				is_subject = no
+			}
+			NOT = { has_government_type = gov_chartered_company }
+		}
+	}
+
+	on_activate = {
+		custom_tooltip = {
+			text = enact_law_radical_leftist_government_warning_desc
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_private_administration
+			}
+			activate_law = law_type:law_appointed_bureaucrats
+		}
+		if = {
+			limit = {
+				any_interest_group = {
+					has_ideology = ideology:ideology_constitutionalist
+				}
+			}
+			every_interest_group = {
+				limit = {
+					has_ideology = ideology:ideology_constitutionalist
+				}
+				remove_ideology = ideology_constitutionalist
+				add_ideology = ideology_republican
+			}
+		}
+		if = {
+			limit = {
+				has_global_variable = lenin_spawn
+				country_has_primary_culture = cu:russian
+				any_scope_state = {
+					state_region = s:STATE_INGRIA
+				}
+			}
+			random_scope_state = {
+				limit = {
+					state_region = s:STATE_INGRIA
+				}
+				if = {
+					limit = {
+						has_global_variable = lenin_spawn
+
+						owner = {
+							country_has_primary_culture = cu:russian
+							has_law_or_variant = law_type:law_council_republic
+						}
+					}
+
+					set_hub_name = {
+						type = city
+						name = HUB_NAME_STATE_INGRIA_city_russian_sov # St. Petersburg only becomes Leningrad if Lenin has been around to be a namesake
+					}
+				}
+			}
+		}
+		crown_land_republic_effect = yes
+		if = {
+			limit = {
+				has_law = law_type:law_neo_absolutism
+			}
+			deactivate_law = law_type:law_neo_absolutism
+			activate_law = law_type:law_autocracy
+		}
+		if = {
+			limit = {
+				c:POR ?= this
+				ruler ?= {
+					has_template = POR_manuel_ii_de_braganca_template
+				}
+			}
+			trigger_event = { id = portuguese_monarchs.3 }
+		}
+	}
+
+	can_impose = {
+		OR = {
+			AND = {
+				is_in_same_power_bloc = scope:target_country
+				AND = {
+					modifier:country_can_impose_same_lawgroup_governance_principles_in_power_bloc_bool = yes
+					has_law = scope:law
+				}
+			}
+			can_impose_law_default = yes
+		}
+	}
+
+	modifier = {
+		country_legitimacy_govt_total_votes_add = 10
+		country_legitimacy_govt_size_add = 1
+		country_legitimacy_ideological_incoherence_mult = -0.1
+		interest_group_ig_trade_unions_pol_str_mult = 0.25
+		state_pop_support_movement_anarchist_add = 2
+		state_pop_support_movement_socialist_add = 2
+		state_pop_support_movement_communist_add = 2
+		state_pop_support_movement_labor_mult = -0.50
+	}
+
+	ai_will_do = {
+		exists = ruler
+		ruler = {
+			has_socialist_ideology = yes
+		}
+	}
+
+	ai_enact_weight_modifier = { #Petitions
+		value = 0
+
+		if = {
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
+			add = 750
+		}
+	}
+
+	on_deactivate = {
+		if = {
+			limit = {
+				OR = {
+					ig:ig_armed_forces ?= {
+						has_ideology = ideology:ideology_socialist
+					}
+					ig:ig_intelligentsia ?= {
+						has_ideology = ideology:ideology_socialist
+					}
+					ig:ig_petty_bourgeoisie ?= {
+						OR = {
+							has_ideology = ideology:ideology_cre_managerial
+							has_ideology = ideology:ideology_cre_managerial_cooperative
+						}
+					}
+				}
+			}
+			add_journal_entry = {
+				type = je_cre_undo_evolutions
+			}
+		}
+		cre_workers_councils_to_tus_effect = yes
+	}
+
+	ai_impose_chance = {
+		value = 0
+
+		if = {
+			limit = {
+				has_law = law_type:law_council_republic
+				has_strategy = ai_strategy_egalitarian_agenda
+			}
+
+			add = base_impose_law_weight
+			multiply = 5.0
+		}
+
+		if = {
+			limit = {
+				scope:target_country = {
+					c:BIC ?= this
+					OR = {
+						has_journal_entry = je_british_dictate_plantations
+						has_journal_entry = je_british_dictate_military
+						has_journal_entry = je_british_dictate_universities
+					}
+				}
+			}
+			multiply = 0
+		}
+	}
+}
+
+INJECT:law_corporate_state = {
+	modifier = {
+		country_institution_corporate_unions_max_investment_add = 2
+		state_pop_support_movement_corporatist_add = 2
+		state_pop_support_movement_fascist_add = 2
+		state_political_strength_from_wealth_mult = 0.25
+	}
+}

@@ -1,0 +1,181 @@
+﻿identity_corporate_hegemony = {
+	power_bloc_modifier = {
+		power_bloc_leader_can_force_privatize_bool = yes
+		power_bloc_mandate_progress_per_great_power_member_add = 10
+		power_bloc_mandate_progress_per_major_power_member_add = 5
+		power_bloc_mandate_progress_per_minor_power_member_add = 2
+		power_bloc_mandate_progress_per_unrecognized_major_power_member_add = 2
+		power_bloc_mandate_progress_per_unrecognized_regional_power_member_add = 1
+		power_bloc_cohesion_per_member_add = -2
+		power_bloc_invite_acceptance_great_power_add = -20
+		power_bloc_invite_acceptance_major_power_add = -10
+		power_bloc_invite_acceptance_unrecognized_major_power_add = -10
+		power_bloc_invite_acceptance_add = -30
+	}
+
+	leader_modifier = {
+		country_max_companies_add = 1
+		country_can_impose_same_lawgroup_economy_in_power_bloc_bool = yes
+	}
+
+	member_modifier = {
+		country_free_charters_add = 1
+		interest_group_ig_industrialists_pol_str_mult = 0.25
+		country_nationalization_cost_non_members_mult = -0.5
+	}
+
+	possible = {
+		has_law_or_variant = law_type:law_directorate
+	}
+
+	can_leave = {
+		OR = {
+			is_power_bloc_leader = yes
+			power_bloc = {
+				leverage_advantage = {
+					target = root
+					value <= 30
+				}
+			}
+		}
+	}
+
+	icon = "gfx/interface/icons/invention_icons/investment_banks.dds"
+	background = "gfx/interface/power_blocs/backgrounds/pb_background_generic.dds"
+
+	visible = {
+		has_dlc_feature = power_bloc_features
+	}
+
+	mandate_progress = power_bloc_mandate_progress_by_rank
+
+	on_created = { relations_hit_with_power_bloc_leaders = yes }
+
+	cohesion = {
+		add = {
+			add = 0.3
+			multiply = define:NPowerBlocs|COHESION_TARGET_MAX
+			desc = POWER_BLOC_COHESION_BASE
+		}
+
+		add = {
+			value = define:NPowerBlocs|COHESION_TARGET_MAX
+			multiply = ig:ig_industrialists.ig_clout
+			add = -10
+			multiply = 3
+			desc = POWER_BLOC_COHESION_INDUSTRIALISTS_IG_CLOUT
+		}
+
+		if = {
+			limit = {
+				has_law = law_type:law_sovereign_monopoly
+			}
+			add = {
+				add = 20
+				desc = POWER_BLOC_COHESION_SOVEREIGN_MONOPOLY
+			}
+		}
+
+		if = {
+			limit = {
+				ig:ig_industrialists ?= {
+					is_in_government = no
+				}
+			}
+			add = {
+				add = -25
+				desc = POWER_BLOC_COHESION_INDUSTRIALISTS_IG_NOT_IN_GOVERNMENT
+			}
+		}
+
+		add = {
+			if = {
+				limit = { exists = scope:with_country }
+				add = "power_bloc_share_gdp_with(scope:with_country)"
+			}
+			else_if = {
+				limit = { exists = scope:without_country }
+				add = "power_bloc_share_gdp_without(scope:without_country)"
+			}
+			else = {
+				add = power_bloc_share_gdp
+			}
+			multiply = define:NPowerBlocs|COHESION_TARGET_MAX
+			multiply = 0.5
+			desc = POWER_BLOC_COHESION_SHARE_GDP_CORPORATE_HEGEMONY
+		}
+
+		add = {
+			if = {
+				limit = { exists = scope:with_country }
+				add = "scope:power_bloc.power_bloc_worst_leader_relations_with(scope:with_country)"
+			}
+			else_if = {
+				limit = { exists = scope:without_country }
+				add = "scope:power_bloc.power_bloc_worst_leader_relations_without(scope:without_country)"
+			}
+			else = {
+				add = scope:power_bloc.power_bloc_worst_leader_relations
+			}
+			divide = define:NDiplomacy|MIN_RELATIONS
+			multiply = define:NPowerBlocs|COHESION_TARGET_MAX
+			multiply = -1
+			max = 0
+			desc = POWER_BLOC_COHESION_WORST_LEADER_RELATIONS
+		}
+
+		add = {
+			scope:power_bloc = {
+				every_power_bloc_member = {
+					if = {
+						limit = {
+							NOT = {
+								is_subject = yes
+								has_law_or_variant = law_type:law_directorate
+							}
+						}
+						add = -0.05
+					}
+				}
+			}
+			if = {
+				limit = {
+					exists = scope:with_country
+					scope:with_country ?= {
+						NOT = {
+							is_subject = yes
+							has_law_or_variant = law_type:law_directorate
+						}
+					}
+				}
+				add = -0.05
+			}
+			else_if = {
+				limit = {
+					exists = scope:without_country
+					scope:without_country ?= {
+						NOT = {
+							is_subject = yes
+							has_law_or_variant = law_type:law_directorate
+						}
+					}
+				}
+				add = 0.05
+			}
+			multiply = define:NPowerBlocs|COHESION_TARGET_MAX
+			desc = POWER_BLOC_COHESION_NON_DIRECTORATE_MEMBERS
+		}
+	}
+
+	ai_weight = {
+		value = 100
+
+		if = {
+			limit = {
+				ig:ig_industrialists ?= { is_in_government = yes }
+				has_law_or_variant = law_type:law_directorate
+			}
+			add = 1000
+		}
+	}
+}

@@ -1,0 +1,256 @@
+﻿je_industry_and_integrity = {
+	icon = "gfx/interface/icons/invention_icons/joint_stock_companies.dds"
+	group = je_group_propertarianism
+	should_be_pinned_by_default = yes
+	can_deactivate = no
+	weight = 10000
+
+	scripted_progress_bar = industry_and_integrity_bar
+
+	timeout = 1095
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = blank_tt
+				trigger = {
+					NOT = {
+						has_journal_entry = je_industry_and_integrity
+					}
+				}
+			}
+			triggered_desc = {
+				desc = propertarians_in_government_tt
+				trigger = {
+					any_interest_group = {
+						is_in_government = yes
+						leader = {
+							has_propertarian_ideology = yes
+						}
+					}
+				}
+			}
+			triggered_desc = {
+				desc = propertarians_out_of_government_tt
+				trigger = {
+					NOT = {
+						any_interest_group = {
+							is_in_government = yes
+							leader = {
+								has_propertarian_ideology = yes
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	on_weekly_pulse = {
+		effect = {
+			if = {
+				limit = {
+					any_interest_group = {
+						is_in_government = yes
+						leader = {
+							has_propertarian_ideology = yes
+							NOT = {
+								has_variable = propertarian_char_var
+							}
+						}
+					}
+				}
+				trigger_event = { id = propertarian_origins.6 popup = yes }
+			}
+			every_interest_group = {
+				limit = {
+					is_in_government = no
+				}
+				leader = {
+					set_variable = propertarian_char_var
+				}
+			}
+		}
+	}
+
+	on_monthly_pulse = {
+		random_events = {
+			14 = 0
+			1 = propertarian_origins.4
+			1 = propertarian_origins.5
+		}
+	}
+
+	is_shown_when_inactive = {
+		NOR = {
+			has_variable = completed_industry_and_integrity
+			has_law_or_variant = law_type:law_directorate
+			has_law_or_variant = law_type:law_council_republic
+		}
+		has_technology_researched = corporate_charters
+	}
+
+	possible = {
+		hidden_trigger = {
+			has_global_variable = molinari_happened
+			NOR = {
+				has_journal_entry = je_communism_1
+				has_journal_entry = je_fascism_1
+			}
+		}
+		has_technology_researched = shareholder_primacy
+		ig:ig_industrialists = {
+			ig_counts_as_marginal = no
+		}
+		OR = {
+			any_interest_group = {
+				OR = {
+					is_powerful = yes
+					is_in_government = yes
+					is_insurrectionary = yes
+				}
+				OR = {
+					has_ideology = ideology:ideology_socialist
+					leader = {
+						has_socialist_fascist_ideology = yes
+					}
+				}
+			}
+			any_interest_group = {
+				is_interest_group_type = ig_industrialists
+				is_powerful = yes
+				ig_approval <= 0
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				any_scope_character = {
+					is_interest_group_type = ig_industrialists
+					has_role = politician
+					has_propertarian_ideology = no
+				}
+			}
+			ig:ig_industrialists = {
+				leader = {
+					set_ideology = ideology:ideology_minarchist_leader
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				NOT = {
+					any_political_movement = {
+						is_political_movement_type = movement_propertarian
+					}
+				}
+			}
+			create_political_movement = { type = movement_propertarian }
+		}
+		every_scope_character = {
+			limit = {
+				OR = {
+					has_role = politician
+					has_role = agitator
+				}
+				has_propertarian_ideology = yes
+			}
+			set_variable = propertarian_char_var
+		}
+	}
+
+	complete = {
+		custom_tooltip = {
+			text = progress_bar_complete
+			scope:journal_entry = {
+				"scripted_bar_progress(industry_and_integrity_bar)" >= 100
+			}
+		}
+		custom_tooltip = {
+			text = existent_propertarian_character_tt
+			any_scope_character = {
+				has_propertarian_ideology = yes
+			}
+		}
+	}
+
+	on_complete = {
+		set_variable = {
+			name = completed_industry_and_integrity
+		}
+		if = {
+			limit = {
+				NOT = {
+					any_interest_group  = {
+						leader = {
+							has_propertarian_ideology = yes
+						}
+					}
+				}
+				any_scope_character = {
+					has_propertarian_ideology = yes
+				}
+			}
+			ordered_interest_group = {
+				limit = {
+					any_scope_character = {
+						has_propertarian_ideology = yes
+					}
+				}
+				order_by = ig_clout
+				position = 0
+				check_range_bounds = no
+				save_scope_as = integrity_propertarian_ig
+				random_scope_character = {
+					limit = {
+						has_propertarian_ideology = yes
+					}
+					save_scope_as = integrity_propertarian_leader
+				}
+			}
+			custom_tooltip = {
+				text = propertarian_leader_seizes_control_tt
+				scope:integrity_propertarian_leader = {
+					add_character_role = politician
+					set_as_interest_group_leader = yes
+					if = {
+						limit = {
+							has_role = agitator
+						}
+						remove_character_role = politician
+					}
+				}
+			}
+		}
+		trigger_event = { id = propertarian_origins.2 popup = yes }
+		custom_tooltip = {
+			text = propertarian_characters_stays_increased_tt
+		}
+	}
+
+	fail = {
+		custom_tooltip = {
+			text = progress_bar_fail
+			scope:journal_entry = {
+				"scripted_bar_progress(industry_and_integrity_bar)" <= 0
+			}
+		}
+	}
+
+	on_fail = {
+		trigger_event = { id = propertarian_origins.3 popup = yes }
+		custom_tooltip = {
+			text = propertarian_characters_return_to_normal_tt
+		}
+	}
+
+	on_timeout = {
+		trigger_event = { id = propertarian_origins.3 popup = yes }
+		custom_tooltip = {
+			text = propertarian_characters_return_to_normal_tt
+		}
+	}
+}

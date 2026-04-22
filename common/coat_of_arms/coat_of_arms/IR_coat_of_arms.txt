@@ -1,0 +1,54 @@
+﻿FRA_directorate = {
+	pattern = "pattern_solid.tga"
+	color1 = blue
+
+	colored_emblem = {
+		texture = "ce_tricolor_vertical.dds"
+		color1 = "white"
+		color2 = hsv360{ 45 89 80}
+	}
+	colored_emblem = {
+		texture = "franc.dds"
+		color1 = hsv360{ 45 89 80}
+		instance = { scale = { 0.32 0.4 } position = { 0.17 0.5 } }
+	}
+}
+
+GBR_directorate = {
+	# the modern British flag, with red diagonals
+
+	pattern = "pattern_gironny_8.dds"
+	color1 = "blue"
+	color2 = "blue"
+	color3 = "white"
+	color4 = "red"
+
+	colored_emblem = {
+		texture = "ce_saltire.dds"
+		color1 = color3
+		color2 = color3
+	}
+	colored_emblem = {
+		texture = "ce_saltire_fimbriated.dds"
+		color1 = color3
+		color2 = color4
+		mask = { 2 }
+	}
+	colored_emblem = {
+		texture = "ce_cross_england_fimbriated.dds"
+		color1 = color3
+		color2 = color4
+	}
+
+	colored_emblem = {
+		texture = "pb_frame_circle.dds"
+		color1 = "white"
+		instance = { scale = { 0.6 0.77 } position = { 0.495 0.5 } }
+	}
+
+	colored_emblem = {
+		texture = "pound.dds"
+		color1 = "red"
+		instance = { scale = { 0.45 0.45 } position = { 0.5 0.49 } }
+	}
+}

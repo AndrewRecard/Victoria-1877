@@ -1,0 +1,258 @@
+﻿ideology_molinarist_leader = {
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/unused/ideology_leader_individualist.dds"
+
+	character_ideology = yes
+
+	lawgroup_governance_principles = {
+		law_monarchy = strongly_disapprove
+		law_theocracy = strongly_disapprove
+		law_council_republic = strongly_disapprove
+		law_presidential_republic = disapprove
+		law_parliamentary_republic = disapprove
+		law_corporate_state = disapprove
+		law_directorate = neutral
+	}
+
+	lawgroup_distribution_of_power = {
+		law_autocracy = strongly_disapprove
+		law_oligarchy = neutral
+		law_technocracy = strongly_disapprove
+		law_landed_voting = disapprove
+		law_wealth_voting = disapprove
+		law_universal_suffrage = disapprove
+		law_census_voting = disapprove
+		law_anarchy = strongly_approve
+		law_single_party_state = strongly_disapprove
+	}
+
+	lawgroup_bureaucracy = {
+		law_hereditary_bureaucrats = disapprove
+		law_appointed_bureaucrats = disapprove
+		law_elected_bureaucrats = neutral
+		law_private_administration = approve
+	}
+
+	lawgroup_economic_system = {
+		law_cooperative_ownership = strongly_disapprove
+		law_command_economy = strongly_disapprove
+		law_interventionism = disapprove
+		law_agrarianism = disapprove
+		law_traditionalism = strongly_disapprove
+		law_laissez_faire = approve
+		law_industry_banned = strongly_disapprove
+		law_extraction_economy = strongly_disapprove
+	}
+	
+	lawgroup_labour_associations = {
+		law_combination_acts = approve
+		law_guild_system = strongly_disapprove
+		law_anti_strike_laws = neutral
+		law_corporatized_unions = disapprove
+		law_right_to_associate = disapprove
+		law_factory_councils = strongly_disapprove
+		law_national_labor_service = strongly_disapprove
+	}
+
+	lawgroup_army_model = {
+		law_peasant_levies = strongly_disapprove
+		law_national_militia = neutral
+		law_professional_army = disapprove
+		law_mass_conscription = strongly_disapprove
+		law_private_defense_agencies = approve
+	}
+	
+	lawgroup_migration = {
+		law_closed_borders = disapprove
+		law_migration_controls = disapprove
+		law_no_migration_controls = neutral
+	}
+	
+	lawgroup_policing = {
+		law_local_police = approve
+		law_dedicated_police = disapprove
+		law_militarized_police = disapprove
+		law_no_police = neutral
+	}
+
+	country_trigger = {
+		has_law_or_variant = law_type:law_directorate
+	}
+
+	non_interest_group_leader_trigger = {
+		NAND = {
+			has_role = agitator
+			owner = {
+				has_law = law_type:law_polycentric_law
+			}
+		}
+	}
+
+	interest_group_leader_weight = {
+		value = 100
+
+		if = {
+			limit = {
+				owner.ideology_minarchist_leader_disfavoured_laws > 0
+			}
+			add = {
+				value = owner.ideology_minarchist_leader_disfavoured_laws
+				multiply = 8
+			}
+		}
+
+		if = {
+			limit = {
+				owner.ideology_minarchist_leader_favoured_laws > 0
+			}
+			subtract = {
+				value = owner.ideology_minarchist_leader_favoured_laws
+				multiply = 8
+			}
+		}
+
+		if = {
+			limit = {
+				is_interest_group_type = ig_industrialists
+				owner = {
+					has_law_or_variant = law_type:law_directorate
+				}
+			}
+			add = 150
+		}else_if = {
+			limit = {
+				is_interest_group_type = ig_industrialists
+			}
+			add = 75
+		}
+
+		if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				has_ideology = ideology:ideology_martial_corporatist
+				owner = {
+					has_law_or_variant = law_type:law_directorate
+				}
+			}
+			add = 150
+		}else_if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				has_ideology = ideology:ideology_martial_corporatist
+			}
+			add = 75
+		}
+
+		if = {
+			limit = {
+				is_interest_group_type = ig_landowners
+				owner = {
+					has_law_or_variant = law_type:law_commercialized_agriculture
+				}
+			}
+			add = 50
+		}
+		if = {
+			limit = {
+				is_interest_group_type = ig_petty_bourgeoisie
+				owner = {
+					NOT = {
+						has_law_or_variant = law_type:law_directorate
+						any_political_movement = {
+							is_political_movement_type = movement_fascist
+						}
+					}
+				}
+			}
+			add = 50
+		}
+
+		if = {
+			limit = {
+				is_interest_group_type = ig_intelligentsia
+				owner = {
+					has_law_or_variant = law_type:law_free_trade
+					has_law_or_variant = law_type:law_laissez_faire
+				}
+			}
+			add = 30
+		}
+
+		if = {
+			limit = {
+				is_interest_group_type = ig_rural_folk
+				owner = {
+					has_law_or_variant = law_type:law_homesteading
+				}
+			}
+			add = 30
+		}
+
+		if = {
+			limit = {
+				is_interest_group_type = ig_trade_unions
+			}
+			add = -100
+		}
+
+		if = {
+			limit = {
+				OR = {
+					is_interest_group_type = ig_industrialists
+					is_interest_group_type = ig_petty_bourgeoisie
+					is_interest_group_type = ig_landowners
+				}
+				ig_approval <= 0
+				owner = {
+					any_interest_group = {
+						is_interest_group_type = ig_trade_unions
+						is_powerful = yes
+					}
+				}
+			}
+			add = 50
+		}
+
+		if = {
+			limit = {
+				has_variable = fascist_uptick
+				OR = {
+					is_interest_group_type = ig_industrialists
+					is_interest_group_type = ig_petty_bourgeoisie
+					is_interest_group_type = ig_landowners
+				}
+			}
+			multiply = 1.5
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_variable = communist_ig_var
+					has_variable = chose_vanguardism
+					has_variable = chose_anarchism
+					has_variable = chose_communism
+					has_variable = chose_ethno_nationalism
+					has_variable = chose_conservatism
+					has_variable = chose_fascism
+				}
+			}
+			multiply = 0.1
+		}
+
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						has_journal_entry = je_industry_and_integrity
+						has_variable = completed_industry_and_integrity
+					}
+				}
+			}
+			multiply = 1.25
+		}
+	}
+
+	non_interest_group_leader_weight = {
+		value = 100
+	}
+}

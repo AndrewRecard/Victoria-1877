@@ -1,0 +1,160 @@
+﻿repeal_defense_agencies_button = {
+	name = repeal_defense_agencies_button
+	desc = repeal_defense_agencies_button_desc
+
+	visible = {
+		always = yes
+	}
+
+	possible = {
+		is_at_war = yes
+		has_law_or_variant = law_type:law_private_defense_agencies
+		custom_tooltip = {
+			text = militarized_police_tt
+			OR = {
+				modifier:country_public_institutions_liquidated_bool = no
+				NOT = {
+					has_law_or_variant = law_type:law_militarized_police
+				}
+			}
+		}
+	}
+
+	selected = {
+	}
+
+	effect = {
+		activate_law = law_type:law_professional_army
+		remove_modifier = ir_defense_agencies_drain_modifier
+		add_modifier = {
+			name = ir_repealed_pda_modifier
+			days = normal_modifier_time
+			is_decaying = yes
+		}
+		ig:ig_industrialists = {
+			add_modifier = {
+				name = ir_repealed_pda_opinion_modifier
+				days = normal_modifier_time
+				is_decaying = yes
+			}
+		}
+		ordered_scope_war = {
+			order_by = num_casualties
+			position = 0
+			check_range_bounds = no
+			add_war_war_support = {
+				target = root
+				value = 25
+			}
+		}
+	}
+
+	ai_chance = {
+		value = 0
+		if = {
+			limit = {
+				any_scope_war = {
+					has_war_support = { target = root value < 0  }
+				}
+			}
+			add = 0.05
+		}
+	}
+}
+
+depose_armed_forces_leader_button = {
+	name = depose_armed_forces_leader_button
+	desc = depose_armed_forces_leader_button_desc
+
+	visible = {
+		always = yes
+	}
+
+	possible = {
+		hidden_trigger = { has_law_or_variant = law_type:law_private_defense_agencies }
+		ig:ig_armed_forces = {
+			custom_tooltip = {
+				text = no_market_liberal_armed_forces_leader_tt
+				leader = {
+					not_propertarian_or_market_liberal = yes
+				}
+			}
+			is_powerful = no
+			is_in_government = no
+		}
+		NOT = {
+			has_law_or_variant = law_type:law_guaranteed_liberties
+		}
+	}
+
+	cooldown = {
+		days = short_modifier_time
+	}
+
+	effect = {
+		ig:ig_armed_forces = {
+			leader = {
+				kill_character = yes
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_law_or_variant = law_type:law_directorate
+				}
+			}
+			if = {
+				limit = {
+					any_political_movement = {
+						is_political_movement_type = movement_propertarian
+					}
+				}
+				create_character = {
+					interest_group = ig:ig_armed_forces
+					ig_leader = yes
+					ideology = ideology:ideology_minarchist_leader
+				}
+			}else = {
+				create_character = {
+					interest_group = ig:ig_armed_forces
+					ig_leader = yes
+					ideology = ideology:ideology_market_liberal
+				}
+			}
+		}
+		else = {
+			random_list = {
+				40 = {
+					create_character = {
+						interest_group = ig:ig_armed_forces
+						ig_leader = yes
+						ideology = ideology:ideology_minarchist_leader
+					}
+				}
+				30 = {
+					create_character = {
+						interest_group = ig:ig_armed_forces
+						ig_leader = yes
+						ideology = ideology:ideology_molinarist_leader
+					}
+				}
+				30 = {
+					create_character = {
+						interest_group = ig:ig_armed_forces
+						ig_leader = yes
+						ideology = ideology:ideology_monopolist_leader
+					}
+				}
+			}
+		}
+
+		add_radicals = {
+			pop_type = officers
+			value = huge_radicals
+		}
+	}
+
+	ai_chance = {
+		value = 5
+	}
+}

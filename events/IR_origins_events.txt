@@ -1,0 +1,874 @@
+﻿namespace = propertarian_origins
+
+propertarian_origins.1 = {
+	type = country_event
+	title = propertarian_origins.1.t
+	desc = propertarian_origins.1.d
+	flavor = propertarian_origins.1.f
+	duration = 3
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	event_image = {
+		video = "votp_realist_household"
+	}
+
+
+	trigger = {
+		has_technology_researched = shareholder_primacy
+		NOT = { has_global_variable = molinari_happened }
+		empty_agitator_slots >= 1
+		ig:ig_industrialists = {
+			ig_counts_as_marginal = no
+		}
+		ig:ig_intelligentsia= {
+			ig_counts_as_marginal = no
+		}
+	}
+
+	immediate = {
+		set_global_variable = {
+			name = molinari_happened
+		}
+		create_character = {
+			template = agitator_gustave_de_molinari
+			save_scope_as = temp_molinari
+		}
+		scope:temp_molinari = {
+			place_character_in_void = very_long_modifier_time
+		}
+	}
+
+	gui_window = event_window_1char_propaganda
+
+	left_icon = scope:temp_molinari
+
+	option = { #support propertarianism not molinari
+		name = propertarian_origins.1.a
+		default_option = yes
+		if = {
+			limit = {
+				any_political_movement = {
+					NOT = {
+						is_political_movement_type = movement_propertarian
+					}
+				}
+			}
+			create_political_movement = {
+				type = movement_propertarian
+			}
+		}
+		ig:ig_industrialists ?= {
+			add_modifier = {
+				name = ir_supported_propertarian_modifier
+				days = normal_modifier_time
+			}
+		}
+		ig:ig_intelligentsia ?= {
+			add_modifier = {
+				name = ir_supported_propertarian_modifier
+				days = normal_modifier_time
+			}
+		}
+		if = {
+			limit = {
+				is_not_in_geographic_region = geographic_region_north_america
+				is_not_in_geographic_region = geographic_region_europe
+			}
+			create_character = {
+				is_agitator = yes
+				interest_group = ig_intelligentsia
+				female = no
+				ideology = ideology_molinarist_leader
+				traits = {
+					innovative
+					persistent
+				}
+			}
+		}else = {
+			create_character = {
+				template = agitator_gustave_de_molinari
+			}
+		}
+	}
+
+	option = {
+		name = propertarian_origins.1.b
+		if = {
+			limit = {
+				any_political_movement = {
+					NOT = {
+						is_political_movement_type = movement_propertarian
+					}
+				}
+			}
+			create_political_movement = {
+				type = movement_propertarian
+			}
+		}
+		ig:ig_industrialists ?= {
+			add_modifier = {
+				name = ir_promoted_molinari_modifier
+				days = normal_modifier_time
+			}
+		}
+		ig:ig_intelligentsia ?= {
+			add_modifier = {
+				name = ir_promoted_molinari_modifier
+				days = normal_modifier_time
+			}
+		}
+
+		if = {
+			limit = {
+				is_not_in_geographic_region = geographic_region_north_america
+				is_not_in_geographic_region = geographic_region_europe
+			}
+			create_character = {
+				is_agitator = yes
+				interest_group = ig_intelligentsia
+				female = no
+				ideology = ideology_molinarist_leader
+				traits = {
+					innovative
+					persistent
+				}
+				on_created = {
+					add_character_role = politician
+					set_as_interest_group_leader = yes
+					remove_character_role = agitator
+				}
+			}
+		}else = {
+			create_character = {
+				template = agitator_gustave_de_molinari
+				on_created = {
+					add_character_role = politician
+					set_as_interest_group_leader = yes
+					remove_character_role = agitator
+				}
+			}
+		}
+	}
+
+	option = { #get rid of this man
+		name = propertarian_origins.1.c
+		ig:ig_intelligentsia ?= {
+			add_modifier = {
+				name = ir_ditched_molinari_modifier
+				days = normal_modifier_time
+			}
+		}
+		ig:ig_industrialists ?= {
+			add_modifier = {
+				name = ir_ditched_molinari_modifier
+				days = normal_modifier_time
+			}
+		}
+		custom_tooltip = {
+			text = exile_minarchist_agitator_tt
+			if = {
+				limit = {
+					is_not_in_geographic_region = geographic_region_north_america
+					is_not_in_geographic_region = geographic_region_europe
+				}
+				create_character = {
+					is_agitator = yes
+					interest_group = ig_intelligentsia
+					female = no
+					ideology = ideology_molinarist_leader
+					traits = {
+						innovative
+						persistent
+					}
+					on_created = {
+						exile_character_with_martyrdom = yes
+					}
+				}
+			}else = {
+				create_character = {
+					template = agitator_gustave_de_molinari
+					on_created = {
+						exile_character_with_martyrdom = yes
+					}
+				}
+			}
+		}
+	}
+
+	after = {
+		hidden_effect = {
+			scope:temp_molinari = {
+				kill_character = yes
+			}
+		}
+	}
+}
+
+
+
+propertarian_origins.2 = { # A Capital Strike
+	type = country_event
+	placement = root
+
+	title = propertarian_origins.2.t
+	desc = propertarian_origins.2.d
+	flavor = propertarian_origins.2.f
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	event_image = {
+		video = "ip4_abdication"
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				any_interest_group = {
+					leader = {
+						has_propertarian_ideology = yes
+					}
+				}
+			}
+			ordered_interest_group = {
+				limit = {
+					leader = {
+						has_propertarian_ideology = yes
+					}
+				}
+				order_by = ig_clout
+				position = 0
+				check_range_bounds = no
+				save_scope_as = origins_propertarian_ig
+				leader = {
+					save_scope_as = origins_propertarian_leader
+					set_character_busy_and_immortal = yes
+				}
+			}
+		}
+		else = {
+			ordered_interest_group = {
+				limit = {
+					any_scope_character = {
+						has_propertarian_ideology = yes
+					}
+				}
+				order_by = ig_clout
+				position = 0
+				check_range_bounds = no
+				save_scope_as = origins_propertarian_ig
+				random_scope_character = {
+					limit = {
+						has_propertarian_ideology = yes
+					}
+					save_scope_as = origins_propertarian_leader
+					set_character_busy_and_immortal = yes
+				}
+			}
+		}
+	}
+
+	option = {
+		name = propertarian_origins.2.a
+		trigger = {
+			NOT = {
+				has_law_or_variant = law_type:law_council_republic
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					has_law_or_variant = law_type:law_parliamentary_republic
+					has_law_or_variant = law_type:law_presidential_republic
+					has_law_or_variant = law_type:law_theocracy
+				}
+			}
+			scope:origins_propertarian_leader = {
+				set_character_as_ruler = yes
+			}
+		}
+		if = {
+			limit = {
+				scope:origins_propertarian_ig = {
+					is_in_government = no
+				}
+			}
+			if = {
+				limit = {
+					scope:origins_propertarian_ig = {
+						has_party = yes
+					}
+				}
+				scope:origins_propertarian_ig.party = {
+					set_ruling_party = yes
+				}
+			}
+			else = {
+				scope:origins_propertarian_ig = {
+					add_ruling_interest_group = yes
+				}
+			}
+		}
+		activate_law = law_type:law_private_administration
+		scope:origins_propertarian_ig = {
+			add_modifier = {
+				name = ir_propertarians_welcomed_modifier
+				days = normal_modifier_time
+			}
+		}
+		add_radicals = {
+			value = medium_radicals
+			strata = lower
+		}
+		add_radicals = {
+			value = medium_radicals
+			strata = middle
+		}
+		hidden_effect = {
+			scope:origins_propertarian_leader = {
+				set_character_busy_and_immortal = no
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				trigger = {
+					any_interest_group = {
+						is_in_government = yes
+						leader = {
+							has_propertarian_ideology = yes
+						}
+					}
+				}
+				add = 3
+			}
+		}
+	}
+
+	option = {
+		name = propertarian_origins.2.b
+		default_option = yes
+		scope:origins_propertarian_ig = {
+			add_modifier = {
+				name = ir_propertarians_rebuked_modifier
+				days = normal_modifier_time
+			}
+		}
+		add_modifier = {
+			name = ir_capital_strike_modifier
+			days = very_short_modifier_time
+		}
+		add_radicals = {
+			value = very_large_radicals
+			interest_group = scope:origins_propertarian_ig
+		}
+		hidden_effect = {
+			scope:origins_propertarian_leader = {
+				set_character_busy_and_immortal = no
+			}
+		}
+		ai_chance = {
+			base = 1
+		}
+	}
+
+	option = {
+		name = propertarian_origins.2.c
+		trigger = {
+			NOT = {
+				has_law_or_variant = law_type:law_laissez_faire
+			}
+		}
+		hidden_effect = {
+			scope:origins_propertarian_leader = {
+				set_character_busy_and_immortal = no
+			}
+		}
+		scope:origins_propertarian_leader = {
+			exile_character_with_martyrdom = yes
+		}
+		every_interest_group = {
+			limit = {
+				OR = {
+					scope:integrity_propertarian_ig ?= this
+					leader = {
+						has_propertarian_ideology = yes
+					}
+				}
+			}
+			add_modifier = {
+				name = ir_propertarians_rebuked_modifier
+				days = normal_modifier_time
+			}
+			ROOT = {
+				add_radicals = {
+					value = very_large_radicals
+					interest_group = PREV
+				}
+			}
+		}
+		ai_chance = {
+			base = 1
+			modifier = {
+				trigger = {
+					NOT = {
+						any_interest_group = {
+							is_in_government = yes
+							leader = {
+								has_propertarian_ideology = yes
+							}
+						}
+					}
+				}
+				add = 100
+			}
+		}
+	}
+}
+
+propertarian_origins.3 = {
+	type = country_event
+	placement = root
+	title = propertarian_origins.3.t
+	desc = propertarian_origins.3.d
+	flavor = propertarian_origins.3.f
+	duration = 3
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	event_image = {
+		video = "ep1_printing_press"
+	}
+
+	option = {
+		name = propertarian_origins.3.a
+		default_option = yes
+		add_loyalists = {
+			value = small_radicals
+			strata = lower
+		}
+		add_loyalists = {
+			value = small_radicals
+			strata = middle
+		}
+		every_scope_character = {
+			limit = {
+				has_propertarian_ideology = yes
+			}
+			add_modifier = {
+				name = ir_discredited_propertarian_modifier
+				days = normal_modifier_time
+			}
+		}
+		every_interest_group = {
+			limit = {
+				leader = {
+					has_propertarian_ideology = yes
+				}
+			}
+			add_modifier = {
+				name = ir_fading_propertarianism_modifier
+				days = normal_modifier_time
+			}
+		}
+	}
+
+	option = {
+		name = propertarian_origins.3.b
+		add_loyalists = {
+			value = medium_radicals
+			strata = upper
+		}
+		every_scope_character = {
+			limit = {
+				has_propertarian_ideology = yes
+			}
+			add_modifier = {
+				name = ir_discredited_propertarian_modifier
+				days = normal_modifier_time
+				multiplier = 0.5
+			}
+		}
+		every_interest_group = {
+			limit = {
+				leader = {
+					has_propertarian_ideology = yes
+				}
+			}
+			add_modifier = {
+				name = ir_fading_propertarianism_modifier
+				days = normal_modifier_time
+				multiplier = 0.5
+			}
+		}
+		random_interest_group = {
+			limit = {
+				OR = {
+					has_ideology = ideology:ideology_socialist
+					leader = {
+						OR = {
+							has_socialist_ideology = yes
+							has_progressive_ideology = yes
+							has_ideology = ideology:ideology_fascist
+							has_ideology = ideology:ideology_integralist
+						}
+					}
+				}
+			}
+			ROOT = {
+				add_radicals = {
+					value = medium_radicals
+					interest_group = PREV
+				}
+			}
+		}
+	}
+}
+
+propertarian_origins.4 = {
+	type = country_event
+	placement = root
+
+	title = propertarian_origins.4.t
+	desc = propertarian_origins.4.d
+	flavor = propertarian_origins.4.f
+	duration = 3
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	event_image = {
+		video = "ip4_university_lecture"
+	}
+
+	cooldown = { days = normal_modifier_time }
+
+	trigger = {
+		any_scope_character = {
+			has_propertarian_ideology = yes
+		}
+	}
+
+	immediate = {
+		random_scope_character = {
+			limit = {
+				has_propertarian_ideology = yes
+			}
+			save_scope_as = propertarian_leader
+		}
+		if = {
+			limit = {
+				scope:propertarian_leader = {
+					has_role = politician
+				}
+			}
+			scope:propertarian_leader.interest_group = {
+				save_scope_as = propertarian_ig
+			}
+		}
+		random_scope_character = {
+			limit = {
+				OR = {
+					has_propertarian_ideology = yes
+					has_ideology = ideology:ideology_market_liberal
+				}
+				NOT = {
+					scope:propertarian_leader ?= THIS
+				}
+			}
+			save_scope_as = propertarian_leader_2
+		}
+		if = {
+			limit = {
+				scope:propertarian_leader_2 = {
+					has_role = politician
+				}
+			}
+			scope:propertarian_leader_2.interest_group = {
+				save_scope_as = propertarian_ig_2
+			}
+		}
+	}
+
+	option = {
+		name = propertarian_origins.4.a
+		default_option = yes
+		scope:propertarian_leader = {
+			add_modifier = {
+				name = promoted_propertarian_leader_modifier
+				days = short_modifier_time
+			}
+		}
+		if = {
+			limit = {
+				exists = scope:propertarian_ig
+			}
+			scope:propertarian_ig = {
+				add_modifier = {
+					name = promoted_propertarian_leader_ig_modifier
+					days = short_modifier_time
+				}
+			}
+		}
+	}
+
+	option = {
+		name = propertarian_origins.4.b
+		scope:propertarian_leader = {
+			add_modifier = {
+				name = ignored_propertarian_leader_modifier
+				days = normal_modifier_time
+			}
+		}
+		if = {
+			limit = {
+				exists = scope:propertarian_ig
+			}
+			scope:propertarian_ig = {
+				add_modifier = {
+					name = ignored_propertarian_leader_ig_modifier
+					days = normal_modifier_time
+				}
+			}
+		}
+	}
+
+	option = {
+		name = propertarian_origins.4.c
+		trigger = {
+			exists = scope:propertarian_leader_2
+		}
+		scope:propertarian_leader_2 = {
+			add_modifier = {
+				name = promoted_propertarian_leader_modifier
+				days = short_modifier_time
+			}
+		}
+		if = {
+			limit = {
+				exists = scope:propertarian_ig_2
+			}
+			scope:propertarian_ig_2 = {
+				add_modifier = {
+					name = promoted_propertarian_leader_ig_modifier
+					days = short_modifier_time
+				}
+			}
+		}
+	}
+}
+
+propertarian_origins.5 = {
+	type = country_event
+	placement = root
+
+	title = propertarian_origins.5.t
+	desc = propertarian_origins.5.d
+	flavor = propertarian_origins.5.f
+
+	duration = 3
+
+	event_image = {
+		video = "votp_cops_march"
+	}
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	cooldown = { days = normal_modifier_time }
+
+	trigger = {
+		NOT = {
+			has_law_or_variant = law_type:law_private_defense_agencies
+		}
+		any_interest_group = {
+			is_interest_group_type = ig_industrialists
+			is_in_government = yes
+		}
+	}
+
+	immediate = {
+		ordered_scope_state = {
+			order_by = total_urbanization
+			position = 0
+			check_range_bounds = no
+			save_scope_as = strike_state
+		}
+	}
+
+	option = {
+		name = propertarian_origins.5.a
+		default_option = yes
+		custom_tooltip = {
+			text = industry_and_integrity_progress_increase_10_tt
+			je:je_defense_incorporation = {
+				add_progress = {
+					value = 10
+					name = industry_and_integrity_bar
+				}
+			}
+		}
+		random_law = {
+			limit = {
+				type = law_type:law_private_defense_agencies
+			}
+			save_temporary_scope_as = promised_law
+		}
+		set_variable = {
+			name = desired_law_var
+			value = scope:promised_law
+		}
+		ig:ig_industrialists = {
+			set_variable = petitioning_ig
+		}
+		add_journal_entry = {
+			type = je_government_petition
+		}
+		scope:strike_state = {
+			add_modifier = {
+				name = ir_pinkertons_precedent_modifier
+				days = normal_modifier_time
+			}
+		}
+		ig:ig_trade_unions = {
+			add_modifier = {
+				name = ir_pinkertons_permitted_modifier
+				days = normal_modifier_time
+			}
+		}
+	}
+
+	option = {
+		name = propertarian_origins.5.b
+		add_radicals = {
+			interest_group = ig:ig_industrialists
+			value = small_radicals
+		}
+		if = {
+			limit = {
+				has_law_or_variant = law_type:law_dedicated_police
+			}
+			add_loyalists = {
+				interest_group = ig:ig_petty_bourgeoisie
+				value = small_radicals
+			}
+		}else_if = {
+			limit = {
+				has_law_or_variant = law_type:law_militarized_police
+			}
+			add_loyalists = {
+				interest_group = ig:ig_armed_forces
+				value = small_radicals
+			}
+		}
+	}
+
+	option = {
+		name = propertarian_origins.5.c
+		custom_tooltip = {
+			text = industry_and_integrity_progress_decrease_25_tt
+			je:je_defense_incorporation = {
+				add_progress = {
+					value = -25
+					name = industry_and_integrity_bar
+				}
+			}
+		}
+		add_modifier = {
+			name = ir_monopoly_enforced_modifier
+			days = normal_modifier_time
+		}
+		scope:strike_state = {
+			add_modifier = {
+				name = ir_unresolved_strikes_modifier
+				days = normal_modifier_time
+			}
+		}
+		add_radicals = {
+			interest_group = ig:ig_industrialists
+			value = medium_radicals
+		}
+	}
+}
+
+propertarian_origins.6 = {
+	type = country_event
+	placement = root
+
+	title = propertarian_origins.6.t
+	desc = propertarian_origins.6.d
+	flavor = propertarian_origins.6.f
+
+	duration = 3
+
+	event_image = {
+		video = "votp_agitator_speaking"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+
+	icon = "gfx/interface/icons/event_icons/event_default.dds"
+
+	immediate = {
+		random_interest_group = {
+			limit = {
+				leader = {
+					has_propertarian_ideology = yes
+					NOT = {
+						has_variable = propertarian_char_var
+					}
+				}
+			}
+			save_scope_as = new_propertarian_leader_ig
+			leader = {
+				set_variable = propertarian_char_var
+				save_scope_as = new_propertarian_leader_scope
+			}
+		}
+	}
+
+	option = {
+		name = propertarian_origins.6.a
+		default_option = yes
+		custom_tooltip = propertarian_government_remains_tt
+	}
+
+	option = {
+		name = propertarian_origins.6.b
+		custom_tooltip = propertarian_government_expelled_tt
+		every_interest_group = {
+			limit = {
+				leader = {
+					has_propertarian_ideology = yes
+				}
+			}
+			add_modifier = {
+				name = ir_refused_propertarian_seat_modifier
+				days = normal_modifier_time
+			}
+		}
+		if = {
+			limit = {
+				empty_agitator_slots >= 1
+			}
+			custom_tooltip = {
+				text = propertarian_becomes_agitator_tt
+				scope:new_propertarian_leader_scope = {
+					add_character_role = agitator
+					remove_character_role = politician
+				}
+			}
+		}
+		else = {
+			scope:new_propertarian_leader_scope = {
+				exile_character = yes
+			}
+		}
+		hidden_effect = {
+			create_character = {
+				ig_leader = yes
+				ideology = ideology_moderate
+				interest_group = scope:new_propertarian_leader_ig
+			}
+		}
+	}
+}

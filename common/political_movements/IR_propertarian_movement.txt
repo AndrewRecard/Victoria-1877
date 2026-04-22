@@ -1,0 +1,739 @@
+﻿movement_propertarian = {
+	category = movement_category_ideological
+
+	ideology = ideology_propertarian_movement
+	character_ideologies = {
+		ideology_molinarist_leader
+		ideology_minarchist_leader
+		ideology_monopolist_leader
+	}
+
+	creation_trigger = {
+		has_technology_researched = shareholder_primacy
+		ig:ig_industrialists ?= {
+			ig_counts_as_marginal = no
+		}
+		country_should_exclusively_focus_on_modernization = no
+	}
+
+	creation_weight = {
+		value = 100
+		if = {
+			limit = {
+				owner ?= { # If a movement of this type exists in a neighbouring country, make it more likely to spawn here as well
+					any_neighbouring_state = {
+						owner = {
+							prestige > ROOT.owner.prestige
+							any_political_movement = {
+								is_political_movement_type = movement_propertarian
+							}
+						}
+					}
+				}
+			}
+			multiply = {
+				value = 2
+			}
+		}
+		if = {
+			limit = {
+				has_law_or_variant = law_type:law_proportional_taxation
+			}
+			multiply = {
+				value = 1.2
+			}
+		}else_if = {
+			limit = {
+				has_law_or_variant = law_type:law_graduated_taxation
+			}
+			multiply = {
+				value = 1.5
+			}
+		}else = {
+			multiply = {
+				value = 0.5
+			}
+		}
+
+		if = {
+			limit = {
+				any_political_movement = {
+					OR = {
+						is_political_movement_type = movement_anarchist
+						is_political_movement_type = movement_communist
+						is_political_movement_type = movement_socialist
+						is_political_movement_type = movement_fascist
+					}
+					political_movement_radicalism > 0.75
+				}
+			}
+			multiply = {
+				value = 1.5
+			}
+		}else_if = {
+			limit = {
+				any_political_movement = {
+					OR = {
+						is_political_movement_type = movement_anarchist
+						is_political_movement_type = movement_communist
+						is_political_movement_type = movement_socialist
+						is_political_movement_type = movement_fascist
+					}
+					political_movement_radicalism > 0.25
+				}
+			}
+			multiply = {
+				value = 1.2
+			}
+		}else_if = {
+			limit = {
+				NOT = {
+					any_political_movement = {
+						OR = {
+							is_political_movement_type = movement_anarchist
+							is_political_movement_type = movement_communist
+							is_political_movement_type = movement_socialist
+							is_political_movement_type = movement_fascist
+						}
+					}
+				}
+			}
+			multiply = {
+				value = 0.75
+			}
+		}
+
+		if = {
+			limit = {
+				owner = {
+					num_companies > 4
+				}
+			}
+			multiply = {
+				value = owner.num_companies
+				subtract = 4
+				multiply = 0.10
+				add = 1
+			}
+		}else_if = {
+			limit = {
+				owner = {
+					num_companies < 4
+				}
+			}
+			multiply = {
+				value = 0.5
+			}
+		}
+	}
+	
+	on_created = {
+		add_movement_enthusiasm_modifier = yes
+	}
+
+	character_support_trigger = {
+		propertarian_or_market_liberal = yes
+	}
+	character_support_weight = {
+		value = 100
+		if = {
+			limit = {
+				is_interest_group_type = ig_industrialists
+			}
+			multiply = {
+				value = 2
+			}
+		}else_if = {
+			limit = {
+				is_interest_group_type = ig_landowners
+				owner ?= {
+					has_law_or_variant = law_type:law_commercialized_agriculture
+				}
+			}
+			multiply = {
+				value = 2
+			}
+		}
+
+		if = {
+			limit = {
+				has_propertarian_ideology = yes
+			}
+			multiply = {
+				value = 10
+			}
+		}else_if = {
+			limit = {
+				has_ideology = ideology:ideology_market_liberal
+			}
+			multiply = {
+				value = 2
+			}
+		}else_if = {
+			limit = {
+				has_ideology = ideology:ideology_abolitionist
+			}
+			multiply = {
+				value = 0
+			}
+		}
+	}
+
+	pop_support_trigger = {
+		NOT = {
+			is_pop_type = slaves
+		}
+	}
+
+	pop_support_factors = {
+		movement_support_high_literacy
+		movement_support_high_urbanization
+		movement_support_high_wealth
+		movement_support_high_taxes
+		movement_support_many_companies
+		movement_support_red_blue_scare
+		movement_support_capitalists
+		movement_support_aristocrats
+		movement_support_officers
+		movement_support_shopkeepers
+	}
+
+	pop_support_weight = {
+		if = {
+			limit = {
+				exists = scope:political_movement
+				scope:political_movement ?= {
+						OR = {
+							is_being_suppressed = yes
+							is_being_bolstered = yes
+						}
+					}
+				}
+			if = {
+				limit = {
+					scope:political_movement = {
+						is_being_suppressed = yes
+					}
+				}
+				add = {
+					value = suppression_base_value
+					multiply = {
+						value = -0.5
+						add = owner.modifier:country_suppression_attraction_factor
+					}
+					desc = "concept_suppressed"
+				}
+			}
+			else = {
+				add = {
+					value = bolstering_base_value
+					multiply = {
+						value = 0.5
+						add = owner.modifier:country_bolster_attraction_factor
+					}
+					desc = "concept_bolstered"
+				}
+			}
+		}
+		if = {
+			limit = {
+				strata = upper
+			}
+			add = {
+				desc = "URBAN_STATE"
+				value = 10
+				multiply = state.state_urbanization_rate
+			}
+			if = {
+				limit = {
+					is_pop_type = capitalists
+				}
+				add = {
+					value = 50
+					desc = "POP_CAPITALISTS"
+				}if = {
+					limit = {
+						owner = {
+							num_companies > 4
+						}
+					}
+					multiply = {
+						value = owner.num_companies
+						subtract = 4
+						multiply = 0.10
+						add = 1
+						desc = "COUNTRY_MANY_COMPANIES"
+					}
+				}
+			}else = {
+				add = {
+					value = 20
+					desc = "POP_ARISTOCRATS"
+				}
+			}
+
+			if = {
+				limit = {
+					owner ?= {
+						any_political_movement = {
+							OR = {
+								is_political_movement_type = movement_socialist
+								is_political_movement_type = movement_anarchist
+								is_political_movement_type = movement_communist
+								is_political_movement_type = movement_fascist
+							}
+							political_movement_radicalism >= 0.75
+						}
+					}
+				}
+				multiply = {
+					value = 2
+					desc = "POP_RED_BLUE_SCARE"
+				}
+			}else_if = {
+				limit = {
+					owner ?= {
+						any_political_movement = {
+							OR = {
+								is_political_movement_type = movement_socialist
+								is_political_movement_type = movement_anarchist
+								is_political_movement_type = movement_communist
+								is_political_movement_type = movement_fascist
+							}
+							political_movement_radicalism >= 0.25
+						}
+					}
+				}
+				multiply = {
+					value = 1.5
+					desc = "POP_RED_BLUE_SCARE"
+				}
+			}
+		}else_if = {
+			limit = {
+				strata = middle
+			}
+			add = {
+				desc = "URBAN_STATE"
+				value = 5
+				multiply = state.state_urbanization_rate
+			}
+			if = {
+				limit = {
+					standard_of_living < state.average_expected_sol
+				}
+				add = { # Increases likelihood of support if impoverished
+					desc = "IS_BELOW_EXPECTED_SOL"
+					value = state.average_expected_sol
+					subtract = standard_of_living
+					max = 10
+				}
+			}else_if = {
+				limit = {
+					standard_of_living > state.average_expected_sol
+				}
+				add = { # Decreases likelihood of support if well-off
+					desc = "IS_ABOVE_EXPECTED_SOL"
+					value = state.average_expected_sol
+					subtract = standard_of_living
+					min = -5
+				}
+			}
+			if = {
+				limit = {
+					is_pop_type = clerks
+					pop_employment_building = building_government_administration
+					owner = {
+						has_law_or_variant = law_type:law_private_administration
+					}
+				}
+				add = {
+					value = 25
+					desc = "POP_CLERKS"
+				}
+			}else_if = {
+				limit = { # fascist movement will weaken
+					is_pop_type = shopkeepers
+					owner = {
+						any_political_movement = {
+							is_political_movement_type = movement_fascist
+						}
+					}
+				}
+				add = {
+					value = 20
+					desc = "POP_SHOPKEEPERS"
+				}
+			}else_if = {
+				limit = {
+					is_pop_type = shopkeepers
+				}
+				add = {
+					value = 30
+					desc = "POP_SHOPKEEPERS"
+				}
+			}else_if = {
+				limit = {
+					is_pop_type = officers
+					owner = {
+						has_law_or_variant = law_type:law_private_defense_agencies
+					}
+				}
+				add = {
+					value = 30
+					desc = "POP_OFFICERS"
+				}if = {
+					limit = {
+						owner = {
+							num_companies > 4
+						}
+					}
+					multiply = {
+						value = owner.num_companies
+						subtract = 4
+						multiply = 0.10
+						add = 1
+						desc = "COUNTRY_MANY_COMPANIES"
+					}
+				}
+			}else_if = {
+				limit = {
+					is_pop_type = officers
+				}
+				add = {
+					value = 20
+					desc = "POP_OFFICERS"
+				}
+			}else_if = {
+				limit = {
+					is_pop_type = bureaucrats
+					owner = {
+						AND = {
+							has_law = law_type:law_private_administration
+							has_law = law_type:law_sovereign_monopoly
+						}
+					}
+				}
+				add = {
+					value = 70
+					desc = "POP_BUREAUCRATS"
+				}
+			}else_if = {
+				limit = {
+					is_pop_type = bureaucrats
+					owner = {
+						OR = {
+							has_law_or_variant = law_type:law_private_administration
+							has_law = law_type:law_sovereign_monopoly
+						}
+					}
+				}
+				add = {
+					value = 35
+					desc = "POP_BUREAUCRATS"
+				}
+			}else_if = {
+				limit = {
+					is_pop_type = farmers
+					owner = {
+						has_law_or_variant = law_type:law_homesteading
+						NOT = {
+							has_law_or_variant = law_type:law_council_republic
+						}
+					}
+
+				}
+				if = {
+					limit = {
+						owner = {
+							has_law_or_variant = law_type:law_directorate
+						}
+					}
+					add = {
+						value = 35
+						desc = "HOMESTEADING_LAW"
+					}
+				}else = {
+					add = {
+						value = 25
+						desc = "HOMESTEADING_LAW"
+					}
+				}
+			}else_if = {
+				limit = {
+					is_pop_type = academics
+				}
+				if = {
+					limit = {
+						owner = {
+							OR = {
+								has_law_or_variant = law_type:law_directorate
+								AND = {
+									has_law_or_variant = law_type:law_free_trade
+									has_law_or_variant = law_type:law_laissez_faire
+								}
+							}
+						}
+					}
+					add = {
+						value = 40
+						desc = "POP_ACADEMICS"
+					}
+				}else_if = {
+					limit = {
+						owner = {
+							NOT = {
+								has_law_or_variant = law_type:law_directorate
+							}
+							OR = {
+								has_law_or_variant = law_type:law_free_trade
+								has_law_or_variant = law_type:law_laissez_faire
+							}
+						}
+					}
+					add = {
+						value = 30
+						desc = "POP_ACADEMICS"
+					}
+				}else = {
+					add = {
+						value = 20
+						desc = "POP_ACADEMICS"
+					}
+				}
+			}else_if = {
+				limit = {
+					is_pop_type = engineers
+				}
+				add = {
+					value = 10
+					desc = "POP_ENGINEERS"
+				}
+			}else_if = {
+				limit = {
+					is_pop_type = clergymen
+					has_pop_religion = protestant
+				}
+				add = {
+					value = 10
+					desc = "POP_PROTESTANT_CLERGY"
+				}
+			}
+
+			if = {
+				limit = {
+					owner ?= {
+						any_political_movement = {
+							OR = {
+								is_political_movement_type = movement_socialist
+								is_political_movement_type = movement_anarchist
+								is_political_movement_type = movement_communist
+							}
+							political_movement_radicalism >= 0.75
+						}
+					}
+				}
+				multiply = {
+					value = 1.5
+					desc = "POP_RED_SCARE"
+				}
+			}else_if = {
+				limit = {
+					owner ?= {
+						any_political_movement = {
+							OR = {
+								is_political_movement_type = movement_socialist
+								is_political_movement_type = movement_anarchist
+								is_political_movement_type = movement_communist
+							}
+							political_movement_radicalism >= 0.25
+						}
+					}
+				}
+				multiply = {
+					value = 1.25
+					desc = "POP_RED_SCARE"
+				}
+			}
+		}else_if = {
+			limit = {
+				strata = lower
+			}
+			if = {
+				limit = {
+					is_pop_type = soldiers
+				}
+				if = {
+					limit ={
+						owner = {
+							has_law_or_variant = law_type:law_private_defense_agencies
+						}
+					}
+					add = {
+						value = 25
+						desc = "law_private_defense_agencies"
+					}
+				}else_if = {
+					limit ={
+						is_pop_type = soldiers
+					}
+					add = {
+						value = 6
+						desc = "POP_SOLDIERS"
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					is_pop_type = machinists
+					OR = {
+						pop_employment_building_group = bg_military
+						pop_employment_building_group = bg_military_industry
+					}
+					owner = {
+						has_law_or_variant = law_type:law_private_defense_agencies
+					}
+				}
+				add = {
+					value = 25
+					desc = "law_private_defense_agencies"
+				}
+			}
+
+			if = {
+				limit = {
+					is_pop_type = clerks
+					owner = {
+						has_law_or_variant = law_type:law_private_administration
+					}
+				}
+				add = {
+					value = 15
+					desc = "law_private_administration"
+				}
+			}
+		}
+
+		multiply = { # Illiterate pops participate at 1/10 the rate of fully literate pops
+			desc = "POP_LITERACY"
+			value = literacy_rate
+			add = 0.10
+		}
+
+		multiply = { # 0.25 at 10, 1.0 at 25, 1.25 at 30, 2.0 at 45
+			value = wealth
+			subtract = 5
+			multiply = 0.05
+			min = 0
+			max = 2.5
+			desc = "POP_WEALTH"
+		}
+	}
+
+	revolution = {
+		possible = {
+			political_movement_support >= 0.05
+		}
+
+		weight = {
+			value = 100
+		}
+
+		state_weight = {
+			value = 1
+		}
+	}
+
+	secession = {
+		possible = {
+			always = no
+		}
+
+		weight = {
+			value = 0
+		}
+	}
+
+	additional_radicalism_factors = {
+		owner = {
+			if = {
+				limit = { has_law_or_variant = law_type:law_public_schools }
+				add = {
+					value = institution_investment_level:institution_schools
+					subtract = 3
+					multiply = 0.05
+					desc = "INSTITUTION_FUNDING_LEVEL_schools"
+				}
+			}
+			if = {
+				limit = { has_law_or_variant = law_type:law_public_health_insurance }
+				add = {
+					value = institution_investment_level:institution_health_system
+					subtract = 1
+					multiply = 0.05
+					desc = "INSTITUTION_FUNDING_LEVEL_health_system"
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						has_law_or_variant = law_type:law_wage_subsidies
+						has_law_or_variant = law_type:law_old_age_pension
+					}
+				}
+				add = {
+					value = institution_investment_level:institution_social_security
+					subtract = 1
+					multiply = 0.05
+					desc = "INSTITUTION_FUNDING_LEVEL_social_security"
+				}
+			}
+
+			if = {
+				limit = {
+					OR = {
+						has_law_or_variant = law_type:law_regulatory_bodies
+						has_law_or_variant = law_type:law_worker_protections
+					}
+				}
+				add = {
+					value = institution_investment_level:institution_workplace_safety
+					subtract = 1
+					multiply = 0.05
+					desc = "INSTITUTION_FUNDING_LEVEL_workplace_safety"
+				}
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					any_neighbouring_state = {
+						owner = {
+							NOT = { THIS = ROOT.owner }
+							any_political_movement = {
+								is_political_movement_type = movement_propertarian
+								is_insurrectionary = yes
+							}
+						}
+					}
+				}
+			}
+			add = {
+				desc = "NEIGHBOURING_COUNTRY_WITH_REVOLUTION"
+				value = 0.15
+			}
+		}
+		if = {
+			limit = {
+				owner = {
+					has_journal_entry = je_boardroom_schism
+				}
+			}
+			add = {
+				value = 0.25
+				desc = "involved_in_boardroom_schism"
+			}
+		}
+	}
+}

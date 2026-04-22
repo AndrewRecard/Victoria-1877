@@ -1,0 +1,119 @@
+﻿
+
+boardroom_schism_rewards_effect = {
+    if = {
+        limit = {
+            has_variable = minarchists_victorious
+        }
+        add_modifier = {
+            name = ir_guilded_charter_modifier
+            years = 10
+        }
+    }
+    if = {
+        limit = {
+            has_variable = molinarists_victorious
+        }
+        add_modifier = {
+            name = ir_privatized_peace_modifier
+            years = 10
+        }
+    }
+    if = {
+        limit = {
+            has_variable = monopolists_victorious
+        }
+        add_modifier = {
+            name = ir_monopolized_integration_modifier
+            years = 10
+        }
+    }
+}
+
+purchase_politician_cost_effect = {
+    add_treasury = purchase_poltician_value
+}
+
+egm_monopolists_boost_effect = {
+    custom_tooltip = {
+        text = monopolism_progress_increase_100_tt
+        je:je_boardroom_schism = {
+            add_progress = { value = 100 name = schism_monopolist_bar }
+        }
+    }
+    custom_tooltip = {
+        text = minarchism_progress_decrease_25_tt
+        je:je_boardroom_schism = {
+            add_progress = { value = -25 name = schism_minarchist_bar }
+        }
+    }
+    custom_tooltip = {
+        text = molinarism_progress_decrease_25_tt
+        je:je_boardroom_schism = {
+            add_progress = { value = -25 name = schism_molinarist_bar }
+        }
+    }
+
+}
+egm_minarchists_boost_effect = {
+    custom_tooltip = {
+        text = minarchism_progress_increase_100_tt
+        je:je_boardroom_schism = {
+            add_progress = { value = 100 name = schism_minarchist_bar }
+        }
+    }
+    custom_tooltip = {
+        text = monopolism_progress_decrease_25_tt
+        je:je_boardroom_schism = {
+            add_progress = { value = -25 name = schism_monopolist_bar }
+        }
+    }
+    custom_tooltip = {
+        text = molinarism_progress_decrease_25_tt
+        je:je_boardroom_schism = {
+            add_progress = { value = -25 name = schism_molinarist_bar }
+        }
+    }
+
+}
+egm_molinarists_boost_effect = {
+    custom_tooltip = {
+        text = molinarism_progress_increase_100_tt
+        je:je_boardroom_schism = {
+            add_progress = { value = 100 name = schism_molinarist_bar }
+        }
+    }
+    custom_tooltip = {
+        text = minarchism_progress_decrease_25_tt
+        je:je_boardroom_schism = {
+            add_progress = { value = -25 name = schism_minarchist_bar }
+        }
+    }
+    custom_tooltip = {
+        text = monopolism_progress_decrease_25_tt
+        je:je_boardroom_schism = {
+            add_progress = { value = -25 name = schism_monopolist_bar }
+        }
+    }
+}
+
+egm_fail_effect = {
+    custom_tooltip = {
+        text = monopolism_progress_decrease_25_tt
+        je:je_boardroom_schism = {
+            add_progress = { value = -25 name = schism_monopolist_bar }
+        }
+    }
+    custom_tooltip = {
+        text = minarchism_progress_decrease_25_tt
+        je:je_boardroom_schism = {
+            add_progress = { value = -25 name = schism_minarchist_bar }
+        }
+    }
+    custom_tooltip = {
+        text = molinarism_progress_decrease_25_tt
+        je:je_boardroom_schism = {
+            add_progress = { value = -25 name = schism_molinarist_bar }
+        }
+    }
+}

@@ -1,0 +1,81 @@
+﻿exile_character_cooldown = {
+	value = 1825
+	multiply = {
+		if = {
+			limit = {
+				owner ?= {
+					has_law_or_variant = law_type:law_ministry_of_truth
+				}
+			}
+		}
+		value = 0.5
+	}
+	multiply = {
+		if = {
+			limit = {
+				owner ?= {
+					has_technology_researched = mass_surveillance
+				}
+			}
+		}
+		value = 0.75
+	}
+}
+
+arrange_accident_cooldown = {
+	value = 1825
+	multiply = {
+		value = 1
+		subtract = {
+			value = owner.institution_investment_level:institution_home_affairs
+			multiply = 0.1
+		}
+	}
+}
+
+invite_exile_cooldown = {
+	value = 1825
+	multiply = {
+		if = {
+			limit = {
+				owner ?= {
+					has_law_or_variant = law_type:law_guaranteed_liberties
+				}
+			}
+		}
+		value = 0.67
+	}
+}
+
+converted_relative_bureaucracy = {
+	value = bureaucracy_usage
+	subtract = produced_bureaucracy
+	divide = produced_bureaucracy
+	min = -1
+	max = 1
+}
+
+sovereign_monopoly_throughput_conversion = {
+	value = modifier:country_company_throughput_bonus_add
+}
+
+sovereign_monopoly_construction_conversion = {
+	value = modifier:country_company_construction_efficiency_bonus_add
+}
+
+lobbying_expenditure_value = {
+	value = gdp
+	divide = 1000
+	if = {
+		limit = {
+			has_variable = suspended_lobbying_var
+		}
+		multiply = 0
+	}
+}
+
+purchase_poltician_value = {
+	value = gdp
+	divide = 250
+	multiply = -1
+}

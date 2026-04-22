@@ -1,0 +1,215 @@
+﻿je_boardroom_schism = {
+	icon = "gfx/interface/icons/invention_icons/corporate_management.dds"
+	group = je_group_propertarianism
+
+	scripted_progress_bar = schism_monopolist_bar
+	scripted_progress_bar = schism_minarchist_bar
+	scripted_progress_bar = schism_molinarist_bar
+
+	scripted_button = promote_monopolism_button
+	scripted_button = promote_minarchism_button
+	scripted_button = promote_molinarism_button
+	scripted_button = suspend_lobbying_button
+	scripted_button = sponsor_thinktanks_button
+	scripted_button = convene_egm_button
+
+	is_shown_when_inactive = {
+		has_technology_researched = corporate_charters
+	}
+	possible = {
+		has_law_or_variant = law_type:law_directorate
+		has_technology_researched = corporate_management
+		has_technology_researched = anarchism
+		has_technology_researched = corporatism
+		any_scope_politician = {
+		}
+		calc_true_if = {
+			amount >= 2
+			any_scope_politician = {
+				has_ideology = ideology:ideology_minarchist_leader
+			}
+			any_scope_politician = {
+				has_ideology = ideology:ideology_monopolist_leader
+			}
+			any_scope_politician = {
+				has_ideology = ideology:ideology_molinarist_leader
+			}
+		}
+		custom_tooltip = {
+			text = completed_public_liquidation_tt
+			has_variable = public_liquidation_completed
+		}
+	}
+
+	status_desc = {
+		first_valid = {
+			#triggered_desc = { # Cementing the Rightful Dynasty is active
+			#desc = status_dynasty_cementing_fra
+			#trigger = {
+			#has_journal_entry = je_final_propertarianism
+			#}
+			#}
+			triggered_desc = {
+				desc = blank_tt
+				trigger = {
+					NOT = {
+						has_journal_entry = je_boardroom_schism
+					}
+				}
+			}
+			triggered_desc = {
+				desc = status_monopolism_winning
+				trigger = {
+					scope:journal_entry = {
+						"scripted_bar_progress(schism_monopolist_bar)" > "scripted_bar_progress(schism_minarchist_bar)"
+						"scripted_bar_progress(schism_monopolist_bar)" > "scripted_bar_progress(schism_molinarist_bar)"
+					}
+				}
+			}
+			triggered_desc = {
+				desc = status_molinarism_winning
+				trigger = {
+					scope:journal_entry = {
+						"scripted_bar_progress(schism_molinarist_bar)" > "scripted_bar_progress(schism_minarchist_bar)"
+						"scripted_bar_progress(schism_molinarist_bar)" > "scripted_bar_progress(schism_monopolist_bar)"
+					}
+				}
+			}
+			triggered_desc = {
+				desc = status_minarchism_winning
+				trigger = {
+					scope:journal_entry = {
+						"scripted_bar_progress(schism_minarchist_bar)" > "scripted_bar_progress(schism_molinarist_bar)"
+						"scripted_bar_progress(schism_minarchist_bar)" > "scripted_bar_progress(schism_monopolist_bar)"
+					}
+				}
+			}
+			triggered_desc = {
+				desc = status_no_winner
+				trigger = {
+					always = yes
+				}
+			}
+		}
+		triggered_desc = {
+			desc = je_boardroom_lobbying_cost
+			trigger = {
+				has_journal_entry = je_boardroom_schism
+				NOT = {
+					has_variable = boardroom_schism_freeze
+					has_variable = suspended_lobbying_var
+				}
+			}
+		}
+	}
+
+	modifiers_while_active = {
+		ir_propertarian_lobby_war_modifier
+	}
+
+	immediate = {
+		trigger_event = {
+			id = boardroom_schism.1
+			popup = yes
+		}
+		set_boardroom_schism_variables = yes
+		monthly_pulse_monopolist_progress = yes
+		monthly_pulse_minarchist_progress = yes
+		monthly_pulse_molinarist_progress = yes
+		random_law = {
+			limit = { type = law_type:law_directorate }
+			save_scope_as = directorate_scope
+		}
+	}
+
+	on_weekly_pulse = {
+		effect = {
+			remove_modifier = ir_funding_lobbies_modifier
+			add_modifier = {
+				name = ir_funding_lobbies_modifier
+				multiplier = lobbying_expenditure_value
+			}
+		}
+	}
+
+	on_monthly_pulse = {
+		random_events = {
+			400 = 0
+			#10 = french_pretenders_pulse.2
+		}
+		effect = {
+			if = {
+				limit = {
+					NOR = {
+						has_variable = boardroom_schism_freeze
+						has_variable = minarchists_victorious
+					}
+				}
+				monthly_pulse_monopolist_progress = yes
+				monthly_pulse_minarchist_progress = yes
+				monthly_pulse_molinarist_progress = yes
+			}
+			if = {
+				limit = {
+					has_law = law_type:law_directorate
+					scope:journal_entry = {
+						OR = {
+							"scripted_bar_progress(schism_monopolist_bar)" >= 400
+							"scripted_bar_progress(schism_molinarist_bar)" >= 400
+						}
+					}
+					NOT = {
+						has_variable = boardroom_schism_freeze
+					}
+				}
+				freeze_boardroom_schism_progress = yes
+			}
+			if = {
+				limit = {
+					scope:journal_entry = {
+						"scripted_bar_progress(schism_minarchist_bar)" >= 400
+					}
+					NOT = {
+						has_variable = boardroom_schism_freeze
+					}
+				}
+				set_variable = minarchists_victorious
+			}
+		}
+	}
+
+	complete = {
+		has_law = law_type:law_directorate
+		custom_tooltip = {
+			text = je_schism_complete
+			OR = {
+				has_variable = monopolists_victorious
+				has_variable = minarchists_victorious
+				has_variable = molinarists_victorious
+			}
+		}
+	}
+	on_complete = {
+		custom_tooltip = {
+			text = je_schism_resulting_je
+			clear_boardroom_schism_variables = yes
+		}
+		boardroom_schism_rewards_effect = yes
+	}
+
+	on_fail = {
+		clear_boardroom_schism_variables = yes
+	}
+
+	invalid = {
+		NOT = {
+			has_law = law_type:law_directorate
+		}
+	}
+	on_invalid = {
+		clear_boardroom_schism_variables = yes
+	}
+
+	weight = 100
+	should_be_pinned_by_default = yes
+}

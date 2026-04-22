@@ -1,0 +1,137 @@
+﻿country_institution_cost_institution_workplace_safety_mult = {
+    decimals = 0
+    color = bad
+    percent = yes
+}
+
+country_institution_cost_institution_home_affairs_mult = {
+    decimals = 0
+    color = bad
+    percent = yes
+}
+
+country_institution_cost_institution_corporate_unions_mult = {
+    decimals = 0
+    color = bad
+    percent = yes
+}
+
+country_institution_corporate_unions_max_investment_add = {
+    decimals = 0
+    color = good
+}
+
+country_institution_cost_institution_civil_service_mult = {
+    decimals = 0
+    color = bad
+    percent = yes
+}
+
+country_institution_civil_service_max_investment_add = {
+    decimals = 0
+    color = good
+}
+
+country_enactment_success_chance_law_directorate_add = {
+    decimals = 0
+    color = good
+    percent = yes
+}
+
+country_enactment_success_chance_law_no_social_security_add = {
+    decimals = 0
+    color = good
+    percent = yes
+}
+
+country_enactment_success_chance_law_poor_laws_add = {
+    decimals = 0
+    color = good
+    percent = yes
+}
+
+country_enactment_success_chance_law_wage_subsidies_add = {
+    decimals = 0
+    color = good
+    percent = yes
+}
+
+country_enactment_success_chance_law_old_age_pension_add = {
+    decimals = 0
+    color = good
+    percent = yes
+}
+
+state_pop_support_movement_propertarian_add = {
+	decimals = 1
+	color = neutral
+}
+
+state_pop_support_movement_propertarian_mult = {
+	decimals = 0
+	color = neutral
+	percent = yes
+}
+
+country_arrange_accident_cooldown_mult = {
+    script_only = yes
+    decimals = 0
+    color = bad
+    percent = yes
+}
+
+country_exile_dissident_cooldown_mult = {
+    script_only = yes
+    decimals = 0
+    color = bad
+    percent = yes
+}
+
+country_invite_exile_cooldown_mult = {
+    script_only = yes
+    decimals = 0
+    color = bad
+    percent = yes
+}
+
+country_public_institutions_liquidated_bool = {
+    script_only = yes
+    boolean = yes
+    color = neutral
+}
+
+country_barracks_scaling_turmoil_bool = {
+    script_only = yes
+    boolean = yes
+    color = good
+}
+
+country_militarized_police_discount_bool = {
+    script_only = yes
+    boolean = yes
+    color = good
+}
+
+power_bloc_leader_can_force_privatize_bool = {
+    script_only = yes
+    boolean = yes
+    color = neutral
+}
+
+country_sovereign_monopoly_conversion_bool = {
+    script_only = yes
+    boolean = yes
+    color = neutral
+}
+
+country_can_impose_same_lawgroup_economy_in_power_bloc_bool = {
+    script_only = yes
+    boolean = yes
+    color = good
+}
+
+country_disable_support_separatism_bool = {
+    script_only = yes
+    boolean = yes
+    color = neutral
+}

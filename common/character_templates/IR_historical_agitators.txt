@@ -1,0 +1,18 @@
+﻿agitator_gustave_de_molinari = { # Normal Marx
+    first_name = Gustave
+	last_name = de_molinari
+	historical = yes
+	is_agitator = yes
+	dna = gustave_de_molinari
+	interest_group = ig_intelligentsia
+	female = no
+	ideology = ideology_molinarist_leader
+	culture = cu:wallonian
+	religion = rel:catholic
+	traits = {
+		innovative
+		persistent
+		meticulous
+	}
+	birth_date = 1819.3.3
+}

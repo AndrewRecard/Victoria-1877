@@ -1,0 +1,47 @@
+﻿INJECT:FRA = {
+	dynamic_country_name = {
+		name = dyn_c_french_state
+		adjective = dyn_c_french_state_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_corporate_state
+			}
+		}
+	}
+	dynamic_country_name = {
+		name = dyn_c_french_directorate
+		adjective = dyn_c_french_directorate_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+}
+
+INJECT:GBR = {
+	dynamic_country_name = {
+		name = dyn_c_british_directorate
+		adjective = dyn_c_british_directorate_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+}

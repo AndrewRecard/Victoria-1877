@@ -1,0 +1,470 @@
+﻿## ARTS
+REPLACE:pm_traditional_patronage = {
+	texture = "gfx/interface/icons/production_method_icons/ownership_aristocrats.dds"
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_sovereign_monopoly
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_academics_add = 1000
+			building_employment_clerks_add = 3000
+			building_employment_laborers_add = 1000
+		}
+	}
+}
+
+INJECT:pm_independent_artists = {
+	disallowing_laws = {
+		law_sovereign_monopoly
+	}
+}
+
+## URBAN CHURCHES
+pm_urban_trusts = {
+	texture = "gfx/interface/icons/production_method_icons/ownership_aristocrats.dds"
+
+	unlocking_laws = {
+		law_sovereign_monopoly
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_clerks_add = 50
+			building_employment_bureaucrats_add = 50
+			building_employment_capitalists_add = 100
+		}
+
+		unscaled = {
+			building_capitalists_standard_of_living_add = 25
+		}
+	}
+}
+
+INJECT:pm_state_urban_clergy = {
+	disallowing_laws = {
+		law_sovereign_monopoly
+	}
+}
+
+REPLACE:pm_free_urban_clergy = {
+	texture = "gfx/interface/icons/production_method_icons/ownership_bureacrats.dds"
+
+	disallowing_laws = {
+		law_state_religion
+		law_state_atheism
+		law_sovereign_monopoly
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_clerks_add = 100
+			building_employment_clergymen_add = 150
+		}
+	}
+}
+
+INJECT:pm_no_urban_clergy = {
+	disallowing_laws = {
+		law_sovereign_monopoly
+	}
+}
+
+## COMPANY OWNERSHIP
+pm_company_headquarter_sovereign_trust = {
+	texture = "gfx/interface/icons/production_method_icons/sovereign_trust.dds"
+
+	unlocking_laws = {
+		law_sovereign_monopoly
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 50
+			building_employment_bureaucrats_add = 50
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_bureaucrats_shares_add = 5
+			building_clerks_shares_add = 2
+		}
+	}
+}
+
+REPLACE:pm_company_headquarter_privately_owned = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+	is_hidden_when_unavailable = yes
+
+	unlocking_company_categories = {
+		capitalist_owned
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_sovereign_monopoly
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 25
+			building_employment_clerks_add = 25
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+		}
+	}
+}
+
+REPLACE:pm_company_headquarter_privately_owned_aristocrats = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+	is_hidden_when_unavailable = yes
+
+	unlocking_company_categories = {
+		aristocrat_owned
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_commercialized_agriculture
+		law_sovereign_monopoly
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 10
+			building_employment_aristocrats_add = 15
+			building_employment_clerks_add = 25
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_aristocrats_shares_add = 10
+		}
+	}
+}
+
+REPLACE:pm_company_headquarter_privately_owned_aristocrats_commercial_agriculture = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+	is_hidden_when_unavailable = yes
+
+	unlocking_company_categories = {
+		aristocrat_owned
+	}
+
+	unlocking_laws = {
+		law_commercialized_agriculture
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_sovereign_monopoly
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 15
+			building_employment_aristocrats_add = 10
+			building_employment_clerks_add = 25
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_aristocrats_shares_add = 10
+		}
+	}
+}
+
+
+REPLACE:pm_company_headquarter_privately_owned_shopkeepers = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+	is_hidden_when_unavailable = yes
+
+	unlocking_company_categories = {
+		shopkeeper_owned
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_sovereign_monopoly
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 10
+			building_employment_shopkeepers_add = 25
+			building_employment_clerks_add = 15
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_shopkeepers_shares_add = 5
+			building_company_worker_dividends_add = 0.25
+		}
+	}
+}
+
+REPLACE:pm_company_headquarter_privately_owned_bureaucrats = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+	is_hidden_when_unavailable = yes
+
+	unlocking_company_categories = {
+		bureaucrat_owned
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_sovereign_monopoly
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 10
+			building_employment_bureaucrats_add = 25
+			building_employment_clerks_add = 15
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_bureaucrats_shares_add = 5
+			building_company_government_dividends_add = 0.25
+		}
+	}
+}
+
+REPLACE:pm_company_headquarter_privately_owned_academics = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+	is_hidden_when_unavailable = yes
+
+	unlocking_company_categories = {
+		academic_owned
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_sovereign_monopoly
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 10
+			building_employment_academics_add = 25
+			building_employment_clerks_add = 15
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_academics_shares_add = 5
+			building_company_worker_dividends_add = 0.25
+		}
+	}
+}
+
+REPLACE:pm_company_headquarter_principle_divine_economics_2 = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+	is_hidden_when_unavailable = yes
+
+	unlocking_company_categories = {
+		capitalist_owned
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_sovereign_monopoly
+	}
+
+	unlocking_principles = {
+		principle_divine_economics_2
+		principle_divine_economics_3
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 25
+			building_employment_clergymen_add = 25
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_clergymen_shares_add = 2
+		}
+	}
+}
+
+REPLACE:pm_company_headquarter_principle_divine_economics_2_aristocrats = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+	is_hidden_when_unavailable = yes
+
+	unlocking_company_categories = {
+		aristocrat_owned
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_commercialized_agriculture
+		law_sovereign_monopoly
+	}
+
+	unlocking_principles = {
+		principle_divine_economics_2
+		principle_divine_economics_3
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 10
+			building_employment_aristocrats_add = 15
+			building_employment_clergymen_add = 25
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_aristocrats_shares_add = 10
+			building_clergymen_shares_add = 2
+		}
+	}
+}
+
+REPLACE:pm_company_headquarter_principle_divine_economics_2_aristocrats_commercial_agriculture = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+	is_hidden_when_unavailable = yes
+
+	unlocking_company_categories = {
+		aristocrat_owned
+	}
+
+	unlocking_laws = {
+		law_commercialized_agriculture
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_sovereign_monopoly
+	}
+
+	unlocking_principles = {
+		principle_divine_economics_2
+		principle_divine_economics_3
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 15
+			building_employment_aristocrats_add = 10
+			building_employment_clergymen_add = 25
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_aristocrats_shares_add = 10
+			building_clergymen_shares_add = 2
+		}
+	}
+}
+
+REPLACE:pm_company_headquarter_principle_divine_economics_2_shopkeepers = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+	is_hidden_when_unavailable = yes
+
+	unlocking_company_categories = {
+		shopkeeper_owned
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_sovereign_monopoly
+	}
+
+	unlocking_principles = {
+		principle_divine_economics_2
+		principle_divine_economics_3
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 10
+			building_employment_shopkeepers_add = 15
+			building_employment_clergymen_add = 25
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_shopkeepers_shares_add = 5
+			building_clergymen_shares_add = 2
+			building_company_worker_dividends_add = 0.25
+		}
+	}
+}
+
+REPLACE:pm_company_headquarter_principle_divine_economics_2_bureaucrats = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+	is_hidden_when_unavailable = yes
+
+	unlocking_company_categories = {
+		bureaucrat_owned
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_sovereign_monopoly
+	}
+
+	unlocking_principles = {
+		principle_divine_economics_2
+		principle_divine_economics_3
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 10
+			building_employment_bureaucrats_add = 15
+			building_employment_clergymen_add = 25
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_bureaucrats_shares_add = 5
+			building_clergymen_shares_add = 2
+			building_company_government_dividends_add = 0.25
+		}
+	}
+}
+
+REPLACE:pm_company_headquarter_principle_divine_economics_2_academics = {
+	texture = "gfx/interface/icons/production_method_icons/privately_owned.dds"
+	is_hidden_when_unavailable = yes
+
+	unlocking_company_categories = {
+		academic_owned
+	}
+
+	disallowing_laws = {
+		law_command_economy
+		law_cooperative_ownership
+		law_sovereign_monopoly
+	}
+
+	unlocking_principles = {
+		principle_divine_economics_2
+		principle_divine_economics_3
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_employment_capitalists_add = 10
+			building_employment_academics_add = 15
+			building_employment_clergymen_add = 25
+		}
+		unscaled = {
+			building_capitalists_shares_add = 10
+			building_academics_shares_add = 5
+			building_clergymen_shares_add = 2
+			building_company_worker_dividends_add = 0.25
+		}
+	}
+}
+
+

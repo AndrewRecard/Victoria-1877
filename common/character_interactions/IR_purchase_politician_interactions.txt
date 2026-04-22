@@ -1,0 +1,179 @@
+﻿sway_to_minarchism = {
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/unused/ideology_leader_isolationist.dds"
+	potential = {
+		owner ?= scope:actor
+		owner ?= {
+			has_journal_entry = je_boardroom_schism
+			has_variable = supporting_minarchism_var
+		}
+		NOT = { has_ideology = ideology:ideology_minarchist_leader }
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = sway_to_minarchism_correct_ig_in_government_tt
+			interest_group ?= {
+				is_in_government = yes
+				NOT = {
+					is_interest_group_type = ig_trade_unions
+				}
+			}
+		}
+		custom_tooltip = {
+			text = sway_to_minarchism_compatible_ideology_tt
+			NOR = {
+				has_ideology = ideology:ideology_integralist
+				has_ideology = ideology:ideology_fascist
+				has_ideology = ideology:ideology_nihilist
+				has_ideology = ideology:ideology_radical
+				has_ideology = ideology:ideology_social_democrat
+				has_ideology = ideology:ideology_communist
+				has_ideology = ideology:ideology_vanguardist
+				has_ideology = ideology:ideology_anarchist
+				has_ideology = ideology:ideology_humanitarian
+				has_ideology = ideology:ideology_luddite
+			}
+		}
+	}
+
+	effect = {
+		set_ideology = ideology:ideology_minarchist_leader
+		owner ?= {
+			add_modifier = {
+				name = ir_politician_purchased_modifier
+				years = 1
+			}
+		}
+		owner = {
+			purchase_politician_cost_effect = yes
+		}
+	}
+
+	cooldown = { years = 1 }
+	show_confirmation_box = yes
+
+	ai_chance = {
+		value = 1
+	}
+}
+
+sway_to_molinarism = {
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/unused/ideology_leader_individualist.dds"
+	potential = {
+		owner ?= scope:actor
+		owner ?= {
+			has_journal_entry = je_boardroom_schism
+		}
+		NOT = { has_ideology = ideology:ideology_molinarist_leader }
+		owner ?= { has_variable = supporting_molinarism_var }
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = sway_to_molinarism_correct_ig_in_government_tt
+			interest_group ?= {
+				is_in_government = yes
+				NOR = {
+					is_interest_group_type = ig_trade_unions
+					is_interest_group_type = ig_devout
+					is_interest_group_type = ig_petty_bourgeoisie
+					is_interest_group_type = ig_landowners
+				}
+			}
+		}
+		custom_tooltip = {
+			text = sway_to_molinarism_compatible_ideology_tt
+			NOR = {
+				has_ideology = ideology:ideology_integralist
+				has_ideology = ideology:ideology_fascist
+				has_ideology = ideology:ideology_nihilist
+				has_ideology = ideology:ideology_radical
+				has_ideology = ideology:ideology_social_democrat
+				has_ideology = ideology:ideology_communist
+				has_ideology = ideology:ideology_vanguardist
+				has_ideology = ideology:ideology_anarchist
+				has_ideology = ideology:ideology_humanitarian
+			}
+		}
+	}
+
+	effect = {
+		set_ideology = ideology:ideology_molinarist_leader
+		owner ?= {
+			add_modifier = {
+				name = ir_politician_purchased_modifier
+				years = 1
+			}
+		}
+		owner = {
+			purchase_politician_cost_effect = yes
+		}
+	}
+
+	cooldown = { years = 1 }
+	show_confirmation_box = yes
+
+	ai_chance = {
+		value = 1
+	}
+}
+
+sway_to_monopolism = {
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/unused/idealogy_leader_technocratic.dds"
+	potential = {
+		owner ?= scope:actor
+		owner ?= {
+			has_journal_entry = je_boardroom_schism
+		}
+		NOT = { has_ideology = ideology:ideology_monopolist_leader }
+		owner ?= { has_variable = supporting_monopolism_var }
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = sway_to_monopolism_correct_ig_in_government_tt
+			interest_group ?= {
+				is_in_government = yes
+				NOR = {
+					is_interest_group_type = ig_trade_unions
+					is_interest_group_type = ig_devout
+					is_interest_group_type = ig_rural_folk
+				}
+			}
+		}
+		custom_tooltip = {
+			text = sway_to_monopolism_compatible_ideology_tt
+			NOR = {
+				has_ideology = ideology:ideology_integralist
+				has_ideology = ideology:ideology_fascist
+				has_ideology = ideology:ideology_nihilist
+				has_ideology = ideology:ideology_radical
+				has_ideology = ideology:ideology_social_democrat
+				has_ideology = ideology:ideology_communist
+				has_ideology = ideology:ideology_vanguardist
+				has_ideology = ideology:ideology_anarchist
+				has_ideology = ideology:ideology_humanitarian
+			}
+		}
+	}
+
+	effect = {
+		set_ideology = ideology:ideology_monopolist_leader
+		owner ?= {
+			add_modifier = {
+				name = ir_politician_purchased_modifier
+				years = 1
+			}
+		}
+		owner = {
+			purchase_politician_cost_effect = yes
+		}
+	}
+
+	cooldown = { years = 1 }
+	show_confirmation_box = yes
+
+	ai_chance = {
+		value = 1
+	}
+}

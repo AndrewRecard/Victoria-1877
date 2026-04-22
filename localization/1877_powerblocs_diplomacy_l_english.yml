@@ -1,0 +1,22 @@
+﻿l_english:
+ # POWER BLOC
+ identity_corporate_hegemony: "Corporate Hegemony"
+ identity_corporate_hegemony_desc: "This Identity values industrial and economic consolidation among its Bloc Members, treating sovereign [Concept('concept_country','$concept_countries$')] as corporate subsidiaries."
+ # DIPLOMATIC INTERACTIONS
+ power_bloc_leader_can_force_privatize_bool: "Can #b Force Privatize#! $concept_power_bloc_member$"
+ power_bloc_leader_can_force_privatize_bool_desc: "The [concept_power_bloc_leader] can use a [concept_bloc_member_action] to overthrow a [Concept('concept_power_bloc_member','$concept_power_bloc_member$')]'s government in favor of a [GetLawType('law_directorate').GetName]"
+
+ force_privatize: "Force Privatize"
+ force_privatize_action_name: "Force Privatize"
+ force_privatize_desc: "Immediately privatize the [concept_country] into a $law_directorate$"
+ force_privatize_action_notification_name: "Force Privatized by [INITIATOR_COUNTRY.GetName]"
+ force_privatize_action_notification_desc: "[INITIATOR_COUNTRY.GetName] have Force Privatized us"
+ force_privatize_action_notification_third_party_name: "Force Privatized by [INITIATOR_COUNTRY.GetName]"
+ force_privatize_action_notification_third_party_desc: "[INITIATOR_COUNTRY.GetName] have Force Privatized [TARGET_COUNTRY.GetName]"
+
+ POWER_BLOC_COHESION_INDUSTRIALISTS_IG_CLOUT: "[SCOPE.GetRootScope.GetCountry.GetInterestGroupOfType('ig_industrialists').GetName] [concept_clout] ($identity_corporate_hegemony$)"
+ POWER_BLOC_COHESION_INDUSTRIALISTS_IG_NOT_IN_GOVERNMENT: "[SCOPE.GetRootScope.GetCountry.GetInterestGroupOfType('ig_industrialists').GetName] is #variable not#! in [concept_government] ($identity_corporate_hegemony$)"
+ POWER_BLOC_COHESION_SHARE_GDP_CORPORATE_HEGEMONY: "[Concept('concept_power_bloc_leader','$concept_power_bloc_leader_extra_short$')] share of total [concept_gdp] ($identity_corporate_hegemony$)"
+ POWER_BLOC_COHESION_WORST_ECONOMIC_DEPENDENCE_CORPORATE_HEGEMONY: "#indent_newline:3 [concept_power_bloc_member] with lowest [concept_economic_dependence] on the [concept_power_bloc_leader] and [concept_rank] ($identity_trade_league$)\n [SCOPE.GetRootScope.GetCountry.GetPowerBloc.GetParticipantWithLowestEconomicDependence.GetName] ([SCOPE.GetRootScope.GetCountry.GetPowerBloc.GetParticipantWithLowestEconomicDependence.GetRank]) with [SCOPE.GetRootScope.GetCountry.GetPowerBloc.GetParticipantWithLowestEconomicDependenceOnLeader.GetEconomicDependenceOn(SCOPE.GetRootScope.GetCountry.Self)]#!"
+ POWER_BLOC_COHESION_NON_DIRECTORATE_MEMBERS: "independent non-[GetLawType('law_directorate').GetName] [Concept('concept_power_bloc_member','$concept_power_bloc_members_short_non_leader$')]"
+ POWER_BLOC_COHESION_SOVEREIGN_MONOPOLY: "$law_sovereign_monopoly$ [concept_law]"

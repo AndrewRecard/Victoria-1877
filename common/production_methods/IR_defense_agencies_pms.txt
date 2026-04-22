@@ -1,0 +1,159 @@
+﻿## FINANCIAL DISTRICTS
+
+pm_no_defense_agencies = {
+	texture = "gfx/interface/icons/production_method_icons/no_specialists.dds"
+
+	disallowing_laws = {
+		law_private_defense_agencies
+	}
+}
+
+pm_private_defense_agencies = {
+	texture = "gfx/interface/icons/production_method_icons/power_of_the_purse.dds"
+
+	unlocking_laws = {
+		law_private_defense_agencies
+	}
+
+	building_modifiers = {
+		unscaled = {
+			building_officers_shares_add = 2
+		}
+		level_scaled = {
+			building_employment_officers_add = 10
+			building_employment_capitalists_add = -10
+		}
+	}
+}
+
+## BARRACKS/NAVAL BASES
+
+pm_corporate_paramilitary_doctrine = {
+	texture = "gfx/interface/icons/production_method_icons/infiltrators.dds"
+
+	profession_ratio = {
+		soldiers = 70
+		officers = 20
+		machinists = 10
+	}
+
+	unlocking_laws = {
+		law_private_defense_agencies
+	}
+
+	state_modifiers = {
+		level_scaled = {
+			state_pollution_generation_add = 5
+			state_turmoil_effects_mult = -0.0015
+		}
+	}
+
+	building_modifiers = {
+		unscaled = {
+			building_training_rate_add = 50
+		}
+
+		level_scaled = {
+			building_training_rate_add = 22
+		}
+	}
+}
+
+pm_maritime_security_contracting = {
+	texture = "gfx/interface/icons/production_method_icons/carriers.dds"
+
+	profession_ratio = {
+		soldiers = 70
+		officers = 20
+		machinists = 10
+	}
+
+	unlocking_laws = {
+		law_private_defense_agencies
+	}
+
+	state_modifiers = {
+		level_scaled = {
+			state_blockade_resistance_add = 35
+			state_pollution_generation_add = 5
+		}
+	}
+
+	building_modifiers = {
+		level_scaled = {
+			building_training_rate_add = 7
+		}
+
+		unscaled = {
+			unit_morale_loss_mult = -0.15
+			unit_morale_damage_mult = 0.3
+			building_training_rate_add = 10
+		}
+	}
+}
+
+INJECT:pm_no_organization = {
+	disallowing_laws = {
+		law_private_defense_agencies
+	}
+}
+
+INJECT:pm_general_training = {
+	disallowing_laws = {
+		law_private_defense_agencies
+	}
+}
+
+INJECT:pm_advanced_tactics_training = {
+	disallowing_laws = {
+		law_private_defense_agencies
+	}
+}
+
+INJECT:pm_training_streamlining = {
+	disallowing_laws = {
+		law_private_defense_agencies
+	}
+}
+
+INJECT:pm_nco_incorporation = {
+	disallowing_laws = {
+		law_private_defense_agencies
+	}
+}
+
+INJECT:pm_mobile_warfare_tactics = {
+	disallowing_laws = {
+		law_private_defense_agencies
+	}
+}
+
+INJECT:pm_no_naval_theory = {
+	disallowing_laws = {
+		law_private_defense_agencies
+	}
+}
+
+INJECT:pm_power_of_the_purse = {
+	disallowing_laws = {
+		law_private_defense_agencies
+	}
+}
+
+INJECT:pm_jeune_ecole = {
+	disallowing_laws = {
+		law_private_defense_agencies
+	}
+}
+
+INJECT:pm_sea_lane_strategies = {
+	disallowing_laws = {
+		law_private_defense_agencies
+	}
+}
+
+INJECT:pm_battlefleet_tactics = {
+	disallowing_laws = {
+		law_private_defense_agencies
+	}
+}

@@ -1,0 +1,461 @@
+﻿namespace = vic1877_defense_incorporation
+
+vic1877_defense_incorporation.1 = {
+	type = country_event
+	placement = root
+	title = vic1877_defense_incorporation.1.t
+	desc = vic1877_defense_incorporation.1.d
+	flavor = vic1877_defense_incorporation.1.f
+	duration = 3
+
+	on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/invention_icons/wargaming.dds"
+	event_image = {
+		video = "unspecific_signed_contract"
+	}
+
+	immediate = {
+		ruler = {
+			save_scope_as = head_of_state1
+		}
+	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_law_or_variant = law_type:law_private_defense_agencies
+		}
+	}
+
+	option = {
+		name = vic1877_defense_incorporation.1.a
+		default_option = yes
+		add_radicals = {
+			value = very_large_radicals
+			pop_type = officers
+		}
+		add_modifier = {
+			name = ir_defense_agencies_drain_modifier
+			years = 5
+			is_decaying = yes
+		}
+	}
+}
+# keys to the armory
+vic1877_defense_incorporation.2 = {
+	type = country_event
+	placement = scope:barracks_state
+	title = vic1877_defense_incorporation.2.t
+	desc = vic1877_defense_incorporation.2.d
+	flavor = vic1877_defense_incorporation.2.f
+	duration = 3
+
+	on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/invention_icons/wargaming.dds"
+	event_image = {
+		video = "ip2_unruly_soldiers"
+	}
+
+	trigger = {
+		any_scope_state = {
+			any_scope_building = {
+				is_building_type = building_barrack
+				level >= 20
+			}
+		}
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				any_scope_building = {
+					is_building_type = building_barrack
+					level >= 20
+				}
+			}
+			save_scope_as = barracks_state
+		}
+	}
+
+	cooldown = {
+		days = long_modifier_time
+	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_journal_entry = je_defense_incorporation
+		}
+	}
+
+	option = {
+		name = vic1877_defense_incorporation.2.a
+		custom_tooltip = {
+			text = defense_incorporation_progress_increase_5_tt
+			je:je_defense_incorporation = {
+				add_progress = {
+					value = 5
+					name = ir_defense_incorporation_bar
+				}
+			}
+		}
+		scope:barracks_state = {
+			add_radicals_in_state = {
+				pop_type = officers
+				value = large_radicals
+			}
+		}
+	}
+
+	option = {
+		name = vic1877_defense_incorporation.2.b
+		default_option = yes
+		custom_tooltip = {
+			text = defense_incorporation_progress_decrease_5_tt
+			je:je_defense_incorporation = {
+				add_progress = {
+					value = -5
+					name = ir_defense_incorporation_bar
+				}
+			}
+		}
+		scope:barracks_state = {
+			add_loyalists_in_state = {
+				pop_type = officers
+				value = large_radicals
+			}
+		}
+	}
+}
+# proprietary logistics
+vic1877_defense_incorporation.3 = {
+	type = country_event
+	placement = root
+	title = vic1877_defense_incorporation.3.t
+	desc = vic1877_defense_incorporation.3.d
+	flavor = vic1877_defense_incorporation.3.f
+	duration = 3
+
+	on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/invention_icons/wargaming.dds"
+	event_image = {
+		video = "ip4_mining_scene"
+	}
+
+	immediate = {
+	}
+
+	cooldown = {
+		days = long_modifier_time
+	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_journal_entry = je_defense_incorporation
+		}
+	}
+
+	option = {
+		name = vic1877_defense_incorporation.3.a
+		if = {
+			limit = {
+				NOT = {
+					has_technology_researched = steel_railway_cars
+				}
+			}
+			add_technology_progress = { technology = steel_railway_cars progress = 6000 }
+		}else_if = {
+			limit = {
+				NOT = {
+					has_technology_researched = telephone
+				}
+			}
+			add_technology_progress = { technology = telephone progress = 6000 }
+		}else_if = {
+			limit = {
+				NOT = {
+					has_technology_researched = radio
+				}
+			}
+			add_technology_progress = { technology = radio progress = 6000 }
+		}else = {
+			add_modifier = {
+				name = ir_proprietary_tech_modifier
+				days = normal_modifier_time
+			}
+		}
+		add_modifier = {
+			name = ir_new_logistics_modifier
+			days = normal_modifier_time
+		}
+		ig:ig_armed_forces = {
+			add_modifier = {
+				name = ir_seized_patents
+				days = normal_modifier_time
+			}
+		}
+		custom_tooltip = {
+			text = defense_incorporation_progress_decrease_5_tt
+			je:je_defense_incorporation = {
+				add_progress = {
+					value = -5
+					name = ir_defense_incorporation_bar
+				}
+			}
+		}
+	}
+
+	option = {
+		name = vic1877_defense_incorporation.3.b
+		default_option = yes
+		add_modifier = {
+			name = ir_new_logistics_modifier
+			days = normal_modifier_time
+		}
+	}
+}
+
+vic1877_defense_incorporation.4 = {
+	type = country_event
+	placement = scope:mercenary_state
+	title = vic1877_defense_incorporation.4.t
+	desc = vic1877_defense_incorporation.4.d
+	flavor = vic1877_defense_incorporation.4.f
+	duration = 3
+
+	on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/invention_icons/wargaming.dds"
+	event_image = {
+		video = "votp_cops_march"
+	}
+
+	trigger = {
+		any_scope_building = {
+			is_building_type = building_barrack
+			level >= 10
+		}
+		any_scope_building = {
+			OR = {
+				is_building_type = building_munition_plant
+				is_building_type = building_arms_industry
+				is_building_type = building_artillery_foundry
+			}
+			level >= 5
+		}
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				any_scope_building = {
+					is_building_type = building_barrack
+					level >= 10
+				}
+				any_scope_building = {
+					OR = {
+						is_building_type = building_munition_plant
+						is_building_type = building_arms_industry
+						is_building_type = building_artillery_foundry
+					}
+					level >= 5
+				}
+			}
+			save_scope_as = mercenary_state
+		}
+	}
+
+	cooldown = {
+		days = long_modifier_time
+	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_journal_entry = je_defense_incorporation
+		}
+	}
+
+	option = {
+		name = vic1877_defense_incorporation.4.a
+		scope:mercenary_state = {
+			add_modifier = {
+				name = ir_state_crackdown_modifier
+				days = normal_modifier_time
+			}
+			add_radicals_in_state = {
+				pop_type = officers
+				value = medium_radicals
+			}
+			add_radicals_in_state = {
+				pop_type = soldiers
+				value = large_radicals
+			}
+			add_devastation = 5
+		}
+		custom_tooltip = {
+			text = defense_incorporation_progress_decrease_5_tt
+			je:je_defense_incorporation = {
+				add_progress = {
+					value = -5
+					name = ir_defense_incorporation_bar
+				}
+			}
+		}
+	}
+
+	option = {
+		name = vic1877_defense_incorporation.4.b
+		default_option = yes
+		scope:mercenary_state = {
+			add_loyalists_in_state = {
+				pop_type = soldiers
+				value = large_radicals
+			}
+			add_radicals_in_state = {
+				strata = lower
+				value = medium_radicals
+			}
+			add_devastation = 5
+		}
+		add_modifier = {
+			name = ir_unrestrained_defense_agencies_modifier
+			days = normal_modifier_time
+		}
+		custom_tooltip = {
+			text = defense_incorporation_progress_increase_5_tt
+			je:je_defense_incorporation = {
+				add_progress = {
+					value = 5
+					name = ir_defense_incorporation_bar
+				}
+			}
+		}
+	}
+}
+
+vic1877_defense_incorporation.5 = {
+	type = country_event
+	placement = root
+	title = vic1877_defense_incorporation.5.t
+	desc = vic1877_defense_incorporation.5.d
+	flavor = vic1877_defense_incorporation.5.f
+	duration = 3
+
+	on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/invention_icons/wargaming.dds"
+	event_image = {
+		video = "unspecific_politicians_arguing"
+	}
+
+	immediate = {
+		random_scope_character = {
+			limit = {
+				has_role = politician
+				is_interest_group_type = ig_armed_forces
+			}
+			save_scope_as = corrupt_leader
+		}
+	}
+
+	cooldown = {
+		days = long_modifier_time
+	}
+
+	trigger = {
+		NOT = {
+			has_law_or_variant = law_type:law_directorate
+		}
+	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_journal_entry = je_defense_incorporation
+		}
+	}
+
+	option = {
+		name = vic1877_defense_incorporation.5.a
+		default_option = yes
+		scope:corrupt_leader = {
+			remove_as_interest_group_leader = yes
+		}
+		add_modifier = {
+			name = ir_corruption_investigation_modifier
+			days = normal_modifier_time
+		}
+		ig:ig_armed_forces = {
+			add_modifier = {
+				name = ir_investigating_corruption_modifier
+				days = normal_modifier_time
+			}
+		}
+		random_scope_state = {
+			limit = { is_capital = yes }
+			add_loyalists_in_state = {
+				strata = lower
+				value = medium_radicals
+			}
+		}
+		custom_tooltip = {
+			text = defense_incorporation_progress_decrease_5_tt
+			je:je_defense_incorporation = {
+				add_progress = {
+					value = -5
+					name = ir_defense_incorporation_bar
+				}
+			}
+		}
+	}
+
+	option = {
+		name = vic1877_defense_incorporation.5.b
+		ig:ig_armed_forces = {
+			add_modifier = {
+				name = ir_allowed_corruption_modifier
+				days = normal_modifier_time
+			}
+		}
+		random_scope_state = {
+			limit = {
+				is_capital = yes
+			}
+			add_loyalists_in_state = {
+				strata = upper
+				value = large_radicals
+			}
+		}
+	}
+}
+
+vic1877_defense_incorporation.6 = {
+	type = country_event
+	placement = root
+	title = vic1877_defense_incorporation.6.t
+	desc = vic1877_defense_incorporation.6.d
+	flavor = vic1877_defense_incorporation.6.f
+	duration = 3
+
+	on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/invention_icons/wargaming.dds"
+	event_image = {
+		video = "ep1_transfer_of_authority"
+	}
+
+	immediate = {
+	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_law_or_variant = law_type:law_private_defense_agencies
+		}
+	}
+
+	option = {
+		name = vic1877_defense_incorporation.6.a
+		default_option = yes
+		ir_defense_contractors_evolution_effect = yes
+		add_modifier = {
+			name = ir_defense_agencies_investment_modifier
+			years = 10
+		}
+		remove_modifier = ir_defense_agencies_drain_modifier
+	}
+}
+

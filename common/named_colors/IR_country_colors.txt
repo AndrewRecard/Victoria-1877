@@ -1,0 +1,4 @@
+colors = {
+	french_state = rgb { 10 0 80 }
+	french_directorate = rgb { 165 58 1 }
+}

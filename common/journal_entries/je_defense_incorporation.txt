@@ -1,0 +1,105 @@
+﻿#The state military is dismantled in favour of private defense agencies
+je_defense_incorporation = {
+	icon = "gfx/interface/icons/invention_icons/power_of_the_purse.dds"
+	group = je_group_propertarianism
+	should_be_pinned_by_default = yes
+
+	is_shown_when_inactive = {
+		has_technology_researched = general_staff
+		ig:ig_armed_forces = {
+			NOT = { 
+				has_ideology = ideology:ideology_martial_corporatist
+			}
+		}
+	}
+
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				desc = blank_tt
+				trigger = {
+					NOT = {
+						has_journal_entry = je_defense_incorporation
+					}
+				}
+			}
+			triggered_desc = {
+				desc = market_liberal_armed_forces_leader_tt
+				trigger = {
+					any_interest_group = {
+						is_interest_group_type = ig_armed_forces
+						leader = {
+							OR = {
+								has_propertarian_ideology = yes
+								has_ideology = ideology:ideology_market_liberal
+							}
+						}
+					}
+				}
+			}
+			triggered_desc = {
+				desc = no_market_liberal_armed_forces_leader_tt
+				trigger = {
+					any_interest_group = {
+						is_interest_group_type = ig_armed_forces
+						leader = {
+							NOR = {
+								has_propertarian_ideology = yes
+								has_ideology = ideology:ideology_market_liberal
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	scripted_button = repeal_defense_agencies_button
+	scripted_button = depose_armed_forces_leader_button
+	
+	on_monthly_pulse = {
+		random_events = {
+			20 = 0
+			1 = vic1877_defense_incorporation.2
+			1 = vic1877_defense_incorporation.3
+			1 = vic1877_defense_incorporation.4
+			1 = vic1877_defense_incorporation.5
+		}
+	}
+
+	possible = {
+		has_law_or_variant = law_type:law_private_defense_agencies
+	}
+	
+	immediate = {
+		trigger_event = vic1877_defense_incorporation.1
+	}
+
+	modifiers_while_active = {
+		ir_defense_agencies_reform_modifier
+	}
+	
+	scripted_progress_bar = ir_defense_incorporation_bar
+	
+	complete = {
+		ig:ig_armed_forces = {
+			ig_counts_as_marginal = no
+		}
+		custom_tooltip = {
+			text = progress_bar_complete
+			scope:journal_entry = {
+				"scripted_bar_progress(ir_defense_incorporation_bar)" >= 100
+			}
+		}
+	}
+
+	on_complete = {
+		trigger_event = vic1877_defense_incorporation.6
+	}
+
+	invalid = {
+		NOT = {
+			has_law_or_variant = law_type:law_private_defense_agencies
+		}
+	}
+}

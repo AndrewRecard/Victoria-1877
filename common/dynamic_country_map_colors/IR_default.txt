@@ -1,0 +1,39 @@
+﻿#
+# Note: the triggers are checked at certain key points in the code, not all the time
+# color_key = {
+#    color = "black"      # the map color
+#    possible = { ... }   # the trigger to enable this color
+# }
+#
+
+# Example
+#dynamic_map_color_swedish_junta = {
+#    color = "black"
+#
+#	possible = {
+#		exists = c:SWE # you /must/ check that a tag exists before doing anything else
+#		c:SWE ?= THIS
+#
+#        exists = ig:ig_armed_forces
+#        ig:ig_armed_forces ?= {
+#            is_in_government = yes
+#        }
+#	}
+#}
+french_state = {
+	color = "french_state"
+
+	possible = {
+		c:FRA ?= THIS
+		has_law = law_type:law_corporate_state
+	}
+}
+
+french_directorate = {
+	color = "french_directorate"
+
+	possible = {
+		c:FRA ?= THIS
+		has_law = law_type:law_directorate
+	}
+}

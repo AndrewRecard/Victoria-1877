@@ -1,0 +1,327 @@
+﻿promote_monopolism_button = {
+	name = "monopolism_button"
+	desc = "monopolism_button_desc"
+
+	visible = {
+		owner = {
+			has_variable = chose_initial_propertarian_philosophy
+			NOT = { has_variable = boardroom_schism_freeze }
+		}
+	}
+
+	possible = {
+		trigger_if = {
+			limit = {
+				has_variable = supported_monopolism_once_var
+			}
+			custom_tooltip = {
+				text = cannot_choose_monopolism_twice_tt
+				always = no
+			}
+		}
+		any_interest_group = {
+			is_in_government = yes
+			leader = {
+				has_ideology = ideology:ideology_monopolist_leader
+			}
+		}
+		custom_tooltip = {
+			text = not_already_supporting_monopolism
+			NOT = { has_variable = supporting_monopolism_var }
+		}
+		custom_tooltip = {
+			text = suspended_lobbying
+			NOT = { has_variable = suspended_lobbying_var }
+		}
+	}
+
+	selected = {
+		has_variable = supporting_monopolism_var
+	}
+
+	effect = {
+		set_variable = supporting_monopolism_var
+		set_variable = supported_monopolism_once_var
+		remove_variable = supporting_molinarism_var
+		remove_variable = supporting_minarchism_var
+		custom_tooltip = {
+			text = supporting_monopolism_tt
+		}
+		custom_tooltip = {
+			text = monopolism_progress_increase_10_tt
+			je:je_boardroom_schism = {
+				add_progress = { value = 10 name = schism_monopolist_bar }
+			}
+		}
+	}
+}
+
+promote_minarchism_button = {
+	name = "minarchism_button"
+	desc = "minarchism_button_desc"
+
+	visible = {
+		owner = {
+			has_variable = chose_initial_propertarian_philosophy
+			NOT = { has_variable = boardroom_schism_freeze }
+		}
+	}
+
+	possible = {
+		trigger_if = {
+			limit = {
+				has_variable = supported_minarchism_once_var
+			}
+			custom_tooltip = {
+				text = cannot_choose_minarchism_twice_tt
+				always = no
+			}
+		}
+		any_interest_group = {
+			is_in_government = yes
+			leader = {
+				has_ideology = ideology:ideology_minarchist_leader
+			}
+		}
+		custom_tooltip = {
+			text = not_already_supporting_minarchism
+			NOT = { has_variable = supporting_minarchism_var }
+		}
+		custom_tooltip = {
+			text = suspended_lobbying
+			NOT = { has_variable = suspended_lobbying_var }
+		}
+	}
+
+	selected = {
+		has_variable = supporting_minarchism_var
+	}
+
+	effect = {
+		set_variable = supporting_minarchism_var
+		set_variable = supported_minarchism_once_var
+		remove_variable = supporting_molinarism_var
+		remove_variable = supporting_monopolism_var
+		custom_tooltip = {
+			text = supporting_minarchism_tt
+		}
+		custom_tooltip = {
+			text = minarchism_progress_increase_10_tt
+			je:je_boardroom_schism = {
+				add_progress = { value = 10 name = schism_minarchist_bar }
+			}
+		}
+	}
+}
+
+promote_molinarism_button = {
+	name = "molinarism_button"
+	desc = "molinarism_button_desc"
+
+	visible = {
+		owner = {
+			has_variable = chose_initial_propertarian_philosophy
+			NOT = { has_variable = boardroom_schism_freeze }
+		}
+	}
+
+	possible = {
+		trigger_if = {
+			limit = {
+				has_variable = supported_molinarism_once_var
+			}
+			custom_tooltip = {
+				text = cannot_choose_molinarism_twice_tt
+				always = no
+			}
+		}
+		any_interest_group = {
+			is_in_government = yes
+			leader = {
+				has_ideology = ideology:ideology_molinarist_leader
+			}
+		}
+		custom_tooltip = {
+			text = not_already_supporting_molinarism
+			NOT = { has_variable = supporting_molinarism_var }
+		}
+		custom_tooltip = {
+			text = suspended_lobbying
+			NOT = { has_variable = suspended_lobbying_var }
+		}
+	}
+
+	selected = {
+		has_variable = supporting_molinarism_var
+	}
+
+	effect = {
+		set_variable = supporting_molinarism_var
+		set_variable = supported_molinarism_once_var
+		remove_variable = supporting_monopolism_var
+		remove_variable = supporting_minarchism_var
+		custom_tooltip = {
+			text = supporting_molinarism_tt
+		}
+		custom_tooltip = {
+			text = molinarism_progress_increase_10_tt
+			je:je_boardroom_schism = {
+				add_progress = { value = 10 name = schism_molinarist_bar }
+			}
+		}
+	}
+}
+
+suspend_lobbying_button = {
+	name = "suspend_lobbying_button"
+	desc = "suspend_lobbying_button_desc"
+
+	visible = {
+		owner = {
+			has_variable = chose_initial_propertarian_philosophy
+			NOT = { has_variable = boardroom_schism_freeze }
+		}
+	}
+
+	possible = {
+		custom_tooltip = {
+			text = has_loans
+			scaled_debt > 0
+		}
+		custom_tooltip = {
+			text = not_already_suspended_lobbying
+			NOT = { has_variable = suspended_lobbying_var }
+		}
+	}
+
+	selected = {
+		has_variable = suspended_lobbying_var
+	}
+
+	effect = {
+		set_variable = suspended_lobbying_var
+		remove_variable = supporting_monopolism_var
+		remove_variable = supporting_minarchism_var
+		remove_variable = supporting_molinarism_var
+		custom_tooltip = {
+			text = suspended_lobbying_tt
+		}
+	}
+}
+
+sponsor_thinktanks_button = {
+	name = "sponsor_thinktanks_button"
+	desc = "sponsor_thinktanks_button_desc"
+
+	visible = {
+		owner = {
+			has_variable = chose_initial_propertarian_philosophy
+			NOT = { has_variable = boardroom_schism_freeze }
+		}
+	}
+
+	cooldown = {
+		years = 2
+	}
+
+	possible = {
+		has_law = law_type:law_private_schools
+		NOT = {
+			has_law = law_type:law_outlawed_dissent
+		}
+		custom_tooltip = {
+			text = has_gold_reserves
+			scaled_gold_reserves > 0
+		}
+		je:je_boardroom_schism = {
+			custom_tooltip = {
+				text = monopolism_progress_25
+				scripted_bar_progress = { name = schism_monopolist_bar value >= 50 }
+			}
+			custom_tooltip = {
+				text = minarchism_progress_25
+				scripted_bar_progress = { name = schism_minarchist_bar value >= 50 }
+			}
+			custom_tooltip = {
+				text = molinarism_progress_25
+				scripted_bar_progress = { name = schism_molinarist_bar value >= 50 }
+			}
+		}
+	}
+
+	effect = {
+		add_modifier = {
+			name = ir_sponsored_thinktanks_modifier
+			years = 2
+		}
+		trigger_event = {
+			id = boardroom_schism.3
+			popup = yes
+			months = 6
+		}
+		add_treasury = {
+			value = gold_reserves_limit
+			multiply = -0.25
+		}
+	}
+}
+convene_egm_button = {
+	name = "convene_egm_button"
+	desc = "convene_egm_button_desc"
+
+	visible = {
+		owner = {
+			has_variable = chose_initial_propertarian_philosophy
+			NOT = {
+				has_variable = boardroom_schism_freeze
+			}
+		}
+	}
+
+	possible = {
+		trigger_if = {
+			limit = {
+				NOT = {
+					has_variable = convened_egm
+				}
+			}
+			gold_reserves > {
+				value = gold_reserves_limit
+				multiply = 0.75
+			}
+		}
+		custom_tooltip = {
+			text = not_convened_egm
+			NOT = {
+				has_variable = convened_egm
+			}
+		}
+		je:je_boardroom_schism = {
+			OR = {
+				custom_tooltip = {
+					text = monopolism_progress_200
+					scripted_bar_progress = { name = schism_monopolist_bar value >= 200 }
+				}
+				custom_tooltip = {
+					text = minarchism_progress_200
+					scripted_bar_progress = { name = schism_minarchist_bar value >= 200 }
+				}
+				custom_tooltip = {
+					text = molinarism_progress_200
+					scripted_bar_progress = { name = schism_molinarist_bar value >= 200 }
+				}
+			}
+		}
+	}
+
+	effect = {
+		trigger_event = {
+			id = boardroom_schism.2
+			popup = yes
+		}
+		set_variable = convened_egm
+	}
+	ai_chance = {
+		value = 0
+	}
+}

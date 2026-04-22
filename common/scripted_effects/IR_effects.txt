@@ -1,0 +1,326 @@
+﻿ir_defense_contractors_evolution_effect = {
+	ig:ig_armed_forces ?= {
+		set_interest_group_name = ig_defense_contractors
+		if = {
+			limit = {
+				has_ideology = ideology:ideology_loyalist
+			}
+			remove_ideology = ideology_loyalist
+		}
+		if = {
+			limit = {
+				has_ideology = ideology:ideology_loyalist_2
+			}
+			remove_ideology = ideology_loyalist_2
+		}
+		if = {
+			limit = {
+				has_ideology = ideology:ideology_jingoist
+			}
+			remove_ideology = ideology_jingoist
+		}
+		if = {
+			limit = {
+				has_ideology = ideology:ideology_patriotic
+			}
+			remove_ideology = ideology_patriotic
+		}
+		if = {
+			limit = {
+				has_ideology = ideology:ideology_bakufu
+			}
+			remove_ideology = ideology_bakufu
+		}
+		if = {
+			limit = {
+				has_ideology = ideology:ideology_sikh_militancy
+			}
+			remove_ideology = ideology_sikh_militancy
+		}
+		add_ideology = ideology_martial_corporatist
+	}
+}
+
+ir_defense_contractors_reversal_effect = {
+	ig:ig_armed_forces ?= {
+		set_interest_group_name = ig_armed_forces
+		if = {
+			limit = {
+				owner = {
+					has_variable = human_rights_researched
+				}
+			}
+			add_ideology = ideology_loyalist_2
+		}else = {
+			add_ideology = ideology_loyalist
+		}
+		add_ideology = ideology_jingoist
+		add_ideology = ideology_patriotic
+		remove_ideology = ideology_martial_corporatist
+	}
+}
+
+apply_electoral_clientelism_effect = {
+	active_law:lawgroup_distribution_of_power = {
+		add_amendment = {
+			type = amendment_electoral_clientelism
+			sponsor = PREV.ig:ig_industrialists
+		}
+	}
+}
+
+apply_entrenched_entitlements_effect = {
+	set_variable = entrenched_entitlements_var
+	ig:ig_trade_unions = {
+		save_scope_as = trade_unions_sponsor
+	}
+	active_law:lawgroup_welfare = {
+		add_amendment = {
+			type = amendment_entrenched_entitlements
+			sponsor = scope:trade_unions_sponsor
+		}
+	}
+}
+
+inherit_entrenched_entitlements_effect = {
+	if = {
+		limit = {
+			has_variable = entrenched_entitlements_var
+		}
+		scope:relevant_welfare_law ?= {
+			add_amendment = {
+				type = amendment_entrenched_entitlements
+				sponsor = PREV.ig:ig_trade_unions
+			}
+		}
+	}
+}
+
+fix_special_laws_effect = {
+	if = {
+		limit = { has_law_or_variant = law_type:law_directorate }
+		if = {
+			limit = {
+				NOR = {
+					has_law = law_type:law_executive_absolutism
+					has_law = law_type:law_scientific_management
+					has_law = law_type:law_oligopoly
+					has_law = law_type:law_managed_democracy
+					has_law = law_type:law_polycentric_law
+				}
+			}
+			activate_law = law_type:law_oligopoly
+		}
+		if = {
+			limit = {
+				NOR = {
+					has_law = law_type:law_voluntary_association
+					has_law = law_type:law_internal_arbitration
+					has_law = law_type:law_corporate_peonage
+					has_law = law_type:law_equity_compensation
+				}
+			}
+			activate_law = law_type:law_voluntary_association
+		}
+		if = {
+			limit = { has_law = law_type:law_sovereign_monopoly }
+			if = {
+				limit = {
+					NOR = {
+						has_law = law_type:law_scientific_management
+						has_law = law_type:law_executive_absolutism
+					}
+				}
+				activate_law = law_type:law_interventionism
+				if = {
+					limit = {
+						OR = {
+							has_law = law_type:law_corporate_peonage
+							has_law = law_type:law_equity_compensation
+						}
+					}
+					if = {
+						limit = { has_law = law_type:law_polycentric_law }
+						activate_law = law_type:law_voluntary_association
+					}
+					else = { activate_law = law_type:law_internal_arbitration }
+				}
+			}
+			else_if = {
+				limit = { has_law = law_type:law_voluntary_association }
+				activate_law = law_type:law_internal_arbitration
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					has_law = law_type:law_corporate_peonage
+					has_law = law_type:law_equity_compensation
+				}
+			}
+			if = {
+				limit = { has_law = law_type:law_polycentric_law }
+				activate_law = law_type:law_voluntary_association
+			}
+			else = { activate_law = law_type:law_internal_arbitration }
+		}
+		if = {
+			limit = {
+				has_law = law_type:law_internal_arbitration
+				has_law = law_type:law_polycentric_law
+			}
+			activate_law = law_type:law_voluntary_association
+		}
+	}
+	else = {
+		if = {
+			limit = { has_law = law_type:law_sovereign_monopoly }
+			activate_law = law_type:law_interventionism
+		}
+		if = {
+			limit = {
+				OR = {
+					has_law = law_type:law_executive_absolutism
+					has_law = law_type:law_scientific_management
+					has_law = law_type:law_oligopoly
+					has_law = law_type:law_managed_democracy
+					has_law = law_type:law_polycentric_law
+				}
+			}
+			if = {
+				limit = {
+					has_law = law_type:law_polycentric_law
+					has_law_or_variant = law_type:law_council_republic
+				}
+				activate_law = law_type:law_anarchy
+			}
+			else = { activate_law = law_type:law_census_voting }
+		}
+		if = {
+			limit = {
+				OR = {
+					has_law = law_type:law_voluntary_association
+					has_law = law_type:law_internal_arbitration
+					has_law = law_type:law_corporate_peonage
+					has_law = law_type:law_equity_compensation
+				}
+			}
+			activate_law = law_type:law_right_to_associate
+		}
+		remove_modifier = ir_free_market_commons_modifier
+	}
+}
+
+generate_minarchist_agitator = {
+	custom_tooltip = {
+		text = minarchist_agitator_appears_tt
+		create_character = {
+			culture = primary_culture
+			is_agitator = yes
+			interest_group = ig:ig_industrialists
+			ideology = ideology_minarchist_leader
+			traits = {
+				ruthless
+				charismatic
+				basic_political_operator
+			}
+		}
+	}
+}
+
+REPLACE:handle_possible_absent_caciquismo_variables = {
+	if = {
+		limit = {
+			owner = {
+				NOR = {
+					has_law_or_variant = law_type:law_directorate
+					has_law = law_type:law_managed_democracy
+					has_law = law_type:law_oligopoly
+				}
+			}
+		}
+		if = {
+			limit = {
+				active_law:lawgroup_distribution_of_power ?= {
+					has_amendment = amendment_type:amendment_electoral_clientelism
+				}
+				NOT = {
+					has_variable = caciquismo_var
+				}
+			}
+			set_variable = caciquismo_var
+		}
+		if = {
+			limit = {
+				modifier:country_forbid_electoral_fraud_bool = no
+				NOT = {
+					active_law:lawgroup_distribution_of_power ?= {
+						has_amendment = amendment_type:amendment_electoral_clientelism
+					}
+				}
+				NOT = {
+					has_variable = electoral_fraud_abolish_var
+				}
+			}
+			set_variable = { name = electoral_fraud_abolish_var value = 0 }
+		}
+	}
+	else = {
+		remove_variable = caciquismo_var
+		remove_variable = electoral_fraud_abolish_var
+		remove_variable = free_elections_var
+	}
+}
+
+propertarian_split_effect = {
+	every_scope_character = {
+		if = {
+			limit = {
+				OR = {
+					has_ideology = ideology:ideology_market_liberal
+					has_ideology = ideology:ideology_minarchist_leader
+				}
+			}
+			if = {
+				limit = { is_interest_group_type = ig_intelligentsia }
+				random_list = {
+					60 = {}
+					30 = { set_ideology = ideology:ideology_molinarist_leader }
+					10 = { set_ideology = ideology:ideology_monopolist_leader }
+				}
+			}else_if = {
+				limit = { is_interest_group_type = ig_rural_folk }
+				random_list = {
+					50 = {}
+					50 = { set_ideology = ideology:ideology_molinarist_leader }
+				}
+			}else_if = {
+				limit = { is_interest_group_type = ig_landowners }
+				random_list = {
+					60 = {}
+					50 = { set_ideology = ideology:ideology_monopolist_leader }
+				}
+			}else_if = {
+				limit = { is_interest_group_type = ig_petty_bourgeoisie }
+				random_list = {
+					70 = {}
+					25 = { set_ideology = ideology:ideology_monopolist_leader }
+					5 = { set_ideology = ideology:ideology_molinarist_leader }
+				}
+			}else_if = {
+				limit = { is_interest_group_type = ig_armed_forces }
+				random_list = {
+					60 = {}
+					10 = { set_ideology = ideology:ideology_monopolist_leader }
+					30 = { set_ideology = ideology:ideology_molinarist_leader }
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_ideology = ideology:ideology_protectionist
+			}
+			set_ideology = ideology:ideology_monopolist_leader
+		}
+	}
+}

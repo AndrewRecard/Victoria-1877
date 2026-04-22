@@ -1,0 +1,553 @@
+﻿namespace = boardroom_schism
+
+# Pick an ideology, spawns a weighted-ig agitator if not present
+boardroom_schism.1 = {
+	type = country_event
+	title = boardroom_schism.1.t
+	desc = boardroom_schism.1.d
+	flavor = boardroom_schism.1.f
+	duration = 3
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	cooldown = { days = normal_modifier_time }
+
+	trigger = {
+		NOT = { has_variable = boardroom_schism_startup_var }
+	}
+
+	immediate = {
+		set_variable = boardroom_schism_startup_var
+
+		ordered_interest_group = {
+			limit = {
+				leader = {
+					has_propertarian_ideology = yes
+				}
+			}
+			order_by = {
+				value = ig_clout
+			}
+			check_range_bounds = no
+			leader = {
+				save_scope_as = influential_propertarian
+			}
+		}
+	}
+
+	gui_window = event_window_1char_tabloid
+	left_icon = scope:influential_propertarian
+
+	option = {
+		name = boardroom_schism.1.a
+		highlighted_option = yes
+		set_variable = chose_initial_propertarian_philosophy
+		custom_tooltip = {
+			text = supporting_molinarism_tt
+		}
+		if = {
+			limit = {
+				NOT = {
+					any_scope_character = {
+						has_ideology = ideology:ideology_molinarist_leader
+						OR = {
+							has_role = politician
+							has_role = agitator
+						}
+					}
+				}
+			}
+			random_interest_group = {
+				limit = {
+					ig_counts_as_marginal = no
+				}
+				weight = {
+					factor = 0
+					modifier = {
+						factor = 2
+						trigger = {  # too much bureaucracy / boring if agitator
+							is_interest_group_type = ig_industrialists
+						}
+					}
+					modifier = {  # really want total monopoly on violence
+						factor = 4
+						trigger = {
+							is_interest_group_type = ig_armed_forces
+							has_ideology = ideology:ideology_martial_corporatist
+						}
+					}
+					modifier = {  # radical particularism
+						factor = 5
+						trigger = {
+							is_interest_group_type = ig_rural_folk
+						}
+					}
+					modifier = {
+						factor = 5
+						trigger = {  # take philosophies to their logical (or in this case ideal) conclusion
+							is_interest_group_type = ig_intelligentsia
+						}
+					}
+				}
+				save_scope_as = agitator_lottery
+			}
+			create_character = {
+				is_agitator = yes
+				ideology = ideology_molinarist_leader
+				interest_group = scope:agitator_lottery
+			}
+		}
+		if = {
+			limit = {
+				has_variable = supporting_monopolism_var
+			}
+			remove_variable = supporting_monopolism_var
+		}
+		if = {
+			limit = {
+				has_variable = supporting_minarchism_var
+			}
+			remove_variable = supporting_minarchism_var
+		}
+		custom_tooltip = {
+			text = molinarism_progress_increase_10_tt
+			je:je_boardroom_schism = {
+				add_progress = { value = 10 name = schism_molinarist_bar }
+			}
+		}
+		set_variable = supporting_molinarism_var
+	}
+
+	option = {
+		name = boardroom_schism.1.b
+		highlighted_option = yes
+		set_variable = chose_initial_propertarian_philosophy
+		custom_tooltip = {
+			text = supporting_minarchism_tt
+		}
+		if = {
+			limit = {
+				has_variable = supporting_molinarism_var
+			}
+			remove_variable = supporting_molinarism_var
+		}
+		if = {
+			limit = {
+				has_variable = supporting_minarchism_var
+			}
+			remove_variable = supporting_minarchism_var
+		}
+		if = {
+			limit = {
+				NOT = {
+					any_scope_character = {
+						has_ideology = ideology:ideology_monopolist_leader
+						OR = {
+							has_role = politician
+							has_role = agitator
+						}
+					}
+				}
+			}
+			random_interest_group = {
+				limit = {
+					ig_counts_as_marginal = no
+				}
+				weight = {
+					factor = 0
+					modifier = {
+						trigger = {   # they're involved enough as it is
+							is_interest_group_type = ig_industrialists
+						}
+						factor = 4
+					}
+					modifier = {
+						trigger = {  # authoritarians
+							is_interest_group_type = ig_landowners
+						}
+						factor = 5
+					}
+					modifier = {
+						trigger = {
+							# fascists
+							is_interest_group_type = ig_petty_bourgeoisie
+						}
+						factor = 5
+					}
+					modifier = {
+						trigger = {  # scientific management ? mainly molinarists tho
+							is_interest_group_type = ig_intelligentsia
+						}
+						factor = 2
+					}
+				}
+				save_scope_as = agitator_lottery
+			}
+			create_character = {
+				is_agitator = yes
+				ideology = ideology_monopolist_leader
+				interest_group = scope:agitator_lottery
+			}
+		}
+		custom_tooltip = {
+			text = monopolism_progress_increase_10_tt
+			je:je_boardroom_schism = {
+				add_progress = { value = 10 name = schism_monopolist_bar }
+			}
+		}
+		set_variable = supporting_monopolism_var
+	}
+
+	option = {
+		name = boardroom_schism.1.c
+		default_option = yes
+		set_variable = chose_initial_propertarian_philosophy
+		custom_tooltip = {
+			text = supporting_minarchism_tt
+		}
+		if = {
+			limit = {
+				has_variable = supporting_molinarism_var
+			}
+			remove_variable = supporting_molinarism_var
+		}
+		if = {
+			limit = {
+				has_variable = supporting_monopolism_var
+			}
+			remove_variable = supporting_monopolism_var
+		}
+		if = {
+			limit = {
+				NOT = {
+					any_scope_character = {
+						has_ideology = ideology:ideology_minarchist_leader
+						OR = {
+							has_role = politician
+							has_role = agitator
+						}
+					}
+				}
+			}
+			random_interest_group = {
+				limit = {
+					ig_counts_as_marginal = no
+				}
+				weight = {
+					factor = 0
+					modifier = {
+						trigger = {   # status quo enjoyers
+							is_interest_group_type = ig_industrialists
+						}
+						factor = 5
+					}
+					modifier = {
+						trigger = {  # should be powerful, also status quo enjoyers
+							is_interest_group_type = ig_armed_forces
+							has_ideology = ideology:ideology_martial_corporatist
+						}
+						factor = 4
+					}
+					modifier = {
+						trigger = { # should pick a side if influential, usually have neutrality in their hearts on this matter
+							is_interest_group_type = ig_devout
+							is_powerful = yes
+						}
+						factor = 4
+					}
+					modifier = {
+						trigger = {  # other IGs more likely
+							is_interest_group_type = ig_petty_bourgeoisie
+						}
+						factor = 3
+					}
+					modifier = {
+						trigger = { # prefer monopolism
+							is_interest_group_type = ig_landowners
+						}
+						factor = 1
+					}
+					modifier = {
+						trigger = {  # prefer molinarism
+							is_interest_group_type = ig_rural_folk
+						}
+						factor = 1
+					}
+				}
+				save_scope_as = agitator_lottery
+			}
+			create_character = {
+				is_agitator = yes
+				ideology = ideology_minarchist_leader
+				interest_group = scope:agitator_lottery
+			}
+		}
+		custom_tooltip = {
+			text = minarchism_progress_increase_10_tt
+			je:je_boardroom_schism = {
+				add_progress = { value = 10 name = schism_minarchist_bar }
+			}
+		}
+		set_variable = supporting_minarchism_var
+	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_journal_entry = je_boardroom_schism
+		}
+	}
+}
+
+boardroom_schism.2 = {
+	type = country_event
+	title = boardroom_schism.2.t
+	desc = boardroom_schism.2.d
+	flavor = boardroom_schism.2.f
+	duration = 3
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	cooldown = { days = normal_modifier_time }
+	event_image = { video = "unspecific_politicians_arguing" }
+
+	immediate = {
+		save_scope_value_as = {
+			value = {
+				add = gold_reserves_limit
+				multiply = -0.75
+			}
+			name = egm_fund
+		}
+		ordered_interest_group = {
+			limit = {
+				leader = {
+					has_ideology = ideology:ideology_minarchist_leader
+				}
+			}
+			order_by = ig_clout
+			position = 0
+			check_range_bounds = no
+			save_scope_as = minarchist_ig
+		}
+		ordered_interest_group = {
+			limit = {
+				leader = {
+					has_ideology = ideology:ideology_monopolist_leader
+				}
+			}
+			order_by = ig_clout
+			position = 0
+			check_range_bounds = no
+			save_scope_as = monopolist_ig
+		}
+		ordered_interest_group = {
+			limit = {
+				leader = {
+					has_ideology = ideology:ideology_molinarist_leader
+				}
+			}
+			order_by = ig_clout
+			position = 0
+			check_range_bounds = no
+			save_scope_as = molinarist_ig
+		}
+	}
+
+	option = {
+		name = boardroom_schism.2.a
+		add_treasury = {
+			value = scope:egm_fund
+		}
+		egm_monopolists_boost_effect = yes
+		scope:minarchist_ig = {
+			add_modifier = {
+				name = ir_egm_upset_modifier
+				years = 2
+			}
+		}
+		scope:monopolist_ig = {
+			add_modifier = {
+				name = ir_egm_appeased_modifier
+				years = 2
+			}
+		}
+		scope:molinarist_ig = {
+			add_modifier = {
+				name = ir_egm_upset_modifier
+				years = 2
+			}
+		}
+	}
+
+	option = {
+		name = boardroom_schism.2.b
+		add_treasury = {
+			value = scope:egm_fund
+		}
+		egm_minarchists_boost_effect = yes
+		scope:minarchist_ig = {
+			add_modifier = {
+				name = ir_egm_appeased_modifier
+				days = normal_modifier_time
+			}
+		}
+		scope:monopolist_ig = {
+			add_modifier = {
+				name = ir_egm_upset_modifier
+				days = normal_modifier_time
+			}
+		}
+		scope:molinarist_ig = {
+			add_modifier = {
+				name = ir_egm_upset_modifier
+				days = normal_modifier_time
+			}
+		}
+	}
+
+	option = {
+		name = boardroom_schism.2.c
+		add_treasury = {
+			value = scope:egm_fund
+		}
+		egm_molinarists_boost_effect = yes
+		scope:minarchist_ig = {
+			add_modifier = {
+				name = ir_egm_upset_modifier
+				days = normal_modifier_time
+			}
+		}
+		scope:monopolist_ig = {
+			add_modifier = {
+				name = ir_egm_upset_modifier
+				days = normal_modifier_time
+			}
+		}
+		scope:molinarist_ig = {
+			add_modifier = {
+				name = ir_egm_appeased_modifier
+				days = normal_modifier_time
+			}
+		}
+	}
+
+	option = {
+		name = boardroom_schism.2.e
+		egm_fail_effect = yes
+		default_option = yes
+		add_modifier = {
+			name = ir_failed_egm_modifier
+			days = short_modifier_time
+		}
+		scope:minarchist_ig = {
+			add_modifier = {
+				name = ir_egm_upset_modifier
+				days = normal_modifier_time
+			}
+		}
+		scope:monopolist_ig = {
+			add_modifier = {
+				name = ir_egm_upset_modifier
+				days = normal_modifier_time
+			}
+		}
+		scope:molinarist_ig = {
+			add_modifier = {
+				name = ir_egm_upset_modifier
+				days = normal_modifier_time
+			}
+		}
+	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_journal_entry = je_boardroom_schism
+		}
+	}
+}
+
+boardroom_schism.3 = {
+	type = country_event
+	title = boardroom_schism.3.t
+	desc = boardroom_schism.3.d
+	flavor = boardroom_schism.3.f
+	duration = 3
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/invention_icons/academia.dds"
+
+	cooldown = { days = normal_modifier_time }
+	event_image = { video = "ip2_telegraph_dictate" }
+
+	immediate = {
+		set_variable = {
+			name = random_monopolism_progress
+			value = {
+				integer_range = { min = -25 max = 100 }
+			}
+		}
+		set_variable = {
+			name = random_minarchism_progress
+			value = {
+				integer_range = { min = -25 max = 100 }
+			}
+		}
+		set_variable = {
+			name = random_molinarism_progress
+			value = {
+				integer_range = { min = -25 max = 100 }
+			}
+		}
+	}
+
+	option = {
+		name = boardroom_schism.3.a
+		default_option = yes
+		add_modifier = {
+			name = ir_boardroom_confidence_modifier
+			days = normal_modifier_time
+		}
+
+		custom_tooltip = {
+			text = monopolism_progress_custom_tt
+			je:je_boardroom_schism = {
+				add_progress = { value = root.var:random_monopolism_progress name = schism_monopolist_bar }
+			}
+		}
+		custom_tooltip = {
+			text = minarchism_progress_custom_tt
+			je:je_boardroom_schism = {
+				add_progress = { value = root.var:random_minarchism_progress name = schism_minarchist_bar }
+			}
+		}
+		custom_tooltip = {
+			text = molinarism_progress_custom_tt
+			je:je_boardroom_schism = {
+				add_progress = { value = root.var:random_molinarism_progress name = schism_molinarist_bar }
+			}
+		}
+	}
+
+	option = {
+		name = boardroom_schism.3.b
+		add_modifier = {
+			name = ir_offbook_liabilities_modifier
+			days = short_modifier_time
+		}
+		add_radicals = {
+			value = small_radicals
+		}
+		remove_modifier = ir_sponsored_thinktanks_modifier
+	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_journal_entry = je_boardroom_schism
+		}
+	}
+
+	after = {
+	}
+}

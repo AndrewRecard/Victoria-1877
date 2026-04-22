@@ -1,0 +1,195 @@
+﻿national_trust_party = {
+	color = { 50 55 60 }
+	name = {
+		first_valid = {
+			triggered_desc = {
+				desc = national_trust_party
+				trigger = {
+					always = yes
+				}
+			}
+		}
+	}
+	icon = {
+		default = "gfx/interface/icons/political_parties/free_trade.dds"
+	}
+	valid_for_country = {
+		always = yes
+	}
+	available_for_interest_group = {
+		owner = {
+			has_law_or_variant = law_type:law_directorate
+			country_has_voting_franchise = yes
+			OR = {
+				py:national_trust_party ?= {
+					any_member = {}
+				}
+				any_interest_group = {
+					ig_counts_as_marginal = no
+					OR = {
+						is_interest_group_type = ig_industrialists
+						leader ?= {
+							NOR = {
+								has_ideology = ideology:ideology_molinarist_leader
+								has_ideology = ideology:ideology_minarchist_leader
+								has_ideology = ideology:ideology_nihilist
+								has_ideology = ideology:ideology_radical
+								has_ideology = ideology:ideology_social_democrat
+								has_ideology = ideology:ideology_communist
+								has_ideology = ideology:ideology_vanguardist
+								has_ideology = ideology:ideology_anarchist
+								has_ideology = ideology:ideology_humanitarian
+								has_ideology = ideology:ideology_republican_leader
+								has_ideology = ideology:ideology_royalist
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	join_weight = {
+		value = {
+			value = -5
+			desc = "base_value"
+		}
+
+		if = {
+			limit = {
+				owner = {
+					py:voluntaryist_league = {
+						scope:number >= 3
+					}
+					py:shareholders_alliance = {
+						scope:number < 3
+						scope:number > 0
+					}
+				}
+			}
+			add = {
+				value = -10
+				desc = "centrist_alliance_countering_vl"
+			}
+		}
+
+		if = {
+			limit = {
+				leader ?= {
+					has_ideology = ideology:ideology_monopolist_leader
+				}
+			}
+			add = {
+				value = 20
+				desc = "from_monopolist_leader"
+			}
+		}
+		if = {
+			limit = {
+				leader ?= {
+					OR = {
+						has_ideology = ideology:ideology_authoritarian
+						has_ideology = ideology:ideology_fascist
+						has_ideology = ideology:ideology_integralist
+						has_ideology = ideology:ideology_positivist
+						has_ideology = ideology:ideology_protectionist
+						has_ideology = ideology:ideology_corporatist
+						has_ideology = ideology:ideology_traditionalist
+						has_ideology = ideology:ideology_slaver
+					}
+				}
+			}
+			add = {
+				value = 15
+				desc = "from_monopolist_compatible"
+			}
+		}
+		if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				owner = {
+						has_law_or_variant = law_type:law_militarized_police
+				}
+			}
+			add = {
+				value = 15
+				desc = "law_militarized_police"
+			}
+		}else_if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+			}
+			add = {
+				value = 5
+				desc = "ig_armed_forces"
+			}
+		}
+		if = {
+			limit = {
+				is_interest_group_type = ig_petty_bourgeoisie
+			}
+			add = {
+				value = 5
+				desc = "ig_petty_bourgeoisie"
+			}
+		}
+		if = {
+			limit = {
+				is_interest_group_type = ig_rural_folk
+			}
+			add = {
+				value = -15
+				desc = "ig_rural_folk"
+			}
+		}
+		if = {
+			limit = {
+				is_interest_group_type = ig_trade_unions
+			}
+			add = {
+				value = -25
+				desc = "ig_trade_unions"
+			}
+		}
+
+		if = {
+			limit = {
+				is_interest_group_type = ig_industrialists
+				is_powerful = yes
+			}
+			multiply = {
+				value = 2
+				desc = "from_archetype_party"
+			}
+		}
+		if = {
+			limit = {
+				scope:number <= 1
+				is_powerful = no
+				ig_counts_as_marginal = no
+			}
+			multiply = {
+				value = 2
+				desc = "from_influential_supporting_member"
+			}
+		}
+		else_if = {
+			limit = {
+				scope:number = 2
+			}
+			multiply = {
+				value = 0.5
+				desc = "from_two_prior_members"
+			}
+		}
+		else_if = {
+			limit = {
+				scope:number = 3
+			}
+			multiply = {
+				value = 0.25
+				desc = "from_three_prior_members"
+			}
+		}
+	}
+}

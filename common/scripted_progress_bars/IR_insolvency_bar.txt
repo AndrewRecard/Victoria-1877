@@ -1,0 +1,177 @@
+﻿ir_insolvency_bar = {
+	name = "ir_insolvency_bar"
+	desc = "ir_insolvency_bar_desc"
+
+	default_bad = yes
+
+	monthly_progress = {
+		if = {
+			limit = {
+				has_law_or_variant = law_type:law_compulsory_primary_school
+			}
+			if = {
+				limit = {
+					has_law_or_variant = law_type:law_public_schools
+				}
+				add = {
+					value = institution_investment_level:institution_schools
+					multiply = 1.33
+					multiply = 2
+					desc = "INSTITUTION_FUNDING_LEVEL_schools"
+				}
+			}else_if = {
+				limit = {
+					has_law_or_variant = law_type:law_religious_schools
+				}
+				add = {
+					value = institution_investment_level:institution_schools
+					multiply = 1.18
+					multiply = 2
+					desc = "INSTITUTION_FUNDING_LEVEL_schools"
+				}
+			}
+		}else_if = {
+			limit = {
+				has_law_or_variant = law_type:law_public_schools
+			}
+			add = {
+				value = institution_investment_level:institution_schools
+				multiply = 2
+				desc = "INSTITUTION_FUNDING_LEVEL_schools"
+			}
+		}else_if = {
+			limit = {
+				has_law_or_variant = law_type:law_religious_schools
+			}
+			add = {
+				value = institution_investment_level:institution_schools
+				multiply = 0.85
+				multiply = 2
+				desc = "INSTITUTION_FUNDING_LEVEL_schools"
+			}
+		}else_if = {
+			limit = {
+				has_law_or_variant = law_type:law_no_schools
+			}
+			add = {
+				value = -2
+				desc = "law_no_schools"
+			}
+		}
+
+		if = {
+			limit = {
+				has_law_or_variant = law_type:law_public_health_insurance
+			}
+			add = {
+				value = institution_investment_level:institution_health_system
+				multiply = 1.25
+				multiply = 2
+				desc = "INSTITUTION_FUNDING_LEVEL_health_system"
+			}
+		}else_if = {
+			limit = {
+				has_law_or_variant = law_type:law_no_health_system
+			}
+			add = {
+				value = -2
+				desc = "law_no_health_system"
+			}
+		}
+
+
+		if = {
+			limit = {
+				has_law_or_variant = law_type:law_old_age_pension
+			}
+			add = {
+				value = institution_investment_level:institution_social_security
+				multiply = 1.25
+				multiply = 2
+				desc = "INSTITUTION_FUNDING_LEVEL_social_security"
+			}
+		}else_if = {
+			limit = {
+				has_law_or_variant = law_type:law_wage_subsidies
+			}
+			add = {
+				value = institution_investment_level:institution_social_security
+				multiply = 2
+				desc = "INSTITUTION_FUNDING_LEVEL_social_security"
+			}
+		}else_if = {
+			limit = {
+				has_law_or_variant = law_type:law_no_social_security
+			}
+			add = {
+				value = -2
+				desc = "law_no_social_security"
+			}
+		}
+
+		if = {
+			limit = {
+				NOT = {
+					has_law_or_variant = law_type:law_private_defense_agencies
+				}
+			}
+			add = {
+				value = 5
+				desc = "law_no_private_defense_agencies"
+			}
+		}
+
+		if = {
+			limit = {
+				has_law_or_variant = law_type:law_no_police
+			}
+			add = {
+				value = -2
+				desc = "law_no_police"
+			}
+		}
+
+		if = {
+			limit = {
+				has_law_or_variant = law_type:law_no_home_affairs
+			}
+			add = {
+				value = -2
+				desc = "law_no_home_affairs"
+			}
+		}
+
+		if = {
+			limit = {
+				scaled_gold_reserves > 0
+			}
+			add = {
+				add = {
+					value = scaled_gold_reserves
+					max = 1
+				}
+				multiply = -10
+				desc = "gold_reserves_any"
+			}
+		}else = {
+			add = {
+				add = {
+					value = scaled_debt
+					max = 1
+				}
+				multiply = 10
+				desc = "loans_any"
+			}
+		}
+
+		add = {
+			value = converted_relative_bureaucracy
+			multiply = 5
+			desc = "bureaucracy_any"
+		}
+	}
+
+	start_value = 0
+	min_value = 0
+	max_value = 1000
+}

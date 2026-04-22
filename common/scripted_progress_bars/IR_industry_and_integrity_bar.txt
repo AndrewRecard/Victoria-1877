@@ -1,0 +1,129 @@
+﻿industry_and_integrity_bar = {
+	name = "industry_and_integrity_bar"
+	desc = "industry_and_integrity_bar_desc"
+
+	default = yes
+
+	monthly_progress = {
+		if = {
+			limit = {
+				any_interest_group = {
+					is_in_government = yes
+					leader = {
+						has_variable = propertarian_char_var
+						has_propertarian_ideology = yes
+					}
+				}
+			}
+			add = {
+				desc = "propertarianism_progress_from_propertarian_leaders_in_government_tt"
+				value = 10
+			}
+		}
+
+		if = {
+			limit = {
+				any_political_movement = {
+					is_political_movement_type = movement_propertarian
+				}
+			}
+			add = {
+				desc = "propertarianism_progress_from_movement_support_tt"
+				every_political_movement = {
+					limit = {
+						is_political_movement_type = movement_propertarian
+					}
+					add = this.political_movement_support
+					multiply = 10
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_political_movement = {
+					is_political_movement_type = movement_propertarian
+				}
+			}
+			add = {
+				desc = "propertarianism_progress_from_movement_activism_tt"
+				every_political_movement = {
+					limit = {
+						is_political_movement_type = movement_propertarian
+					}
+					add = this.political_movement_radicalism
+					multiply = 5
+				}
+			}
+		}
+
+		### From IGs
+		if = {
+			limit = {
+				owner = {
+					any_interest_group = {
+						ig_counts_as_marginal = no
+						OR = {
+							leader = {
+								has_propertarian_ideology = yes
+							}
+							has_ideology = ideology:ideology_market_liberal
+						}
+					}
+				}
+			}
+			add = {
+				desc = "propertarianism_progress_from_interest_groups_tt"
+				owner = {
+					every_interest_group = {
+						limit = {
+							leader = {
+								OR = {
+									has_propertarian_ideology = yes
+									has_ideology = ideology:ideology_market_liberal
+								}
+							}
+						}
+						add = this.ig_clout
+					}
+				}
+			}
+		}
+		else = {
+			subtract = {
+				desc = "no_relevant_propertarian_igs_tt"
+				value = 5
+			}
+		}
+
+		### From Characters
+		if = {
+			limit = {
+				any_scope_character = {
+					has_propertarian_ideology = yes
+				}
+			}
+			add = {
+				desc = "propertarianism_progress_from_characters_tt"
+				every_scope_character = {
+					limit = {
+						has_propertarian_ideology = yes
+					}
+					add = {
+						add = this.popularity
+						divide = 100
+					}
+				}
+			}
+		}
+		else = {
+			subtract = {
+				desc = "propertarianism_progress_no_propertarian_characters_tt"
+				value = 5
+			}
+		}
+	}
+
+	start_value = 25
+	min_value = 0
+	max_value = 100
+}

@@ -1,0 +1,30 @@
+﻿INJECT:law_frontier_colonization = {
+	modifier = {
+		country_primary_culture_fervor_from_laws_add = 5
+		country_institution_cost_institution_colonial_affairs_mult = -0.5
+	}
+}
+
+INJECT:law_colonial_resettlement = {
+	modifier = {
+		country_institution_cost_institution_colonial_affairs_mult = -0.15
+	}
+}
+
+INJECT:law_mercantilism = {
+	modifier = {
+		country_free_charters_add = 1
+	}
+}
+
+INJECT:law_protectionism = {
+	modifier = {
+		state_market_access_price_impact = 0.05
+	}
+}
+
+INJECT:law_free_trade = {
+	modifier = {
+		country_tech_spread_mult = 0.15
+	}
+}
