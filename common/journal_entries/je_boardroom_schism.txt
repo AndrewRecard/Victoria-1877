@@ -112,10 +112,6 @@
 			id = boardroom_schism.1
 			popup = yes
 		}
-		set_boardroom_schism_variables = yes
-		monthly_pulse_monopolist_progress = yes
-		monthly_pulse_minarchist_progress = yes
-		monthly_pulse_molinarist_progress = yes
 		random_law = {
 			limit = { type = law_type:law_directorate }
 			save_scope_as = directorate_scope
@@ -140,17 +136,6 @@
 		effect = {
 			if = {
 				limit = {
-					NOR = {
-						has_variable = boardroom_schism_freeze
-						has_variable = minarchists_victorious
-					}
-				}
-				monthly_pulse_monopolist_progress = yes
-				monthly_pulse_minarchist_progress = yes
-				monthly_pulse_molinarist_progress = yes
-			}
-			if = {
-				limit = {
 					has_law = law_type:law_directorate
 					scope:journal_entry = {
 						OR = {
@@ -162,7 +147,7 @@
 						has_variable = boardroom_schism_freeze
 					}
 				}
-				freeze_boardroom_schism_progress = yes
+				set_variable = boardroom_schism_freeze
 			}
 			if = {
 				limit = {
@@ -173,6 +158,7 @@
 						has_variable = boardroom_schism_freeze
 					}
 				}
+				set_variable = boardroom_schism_freeze
 				set_variable = minarchists_victorious
 			}
 		}

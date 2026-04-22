@@ -260,9 +260,9 @@ ir_monopoly_enforced_modifier = {
 ir_propertarian_lobby_war_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
 	interest_group_ig_industrialists_pol_str_mult = -1
-	country_radicals_from_legitimacy_mult = 0.25
-	country_loyalists_from_legitimacy_mult = -0.25
-	country_legitimacy_ideological_incoherence_mult = 0.25
+	country_radicals_from_legitimacy_mult = 0.5
+	country_loyalists_from_legitimacy_mult = -0.5
+	political_movement_radicalism_from_enactment_disapproval_mult = 0.5
 	state_pop_support_movement_propertarian_mult = 0.25
 }
 

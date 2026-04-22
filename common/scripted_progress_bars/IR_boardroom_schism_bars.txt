@@ -1,43 +1,474 @@
-﻿schism_minarchist_bar = {
+schism_minarchist_bar = {
 	name = "minarchism_bar"
 	desc = "minarchism_bar_desc"
-
 	default_bad = yes
-
 	monthly_progress = {
-		add = 1
+		if = {
+			limit = {
+				owner = {
+					NOT = { has_variable = boardroom_schism_freeze }
+				}
+			}
+			### From Interest Groups
+			if = {
+				limit = {
+					any_interest_group = {
+						leader = { has_ideology = ideology:ideology_minarchist_leader }
+						ig_counts_as_marginal = no
+					}
+				}
+				add = {
+					desc = "minarchism_progress_from_igs_tt"
+					every_interest_group = {
+						limit = {
+							leader = { has_ideology = ideology:ideology_minarchist_leader }
+							ig_counts_as_marginal = no
+						}
+						add = this.ig_clout
+					}
+					multiply = 5
+				}
+			}
+			### From Leaders
+			if = {
+				limit = {
+					any_scope_character = {
+						has_ideology = ideology:ideology_minarchist_leader
+						OR = {
+							has_role = politician
+							has_role = executive
+							has_role = agitator
+							has_role = ruler
+						}
+					}
+				}
+				add = {
+					desc = "minarchism_progress_from_characters_tt"
+					every_scope_character = {
+						limit = {
+							has_ideology = ideology:ideology_minarchist_leader
+							OR = {
+								has_role = politician
+								has_role = executive
+								has_role = agitator
+								has_role = ruler
+							}
+						}
+						add = this.popularity
+					}
+					divide = 100
+				}
+			}
+			### From Executives
+			if = {
+				limit = {
+					any_scope_character = {
+						has_role = executive
+						has_ideology = ideology:ideology_minarchist_leader
+					}
+				}
+				add = {
+					desc = "minarchism_progress_from_company_productivity_tt"
+					every_company = {
+						limit = {
+							company_is_prosperous = yes
+							executive = {
+								has_ideology = ideology:ideology_minarchist_leader
+							}
+						}
+						add = {
+							add = company_productivity
+							divide = 20
+						}
+					}
+				}
+			}
+			### From Num Prosperous Companies
+			add = {
+				desc = "minarchism_progress_from_average_prosperity_tt"
+				add = {
+				    add = {
+    					every_company = {
+    						add = {
+    							value = company_prosperity
+    							multiply = company_employed_levels
+    						}
+    					}
+    				}
+    				divide = {
+    					every_company = {
+    						add = company_employed_levels
+    					}
+    				}
+    				multiply = 0.025
+				}
+				subtract = 0.5
+			}
+			### Propertarian movement radicalism (market stability takes preference over trying to enact laws early during JE)
+			if = {
+				limit = {
+					any_political_movement = {
+						is_political_movement_type = movement_propertarian
+						political_movement_radicalism >= 0.75
+					}
+				}
+				add = {
+					desc = "minarchism_progress_from_propertarian_militant_tt"
+					value = 4
+				}
+			}
+			else_if = {
+				limit = {
+					any_political_movement = {
+						is_political_movement_type = movement_propertarian
+						political_movement_radicalism >= 0.50
+					}
+				}
+				add = {
+					desc = "minarchism_progress_from_propertarian_protesting_tt"
+					value = 2
+				}
+			}
+			else_if = {
+				limit = {
+					any_political_movement = {
+						is_political_movement_type = movement_propertarian
+						political_movement_radicalism >= 0.25
+					}
+				}
+				add = {
+					desc = "minarchism_progress_from_propertarian_agitating_tt"
+					value = 1
+				}
+			}
+			### From Effects (event/button nudges)
+			if = {
+				limit = {
+					exists = var:minarchist_effects_var
+					NOT = { var:minarchist_effects_var = 0 }
+				}
+				add = {
+					desc = "minarchism_progress_from_effects_tt"
+					value = owner.var:minarchist_effects_var
+				}
+			}
+			if = {
+				limit = {
+					has_variable = suspended_lobbying_var
+				}
+				subtract = {
+					desc = "progress_suspended_lobbying_tt"
+					value = 1
+				}
+			}
+		}
 	}
-
 	start_value = 15
 	min_value = 0
 	max_value = 400
 }
-
 schism_molinarist_bar = {
 	name = "molinarism_bar"
 	desc = "molinarism_bar_desc"
-
 	default_green = yes
-
 	monthly_progress = {
-		add = 1
+		if = {
+			limit = {
+				NOT = { has_variable = boardroom_schism_freeze }
+			}
+			### From Interest Groups
+			if = {
+				limit = {
+					any_interest_group = {
+						leader = { has_ideology = ideology:ideology_molinarist_leader }
+						ig_counts_as_marginal = no
+					}
+				}
+				add = {
+					desc = "molinarism_progress_from_igs_tt"
+					every_interest_group = {
+						limit = {
+							leader = { has_ideology = ideology:ideology_molinarist_leader }
+							ig_counts_as_marginal = no
+						}
+						add = this.ig_clout
+					}
+					multiply = 5
+				}
+			}
+			### From Characters Popularity
+			if = {
+				limit = {
+					any_scope_character = {
+						has_ideology = ideology:ideology_molinarist_leader
+						OR = {
+							has_role = politician
+							has_role = executive
+							has_role = agitator
+							has_role = ruler
+						}
+					}
+				}
+				add = {
+					desc = "molinarism_progress_from_characters_tt"
+					every_scope_character = {
+						limit = {
+							has_ideology = ideology:ideology_molinarist_leader
+							OR = {
+								has_role = politician
+								has_role = executive
+								has_role = agitator
+								has_role = ruler
+							}
+						}
+						add = this.popularity
+					}
+					divide = 100
+				}
+			}
+			### From Company Productivity
+			if = {
+				limit = {
+					any_scope_character = {
+						has_role = executive
+						has_ideology = ideology:ideology_molinarist_leader
+					}
+				}
+				add = {
+					desc = "molinarism_progress_from_company_productivity_tt"
+					every_company = {
+						limit = {
+							company_is_prosperous = yes
+							executive = {
+								has_ideology = ideology:ideology_molinarist_leader
+							}
+						}
+						add = {
+							add = company_productivity
+							divide = 20
+						}
+					}
+				}
+			}
+			### Companies without Monopolies
+			add = {
+				desc = "molinarism_progress_from_competition_tt"
+				every_company = {
+					limit = { company_has_monopoly = no }
+					add = company_employed_levels
+				}
+				divide = {
+					every_company = {
+						add = company_employed_levels
+					}
+				}
+				multiply = 2.5
+				subtract = 0.5
+			}
+			### Companies with Prestige Goods
+			add = {
+				desc = "molinarism_progress_from_prestige_goods_tt"
+				every_company = {
+					limit = { is_producing_prestige_goods = yes }
+					add = company_employed_levels
+				}
+				divide = {
+					every_company = {
+						add = company_employed_levels
+					}
+				}
+				multiply = 2.5
+				subtract = 0.5
+			}
+			### From Effects
+			if = {
+				limit = {
+					exists = var:molinarist_effects_var
+					NOT = { var:molinarist_effects_var = 0 }
+				}
+				add = {
+					desc = "molinarism_progress_from_effects_tt"
+					value = owner.var:molinarist_effects_var
+				}
+			}
+			if = {
+				limit = {
+					has_variable = suspended_lobbying_var
+				}
+				subtract = {
+					desc = "progress_suspended_lobbying_tt"
+					value = 1
+				}
+			}
+		}
 	}
-
 	start_value = 10
 	min_value = 0
 	max_value = 400
 }
-
 schism_monopolist_bar = {
 	name = "monopolism_bar"
 	desc = "monopolism_bar_desc"
-
 	default = yes
-
 	monthly_progress = {
-		add = 1
+		if = {
+			limit = {
+				NOT = { has_variable = boardroom_schism_freeze }
+			}
+			### From Interest Groups
+			if = {
+				limit = {
+					any_interest_group = {
+						leader = { has_ideology = ideology:ideology_monopolist_leader }
+						ig_counts_as_marginal = no
+					}
+				}
+				add = {
+					desc = "monopolism_progress_from_igs_tt"
+					every_interest_group = {
+						limit = {
+							leader = { has_ideology = ideology:ideology_monopolist_leader }
+							ig_counts_as_marginal = no
+						}
+						add = this.ig_clout
+					}
+					multiply = 5
+				}
+			}
+			### From Character Popularity
+			if = {
+				limit = {
+					any_scope_character = {
+						has_ideology = ideology:ideology_monopolist_leader
+						OR = {
+							has_role = politician
+							has_role = executive
+							has_role = agitator
+							has_role = ruler
+						}
+					}
+				}
+				add = {
+					desc = "monopolism_progress_from_characters_tt"
+					every_scope_character = {
+						limit = {
+							has_ideology = ideology:ideology_monopolist_leader
+							OR = {
+								has_role = politician
+								has_role = executive
+								has_role = agitator
+								has_role = ruler
+							}
+						}
+						add = this.popularity
+					}
+					divide = 100
+				}
+			}
+			### From Company Productivity
+			if = {
+				limit = {
+					any_scope_character = {
+						has_role = executive
+						has_ideology = ideology:ideology_monopolist_leader
+					}
+				}
+				add = {
+					desc = "monopolism_progress_from_company_productivity_tt"
+					every_company = {
+						limit = {
+							company_is_prosperous = yes
+							executive = {
+								has_ideology = ideology:ideology_monopolist_leader
+							}
+						}
+						add = {
+							add = company_productivity
+							divide = 20
+						}
+					}
+				}
+			}
+			### From Company Monopolies
+			add = {
+				desc = "monopolism_progress_from_monopolies_tt"
+				every_company = {
+					limit = { company_has_monopoly = yes }
+					add = company_employed_levels
+				}
+				divide = {
+					every_company = {
+						add = company_employed_levels
+					}
+				}
+				multiply = 2.5
+				subtract = 0.5
+			}
+			### From BIG companies
+			if = {
+				desc = "monopolism_progress_already_monopoly_tt"
+				limit = {
+					num_companies = 1
+				}
+				add = 10
+			}
+			### HHI Index
+			if = {
+				limit = {
+					num_companies > 1
+				}
+				add = {
+					desc = "monopolism_progress_market_consolidation_tt"
+					# Step 1: Add the SQUARE of every company's levels
+					add = {
+						every_company = {
+							add = {
+								value = company_employed_levels
+								multiply = company_employed_levels
+							}
+						}
+					}
+					divide = {
+						value = {
+							every_company = {
+								add = company_employed_levels
+							}
+						}
+						multiply = {
+							every_company = {
+								add = company_employed_levels
+							}
+						}
+					}
+					subtract = {
+						value = 1
+						divide = num_companies
+					}
+					multiply = 25
+				}
+			}
+			### From Effects
+			if = {
+				limit = {
+					exists = var:monopolist_effects_var
+					NOT = { var:monopolist_effects_var = 0 }
+				}
+				add = {
+					desc = "monopolism_progress_from_effects_tt"
+					value = owner.var:monopolist_effects_var
+				}
+			}
+			if = {
+				limit = {
+					has_variable = suspended_lobbying_var
+				}
+				subtract = {
+					desc = "progress_suspended_lobbying_tt"
+					value = 1
+				}
+			}
+		}
 	}
-
 	start_value = 10
 	min_value = 0
 	max_value = 400

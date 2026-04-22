@@ -106,11 +106,38 @@
  ir_monopolized_integration_modifier: "Monopolized Integration"
 
  monopolism_bar: "Monopolist Lobby Pressure"
- monopolism_bar_desc: "Monopolism: #v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#! ([JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|1]/400)"
+ monopolism_bar_desc: "Monopolist Lobby Pressure: #v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#! ([JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|1]/400)"
  minarchism_bar: "Minarchist Lobby Pressure"
- minarchism_bar_desc: "Minarchism: #v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#! ([JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|1]/400)"
+ minarchism_bar_desc: "Minarchist Lobby Pressure: #v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#! ([JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|1]/400)"
  molinarism_bar: "Molinarist Lobby Pressure"
- molinarism_bar_desc: "Molinarism: #v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#! ([JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|1]/400)"
+ molinarism_bar_desc: "Molinarist Lobby Pressure: #v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#! ([JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|1]/400)"
+
+ monopolism_progress_from_funding_tt: "Funding [GetIdeology('ideology_monopolist_leader').GetName] Lobbies"
+ monopolism_progress_from_igs_tt: "[concept_clout] of [Concept('concept_interest_group', '$concept_interest_groups$')] with [GetIdeology('ideology_monopolist_leader').GetName] [Concept('concept_leader', '$concept_leaders$')]"
+ monopolism_progress_from_characters_tt: "[GetIdeology('ideology_monopolist_leader').GetName] [Concept('concept_character', '$concept_characters$')] [concept_popularity]"
+ monopolism_progress_from_company_productivity_tt: "[GetIdeology('ideology_monopolist_leader').GetName] [Concept('concept_company','$concept_companies$')] [concept_productivity]"
+ monopolism_progress_from_monopolies_tt: "[Concept('concept_company','$concept_companies$')] with a [concept_monopoly]"
+ monopolism_progress_market_consolidation_tt: "#bold HHI Index#! of [concept_company] [Concept('concept_building_level','$building_level_share$')]"
+ building_level_share: "Building Level Share"
+ monopolism_progress_from_effects_tt: "Ongoing lobby effects from events and sponsored actions"
+
+ minarchism_progress_from_funding_tt: "Funding [GetIdeology('ideology_minarchist_leader').GetName] Lobbies"
+ minarchism_progress_from_igs_tt: "[concept_clout] of [Concept('concept_interest_group', '$concept_interest_groups$')] with [GetIdeology('ideology_minarchist_leader').GetName] [Concept('concept_leader', '$concept_leaders$')]"
+ minarchism_progress_from_characters_tt: "[GetIdeology('ideology_minarchist_leader').GetName] [Concept('concept_character', '$concept_characters$')] [concept_popularity]"
+ minarchism_progress_from_propertarian_agitating_tt: "[GetIdeology('ideology_propertarian_movement').GetName] [concept_political_movement] is agitating"
+ minarchism_progress_from_propertarian_protesting_tt: "[GetIdeology('ideology_propertarian_movement').GetName] [concept_political_movement] is protesting"
+ minarchism_progress_from_propertarian_militant_tt: "[GetIdeology('ideology_propertarian_movement').GetName] [concept_political_movement] is militant"
+ minarchism_progress_from_company_productivity_tt: "[GetIdeology('ideology_minarchist_leader').GetName] [Concept('concept_company','$concept_companies$')] [concept_productivity]"
+ minarchism_progress_from_average_prosperity_tt: "Average [concept_prosperity] of [Concept('concept_company','$concept_companies$')]"
+ minarchism_progress_from_effects_tt: "Ongoing lobby effects from events and sponsored actions"
+
+ molinarism_progress_from_funding_tt: "Funding [GetIdeology('ideology_molinarist_leader').GetName] Lobbies"
+ molinarism_progress_from_igs_tt: "[concept_clout] of [Concept('concept_interest_group', '$concept_interest_groups$')] with [GetIdeology('ideology_molinarist_leader').GetName] [Concept('concept_leader', '$concept_leaders$')]"
+ molinarism_progress_from_characters_tt: "[GetIdeology('ideology_molinarist_leader').GetName] [Concept('concept_character', '$concept_characters$')] [concept_popularity]"
+ molinarism_progress_from_company_productivity_tt: "[GetIdeology('ideology_molinarist_leader').GetName] [Concept('concept_company','$concept_companies$')] [concept_productivity]"
+ molinarism_progress_from_competition_tt: "[Concept('concept_company','$concept_companies$')] without a [concept_monopoly]"
+ molinarism_progress_from_prestige_goods_tt: "[Concept('concept_company','$concept_companies$')] producing [Concept('concept_prestige_good','$concept_prestige_goods$')]"
+ molinarism_progress_from_effects_tt: "Ongoing lobby effects from events and sponsored actions"
 
  monopolism_button: "Fund Monopolist Lobbies"
  monopolism_button_desc: "The free market is a war, and in war, there is only one victor. After all, why tolerate the messy inefficiency of competition when we can simply own the entire world?"
@@ -130,9 +157,13 @@
 
  suspend_lobbying_button: "Suspend Boardroom Lobbying"
  suspend_lobbying_button_desc: "The current burn rate is unsustainable and impacting our quarterly dividends. Mandate an immediate freeze on all political endowments to restore national liquidity; if a faction cannot fund its own survival, it clearly has no place in our market."
- suspended_lobbying_tt: "Boardroom lobbying will be suspended, removing the burden on the treasury.\n\nThe 'Sponsor Pivot' Character Interaction is disabled.\n\n#red WARNING:#! This action is #bold irreversible#!."
+ suspended_lobbying_1_tt: "Boardroom lobbying will be suspended, removing the burden on the treasury."
+ suspended_lobbying_2_tt: "The 'Sponsor Pivot' Character Interaction is disabled."
+ suspended_lobbying_3_tt: "All progress bars will be slowed by #variable -1#! each month."
+ suspended_lobbying_4_tt: "#red WARNING:#! This action is #bold irreversible#!."
  not_already_suspended_lobbying: "Has not already suspended Boardroom lobbying"
  suspended_lobbying: "Has not suspended Boardroom lobbying"
+ progress_suspended_lobbying_tt: "Suspended Boardroom Lobbying"
 
  sponsor_thinktanks_button: "Sponsor Academic Think-Tanks"
  sponsor_thinktanks_button_desc: "Inject a healthy dose of disruptive innovation into the Boardroom by commissioning a 10,000-page feasibility study on the macroeconomic externalities of state-dissolution."
@@ -140,14 +171,14 @@
  monopolism_progress_25: "#bold Monopolist Lobby Pressure#! is at least #variable 50#!"
  minarchism_progress_25: "#bold Minarchist Lobby Pressure#! is at least #variable 50#!"
  molinarism_progress_25: "#bold Molinarist Lobby Pressure#! is at least #variable 50#!"
- monopolism_progress_200: "#bold Monopolist Lobby Pressure#! is at least #variable 200#!"
- minarchism_progress_200: "#bold Minarchist Lobby Pressure#! is at least #variable 200#!"
- molinarism_progress_200: "#bold Molinarist Lobby Pressure#! is at least #variable 200#!"
 
 
  convene_egm_button: "Convene an #bold E.G.M#!"
  convene_egm_button_desc: "The ideological cold war within the Boardroom is bleeding our margins. Bypass the standard bureaucratic channels and call an #bold Extraordinary General Meeting#!.\n\nTo secure the proxy votes necessary to force a binding resolution, we will need to issue a massive 'special dividend' from the Directorate's gold reserves."
  not_convened_egm: "Has not already convened an #bold E.G.M#!"
+ monopolism_progress_200: "#bold Monopolist Lobby Pressure#! is at least #variable 200#!"
+ minarchism_progress_200: "#bold Minarchist Lobby Pressure#! is at least #variable 200#!"
+ molinarism_progress_200: "#bold Molinarist Lobby Pressure#! is at least #variable 200#!"
 
 
  monopolism_progress_increase_10_tt: "#bold Increases#! the #bold Progress#! of #bold Monopolism#! by #variable 10#!"
@@ -168,7 +199,7 @@
  # MINARCHISM
  sway_to_minarchism: "Sponsor Minarchist Pivot"
  sway_to_minarchism_desc: "With sufficient lobbying, they can be persuaded to support the shareholder confidence and market predictability!"
- sway_to_minarchism_correct_ig_in_government_tt: "[Character.GetFullNamePossessive] [concept_interest_group] [Character.GetInterestGroup.GetName] is [concept_in_government] and #tooltippable #tooltip:[Character.GetTooltipTag],sway_to_minarchism_correct_ig_in_government_tt_compatibility_list ideologically compatible with [GetIdeology('ideology_minarchist_leader').GetName]#!#!"
+ sway_to_minarchism_correct_ig_in_government_tt: "[Character.GetFullName] is a #b Politician#! or #b Executive#! and their [concept_interest_group] must be #tooltippable #tooltip:[Character.GetTooltipTag],sway_to_minarchism_correct_ig_in_government_tt_compatibility_list ideologically compatible with [GetIdeology('ideology_minarchist_leader').GetName]#!#!"
  sway_to_minarchism_correct_ig_in_government_tt_compatibility_list: "[Concept('concept_interest_group','$concept_interest_groups$')] compatible with [GetIdeology('ideology_minarchist_leader').GetName] includes any Interest Group #b except#! the [GetInterestGroupVariant('ig_trade_unions',Character.GetCountry).GetName]."
  sway_to_minarchism_compatible_ideology_tt: "[Character.GetFullNamePossessive] current [concept_ideology] ([Character.GetIdeology.GetName]) is #b not#! #tooltippable #tooltip:[Character.GetTooltipTag],sway_to_minarchism_compatible_ideology_tt_compatibility_list opposed to [GetIdeology('ideology_minarchist_leader').GetName]#!#!"
  sway_to_minarchism_compatible_ideology_tt_compatibility_list: "[Concept('concept_ideology','$concept_ideologies$')] opposed to [GetIdeology('ideology_minarchist_leader').GetName] includes:\n[GetIdeology('ideology_integralist').GetName]\n[GetIdeology('ideology_fascist').GetName]\n[GetIdeology('ideology_nihilist').GetName]\n[GetIdeology('ideology_radical').GetName]\n[GetIdeology('ideology_social_democrat').GetName]\n[GetIdeology('ideology_communist').GetName]\n[GetIdeology('ideology_vanguardist').GetName]\n[GetIdeology('ideology_anarchist').GetName]\n[GetIdeology('ideology_humanitarian').GetName]"
@@ -176,7 +207,7 @@
  # MOLINARISM
  sway_to_molinarism: "Sponsor Molinarist Pivot"
  sway_to_molinarism_desc: "With sufficient lobbying, they can be persuaded to support absolute individual and contractual freedom!"
- sway_to_molinarism_correct_ig_in_government_tt: "[Character.GetFullNamePossessive] [concept_interest_group] [Character.GetInterestGroup.GetName] is [concept_in_government] and #tooltippable #tooltip:[Character.GetTooltipTag],sway_to_molinarism_correct_ig_in_government_tt_compatibility_list ideologically compatible with [GetIdeology('ideology_molinarist_leader').GetName]#!#!"
+ sway_to_molinarism_correct_ig_in_government_tt: "[Character.GetFullName] is a #b Politician#! or #b Executive#! and their [concept_interest_group] must be #tooltippable #tooltip:[Character.GetTooltipTag],sway_to_molinarism_correct_ig_in_government_tt_compatibility_list ideologically compatible with [GetIdeology('ideology_molinarist_leader').GetName]#!#!"
  sway_to_molinarism_correct_ig_in_government_tt_compatibility_list: "[Concept('concept_interest_group','$concept_interest_groups$')] compatible with [GetIdeology('ideology_molinarist_leader').GetName] includes:\n[GetInterestGroupVariant('ig_industrialists',Character.GetCountry).GetName]\n[GetInterestGroupVariant('ig_intelligentsia',Character.GetCountry).GetName]\n[GetInterestGroupVariant('ig_rural_folk',Character.GetCountry).GetName]\n[GetInterestGroupVariant('ig_armed_forces',Character.GetCountry).GetName]"
  sway_to_molinarism_compatible_ideology_tt: "[Character.GetFullNamePossessive] current [concept_ideology] ([Character.GetIdeology.GetName]) is #b not#! #tooltippable #tooltip:[Character.GetTooltipTag],sway_to_molinarism_compatible_ideology_tt_compatibility_list opposed to [GetIdeology('ideology_molinarist_leader').GetName]#!#!"
  sway_to_molinarism_compatible_ideology_tt_compatibility_list: "[Concept('concept_ideology','$concept_ideologies$')] opposed to [GetIdeology('ideology_molinarist_leader').GetName] includes:\n[GetIdeology('ideology_integralist').GetName]\n[GetIdeology('ideology_fascist').GetName]\n[GetIdeology('ideology_nihilist').GetName]\n[GetIdeology('ideology_radical').GetName]\n[GetIdeology('ideology_social_democrat').GetName]\n[GetIdeology('ideology_communist').GetName]\n[GetIdeology('ideology_vanguardist').GetName]\n[GetIdeology('ideology_anarchist').GetName]\n[GetIdeology('ideology_humanitarian').GetName]"
@@ -184,7 +215,7 @@
  # MONOPOLISM
  sway_to_monopolism: "Sponsor Monopolist Pivot"
  sway_to_monopolism_desc: "With sufficient lobbying, they can be persuaded to support the logical conclusion to a truly free market!"
- sway_to_monopolism_correct_ig_in_government_tt: "[Character.GetFullNamePossessive] [concept_interest_group] [Character.GetInterestGroup.GetName] is [concept_in_government] and #tooltippable #tooltip:[Character.GetTooltipTag],sway_to_monopolism_correct_ig_in_government_tt_compatibility_list ideologically compatible with [GetIdeology('ideology_monopolist_leader').GetName]#!#!"
+ sway_to_monopolism_correct_ig_in_government_tt: "[Character.GetFullName] is a #b Politician#! or #b Executive#! and their [concept_interest_group] must be #tooltippable #tooltip:[Character.GetTooltipTag],sway_to_monopolism_correct_ig_in_government_tt_compatibility_list ideologically compatible with [GetIdeology('ideology_monopolist_leader').GetName]#!#!"
  sway_to_monopolism_correct_ig_in_government_tt_compatibility_list: "[Concept('concept_interest_group','$concept_interest_groups$')] compatible with [GetIdeology('ideology_monopolist_leader').GetName] includes:\n[GetInterestGroupVariant('ig_industrialists',Character.GetCountry).GetName]\n[GetInterestGroupVariant('ig_petty_bourgeoisie',Character.GetCountry).GetName]\n[GetInterestGroupVariant('ig_landowners',Character.GetCountry).GetName]\n[GetInterestGroupVariant('ig_intelligentsia',Character.GetCountry).GetName]\n[GetInterestGroupVariant('ig_armed_forces',Character.GetCountry).GetName]"
  sway_to_monopolism_compatible_ideology_tt: "[Character.GetFullNamePossessive] current [concept_ideology] ([Character.GetIdeology.GetName]) is #b not#! #tooltippable #tooltip:[Character.GetTooltipTag],sway_to_monopolism_compatible_ideology_tt_compatibility_list opposed to [GetIdeology('ideology_monopolist_leader').GetName]#!#!"
  sway_to_monopolism_compatible_ideology_tt_compatibility_list: "[Concept('concept_ideology','$concept_ideologies$')] opposed to [GetIdeology('ideology_monopolist_leader').GetName] includes:\n[GetIdeology('ideology_integralist').GetName]\n[GetIdeology('ideology_fascist').GetName]\n[GetIdeology('ideology_nihilist').GetName]\n[GetIdeology('ideology_radical').GetName]\n[GetIdeology('ideology_social_democrat').GetName]\n[GetIdeology('ideology_communist').GetName]\n[GetIdeology('ideology_vanguardist').GetName]\n[GetIdeology('ideology_anarchist').GetName]\n[GetIdeology('ideology_humanitarian').GetName]"

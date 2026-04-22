@@ -12,11 +12,12 @@
 	possible = {
 		custom_tooltip = {
 			text = sway_to_minarchism_correct_ig_in_government_tt
-			interest_group ?= {
-				is_in_government = yes
-				NOT = {
-					is_interest_group_type = ig_trade_unions
-				}
+			OR = {
+				has_role = executive
+				has_role = politician
+			}
+			NOT = {
+				is_interest_group_type = ig_trade_unions
 			}
 		}
 		custom_tooltip = {
@@ -71,14 +72,15 @@ sway_to_molinarism = {
 	possible = {
 		custom_tooltip = {
 			text = sway_to_molinarism_correct_ig_in_government_tt
-			interest_group ?= {
-				is_in_government = yes
-				NOR = {
-					is_interest_group_type = ig_trade_unions
-					is_interest_group_type = ig_devout
-					is_interest_group_type = ig_petty_bourgeoisie
-					is_interest_group_type = ig_landowners
-				}
+			OR = {
+				has_role = executive
+				has_role = politician
+			}
+			NOR = {
+				is_interest_group_type = ig_trade_unions
+				is_interest_group_type = ig_devout
+				is_interest_group_type = ig_petty_bourgeoisie
+				is_interest_group_type = ig_landowners
 			}
 		}
 		custom_tooltip = {
@@ -132,13 +134,14 @@ sway_to_monopolism = {
 	possible = {
 		custom_tooltip = {
 			text = sway_to_monopolism_correct_ig_in_government_tt
-			interest_group ?= {
-				is_in_government = yes
-				NOR = {
-					is_interest_group_type = ig_trade_unions
-					is_interest_group_type = ig_devout
-					is_interest_group_type = ig_rural_folk
-				}
+			OR = {
+				has_role = executive
+				has_role = politician
+			}
+			NOR = {
+				is_interest_group_type = ig_trade_unions
+				is_interest_group_type = ig_devout
+				is_interest_group_type = ig_rural_folk
 			}
 		}
 		custom_tooltip = {

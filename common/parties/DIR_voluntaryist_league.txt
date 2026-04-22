@@ -55,30 +55,12 @@
 
 		if = {
 			limit = {
-				owner = {
-					py:national_trust_party = {
-						scope:number >= 3
-					}
-					py:shareholders_alliance = {
-						scope:number < 3
-						scope:number > 0
-					}
-				}
-			}
-			add = {
-				value = -10
-				desc = "centrist_alliance_countering_ntp"
-			}
-		}
-
-		if = {
-			limit = {
 				leader ?= {
 					has_ideology = ideology:ideology_molinarist_leader
 				}
 			}
 			add = {
-				value = 20
+				value = 25
 				desc = "from_molinarist_leader"
 			}
 		}
@@ -147,15 +129,20 @@
 				desc = "ig_trade_unions"
 			}
 		}
-
 		if = {
 			limit = {
-				is_interest_group_type = ig_industrialists
-				is_powerful = yes
+				owner = {
+					py:national_trust_party = {
+						any_member = {
+							count >= 3
+						}
+					}
+					exists = py:shareholders_alliance
+				}
 			}
 			multiply = {
-				value = 1.5
-				desc = "from_archetype_party"
+				value = 0.5
+				desc = "centrist_alliance_countering_ntp"
 			}
 		}
 		if = {
@@ -167,24 +154,6 @@
 			multiply = {
 				value = 2
 				desc = "from_influential_supporting_member"
-			}
-		}
-		else_if = {
-			limit = {
-				scope:number = 2
-			}
-			multiply = {
-				value = 0.5
-				desc = "from_two_prior_members"
-			}
-		}
-		else_if = {
-			limit = {
-				scope:number = 3
-			}
-			multiply = {
-				value = 0.25
-				desc = "from_three_prior_members"
 			}
 		}
 	}

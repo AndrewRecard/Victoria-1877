@@ -204,7 +204,16 @@ suspend_lobbying_button = {
 		remove_variable = supporting_minarchism_var
 		remove_variable = supporting_molinarism_var
 		custom_tooltip = {
-			text = suspended_lobbying_tt
+			text = suspended_lobbying_1_tt
+		}
+		custom_tooltip = {
+			text = suspended_lobbying_2_tt
+		}
+		custom_tooltip = {
+			text = suspended_lobbying_3_tt
+		}
+		custom_tooltip = {
+			text = suspended_lobbying_4_tt
 		}
 	}
 }

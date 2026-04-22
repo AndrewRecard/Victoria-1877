@@ -51,7 +51,7 @@
 
 	join_weight = {
 		value = {
-			value = -5
+			value = 0
 			desc = "base_value"
 		}
 
@@ -74,17 +74,8 @@
 				}
 			}
 			add = {
-				value = 25
+				value = 15
 				desc = "from_anti_propertarian_leader"
-			}
-		}
-		if = {
-			limit = {
-				is_interest_group_type = ig_rural_folk
-			}
-			add = {
-				value = 5
-				desc = "ig_rural_folk"
 			}
 		}
 		if = {
@@ -116,35 +107,6 @@
 			multiply = {
 				add = 10
 				desc = "from_archetype_party"
-			}
-		}
-		if = {
-			limit = {
-				scope:number <= 1
-				is_powerful = no
-				ig_counts_as_marginal = no
-			}
-			multiply = {
-				value = 2
-				desc = "from_influential_supporting_member"
-			}
-		}
-		else_if = {
-			limit = {
-				scope:number = 2
-			}
-			multiply = {
-				value = 0.5
-				desc = "from_two_prior_members"
-			}
-		}
-		else_if = {
-			limit = {
-				scope:number = 3
-			}
-			multiply = {
-				value = 0.25
-				desc = "from_three_prior_members"
 			}
 		}
 	}

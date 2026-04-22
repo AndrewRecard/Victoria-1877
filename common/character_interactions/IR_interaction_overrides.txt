@@ -236,7 +236,12 @@
 							is_political_movement_type = movement_liberal
 						}
 					}
-					has_technology_researched = shareholder_primacy
+					AND = {
+						has_technology_researched = shareholder_primacy
+						NOT = {
+							any_political_movement = { is_political_movement_type = movement_propertarian }
+						}
+					}
 				}
 			}
 		}
@@ -381,10 +386,7 @@
 				owner = {
 					has_technology_researched = shareholder_primacy
 				}
-				OR = {
-					has_ideology = ideology:ideology_market_liberal
-					has_propertarian_ideology = yes
-				}
+				propertarian_or_market_liberal = yes
 			}
 			owner = {
 				create_political_movement = {
@@ -645,6 +647,7 @@ REPLACE:exile_character = {
 		OR = {
 			has_role = politician
 			has_role = agitator
+			has_role = executive
 		}
 	}
 
@@ -662,14 +665,12 @@ REPLACE:exile_character = {
 			limit = {
 				has_role = agitator
 			}
-
 			political_movement ?= { is_insurrectionary = no }
 		}
 		trigger_else = {
 			interest_group ?= {
 				is_in_government = no
 				is_insurrectionary = no
-				ig_counts_as_marginal = no
 			}
 		}
 		custom_tooltip = {
@@ -1113,9 +1114,6 @@ REPLACE:arrange_accident = {
 	possible = {
 		owner ?= {
 			has_law_or_variant = law_type:law_secret_police
-		}
-		interest_group ?= {
-			ig_counts_as_marginal = no
 		}
 		custom_tooltip = {
 			text = pending_coup_event_tt

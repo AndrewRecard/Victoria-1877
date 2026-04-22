@@ -551,3 +551,15 @@ boardroom_schism.3 = {
 	after = {
 	}
 }
+
+boardroom_schism.4 = {
+	type = country_event
+	hidden = yes
+
+	immediate = {
+		update_party_support = yes
+		call_election = {
+			days = 1
+		}
+	}
+}

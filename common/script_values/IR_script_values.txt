@@ -1,24 +1,26 @@
 ﻿exile_character_cooldown = {
 	value = 1825
-	multiply = {
-		if = {
-			limit = {
-				owner ?= {
-					has_law_or_variant = law_type:law_ministry_of_truth
-				}
+	if = {
+		limit = {
+			owner ?= {
+				has_law_or_variant = law_type:law_ministry_of_truth
 			}
 		}
-		value = 0.5
+		subtract = {
+			add = 1825
+			multiply = 0.5
+		}
 	}
-	multiply = {
-		if = {
-			limit = {
-				owner ?= {
-					has_technology_researched = mass_surveillance
-				}
+	if = {
+		limit = {
+			owner ?= {
+				has_technology_researched = mass_surveillance
 			}
 		}
-		value = 0.75
+		subtract = {
+			add = 1825
+			multiply = 0.25
+		}
 	}
 }
 
@@ -35,15 +37,16 @@ arrange_accident_cooldown = {
 
 invite_exile_cooldown = {
 	value = 1825
-	multiply = {
-		if = {
-			limit = {
-				owner ?= {
-					has_law_or_variant = law_type:law_guaranteed_liberties
-				}
+	if = {
+		limit = {
+			owner ?= {
+				has_law_or_variant = law_type:law_guaranteed_liberties
 			}
 		}
-		value = 0.67
+		subtract = {
+			add = 1825
+			multiply = 0.33
+		}
 	}
 }
 

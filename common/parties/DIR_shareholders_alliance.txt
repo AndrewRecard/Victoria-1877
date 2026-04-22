@@ -71,7 +71,7 @@
 				}
 			}
 			add = {
-				value = 20
+				value = 25
 				desc = "from_minarchist_leader"
 			}
 		}
@@ -132,14 +132,57 @@
 
 		if = {
 			limit = {
-				is_interest_group_type = ig_industrialists
-				is_powerful = yes
+				owner = {
+					py:national_trust_party = {
+						any_member = {
+							count >= 3
+						}
+					}
+				}
+				leader = {
+					OR = {
+						has_ideology = ideology:ideology_molinarist_leader
+						has_ideology = ideology:ideology_anarchist
+						has_ideology = ideology:ideology_market_liberal
+						has_ideology = ideology:ideology_nihilist
+					}
+				}
 			}
-			multiply = {
-				value = 2
-				desc = "from_archetype_party"
+			add = {
+				value = 25
+				desc = "centrist_alliance_countering_ntp"
 			}
 		}
+
+		if = {
+			limit = {
+				owner = {
+					py:voluntaryist_league = {
+						any_member = {
+							count >= 3
+						}
+					}
+				}
+				leader ?= {
+					OR = {
+						has_ideology = ideology:ideology_monopolist_leader
+						has_ideology = ideology:ideology_authoritarian
+						has_ideology = ideology:ideology_fascist
+						has_ideology = ideology:ideology_integralist
+						has_ideology = ideology:ideology_positivist
+						has_ideology = ideology:ideology_protectionist
+						has_ideology = ideology:ideology_corporatist
+						has_ideology = ideology:ideology_traditionalist
+						has_ideology = ideology:ideology_slaver
+					}
+				}
+			}
+			add = {
+				value = 25
+				desc = "centrist_alliance_countering_vl"
+			}
+		}
+
 		if = {
 			limit = {
 				scope:number <= 1
@@ -149,24 +192,6 @@
 			multiply = {
 				value = 2
 				desc = "from_influential_supporting_member"
-			}
-		}
-		else_if = {
-			limit = {
-				scope:number = 2
-			}
-			multiply = {
-				value = 0.5
-				desc = "from_two_prior_members"
-			}
-		}
-		else_if = {
-			limit = {
-				scope:number = 3
-			}
-			multiply = {
-				value = 0.25
-				desc = "from_three_prior_members"
 			}
 		}
 	}

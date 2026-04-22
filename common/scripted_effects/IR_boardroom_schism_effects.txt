@@ -34,6 +34,8 @@ purchase_politician_cost_effect = {
     add_treasury = purchase_poltician_value
 }
 
+## for the EXTRAORDINARY GENERAL MEETING ##
+
 egm_monopolists_boost_effect = {
     custom_tooltip = {
         text = monopolism_progress_increase_100_tt
@@ -117,3 +119,4 @@ egm_fail_effect = {
         }
     }
 }
+  ######################
