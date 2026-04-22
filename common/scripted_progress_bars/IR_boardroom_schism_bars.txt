@@ -26,7 +26,6 @@ schism_molinarist_bar = {
 	start_value = 10
 	min_value = 0
 	max_value = 400
-
 }
 
 schism_monopolist_bar = {
@@ -42,5 +41,4 @@ schism_monopolist_bar = {
 	start_value = 10
 	min_value = 0
 	max_value = 400
-
 }
