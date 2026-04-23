@@ -142,8 +142,14 @@
  movement_propertarian: "Propertarian Movement"
  movement_propertarian_name: "$movement_propertarian$"
  movement_propertarian_short: "Propertarian"
+
  ideology_propertarian_movement: "Propertarian"
  ideology_propertarian_movement_desc: "#lore This movement advocates for the supremacy of private property and free enterprise, seeking to dismantle bureaucratic overreach in favor of corporate governance.#!"
+ ideology_propertarian_monopolist: "Market Consolidationist"
+ ideology_propertarian_monopolist_desc: "#lore This movement advocates for consolidation of political and economic power under a Directorate, transforming the free market into a Sovereign Monopoly.#!"
+ ideology_propertarian_molinarist: "Free-Market Absolutist"
+ ideology_propertarian_molinarist_desc: "#lore This movement advocates for the state's monopoly on violence to be relinquished in the name of absolute economic freedom and social darwinism.#!"
+
  ideology_molinarist_leader: "Molinarist"
  ideology_molinarist_leader_desc: "#lore This leader holds absolute property rights as the highest moral principle, and seeks to dismantle state interference in favor of unrestricted market freedom.#!"
  ideology_minarchist_leader: "Minarchist"

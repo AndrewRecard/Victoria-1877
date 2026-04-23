@@ -35,7 +35,7 @@
 		state_building_barrack_max_level_add = 100
 		country_military_wages_mult = 0.25
 		building_group_bg_military_industry_throughput_add = 0.1
-		unit_kill_rate_add = 0.15
+		unit_kill_rate_add = 0.1
 		unit_experience_gain_mult = 1.0
 		unit_devastation_mult = 0.5
 		unit_morale_loss_mult = 0.1

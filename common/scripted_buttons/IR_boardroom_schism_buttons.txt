@@ -305,19 +305,26 @@ convene_egm_button = {
 				has_variable = convened_egm
 			}
 		}
-		je:je_boardroom_schism = {
-			OR = {
-				custom_tooltip = {
-					text = monopolism_progress_200
-					scripted_bar_progress = { name = schism_monopolist_bar value >= 200 }
+		trigger_if = {
+			limit = {
+				NOT = {
+					has_variable = convened_egm
 				}
-				custom_tooltip = {
-					text = minarchism_progress_200
-					scripted_bar_progress = { name = schism_minarchist_bar value >= 200 }
-				}
-				custom_tooltip = {
-					text = molinarism_progress_200
-					scripted_bar_progress = { name = schism_molinarist_bar value >= 200 }
+			}
+			je:je_boardroom_schism = {
+				OR = {
+					custom_tooltip = {
+						text = monopolism_progress_200
+						scripted_bar_progress = { name = schism_monopolist_bar value >= 200 }
+					}
+					custom_tooltip = {
+						text = minarchism_progress_200
+						scripted_bar_progress = { name = schism_minarchist_bar value >= 200 }
+					}
+					custom_tooltip = {
+						text = molinarism_progress_200
+						scripted_bar_progress = { name = schism_molinarist_bar value >= 200 }
+					}
 				}
 			}
 		}

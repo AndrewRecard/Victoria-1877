@@ -260,8 +260,7 @@ ir_monopoly_enforced_modifier = {
 ir_propertarian_lobby_war_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
 	interest_group_ig_industrialists_pol_str_mult = -1
-	country_radicals_from_legitimacy_mult = 0.5
-	country_loyalists_from_legitimacy_mult = -0.5
+	country_law_enactment_time_mult = 0.5
 	political_movement_radicalism_from_enactment_disapproval_mult = 0.5
 	state_pop_support_movement_propertarian_mult = 0.25
 }
@@ -326,4 +325,11 @@ ir_boardroom_confidence_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
 	country_authority_add = 100
 	country_legitimacy_ideological_incoherence_mult = -0.25
+}
+
+ir_schism_mandate_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	country_law_enactment_time_mult = -0.75
+	country_law_enactment_stall_mult = -0.25
+	state_loyalists_from_political_movements_mult = 0.25
 }

@@ -100,7 +100,7 @@ schism_minarchist_bar = {
     						add = company_employed_levels
     					}
     				}
-    				multiply = 0.025
+    				multiply = 0.03
 				}
 				subtract = 0.5
 			}
@@ -270,15 +270,16 @@ schism_molinarist_bar = {
 				desc = "molinarism_progress_from_prestige_goods_tt"
 				every_company = {
 					limit = { is_producing_prestige_goods = yes }
-					add = company_employed_levels
-				}
-				divide = {
-					every_company = {
-						add = company_employed_levels
+					add = {
+						add = 0.5
+						if = {
+							limit = {
+								company_productivity > company_global_productivity_comparison
+							}
+							multiply = 2
+						}
 					}
 				}
-				multiply = 2.5
-				subtract = 0.5
 			}
 			### From Effects
 			if = {
