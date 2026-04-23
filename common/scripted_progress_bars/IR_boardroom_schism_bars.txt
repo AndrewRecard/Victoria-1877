@@ -1,4 +1,4 @@
-schism_minarchist_bar = {
+﻿schism_minarchist_bar = {
 	name = "minarchism_bar"
 	desc = "minarchism_bar_desc"
 	default_bad = yes
@@ -82,25 +82,28 @@ schism_minarchist_bar = {
 				}
 			}
 			### From Num Prosperous Companies
-			add = {
-				desc = "minarchism_progress_from_average_prosperity_tt"
+			if = {
+				limit = { num_companies > 0 }
 				add = {
-				    add = {
-    					every_company = {
-    						add = {
-    							value = company_prosperity
-    							multiply = company_employed_levels
-    						}
-    					}
-    				}
-    				divide = {
-    					every_company = {
-    						add = company_employed_levels
-    					}
-    				}
-    				multiply = 0.03
+					desc = "minarchism_progress_from_average_prosperity_tt"
+					add = {
+					    add = {
+	    					every_company = {
+	    						add = {
+	    							value = company_prosperity
+	    							multiply = company_employed_levels
+	    						}
+	    					}
+	    				}
+	    				divide = {
+	    					every_company = {
+	    						add = company_employed_levels
+	    					}
+	    				}
+	    				multiply = 0.03
+					}
+					subtract = 0.5
 				}
-				subtract = 0.5
 			}
 			### Minarchists gain progress from legitimacy in government
 			if = {
@@ -226,19 +229,22 @@ schism_molinarist_bar = {
 				}
 			}
 			### Companies without Monopolies
-			add = {
-				desc = "molinarism_progress_from_competition_tt"
-				every_company = {
-					limit = { company_has_monopoly = no }
-					add = company_employed_levels
-				}
-				divide = {
+			if = {
+				limit = { num_companies > 0 }
+				add = {
+					desc = "molinarism_progress_from_competition_tt"
 					every_company = {
+						limit = { company_has_monopoly = no }
 						add = company_employed_levels
 					}
+					divide = {
+						every_company = {
+							add = company_employed_levels
+						}
+					}
+					multiply = 2.5
+					subtract = 0.5
 				}
-				multiply = 2.5
-				subtract = 0.5
 			}
 			### Companies with Prestige Goods
 			add = {
@@ -364,19 +370,22 @@ schism_monopolist_bar = {
 				}
 			}
 			### From Company Monopolies
-			add = {
-				desc = "monopolism_progress_from_monopolies_tt"
-				every_company = {
-					limit = { company_has_monopoly = yes }
-					add = company_employed_levels
-				}
-				divide = {
+			if = {
+				limit = { num_companies > 0 }
+				add = {
+					desc = "monopolism_progress_from_monopolies_tt"
 					every_company = {
+						limit = { company_has_monopoly = yes }
 						add = company_employed_levels
 					}
+					divide = {
+						every_company = {
+							add = company_employed_levels
+						}
+					}
+					multiply = 2.5
+					subtract = 0.5
 				}
-				multiply = 2.5
-				subtract = 0.5
 			}
 			### From BIG companies
 			if = {
@@ -390,6 +399,7 @@ schism_monopolist_bar = {
 			if = {
 				limit = {
 					num_companies > 1
+					any_company = { company_employed_levels > 0 }
 				}
 				add = {
 					desc = "monopolism_progress_market_consolidation_tt"

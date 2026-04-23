@@ -1650,7 +1650,7 @@ REPLACE:ideology_reformer = {
 					is_interest_group_type = ig_intelligentsia
 					is_interest_group_type = ig_trade_unions
 				}
-				ig_approval < 0
+				interest_group.ig_approval < 0
 			}
 			add = {
 				value = interest_group.ig_approval

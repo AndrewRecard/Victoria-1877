@@ -13,6 +13,8 @@ je_defense_incorporation = {
 		}
 	}
 
+	scripted_progress_bar = ir_defense_incorporation_bar
+
 	status_desc = {
 		first_valid = {
 			triggered_desc = {
@@ -78,8 +80,6 @@ je_defense_incorporation = {
 	modifiers_while_active = {
 		ir_defense_agencies_reform_modifier
 	}
-	
-	scripted_progress_bar = ir_defense_incorporation_bar
 	
 	complete = {
 		ig:ig_armed_forces = {

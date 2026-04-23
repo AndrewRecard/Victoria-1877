@@ -647,7 +647,6 @@ REPLACE:exile_character = {
 		OR = {
 			has_role = politician
 			has_role = agitator
-			has_role = executive
 		}
 	}
 
@@ -753,7 +752,7 @@ REPLACE:exile_character = {
 					has_variable = golpista_var
 				}
 			}
-			owner = {
+			owner ?= {
 				set_variable = exile_golpista_var
 				character_execute_immediate_coup = yes
 			}
@@ -886,6 +885,7 @@ REPLACE:exile_character = {
 			# Boring characters should be made interesting when being exiled
 			if = {
 				limit = {
+					exists = owner
 					OR = {
 						has_ideology = ideology:ideology_moderate
 						has_ideology = ideology:ideology_pacifist
@@ -921,7 +921,7 @@ REPLACE:exile_character = {
 					kill_character = {
 						hidden = yes
 					}
-					owner = {
+					owner ?= {
 						create_character = {
 							template = exile_count_dracula
 							on_created = {

@@ -204,26 +204,3 @@ ir_law_events.5 = {
 		}
 	}
 }
-
-
-ir_law_events.6 = {
-	type = country_event
-	hidden = yes
-
-	immediate = {
-		every_interest_group = {
-			leader = {
-				set_ideology = ideology:ideology_minarchist_leader
-			}
-		}
-	}
-}
-
-ir_law_events.7 = {
-	type = country_event
-	hidden = yes
-
-	immediate = {
-		propertarian_split_effect = yes
-	}
-}

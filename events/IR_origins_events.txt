@@ -575,15 +575,13 @@ propertarian_origins.4 = {
 				}
 			}
 			save_scope_as = propertarian_leader_2
-		}
-		if = {
-			limit = {
-				scope:propertarian_leader_2 = {
+			if = {
+				limit = {
 					has_role = politician
 				}
-			}
-			scope:propertarian_leader_2.interest_group = {
-				save_scope_as = propertarian_ig_2
+				interest_group = {
+					save_scope_as = propertarian_ig_2
+				}
 			}
 		}
 	}
