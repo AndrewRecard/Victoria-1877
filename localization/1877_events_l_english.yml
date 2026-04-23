@@ -22,8 +22,8 @@
  ir_law_events.4.b: "The boardroom answers to no one but the market."
 
  ir_law_events.5.t: "The Human Capital Question"
- ir_law_events.5.d: "With the Directorate now formally established, the Board must address the persistent nuisance of organized labor. Trade Unions across [ROOT.GetCountry.GetName] are threatening strikes, demanding to know how collective bargaining will function under the new regime. The boardroom is sharply divided on how to manage our most volatile asset: human capital."
- ir_law_events.5.f: ""A union is nothing but a monopoly on labor," Sterling argued, his voice echoing across the mahogany. "It is an illegal cartel designed to extort the shareholders. We must outlaw them entirely. Let every man negotiate his own wage, or let him starve."\n\nArthur adjusted his cuffs, entirely unbothered. "If you crush them, Sterling, they will simply organize in the dark, well find dynamite on the factory floor. No, we don't ban the unions. We mandate internal arbitration. We create our own unions, staffed by our managers. We give them a grievance box, and we keep the key.""
+ ir_law_events.5.d: "With the Directorate now formally established, the Board must address the persistent nuisance of organized labor. Trade Unions across [ROOT.GetCountry.GetName] are threatening strikes, demanding to know how collective bargaining will function under the new regime. The interim Board is sharply divided on how to manage our most volatile asset: human capital."
+ ir_law_events.5.f: ""A union is nothing but a monopoly on labor," Sterling argued. "It is an illegal cartel designed to extort the shareholders. We must outlaw them entirely. Let every man negotiate his own wage, or let him starve."\n\nArthur adjusted his cuffs, entirely unbothered. "If you crush them, Sterling, they will simply organize in the dark, and dynamite will be bought factory floor. No, we don't ban the unions. We mandate internal arbitration. We give them a grievance box, and we keep the key.""
  ir_law_events.5.a: "Labor is an individual contract. Dissolve the cartels."
  ir_law_events.5.b: "A union works best when it works for us. Incorporate them."
 
@@ -121,13 +121,14 @@
  vic1877_defense_incorporation.5.f: ""I vehemently resent the implication that my financial portfolio dictates my patriotism! I simply possess an unshakable faith in the free market to provide for our national security, and I have aligned my personal investments with that belief. It is not a crime to be prescient.""
  vic1877_defense_incorporation.5.a: "[SCOPE.sCharacter('corrupt_leader').GetFirstName] must surrender his position and an investigation is to be held."
  vic1877_defense_incorporation.5.b: "Let [SCOPE.sCharacter('corrupt_leader').GetFirstName] have [SCOPE.sCharacter('corrupt_leader').GetHerHis] dividends."
+ legitimacy_5_modifier: "Show of Resolve"
  ir_corruption_investigation_modifier:"Insider Trading Investigation"
  ir_investigating_corruption_modifier:"Investigating Corruption"
  ir_allowed_corruption_modifier:"Allowed Corruption"
 
  vic1877_defense_incorporation.6.t: "Defense, Incorporated"
  vic1877_defense_incorporation.6.d: "The military restructuring is finally complete. The last of the old guard has either retired in protest or accepted lucrative executive positions. From logistics and munitions to frontline combat, our national defense is now entirely operated by private military corporations. The traditional state army is dead; the era of the Defense Contractor has begun."
- vic1877_defense_incorporation.6.f: ""
+ vic1877_defense_incorporation.6.f: "The transition was remarkably quiet. Where recruitment posters once appealed to patriotism and glory, sleek brochures now advertise competitive wages and hazard pay dividends. The War Office ledgers no longer track casualties and medals; they track profit margins, ammunition expenditures, and quarterly combat performance metrics. Blood is still spilled, but now, every drop is itemized."
  vic1877_defense_incorporation.6.a: "The business of war is business."
 
  propertarian_government_remains_tt: "[SCOPE.sCharacter('new_propertarian_leader_scope').GetFullName] will be allowed to take [SCOPE.sCharacter('new_propertarian_leader_scope').GetHerHis] seat in government"
@@ -179,6 +180,16 @@
  boardroom_schism.6.f: ""A company without a regulator is a riot, and a company without competitors is a tomb," declared [SCOPE.sCharacter('mandate_leader').GetFullName], adjusting [SCOPE.sCharacter('mandate_leader').GetHerHis] cuffs as private security escorted the shouting radicals from the chamber.\n\n"The Directorate was not forged to be dismantled by anarchists, nor was it meant to become a bloated, monopolistic behemoth. It exists for one purpose: to protect property and enforce contracts. We are the night-watchmen of the market. Now, if you please, gentlemen... the markets have officially opened.""
  boardroom_schism.6.a: "The Markets have opened."
  boardroom_schism.6.b: "Blacklist the agitators and liquidate their portfolios."
+
+ boardroom_schism.7.t: "The Apostate Executive"
+ boardroom_schism.7.d: "[SCOPE.sCharacter('defector_executive').GetFullName], the celebrated CEO of [SCOPE.sCompany('defector_company').GetNameNoFormatting], has renounced [SCOPE.sCharacter('defector_executive').GetHerHis] former creed before a packed press auditorium. The stock ticker is already bleeding; the quarterly conference call has devolved into open accusations of grift and insider dealing. The Board must decide what to do with the traitor before the market decides for them."
+ boardroom_schism.7.f: ""For too long I have parroted the received wisdom of a movement which, upon rigorous praxeological audit, cannot even balance its own moral ledger. I have sold my fellow shareholders a defective product, and I will not make that sale again."
+ boardroom_schism.7.a: "Elevate our new convert. This is a prospectus-level coup."
+ boardroom_schism.7.b: "Brand [SCOPE.sCharacter('defector_executive').GetHerHim] a turncoat and have [SCOPE.sCharacter('defector_executive').GetHerHim] blacklisted."
+ boardroom_schism.7.c: "A martyr is more profitable than a traitor."
+ ir_ideological_flagship_modifier: "Ideological Flagship"
+ ir_discredited_apostate_modifier: "Apostate Discredited"
+ ir_boardroom_purge_modifier: "Purged from the Boardroom"
 
  # OTHER
  caciquismo.1.i: "The house has already won."

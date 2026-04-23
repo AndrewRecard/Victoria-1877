@@ -4,7 +4,18 @@ ir_law_events.1 = {
 	hidden = yes
 
 	immediate = {
-		update_party_support = yes
+		set_variable = {
+			name = minarchist_effects_var
+			value = 0
+		}
+		set_variable = {
+			name = molinarist_effects_var
+			value = 0
+		}
+		set_variable = {
+			name = monopolist_effects_var
+			value = 0
+		}
 	}
 }
 

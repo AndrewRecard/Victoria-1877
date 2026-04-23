@@ -202,6 +202,10 @@
  country_enactment_success_chance_law_wage_subsidies_add_desc: "A flat percentage point increase to the likelihood of enacting the specific law"
  country_enactment_success_chance_law_old_age_pension_add: "[concept_enactment_success] chance for [GetLawType('law_old_age_pension').GetName]"
  country_enactment_success_chance_law_old_age_pension_add_desc: "A flat percentage point increase to the likelihood of enacting the specific law"
+ country_enactment_success_chance_law_polycentric_law_add: "[concept_enactment_success] chance for [GetLawType('law_polycentric_law').GetName]"
+ country_enactment_success_chance_law_polycentric_law_add_desc: "A flat percentage point increase to the likelihood of enacting the specific law"
+ country_enactment_success_chance_law_sovereign_monopoly_add: "[concept_enactment_success] chance for [GetLawType('law_sovereign_monopoly').GetName]"
+ country_enactment_success_chance_law_sovereign_monopoly_add_desc: "A flat percentage point increase to the likelihood of enacting the specific law"
   # BOOLEANS / SCRIPT
  country_arrange_accident_cooldown_mult: "Arrange Accident Cooldown Reduction"
  country_arrange_accident_cooldown_mult_desc: "The #variable Arrange Accident#! character interaction cooldown is modified by the stated amount."

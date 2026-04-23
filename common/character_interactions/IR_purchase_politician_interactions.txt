@@ -79,7 +79,6 @@ sway_to_molinarism = {
 			NOR = {
 				is_interest_group_type = ig_trade_unions
 				is_interest_group_type = ig_devout
-				is_interest_group_type = ig_petty_bourgeoisie
 				is_interest_group_type = ig_landowners
 			}
 		}

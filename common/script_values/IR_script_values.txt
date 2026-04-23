@@ -78,7 +78,6 @@ lobbying_expenditure_value = {
 }
 
 purchase_poltician_value = {
-	value = gdp
-	divide = 250
-	multiply = -1
+	value = gold_reserves_limit
+	multiply = -0.1
 }

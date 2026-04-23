@@ -20,6 +20,12 @@ clear_boardroom_schism_variables = {
     remove_variable = minarchist_effects_var
     remove_variable = molinarist_effects_var
     remove_variable = monopolist_effects_var
+    remove_variable = defector_from_monopolist_var
+    remove_variable = defector_from_minarchist_var
+    remove_variable = defector_from_molinarist_var
+    remove_variable = defector_to_monopolist_var
+    remove_variable = defector_to_minarchist_var
+    remove_variable = defector_to_molinarist_var
 }
 
 ## for the EXTRAORDINARY GENERAL MEETING ##

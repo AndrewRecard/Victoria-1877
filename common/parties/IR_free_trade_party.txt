@@ -220,7 +220,7 @@
 			limit = {
 				OR = {
 					leader ?= {
-						has_ideology = ideology:ideology_market_liberal
+						propertarian_or_market_liberal = yes
 					}
 					has_ideology = ideology:ideology_laissez_faire
 				}
@@ -276,7 +276,7 @@
 				is_powerful = yes
 				OR = {
 					leader ?= {
-						has_ideology = ideology:ideology_market_liberal
+						propertarian_or_market_liberal = yes
 					}
 					has_ideology = ideology:ideology_laissez_faire
 				}
@@ -301,7 +301,7 @@
 					}
 				}
 				leader ?= {
-					has_ideology = ideology:ideology_market_liberal
+					propertarian_or_market_liberal = yes
 				}
 			}
 			add = {
@@ -352,7 +352,7 @@
 				}
 				OR = {
 					leader ?= {
-						has_ideology = ideology:ideology_market_liberal
+						propertarian_or_market_liberal = yes
 					}
 					has_ideology = ideology:ideology_laissez_faire
 				}
@@ -369,7 +369,7 @@
 				}
 				OR = {
 					leader ?= {
-						has_ideology = ideology:ideology_market_liberal
+						propertarian_or_market_liberal = yes
 					}
 					has_ideology = ideology:ideology_laissez_faire
 				}
@@ -494,7 +494,7 @@
 					has_ideology = ideology:ideology_laissez_faire
 					has_ideology = ideology:ideology_agrarian
 					leader ?= {
-						has_ideology = ideology:ideology_market_liberal
+						propertarian_or_market_liberal = yes
 					}
 				}
 			}

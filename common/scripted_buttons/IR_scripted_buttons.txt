@@ -80,7 +80,6 @@ depose_armed_forces_leader_button = {
 				}
 			}
 			is_powerful = no
-			is_in_government = no
 		}
 		NOT = {
 			has_law_or_variant = law_type:law_guaranteed_liberties
@@ -150,7 +149,7 @@ depose_armed_forces_leader_button = {
 
 		add_radicals = {
 			pop_type = officers
-			value = huge_radicals
+			value = very_large_radicals
 		}
 	}
 

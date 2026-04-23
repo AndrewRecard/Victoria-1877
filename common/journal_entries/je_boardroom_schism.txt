@@ -18,6 +18,10 @@
 	}
 	possible = {
 		has_law_or_variant = law_type:law_directorate
+		NOR = {
+			has_law = law_type:law_polycentric_law
+			has_law = law_type:law_sovereign_monopoly
+		}
 		has_technology_researched = corporate_management
 		has_technology_researched = anarchism
 		has_technology_researched = corporatism
@@ -43,18 +47,24 @@
 
 	status_desc = {
 		first_valid = {
-			#triggered_desc = { # Cementing the Rightful Dynasty is active
-			#desc = status_dynasty_cementing_fra
-			#trigger = {
-			#has_journal_entry = je_final_propertarianism
-			#}
-			#}
 			triggered_desc = {
 				desc = blank_tt
 				trigger = {
 					NOT = {
 						has_journal_entry = je_boardroom_schism
 					}
+				}
+			}
+			triggered_desc = { # Cementing the Rightful Dynasty is active
+				desc = status_monopolist_mandate
+				trigger = {
+					has_journal_entry = je_monopolist_mandate
+				}
+			}
+			triggered_desc = { # Cementing the Rightful Dynasty is active
+				desc = status_molinarist_mandate
+				trigger = {
+					has_journal_entry = je_molinarist_mandate
 				}
 			}
 			triggered_desc = {
@@ -116,9 +126,18 @@
 			limit = { type = law_type:law_directorate }
 			save_scope_as = directorate_scope
 		}
-		set_variable = minarchist_effects_var
-		set_variable = molinarist_effects_var
-		set_variable = monopolist_effects_var
+		set_variable = {
+			name = minarchist_effects_var
+			value = 0
+		}
+		set_variable = {
+			name = molinarist_effects_var
+			value = 0
+		}
+		set_variable = {
+			name = monopolist_effects_var
+			value = 0
+		}
 	}
 
 	on_weekly_pulse = {
@@ -176,8 +195,8 @@
 
 	on_monthly_pulse = {
 		random_events = {
-			400 = 0
-			#10 = french_pretenders_pulse.2
+			15 = 0
+			1 = boardroom_schism.7
 		}
 	}
 
@@ -200,13 +219,22 @@
 	}
 
 	fail = {
-		custom_tooltip = {
-			text = "je_schism_no_mandate"
-			has_variable = mandate_wasted
+		OR = {
+		    custom_tooltip = {
+    			text = "je_schism_no_mandate"
+    			has_variable = mandate_wasted
+    		}
+    		custom_tooltip = {
+				always = no
+    			text = "je_schism_early_laws"
+    		}
 		}
 	}
 
 	on_fail = {
+		if = {
+			limit = { has_variable = mandate_wasted }
+		}
 		add_modifier = {
 			name = ir_schism_failed_modifier
 			days = long_modifier_time
@@ -217,6 +245,10 @@
 	invalid = {
 		NOT = {
 			has_law = law_type:law_directorate
+		}
+		OR = {
+			has_law = law_type:law_polycentric_law
+			has_law = law_type:law_sovereign_monopoly
 		}
 	}
 	on_invalid = {

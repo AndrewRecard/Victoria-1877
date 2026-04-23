@@ -41,7 +41,6 @@ boardroom_schism.1 = {
 
 	option = {
 		name = boardroom_schism.1.a
-		highlighted_option = yes
 		set_variable = chose_initial_propertarian_philosophy
 		custom_tooltip = {
 			text = supporting_molinarism_tt
@@ -121,7 +120,6 @@ boardroom_schism.1 = {
 
 	option = {
 		name = boardroom_schism.1.b
-		highlighted_option = yes
 		set_variable = chose_initial_propertarian_philosophy
 		custom_tooltip = {
 			text = supporting_minarchism_tt
@@ -822,6 +820,307 @@ boardroom_schism.6 = {
 
 	after = {
 		set_variable = minarchists_victorious
+	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_journal_entry = je_boardroom_schism
+		}
+	}
+}
+
+boardroom_schism.7 = {
+	type = country_event
+	title = boardroom_schism.7.t
+	desc = boardroom_schism.7.d
+	flavor = boardroom_schism.7.f
+	duration = 3
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	cooldown = { days = normal_modifier_time }
+
+	trigger = {
+		NOT = { has_variable = boardroom_schism_freeze }
+		NOT = { has_variable = suspended_lobbying_var }
+		any_company = {
+			company_is_prosperous = yes
+			executive = {
+				has_propertarian_ideology = yes
+			}
+		}
+		calc_true_if = {
+			amount >= 2
+			je:je_boardroom_schism = {
+				scripted_bar_progress = { name = schism_monopolist_bar value >= 40 }
+			}
+			je:je_boardroom_schism = {
+				scripted_bar_progress = { name = schism_minarchist_bar value >= 40 }
+			}
+			je:je_boardroom_schism = {
+				scripted_bar_progress = { name = schism_molinarist_bar value >= 40 }
+			}
+		}
+	}
+
+	immediate = {
+		random_company = {
+			limit = {
+				company_is_prosperous = yes
+				executive = {
+					has_propertarian_ideology = yes
+				}
+			}
+			save_scope_as = defector_company
+			executive = {
+				save_scope_as = defector_executive
+				interest_group = {
+					save_scope_as = defector_ig
+				}
+			}
+		}
+
+		# Determine old→new ideology direction via variable flags
+		if = {
+			limit = { scope:defector_executive = { has_ideology = ideology:ideology_monopolist_leader } }
+			set_variable = defector_from_monopolist_var
+			random_list = {
+				50 = { set_variable = defector_to_minarchist_var }
+				50 = { set_variable = defector_to_molinarist_var }
+			}
+		}
+		if = {
+			limit = { scope:defector_executive = { has_ideology = ideology:ideology_minarchist_leader } }
+			set_variable = defector_from_minarchist_var
+			random_list = {
+				50 = { set_variable = defector_to_monopolist_var }
+				50 = { set_variable = defector_to_molinarist_var }
+			}
+		}
+		if = {
+			limit = { scope:defector_executive = { has_ideology = ideology:ideology_molinarist_leader } }
+			set_variable = defector_from_molinarist_var
+			random_list = {
+				50 = { set_variable = defector_to_monopolist_var }
+				50 = { set_variable = defector_to_minarchist_var }
+			}
+		}
+	}
+
+	gui_window = event_window_1char_tabloid
+	left_icon = scope:defector_executive
+
+	option = {
+		name = boardroom_schism.7.a
+		default_option = yes
+
+		if = {
+			limit = { has_variable = defector_from_monopolist_var }
+			custom_tooltip = {
+				text = monopolism_progress_decrease_20_tt
+				je:je_boardroom_schism = {
+					add_progress = { value = -20 name = schism_monopolist_bar }
+				}
+			}
+		}
+		if = {
+			limit = { has_variable = defector_from_minarchist_var }
+			custom_tooltip = {
+				text = minarchism_progress_decrease_20_tt
+				je:je_boardroom_schism = {
+					add_progress = { value = -20 name = schism_minarchist_bar }
+				}
+			}
+		}
+		if = {
+			limit = { has_variable = defector_from_molinarist_var }
+			custom_tooltip = {
+				text = molinarism_progress_decrease_20_tt
+				je:je_boardroom_schism = {
+					add_progress = { value = -20 name = schism_molinarist_bar }
+				}
+			}
+		}
+		if = {
+			limit = { has_variable = defector_to_monopolist_var }
+			custom_tooltip = {
+				text = monopolism_progress_increase_20_tt
+				je:je_boardroom_schism = {
+					add_progress = { value = 20 name = schism_monopolist_bar }
+				}
+			}
+			scope:defector_executive = {
+				set_ideology = ideology:ideology_monopolist_leader
+			}
+		}
+		if = {
+			limit = { has_variable = defector_to_minarchist_var }
+			custom_tooltip = {
+				text = minarchism_progress_increase_20_tt
+				je:je_boardroom_schism = {
+					add_progress = { value = 20 name = schism_minarchist_bar }
+				}
+			}
+			scope:defector_executive = {
+				set_ideology = ideology:ideology_minarchist_leader
+			}
+		}
+		if = {
+			limit = { has_variable = defector_to_molinarist_var }
+			custom_tooltip = {
+				text = molinarism_progress_increase_20_tt
+				je:je_boardroom_schism = {
+					add_progress = { value = 20 name = schism_molinarist_bar }
+				}
+			}
+			scope:defector_executive = {
+				set_ideology = ideology:ideology_molinarist_leader
+			}
+		}
+		add_modifier = {
+			name = ir_ideological_flagship_modifier
+			days = normal_modifier_time
+		}
+	}
+
+	option = {
+		name = boardroom_schism.7.b
+
+		if = {
+			limit = { has_variable = defector_from_monopolist_var }
+			every_interest_group = {
+				limit = {
+					leader = { has_ideology = ideology:ideology_monopolist_leader }
+				}
+				add_modifier = {
+					name = ir_discredited_apostate_modifier
+					days = normal_modifier_time
+				}
+			}
+		}
+		if = {
+			limit = { has_variable = defector_from_minarchist_var }
+			every_interest_group = {
+				limit = {
+					leader = { has_ideology = ideology:ideology_minarchist_leader }
+				}
+				add_modifier = {
+					name = ir_discredited_apostate_modifier
+					days = normal_modifier_time
+				}
+			}
+		}
+		if = {
+			limit = { has_variable = defector_from_molinarist_var }
+			every_interest_group = {
+				limit = {
+					leader = { has_ideology = ideology:ideology_molinarist_leader }
+				}
+				add_modifier = {
+					name = ir_discredited_apostate_modifier
+					days = normal_modifier_time
+				}
+			}
+		}
+
+		if = {
+			limit = { has_variable = defector_to_monopolist_var }
+			every_interest_group = {
+				limit = {
+					leader = { has_ideology = ideology:ideology_monopolist_leader }
+				}
+				add_modifier = {
+					name = ir_boardroom_purge_modifier
+					days = normal_modifier_time
+				}
+			}
+		}
+		if = {
+			limit = { has_variable = defector_to_minarchist_var }
+			every_interest_group = {
+				limit = {
+					leader = { has_ideology = ideology:ideology_minarchist_leader }
+				}
+				add_modifier = {
+					name = ir_boardroom_purge_modifier
+					days = normal_modifier_time
+				}
+			}
+		}
+		if = {
+			limit = { has_variable = defector_to_molinarist_var }
+			every_interest_group = {
+				limit = {
+					leader = { has_ideology = ideology:ideology_molinarist_leader }
+				}
+				add_modifier = {
+					name = ir_boardroom_purge_modifier
+					days = normal_modifier_time
+				}
+			}
+		}
+		scope:defector_executive = {
+			exile_character = yes
+		}
+	}
+
+	option = {
+		name = boardroom_schism.7.c
+		highlighted_option = yes
+		trigger = {
+			has_law_or_variant = law_type:law_secret_police
+		}
+
+		if = {
+			limit = { has_variable = defector_from_monopolist_var }
+			custom_tooltip = {
+				text = monopolism_progress_increase_40_tt
+				je:je_boardroom_schism = {
+					add_progress = { value = 40 name = schism_monopolist_bar }
+				}
+			}
+		}
+		if = {
+			limit = { has_variable = defector_from_minarchist_var }
+			custom_tooltip = {
+				text = minarchism_progress_increase_40_tt
+				je:je_boardroom_schism = {
+					add_progress = { value = 40 name = schism_minarchist_bar }
+				}
+			}
+		}
+		if = {
+			limit = { has_variable = defector_from_molinarist_var }
+			custom_tooltip = {
+				text = molinarism_progress_increase_40_tt
+				je:je_boardroom_schism = {
+					add_progress = { value = 40 name = schism_molinarist_bar }
+				}
+			}
+		}
+
+		add_modifier = {
+			name = ir_defector_martyred_modifier
+			days = normal_modifier_time
+		}
+		add_radicals = {
+			value = medium_radicals
+			interest_group = scope:defector_ig
+		}
+
+		scope:defector_executive = {
+			kill_character = yes
+		}
+	}
+
+	after = {
+		remove_variable = defector_from_monopolist_var
+		remove_variable = defector_from_minarchist_var
+		remove_variable = defector_from_molinarist_var
+		remove_variable = defector_to_monopolist_var
+		remove_variable = defector_to_minarchist_var
+		remove_variable = defector_to_molinarist_var
 	}
 
 	cancellation_trigger = {

@@ -41,6 +41,82 @@ entrenched_entitlements_timer_effect = {
     }
 }
 
+on_company_disbanded = {
+    on_actions = {
+        disbanded_propertarian_company_on_action
+    }
+}
+
+disbanded_propertarian_company_on_action = {
+    effect = {
+        if = {
+            limit = {
+                has_journal_entry = je_boardroom_schism
+            }
+            if = {
+                limit = {
+                    scope:company = {
+                        executive = {
+                            has_ideology = ideology:ideology_minarchist_leader
+                        }
+                    }
+                }
+                every_interest_group = {
+                    limit = {
+                        leader = {
+                            has_ideology = ideology:ideology_minarchist_leader
+                        }
+                    }
+                    add_modifier = {
+                        name = ir_disbanded_company_modifier
+                        days = normal_modifier_time
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    scope:company = {
+                        executive = {
+                            has_ideology = ideology:ideology_molinarist_leader
+                        }
+                    }
+                }
+                every_interest_group = {
+                    limit = {
+                        leader = {
+                            has_ideology = ideology:ideology_molinarist_leader
+                        }
+                    }
+                    add_modifier = {
+                        name = ir_disbanded_company_modifier
+                        days = normal_modifier_time
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    scope:company = {
+                        executive = {
+                            has_ideology = ideology:ideology_monopolist_leader
+                        }
+                    }
+                }
+                every_interest_group = {
+                    limit = {
+                        leader = {
+                            has_ideology = ideology:ideology_monopolist_leader
+                        }
+                    }
+                    add_modifier = {
+                        name = ir_disbanded_company_modifier
+                        days = normal_modifier_time
+                    }
+                }
+            }
+        }
+    }
+}
+
 on_secession_start = {
     on_actions = {
         fix_special_laws_on_action

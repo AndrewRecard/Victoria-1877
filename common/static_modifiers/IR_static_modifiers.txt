@@ -361,3 +361,37 @@ ir_schism_failed_modifier = {
 	state_pop_support_movement_propertarian_mult = -0.33
 	state_capitalists_investment_pool_efficiency_mult = -0.1
 }
+
+ir_ideological_flagship_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_positive.dds
+	country_company_throughput_bonus_add = 0.05
+	country_authority_add = 50
+}
+
+legitimacy_5_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	country_legitimacy_base_add = 5
+}
+
+ir_discredited_apostate_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	interest_group_pol_str_mult = 0.15
+	interest_group_approval_add = 1
+}
+
+ir_boardroom_purge_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
+	interest_group_pol_str_mult = -0.15
+	interest_group_approval_add = -2
+}
+
+ir_disbanded_company_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
+	interest_group_approval_add = -2
+}
+
+ir_defector_martyred_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	country_authority_add = 50
+	country_legitimacy_ideological_incoherence_mult = -0.1
+}
