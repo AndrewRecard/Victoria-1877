@@ -190,6 +190,7 @@
  ir_ideological_flagship_modifier: "Ideological Flagship"
  ir_discredited_apostate_modifier: "Apostate Discredited"
  ir_boardroom_purge_modifier: "Purged from the Boardroom"
+ ir_defector_martyred_modifier: "Defector Martyred"
 
  # OTHER
  caciquismo.1.i: "The house has already won."
