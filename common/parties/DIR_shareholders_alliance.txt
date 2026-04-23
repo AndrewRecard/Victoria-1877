@@ -157,6 +157,9 @@
 		if = {
 			limit = {
 				owner = {
+					any_active_party = {
+						is_party_type = voluntaryist_league
+					}
 					py:voluntaryist_league = {
 						any_member = {
 							count >= 3

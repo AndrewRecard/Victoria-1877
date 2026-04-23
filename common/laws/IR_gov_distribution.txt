@@ -483,6 +483,17 @@ INJECT:law_anarchy = {
 			has_law_or_variant = law_type:law_directorate
 		}
 	}
+	on_activate = {
+		if = {
+			limit = {
+				OR = {
+					has_law_or_variant = law_type:law_dedicated_police
+					has_law_or_variant = law_type:law_militarized_police
+				}
+			}
+			activate_law = law_type:law_local_police
+		} }
+
 	modifier = {
 		country_bureaucracy_investment_cost_factor_mult = 0.25
 		state_bureaucracy_population_base_cost_factor_mult = -0.5

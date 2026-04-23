@@ -148,7 +148,7 @@
  ideology_propertarian_monopolist: "Market Consolidationist"
  ideology_propertarian_monopolist_desc: "#lore This movement advocates for consolidation of political and economic power under a Directorate, transforming the free market into a Sovereign Monopoly.#!"
  ideology_propertarian_molinarist: "Free-Market Absolutist"
- ideology_propertarian_molinarist_desc: "#lore This movement advocates for the state's monopoly on violence to be relinquished in the name of absolute economic freedom and social darwinism.#!"
+ ideology_propertarian_molinarist_desc: "#lore This movement advocates for the state's monopoly on violence to be relinquished in the name of unmitigated economic and contractual freedom.#!"
 
  ideology_molinarist_leader: "Molinarist"
  ideology_molinarist_leader_desc: "#lore This leader holds absolute property rights as the highest moral principle, and seeks to dismantle state interference in favor of unrestricted market freedom.#!"
@@ -258,7 +258,7 @@
   ## PARTIES
  national_trust_party: "National Trust Party"
  from_monopolist_compatible: "Monopolist-Compatible Ideology"
- shareholders_alliance: "Shareholders' Alliance"
+ shareholders_alliance: "Shareholders Alliance"
  from_minarchist_compatible: "Minarchist-Compatible Ideology"
  voluntaryist_league: "Voluntaryist League"
  from_molinarist_compatible: "Molinarist-Compatible Ideology"

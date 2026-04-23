@@ -6,27 +6,10 @@
 		always = no
 	}
 
-	modifiers_while_active = {
-		ir_schism_mandate_modifier
-	}
-
 	immediate = {
-		random_political_movement = {
-			limit = {
-				is_political_movement_type = movement_propertarian
-			}
-			set_core_ideology = ideology_propertarian_monopolist
-		}
-		ordered_interest_group = {
-			limit = {
-				leader = {
-					has_ideology = ideology:ideology_monopolist_leader
-				}
-			}
-			order_by = ig_clout
-			position = 0
-			check_range_bounds = no
-			save_scope_as = mandate_ig
+		trigger_event = {
+			id = boardroom_schism.4
+			popup = yes
 		}
 	}
 
@@ -35,6 +18,17 @@
 	}
 	on_complete = {
 		set_variable = monopolists_victorious
+		add_modifier = {
+			name = ir_monopolized_integration_modifier
+		}
+		add_modifier = {
+			name = ir_schism_resolved_modifier
+			days = normal_modifier_time
+		}
+		add_loyalists = {
+			value = large_radicals
+		}
+		remove_modifier = ir_schism_mandate_modifier
 	}
 
 	invalid = {
@@ -42,10 +36,80 @@
 			has_journal_entry = je_boardroom_schism
 		}
 	}
+	on_invalid = {
+		remove_modifier = ir_schism_mandate_modifier
+	}
 
 	timeout = short_modifier_time
 	on_timeout = {
+		custom_tooltip = "je_schism_fail"
+		random_political_movement = {
+			limit = {
+				is_political_movement_type = movement_propertarian
+			}
+			set_core_ideology = ideology_propertarian_movement
+		}
+		set_variable = mandate_wasted
+		remove_modifier = ir_schism_mandate_modifier
+	}
 
+	weight = 100
+	should_be_pinned_by_default = yes
+}
+
+je_molinarist_mandate = {
+	icon = "gfx/interface/icons/invention_icons/corporate_charters.dds"
+	group = je_group_propertarianism
+
+	is_shown_when_inactive = {
+		always = no
+	}
+
+	immediate = {
+		trigger_event = {
+			id = boardroom_schism.5
+			popup = yes
+		}
+	}
+
+	complete = {
+		has_law = law_type:law_polycentric_law
+	}
+	on_complete = {
+		set_variable = molinarists_victorious
+		add_modifier = {
+			name = ir_privatized_peace_modifier
+		}
+		add_modifier = {
+			name = ir_schism_resolved_modifier
+			days = normal_modifier_time
+		}
+		add_loyalists = {
+			value = large_radicals
+		}
+		remove_modifier = ir_schism_mandate_modifier
+	}
+
+	invalid = {
+		NOT = {
+			has_journal_entry = je_boardroom_schism
+		}
+	}
+	on_invalid = {
+		remove_modifier = ir_schism_mandate_modifier
+	}
+
+	timeout = short_modifier_time
+	on_timeout = {
+		custom_tooltip = "je_schism_fail"
+		random_political_movement = {
+			limit = {
+				is_political_movement_type = movement_propertarian
+			}
+			set_core_ideology = ideology_propertarian_movement
+		}
+		set_variable = mandate_wasted
+		remove_modifier = ir_schism_mandate_modifier
 	}
 
 	weight = 100

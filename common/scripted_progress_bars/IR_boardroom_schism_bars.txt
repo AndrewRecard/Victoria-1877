@@ -38,7 +38,6 @@ schism_minarchist_bar = {
 							has_role = politician
 							has_role = executive
 							has_role = agitator
-							has_role = ruler
 						}
 					}
 				}
@@ -51,7 +50,6 @@ schism_minarchist_bar = {
 								has_role = politician
 								has_role = executive
 								has_role = agitator
-								has_role = ruler
 							}
 						}
 						add = this.popularity
@@ -104,41 +102,20 @@ schism_minarchist_bar = {
 				}
 				subtract = 0.5
 			}
-			### Propertarian movement radicalism (market stability takes preference over trying to enact laws early during JE)
+			### Minarchists gain progress from legitimacy in government
 			if = {
 				limit = {
-					any_political_movement = {
-						is_political_movement_type = movement_propertarian
-						political_movement_radicalism >= 0.75
+					any_interest_group = {
+						leader = {
+							has_ideology = ideology:ideology_minarchist_leader
+						}
 					}
 				}
 				add = {
-					desc = "minarchism_progress_from_propertarian_militant_tt"
-					value = 4
-				}
-			}
-			else_if = {
-				limit = {
-					any_political_movement = {
-						is_political_movement_type = movement_propertarian
-						political_movement_radicalism >= 0.50
-					}
-				}
-				add = {
-					desc = "minarchism_progress_from_propertarian_protesting_tt"
-					value = 2
-				}
-			}
-			else_if = {
-				limit = {
-					any_political_movement = {
-						is_political_movement_type = movement_propertarian
-						political_movement_radicalism >= 0.25
-					}
-				}
-				add = {
-					desc = "minarchism_progress_from_propertarian_agitating_tt"
-					value = 1
+					desc = "minarchism_progress_from_minarchist_legitimacy_tt"
+					value = legitimacy
+					multiply = 0.05
+					subtract = 2.5
 				}
 			}
 			### From Effects (event/button nudges)
@@ -205,7 +182,6 @@ schism_molinarist_bar = {
 							has_role = politician
 							has_role = executive
 							has_role = agitator
-							has_role = ruler
 						}
 					}
 				}
@@ -218,7 +194,6 @@ schism_molinarist_bar = {
 								has_role = politician
 								has_role = executive
 								has_role = agitator
-								has_role = ruler
 							}
 						}
 						add = this.popularity
@@ -345,7 +320,6 @@ schism_monopolist_bar = {
 							has_role = politician
 							has_role = executive
 							has_role = agitator
-							has_role = ruler
 						}
 					}
 				}
@@ -358,7 +332,6 @@ schism_monopolist_bar = {
 								has_role = politician
 								has_role = executive
 								has_role = agitator
-								has_role = ruler
 							}
 						}
 						add = this.popularity

@@ -50,6 +50,12 @@
 			}
 			remove_modifier = ir_free_market_commons_modifier
 		}
+		if = {
+			limit = {
+				has_modifier = ir_guilded_charter_modifier
+			}
+			remove_modifier = ir_guilded_charter_modifier
+		}
 		ig:ig_intelligentsia = {
 			remove_ideology = ideology_market_rationalist
 			add_ideology = ideology_republican

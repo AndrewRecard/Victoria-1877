@@ -284,7 +284,8 @@ ir_privatized_peace_modifier = {
 
 ir_monopolized_integration_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
-	country_bureaucracy_investment_cost_factor_mult = -0.25
+	country_company_throughput_bonus_add = 0.05
+	country_company_construction_efficiency_bonus_add = 0.05
 	state_market_access_price_impact = 0.05
 }
 
@@ -329,7 +330,34 @@ ir_boardroom_confidence_modifier = {
 
 ir_schism_mandate_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	country_law_enactment_time_mult = -0.75
+	country_law_enactment_time_mult = -1
 	country_law_enactment_stall_mult = -0.25
 	state_loyalists_from_political_movements_mult = 0.25
+}
+
+ir_schism_resolved_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	country_legitimacy_base_add = 10
+	country_loyalists_from_legitimacy_mult = 0.25
+}
+
+ir_ig_mandate_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
+	interest_group_pol_str_mult = 0.5
+}
+
+ir_mandate_opposed_authority_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	country_authority_add = 100
+}
+
+ir_mandate_opposed_ig_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	interest_group_pol_str_mult = 0.25
+}
+
+ir_schism_failed_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	state_pop_support_movement_propertarian_mult = -0.33
+	state_capitalists_investment_pool_efficiency_mult = -0.1
 }

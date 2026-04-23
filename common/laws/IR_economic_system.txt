@@ -29,6 +29,15 @@ law_sovereign_monopoly = {
 		custom_tooltip = bureaucrats_industrialists_ig_shift_effect_tt
 	}
 
+	on_deactivate = {
+		if = {
+			limit = {
+				has_modifier = ir_monopolized_integration_modifier
+			}
+			remove_modifier = ir_monopolized_integration_modifier
+		}
+	}
+
 	modifier = {
 		interest_group_ig_industrialists_pol_str_mult = 0.5
 		country_authority_mult = 0.25

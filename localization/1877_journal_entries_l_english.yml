@@ -89,11 +89,12 @@
 
  # Boardroom Schism
  je_boardroom_schism: "Boardroom Schism"
- je_boardroom_schism_reason: "With the state apparatus now privatized, the splintering of the Propertarian ideology must be controlled. The Directorate must have a cohesive ideology if it is to provide market stability and shareholder certainty, lest our dividends be put to removing human capital from the nation's GDP figures."
+ je_boardroom_schism_reason: "With the state apparatus now privatized, the Propertarian movement has fractured. The Directorate must have a cohesive ideology if it is to provide market stability and shareholder certainty, lest our dividends be put to removing human capital from the nation's GDP figures."
  je_boardroom_lobbying_cost: "\n\nBoardroom Lobbying is costing us #r @money!-[GetPlayer.MakeScope.ScriptValue('lobbying_expenditure_value')|D]#! per week."
 
  je_schism_resulting_je: "The most influential out of the [GetIdeology('ideology_monopolist_leader').GetName] or [GetIdeology('ideology_molinarist_leader').GetName] lobbies will receive a mandate to implement their ideology. The [GetIdeology('ideology_minarchist_leader').GetName] lobby will be exempt, as they wish to maintain status-quo."
  je_schism_complete: "One of the three #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! lobbies have won over the Board and suited the Directorate to their ideals."
+ je_schism_no_mandate: "Either of the [GetIdeology('ideology_monopolist_leader').GetName] or [GetIdeology('ideology_molinarist_leader').GetName] lobbies fail to implement their mandate."
  status_no_winner: "No lobby is ahead of the other"
  status_monopolism_winning: "The #bold [GetIdeology('ideology_monopolist_leader').GetName]#! lobby has captured a plurality of the\n#b Board of Directors!#!"
  status_molinarism_winning: "The #bold [GetIdeology('ideology_molinarist_leader').GetName]#! lobby has captured a plurality of the\n#b Board of Directors!#!"
@@ -101,6 +102,7 @@
 
  ir_propertarian_lobby_war_modifier: "Propertarian Lobby War"
  ir_funding_lobbies_modifier: "Funding Propertarian Lobbies"
+ ir_schism_failed_modifier: "Protracted Lobby War"
  ir_guilded_charter_modifier: "Guilded Charter"
  ir_privatized_peace_modifier: "Privatized Peace"
  ir_monopolized_integration_modifier: "Monopolized Integration"
@@ -124,9 +126,7 @@
  minarchism_progress_from_funding_tt: "Funding [GetIdeology('ideology_minarchist_leader').GetName] Lobbies"
  minarchism_progress_from_igs_tt: "[concept_clout] of [Concept('concept_interest_group', '$concept_interest_groups$')] with [GetIdeology('ideology_minarchist_leader').GetName] [Concept('concept_leader', '$concept_leaders$')]"
  minarchism_progress_from_characters_tt: "[GetIdeology('ideology_minarchist_leader').GetName] [Concept('concept_character', '$concept_characters$')] [concept_popularity]"
- minarchism_progress_from_propertarian_agitating_tt: "[GetIdeology('ideology_propertarian_movement').GetName] [concept_political_movement] is agitating"
- minarchism_progress_from_propertarian_protesting_tt: "[GetIdeology('ideology_propertarian_movement').GetName] [concept_political_movement] is protesting"
- minarchism_progress_from_propertarian_militant_tt: "[GetIdeology('ideology_propertarian_movement').GetName] [concept_political_movement] is militant"
+ minarchism_progress_from_minarchist_legitimacy_tt: "[concept_legitimacy] with a [GetIdeology('ideology_minarchist_leader').GetName] [concept_interest_group] [concept_in_government]"
  minarchism_progress_from_company_productivity_tt: "[GetIdeology('ideology_minarchist_leader').GetName] [Concept('concept_company','$concept_companies$')] [concept_productivity]"
  minarchism_progress_from_average_prosperity_tt: "Average [concept_prosperity] of [Concept('concept_company','$concept_companies$')]"
  minarchism_progress_from_effects_tt: "Ongoing lobby effects from events and sponsored actions"
@@ -214,4 +214,14 @@
 
  # Mandates
  je_monopolist_mandate: "Monopolist Mandate"
- je_monopolist_mandate_reason: "As a result of Boardroom consolidation, the Chairman has a mandate to enact the sovereign monopoly."
+ je_monopolist_mandate_reason: "As a result of a Boardroom supermajority, the Monopolist Lobby has a mandate to incorporate the state into a Sovereign Monopoly."
+ je_molinarist_mandate: "Molinarist Mandate"
+ je_molinarist_mandate_reason: "As a result of a Boardroom supermajority, the Molinarist Lobby has a mandate to liquidate the Directorate and transition the state into a Polycentric Market."
+
+ ir_schism_mandate_modifier: "Propertarian Mandate"
+ ir_ig_mandate_modifier: "Mandate Granted"
+ ir_schism_mandate: "Boardroom Mandate"
+ ir_mandate_opposed_authority_modifier: "Chairman Seizing Authority"
+ ir_mandate_opposed_ig_modifier: "Propertarian Backlash"
+ ir_schism_resolved_modifier: "Resolved Boardroom Schism"
+ je_schism_fail: "The Boardroom Schism [concept_journal_entry] will fail."

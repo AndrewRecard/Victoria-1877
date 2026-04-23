@@ -162,6 +162,24 @@
  ir_offbook_liabilities_modifier: "Off-Book Liabilities"
  ir_boardroom_confidence_modifier: "Boardroom Confidence"
 
+ boardroom_schism.4.t: "The Sovereign Buyout"
+ boardroom_schism.4.d: "Following months of aggressive buyouts and backdoor dealings, the Monopolist lobby has achieved a supermajority within the Directorate. In a chillingly brief emergency session, [SCOPE.sCharacter('mandate_leader').GetFullName] invoked a controversial charter to forcibly acquire the assets of all remaining competitors."
+ boardroom_schism.4.f: ""You championed the free market, did you not? You wrote endless treatises on the absolute right of capital to accumulate, to outcompete, to consume the weak.\n\nThere is no longer a need for the chaos of competition. We have reached the logical conclusion of Propertarianism. The nation is now a subsidiary of our firm, and we demand absolute efficiency. You are hereby relieved of your positions. Please surrender your shares to our security personnel on the way out.""
+ boardroom_schism.4.a: "Competition is a redundant waste of capital."
+ boardroom_schism.4.b: "This is a blatant violation of anti-trust contracts."
+
+ boardroom_schism.5.t: "Dissolution of the Board"
+ boardroom_schism.5.d: "The Molinarist lobby has secured an ideological stranglehold over the Directorate's shareholders. In an unprecedented emergency session, [SCOPE.sCharacter('mandate_leader').GetFullName] introduced a binding resolution to completely liquidate the Board. Across the nation, subsidiary companies are declaring independence, private defense agencies are refusing orders from the capital, and the central administrative apparatus is rapidly collapsing."
+ boardroom_schism.5.f: ""For years, we claimed to be the ultimate realization of the free market, yet we hypocritically clung to a central Board of Directors that held a monopoly on arbitration and security. A state by any other name is still a state," declared [SCOPE.sCharacter('mandate_leader').GetFullName] to a gallery of stunned executives.\n\n"Today, we liquidate the ultimate monopoly. From this moment forth, every subsidiary, every defense contractor, and every individual is a sovereign entity. We no longer answer to the Board. We answer only to the contract.""
+ boardroom_schism.5.a: "True liberty is found only in a polycentric market."
+ boardroom_schism.5.b: "This is absolute, unmitigated anarchy!"
+
+ boardroom_schism.6.t: "A Return to Fundamentals"
+ boardroom_schism.6.d: "After months of crippling ideological volatility, the Minarchist establishment has secured a definitive victory. The latest General Meeting concluded with the sweeping expulsion of both Monopolist and Molinarist agitators from the executive committee. The Board of Directors has been restructured, stripping the radical elements of their voting shares and cementing a return to the foundational principles of corporate governance."
+ boardroom_schism.6.f: ""A company without a regulator is a riot, and a company without competitors is a tomb," declared [SCOPE.sCharacter('mandate_leader').GetFullName], adjusting [SCOPE.sCharacter('mandate_leader').GetHerHis] cuffs as private security escorted the shouting radicals from the chamber.\n\n"The Directorate was not forged to be dismantled by anarchists, nor was it meant to become a bloated, monopolistic behemoth. It exists for one purpose: to protect property and enforce contracts. We are the night-watchmen of the market. Now, if you please, gentlemen... the markets have officially opened.""
+ boardroom_schism.6.a: "The Markets have opened."
+ boardroom_schism.6.b: "Blacklist the agitators and liquidate their portfolios."
+
  # OTHER
  caciquismo.1.i: "The house has already won."
  caciquismo.2.i: "You shouldn't be seeing this event with [GetLawType('law_directorate').GetName]. Might be an edge case or something i need to look into. Please report."

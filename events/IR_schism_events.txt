@@ -554,12 +554,279 @@ boardroom_schism.3 = {
 
 boardroom_schism.4 = {
 	type = country_event
-	hidden = yes
+	title = boardroom_schism.4.t
+	desc = boardroom_schism.4.d
+	flavor = boardroom_schism.4.f
+	duration = 3
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	event_image = { video = "europenorthamerica_capitalists_meeting" }
 
 	immediate = {
-		update_party_support = yes
-		call_election = {
-			days = 1
+		ordered_interest_group = {
+			limit = {
+				leader = {
+					has_ideology = ideology:ideology_monopolist_leader
+				}
+			}
+			order_by = ig_clout
+			position = 0
+			check_range_bounds = no
+			leader = {
+				save_scope_as = mandate_leader
+			}
+		}
+	}
+
+	option = {
+		name = boardroom_schism.4.a
+		default_option = yes
+		every_interest_group = {
+			limit = {
+				ig_counts_as_marginal = no
+				leader = {
+					has_ideology = ideology:ideology_monopolist_leader
+				}
+			}
+			add_modifier = {
+				name = ir_ig_mandate_modifier
+				days = short_modifier_time
+			}
+		}
+		add_modifier = {
+			name = ir_schism_mandate_modifier
+			days = short_modifier_time
+		}
+		random_political_movement = {
+			limit = {
+				is_political_movement_type = movement_propertarian
+			}
+			set_core_ideology = ideology_propertarian_monopolist
+		}
+	}
+
+	option = {
+		name = boardroom_schism.4.b
+		add_modifier = {
+			name = ir_mandate_opposed_authority_modifier
+			days = short_modifier_time
+		}
+		every_interest_group = {
+			limit = {
+				ig_counts_as_marginal = no
+				leader = {
+					OR = {
+						has_ideology = ideology:ideology_minarchist_leader
+						has_ideology = ideology:ideology_molinarist_leader
+					}
+				}
+			}
+			add_modifier = {
+				name = ir_mandate_opposed_ig_modifier
+				days = short_modifier_time
+			}
+		}
+		add_radicals = {
+			value = large_radicals
+		}
+		random_political_movement = {
+			limit = {
+				is_political_movement_type = movement_propertarian
+			}
+			set_core_ideology = ideology_propertarian_monopolist
+		}
+	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_journal_entry = je_monopolist_mandate
+		}
+	}
+}
+
+boardroom_schism.5 = {
+	type = country_event
+	title = boardroom_schism.5.t
+	desc = boardroom_schism.5.d
+	flavor = boardroom_schism.5.f
+	duration = 3
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	event_image = { video = "votp_agitator_speaking" }
+
+	immediate = {
+		ordered_interest_group = {
+			limit = {
+				leader = {
+					has_ideology = ideology:ideology_molinarist_leader
+				}
+			}
+			order_by = ig_clout
+			position = 0
+			check_range_bounds = no
+			leader = {
+				save_scope_as = mandate_leader
+			}
+		}
+	}
+
+	option = {
+		name = boardroom_schism.5.a
+		default_option = yes
+		every_interest_group = {
+			limit = {
+				ig_counts_as_marginal = no
+				leader = {
+					has_ideology = ideology:ideology_molinarist_leader
+				}
+			}
+			add_modifier = {
+				name = ir_ig_mandate_modifier
+				days = short_modifier_time
+			}
+		}
+		add_modifier = {
+			name = ir_schism_mandate_modifier
+			days = short_modifier_time
+		}
+		random_political_movement = {
+			limit = {
+				is_political_movement_type = movement_propertarian
+			}
+			set_core_ideology = ideology_propertarian_molinarist
+		}
+	}
+
+	option = {
+		name = boardroom_schism.5.b
+		add_modifier = {
+			name = ir_mandate_opposed_authority_modifier
+			days = short_modifier_time
+		}
+		every_interest_group = {
+			limit = {
+				ig_counts_as_marginal = no
+				leader = {
+					OR = {
+						has_ideology = ideology:ideology_minarchist_leader
+						has_ideology = ideology:ideology_monopolist_leader
+					}
+				}
+			}
+			add_modifier = {
+				name = ir_mandate_opposed_ig_modifier
+				days = short_modifier_time
+			}
+		}
+		add_radicals = {
+			value = large_radicals
+		}
+		random_political_movement = {
+			limit = {
+				is_political_movement_type = movement_propertarian
+			}
+			set_core_ideology = ideology_propertarian_molinarist
+		}
+	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_journal_entry = je_molinarist_mandate
+		}
+	}
+}
+
+boardroom_schism.6 = {
+	type = country_event
+	title = boardroom_schism.6.t
+	desc = boardroom_schism.6.d
+	flavor = boardroom_schism.6.f
+	duration = 3
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	event_image = { video = "votp_realist_household" }
+
+	immediate = {
+		ordered_interest_group = {
+			limit = {
+				leader = {
+					has_ideology = ideology:ideology_minarchist_leader
+				}
+			}
+			order_by = ig_clout
+			position = 0
+			check_range_bounds = no
+			leader = {
+				save_scope_as = mandate_leader
+			}
+		}
+	}
+
+	option = {
+		name = boardroom_schism.6.a
+		default_option = yes
+		every_interest_group = {
+			limit = {
+				ig_counts_as_marginal = no
+				leader = {
+					has_ideology = ideology:ideology_minarchist_leader
+				}
+			}
+			add_modifier = {
+				name = ir_ig_mandate_modifier
+				days = short_modifier_time
+			}
+		}
+		add_modifier = {
+			name = ir_guilded_charter_modifier
+		}
+		add_modifier = {
+			name = ir_schism_resolved_modifier
+			days = normal_modifier_time
+		}
+		add_loyalists = {
+			value = large_radicals
+		}
+	}
+
+	option = {
+		name = boardroom_schism.6.b
+		every_interest_group = {
+			limit = {
+				ig_counts_as_marginal = no
+				leader = {
+					has_ideology = ideology:ideology_minarchist_leader
+				}
+			}
+			add_modifier = {
+				name = ir_ig_mandate_modifier
+				days = short_modifier_time
+			}
+		}
+		add_modifier = {
+			name = ir_guilded_charter_modifier
+		}
+		every_scope_character = {
+			limit = {
+				OR = {
+					has_ideology = ideology:ideology_molinarist_leader
+					has_ideology = ideology:ideology_monopolist_leader
+				}
+			}
+			kill_character = yes
+		}
+	}
+
+	after = {
+		set_variable = minarchists_victorious
+	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_journal_entry = je_boardroom_schism
 		}
 	}
 }

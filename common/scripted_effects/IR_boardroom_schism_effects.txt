@@ -1,37 +1,25 @@
-﻿
-
-boardroom_schism_rewards_effect = {
-    if = {
-        limit = {
-            has_variable = minarchists_victorious
-        }
-        add_modifier = {
-            name = ir_guilded_charter_modifier
-            years = 10
-        }
-    }
-    if = {
-        limit = {
-            has_variable = molinarists_victorious
-        }
-        add_modifier = {
-            name = ir_privatized_peace_modifier
-            years = 10
-        }
-    }
-    if = {
-        limit = {
-            has_variable = monopolists_victorious
-        }
-        add_modifier = {
-            name = ir_monopolized_integration_modifier
-            years = 10
-        }
-    }
+﻿purchase_politician_cost_effect = {
+    add_treasury = purchase_poltician_value
 }
 
-purchase_politician_cost_effect = {
-    add_treasury = purchase_poltician_value
+clear_boardroom_schism_variables = {
+    remove_variable = minarchists_victorious
+    remove_variable = molinarists_victorious
+    remove_variable = monopolists_victorious
+    remove_variable = mandate_wasted
+    remove_variable = suspended_lobbying_var
+    remove_variable = convened_egm
+    remove_variable = supported_minarchism_once_var
+    remove_variable = supported_monopolism_once_var
+    remove_variable = supported_molinarism_once_var
+    remove_variable = boardroom_schism_freeze
+    remove_variable = boardroom_schism_startup_var
+    remove_variable = supporting_monopolism_var
+    remove_variable = supporting_molinarism_var
+    remove_variable = supporting_minarchism_var
+    remove_variable = minarchist_effects_var
+    remove_variable = molinarist_effects_var
+    remove_variable = monopolist_effects_var
 }
 
 ## for the EXTRAORDINARY GENERAL MEETING ##
@@ -119,4 +107,3 @@ egm_fail_effect = {
         }
     }
 }
-  ######################

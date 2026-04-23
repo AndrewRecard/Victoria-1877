@@ -116,6 +116,9 @@
 			limit = { type = law_type:law_directorate }
 			save_scope_as = directorate_scope
 		}
+		set_variable = minarchist_effects_var
+		set_variable = molinarist_effects_var
+		set_variable = monopolist_effects_var
 	}
 
 	on_weekly_pulse = {
@@ -125,29 +128,33 @@
 				name = ir_funding_lobbies_modifier
 				multiplier = lobbying_expenditure_value
 			}
-		}
-	}
-
-	on_monthly_pulse = {
-		random_events = {
-			400 = 0
-			#10 = french_pretenders_pulse.2
-		}
-		effect = {
 			if = {
 				limit = {
-					has_law = law_type:law_directorate
 					scope:journal_entry = {
-						OR = {
-							"scripted_bar_progress(schism_monopolist_bar)" >= 400
-							"scripted_bar_progress(schism_molinarist_bar)" >= 400
-						}
+						"scripted_bar_progress(schism_molinarist_bar)" >= 400
 					}
 					NOT = {
 						has_variable = boardroom_schism_freeze
 					}
 				}
 				set_variable = boardroom_schism_freeze
+				add_journal_entry = {
+					type = je_molinarist_mandate
+				}
+			}
+			if = {
+				limit = {
+					scope:journal_entry = {
+						"scripted_bar_progress(schism_monopolist_bar)" >= 400
+					}
+					NOT = {
+						has_variable = boardroom_schism_freeze
+					}
+				}
+				set_variable = boardroom_schism_freeze
+				add_journal_entry = {
+					type = je_monopolist_mandate
+				}
 			}
 			if = {
 				limit = {
@@ -159,8 +166,18 @@
 					}
 				}
 				set_variable = boardroom_schism_freeze
-				set_variable = minarchists_victorious
+				trigger_event = {
+					id = boardroom_schism.6
+					popup = yes
+				}
 			}
+		}
+	}
+
+	on_monthly_pulse = {
+		random_events = {
+			400 = 0
+			#10 = french_pretenders_pulse.2
 		}
 	}
 
@@ -180,10 +197,20 @@
 			text = je_schism_resulting_je
 			clear_boardroom_schism_variables = yes
 		}
-		boardroom_schism_rewards_effect = yes
+	}
+
+	fail = {
+		custom_tooltip = {
+			text = "je_schism_no_mandate"
+			has_variable = mandate_wasted
+		}
 	}
 
 	on_fail = {
+		add_modifier = {
+			name = ir_schism_failed_modifier
+			days = long_modifier_time
+		}
 		clear_boardroom_schism_variables = yes
 	}
 
