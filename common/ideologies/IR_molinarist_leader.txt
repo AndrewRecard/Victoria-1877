@@ -78,12 +78,22 @@
 		has_law_or_variant = law_type:law_directorate
 	}
 
+	interest_group_leader_trigger = {
+		ideology_molinarist_valid_trigger = yes
+	}
+
 	non_interest_group_leader_trigger = {
 		NAND = {
 			has_role = agitator
 			owner = {
+				NOT = {
+					boardroom_schism_resolved_trigger = yes
+				}
 				has_law = law_type:law_polycentric_law
 			}
+		}
+		interest_group = {
+			ideology_molinarist_valid_trigger = yes
 		}
 	}
 
@@ -92,153 +102,142 @@
 
 		if = {
 			limit = {
-				owner.ideology_minarchist_leader_disfavoured_laws > 0
+				owner.ideology_molinarist_leader_disfavoured_laws > 0
 			}
 			add = {
-				value = owner.ideology_minarchist_leader_disfavoured_laws
-				multiply = 8
+				value = owner.ideology_molinarist_leader_disfavoured_laws
+				multiply = 5  # less ideological, more profit driven
 			}
 		}
-
 		if = {
 			limit = {
-				owner.ideology_minarchist_leader_favoured_laws > 0
+				owner.ideology_molinarist_leader_favoured_laws > 0
 			}
 			subtract = {
-				value = owner.ideology_minarchist_leader_favoured_laws
-				multiply = 8
+				value = owner.ideology_molinarist_leader_favoured_laws
+				multiply = 5
 			}
 		}
 
+		# more likely if angry (non polycentric law)
+		if = {
+			limit = {
+				ig_approval <= -5
+				owner = {
+					NOT = {
+						has_law = law_type:law_polycentric_law
+					}
+				}
+			}
+			subtract = {
+				value = ig_approval
+				multiply = 5
+			}
+		}
+		# even more likely if angry under powerful landowners
+		if = {
+			limit = {
+				ig_approval <= -5
+				owner = {
+					any_interest_group = {
+						is_interest_group_type = ig_landowners
+						is_powerful = yes
+						is_in_government = yes
+					}
+				}
+			}
+			subtract = {
+				value = ig_approval
+				multiply = 3
+			}
+		}
+		# less likely if content without polycentric law
+		if = {
+			limit = {
+				owner = {
+					NOT = {
+						has_law = law_type:law_polycentric_law
+					}
+				}
+				ig_approval >= 5
+			}
+			subtract = {
+				value = ig_approval
+				multiply = 5
+			}
+		}
+		# more likely if content with polycentric law
+		if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_polycentric_law
+				}
+				ig_approval >= 5
+			}
+			add = {
+				value = ig_approval
+				multiply = 5
+			}
+		}
+		# more likely for industrialists (higher value for minarchism)
 		if = {
 			limit = {
 				is_interest_group_type = ig_industrialists
-				owner = {
-					has_law_or_variant = law_type:law_directorate
-				}
 			}
-			add = 150
-		}else_if = {
-			limit = {
-				is_interest_group_type = ig_industrialists
-			}
-			add = 75
+			add = 25
 		}
-
+		# home of the intelligentsia and rural folk
 		if = {
 			limit = {
-				is_interest_group_type = ig_armed_forces
-				has_ideology = ideology:ideology_martial_corporatist
-				owner = {
-					has_law_or_variant = law_type:law_directorate
-				}
-			}
-			add = 150
-		}else_if = {
-			limit = {
-				is_interest_group_type = ig_armed_forces
-				has_ideology = ideology:ideology_martial_corporatist
-			}
-			add = 75
-		}
-
-		if = {
-			limit = {
-				is_interest_group_type = ig_landowners
-				owner = {
-					has_law_or_variant = law_type:law_commercialized_agriculture
+				OR = {
+				    is_interest_group_type = ig_intelligentsia
+					is_interest_group_type = ig_rural_folk
 				}
 			}
 			add = 50
 		}
+		# home of defense contractors if not powerful
+		if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				has_ideology = ideology:ideology_martial_corporatist
+				is_powerful = yes
+
+			}
+			add = 50
+		}
+		# more likely for defense contractors otherwise
+		if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				has_ideology = ideology:ideology_martial_corporatist
+
+			}
+			add = 25
+		}
+		# less likely for PB
 		if = {
 			limit = {
 				is_interest_group_type = ig_petty_bourgeoisie
 				owner = {
-					NOT = {
-						has_law_or_variant = law_type:law_directorate
-						any_political_movement = {
-							is_political_movement_type = movement_fascist
-						}
+					any_political_movement = {
+						is_political_movement_type = movement_fascist
 					}
 				}
 			}
-			add = 50
+			add = -25
 		}
-
+		# more likely if in government with polycentric law
 		if = {
 			limit = {
-				is_interest_group_type = ig_intelligentsia
 				owner = {
-					has_law_or_variant = law_type:law_free_trade
-					has_law_or_variant = law_type:law_laissez_faire
+					has_law = law_type:law_polycentric_law
 				}
-			}
-			add = 30
-		}
-
-		if = {
-			limit = {
-				is_interest_group_type = ig_rural_folk
-				owner = {
-					has_law_or_variant = law_type:law_homesteading
-				}
-			}
-			add = 30
-		}
-
-		if = {
-			limit = {
-				is_interest_group_type = ig_trade_unions
-			}
-			add = -100
-		}
-
-		if = {
-			limit = {
-				OR = {
-					is_interest_group_type = ig_industrialists
-					is_interest_group_type = ig_petty_bourgeoisie
-					is_interest_group_type = ig_landowners
-				}
-				ig_approval <= 0
-				owner = {
-					any_interest_group = {
-						is_interest_group_type = ig_trade_unions
-						is_powerful = yes
-					}
-				}
+				is_in_government = yes
 			}
 			add = 50
 		}
-
-		if = {
-			limit = {
-				has_variable = fascist_uptick
-				OR = {
-					is_interest_group_type = ig_industrialists
-					is_interest_group_type = ig_petty_bourgeoisie
-					is_interest_group_type = ig_landowners
-				}
-			}
-			multiply = 1.5
-		}
-
-		if = {
-			limit = {
-				OR = {
-					has_variable = communist_ig_var
-					has_variable = chose_vanguardism
-					has_variable = chose_anarchism
-					has_variable = chose_communism
-					has_variable = chose_ethno_nationalism
-					has_variable = chose_conservatism
-					has_variable = chose_fascism
-				}
-			}
-			multiply = 0.1
-		}
-
+		# propertarian JE causes an uptick in propertarianism
 		if = {
 			limit = {
 				owner = {
@@ -249,6 +248,27 @@
 				}
 			}
 			multiply = 1.25
+		}
+		if = {
+			limit = {
+				owner = {
+					molinarists_failed_schism_trigger = yes
+				}
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				OR = {
+					has_variable = communist_ig_var
+					has_variable = chose_vanguardism
+					has_variable = chose_anarchism
+					has_variable = chose_communism
+					has_variable = chose_ethno_nationalism
+					has_variable = chose_fascism
+				}
+			}
+			multiply = 0.1
 		}
 	}
 

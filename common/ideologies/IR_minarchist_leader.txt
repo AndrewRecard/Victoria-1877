@@ -95,7 +95,6 @@
 				NOT = {
 					boardroom_schism_resolved_trigger = yes
 				}
-				has_law_or_variant = law_type:law_directorate
 				OR = {
 					has_law = law_type:law_oligopoly
 					has_law = law_type:law_managed_democracy
@@ -134,6 +133,9 @@
 		if = {
 			limit = {
 				owner = {
+					NOT = {
+						has_law_or_variant = law_type:law_directorate
+					}
 					OR = {
 						in_default = yes
 						has_modifier = declared_bankruptcy
@@ -340,7 +342,7 @@
 			}
 			add = 50
 		}
-		# propertarian JE causes an uptick in minarchism
+		# propertarian JE causes an uptick in propertarianism
 		if = {
 			limit = {
 				owner = {
@@ -402,6 +404,9 @@
 		if = {
 			limit = {
 				owner = {
+					NOT = {
+						has_law_or_variant = law_type:law_directorate
+					}
 					OR = {
 						in_default = yes
 						has_modifier = declared_bankruptcy
@@ -610,7 +615,7 @@
 			}
 			add = 50
 		}
-		# propertarian JE causes an uptick in minarchism
+		# propertarian JE causes an uptick in propertarianism
 		if = {
 			limit = {
 				owner = {
