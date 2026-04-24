@@ -318,6 +318,14 @@ propertarian_split_effect = {
 				has_ideology = ideology:ideology_market_liberal
 			}
 			if = {
+				limit = { is_interest_group_type = ig_industrialists	}
+				random_list = {
+					90 = { set_ideology = ideology:ideology_minarchist_leader }
+					5 = { set_ideology = ideology:ideology_molinarist_leader }
+					5 = { set_ideology = ideology:ideology_monopolist_leader }
+				}
+			}
+			if = {
 				limit = { is_interest_group_type = ig_intelligentsia }
 				random_list = {
 					80 = { set_ideology = ideology:ideology_molinarist_leader }
@@ -335,8 +343,8 @@ propertarian_split_effect = {
 			}else_if = {
 				limit = { is_interest_group_type = ig_petty_bourgeoisie }
 				random_list = {
-					25 = { set_ideology = ideology:ideology_monopolist_leader }
-					5 = { set_ideology = ideology:ideology_molinarist_leader }
+					80 = { set_ideology = ideology:ideology_monopolist_leader }
+					25 = { set_ideology = ideology:ideology_molinarist_leader }
 				}
 			}else_if = {
 				limit = { is_interest_group_type = ig_armed_forces }

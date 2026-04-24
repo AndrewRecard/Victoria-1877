@@ -845,8 +845,10 @@ boardroom_schism.7 = {
 	left_icon = scope:defector_executive
 
 	trigger = {
-		NOT = { has_variable = boardroom_schism_freeze }
-		NOT = { has_variable = suspended_lobbying_var }
+		NOR = {
+			has_variable = boardroom_schism_freeze
+			has_variable = paused_lobbying_var
+		}
 		any_company = {
 			company_is_prosperous = yes
 			executive = {
@@ -1142,7 +1144,7 @@ boardroom_schism.8 = {
 	trigger = {
 		NOR = {
 			has_variable = boardroom_schism_freeze
-			has_variable = suspended_lobbying_var
+			has_variable = paused_lobbying_var
 		}
 		any_interest_group = {
 			is_interest_group_type = ig_trade_unions

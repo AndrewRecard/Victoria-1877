@@ -107,12 +107,20 @@
 			}
 		}
 		triggered_desc = {
-			desc = je_boardroom_lobbying_cost
+			desc = status_boardroom_lobbying_cost
 			trigger = {
-				has_journal_entry = je_boardroom_schism
+				NOR = {
+					has_variable = boardroom_schism_freeze
+					has_variable = paused_lobbying_var
+				}
+			}
+		}
+		triggered_desc = {
+			desc = status_boardroom_lobbying_suspended
+			trigger = {
+				has_variable = paused_lobbying_var
 				NOT = {
 					has_variable = boardroom_schism_freeze
-					has_variable = suspended_lobbying_var
 				}
 			}
 		}
@@ -195,12 +203,47 @@
 					popup = yes
 				}
 			}
+			if = {
+				limit = { has_variable = resume_lobby_cooldown }
+				change_variable = {
+					name = resume_lobby_cooldown
+					add = -1
+				}
+				if = {
+					limit = { var:resume_lobby_cooldown <= 0 }
+					remove_variable = resume_lobby_cooldown
+				}
+			}
+			if = {
+				limit = { has_variable = pause_lobby_cooldown }
+				change_variable = {
+					name = pause_lobby_cooldown
+					add = -1
+				}
+				if = {
+					limit = { var:pause_lobby_cooldown <= 0 }
+					remove_variable = pause_lobby_cooldown
+				}
+			}
 		}
 	}
 
 	on_monthly_pulse = {
+		effect = {
+			if = {
+				limit = { has_variable = support_selection_cooldown }
+				change_variable = {
+					name = support_selection_cooldown
+					add = -1
+				}
+				if = {
+					limit = { var:support_selection_cooldown <= 0 }
+					remove_variable = support_selection_cooldown
+				}
+			}
+		}
 		random_events = {
-			1 = 0
+			12 = 0
 			1 = boardroom_schism.7
 		}
 	}

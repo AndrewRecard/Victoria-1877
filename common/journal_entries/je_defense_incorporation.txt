@@ -62,10 +62,10 @@ je_defense_incorporation = {
 	on_monthly_pulse = {
 		random_events = {
 			24 = 0
-			1 = vic1877_defense_incorporation.2
-			1 = vic1877_defense_incorporation.3
-			1 = vic1877_defense_incorporation.4
-			1 = vic1877_defense_incorporation.5
+			1 = defense_incorporation.2
+			1 = defense_incorporation.3
+			1 = defense_incorporation.4
+			1 = defense_incorporation.5
 		}
 	}
 
@@ -74,7 +74,7 @@ je_defense_incorporation = {
 	}
 	
 	immediate = {
-		trigger_event = vic1877_defense_incorporation.1
+		trigger_event = defense_incorporation.1
 	}
 
 	modifiers_while_active = {
@@ -94,7 +94,7 @@ je_defense_incorporation = {
 	}
 
 	on_complete = {
-		trigger_event = vic1877_defense_incorporation.6
+		trigger_event = defense_incorporation.6
 	}
 
 	invalid = {

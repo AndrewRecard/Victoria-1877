@@ -1,4 +1,4 @@
-﻿promote_monopolism_button = {
+promote_monopolism_button = {
 	name = "monopolism_button"
 	desc = "monopolism_button_desc"
 
@@ -8,15 +8,6 @@
 	}
 
 	possible = {
-		trigger_if = {
-			limit = {
-				has_variable = supported_monopolism_once_var
-			}
-			custom_tooltip = {
-				text = cannot_choose_monopolism_twice_tt
-				always = no
-			}
-		}
 		any_interest_group = {
 			is_in_government = yes
 			leader = {
@@ -32,26 +23,57 @@
 			NOT = { has_variable = supporting_monopolism_var }
 		}
 		custom_tooltip = {
-			text = suspended_lobbying
-			NOT = { has_variable = suspended_lobbying_var }
+			text = not_recently_suspended_lobbying_tt
+			OR = {
+				has_variable = paused_lobbying_var
+				NOT = { has_variable = pause_lobby_cooldown }
+			}
+		}
+		custom_tooltip = {
+			text = support_selection_on_cooldown_tt
+			OR = {
+				has_variable = paused_lobbying_var
+				NOT = { has_variable = support_selection_cooldown }
+			}
 		}
 	}
 
 	selected = {
 		has_variable = supporting_monopolism_var
+		NOT = {
+			has_variable = paused_lobbying_var
+		}
 	}
 
 	effect = {
 		set_variable = supporting_monopolism_var
-		set_variable = supported_monopolism_once_var
 		remove_variable = supporting_molinarism_var
 		remove_variable = supporting_minarchism_var
+		set_variable = {
+			name = support_selection_cooldown
+			value = 12
+		}
 		custom_tooltip = supporting_monopolism_tt
 		custom_tooltip = supporting_monopolism_2_tt
 		custom_tooltip = {
 			text = monopolism_progress_increase_10_tt
 			je:je_boardroom_schism = {
 				add_progress = { value = 10 name = schism_monopolist_bar }
+			}
+		}
+		custom_tooltip = support_selection_cooldown_tt
+		if = {
+			limit = {
+				has_modifier = ir_suspended_lobbying_modifier
+			}
+			remove_modifier = ir_suspended_lobbying_modifier
+		}
+		if = {
+			limit = { has_variable = paused_lobbying_var }
+			remove_variable = paused_lobbying_var
+			set_variable = {
+				name = resume_lobby_cooldown
+				value = 12
 			}
 		}
 	}
@@ -67,15 +89,6 @@ promote_minarchism_button = {
 	}
 
 	possible = {
-		trigger_if = {
-			limit = {
-				has_variable = supported_minarchism_once_var
-			}
-			custom_tooltip = {
-				text = cannot_choose_minarchism_twice_tt
-				always = no
-			}
-		}
 		any_interest_group = {
 			is_in_government = yes
 			leader = {
@@ -91,26 +104,57 @@ promote_minarchism_button = {
 			NOT = { has_variable = supporting_minarchism_var }
 		}
 		custom_tooltip = {
-			text = suspended_lobbying
-			NOT = { has_variable = suspended_lobbying_var }
+			text = not_recently_suspended_lobbying_tt
+			OR = {
+				has_variable = paused_lobbying_var
+				NOT = { has_variable = pause_lobby_cooldown }
+			}
+		}
+		custom_tooltip = {
+			text = support_selection_on_cooldown_tt
+			OR = {
+				has_variable = paused_lobbying_var
+				NOT = { has_variable = support_selection_cooldown }
+			}
 		}
 	}
 
 	selected = {
 		has_variable = supporting_minarchism_var
+		NOT = {
+			has_variable = paused_lobbying_var
+		}
 	}
 
 	effect = {
 		set_variable = supporting_minarchism_var
-		set_variable = supported_minarchism_once_var
 		remove_variable = supporting_molinarism_var
 		remove_variable = supporting_monopolism_var
+		set_variable = {
+			name = support_selection_cooldown
+			value = 12
+		}
 		custom_tooltip = supporting_minarchism_tt
 		custom_tooltip = supporting_minarchism_2_tt
 		custom_tooltip = {
 			text = minarchism_progress_increase_10_tt
 			je:je_boardroom_schism = {
 				add_progress = { value = 10 name = schism_minarchist_bar }
+			}
+		}
+		custom_tooltip = support_selection_cooldown_tt
+		if = {
+			limit = {
+				has_modifier = ir_suspended_lobbying_modifier
+			}
+			remove_modifier = ir_suspended_lobbying_modifier
+		}
+		if = {
+			limit = { has_variable = paused_lobbying_var }
+			remove_variable = paused_lobbying_var
+			set_variable = {
+				name = resume_lobby_cooldown
+				value = 12
 			}
 		}
 	}
@@ -126,15 +170,6 @@ promote_molinarism_button = {
 	}
 
 	possible = {
-		trigger_if = {
-			limit = {
-				has_variable = supported_molinarism_once_var
-			}
-			custom_tooltip = {
-				text = cannot_choose_molinarism_twice_tt
-				always = no
-			}
-		}
 		any_interest_group = {
 			is_in_government = yes
 			leader = {
@@ -150,8 +185,18 @@ promote_molinarism_button = {
 			NOT = { has_variable = supporting_molinarism_var }
 		}
 		custom_tooltip = {
-			text = suspended_lobbying
-			NOT = { has_variable = suspended_lobbying_var }
+			text = not_recently_suspended_lobbying_tt
+			OR = {
+				has_variable = paused_lobbying_var
+				NOT = { has_variable = pause_lobby_cooldown }
+			}
+		}
+		custom_tooltip = {
+			text = support_selection_on_cooldown_tt
+			OR = {
+				has_variable = paused_lobbying_var
+				NOT = { has_variable = support_selection_cooldown }
+			}
 		}
 	}
 
@@ -161,15 +206,33 @@ promote_molinarism_button = {
 
 	effect = {
 		set_variable = supporting_molinarism_var
-		set_variable = supported_molinarism_once_var
 		remove_variable = supporting_monopolism_var
 		remove_variable = supporting_minarchism_var
+		set_variable = {
+			name = support_selection_cooldown
+			value = 12
+		}
 		custom_tooltip = supporting_molinarism_tt
 		custom_tooltip = supporting_molinarism_2_tt
 		custom_tooltip = {
 			text = molinarism_progress_increase_10_tt
 			je:je_boardroom_schism = {
 				add_progress = { value = 10 name = schism_molinarist_bar }
+			}
+		}
+		custom_tooltip = support_selection_cooldown_tt
+		if = {
+			limit = {
+				has_modifier = ir_suspended_lobbying_modifier
+			}
+			remove_modifier = ir_suspended_lobbying_modifier
+		}
+		if = {
+			limit = { has_variable = paused_lobbying_var }
+			remove_variable = paused_lobbying_var
+			set_variable = {
+				name = resume_lobby_cooldown
+				value = 12
 			}
 		}
 	}
@@ -186,39 +249,42 @@ suspend_lobbying_button = {
 
 	possible = {
 		custom_tooltip = {
-			text = has_loans
-			scaled_debt > 0
+			text = not_already_suspended_lobbying_tt
+			NOT = {
+				has_variable = paused_lobbying_var
+			}
 		}
 		custom_tooltip = {
-			text = not_already_suspended_lobbying
-			NOT = { has_variable = suspended_lobbying_var }
+			text = not_recently_resumed_lobbying_tt
+			trigger_if = {
+				NOT = {
+					has_variable = resume_lobby_cooldown
+				}
+			}
 		}
 	}
 
 	selected = {
-		has_variable = suspended_lobbying_var
+		has_variable = paused_lobbying_var
 	}
 
 	effect = {
-		set_variable = suspended_lobbying_var
+		set_variable = paused_lobbying_var
+		set_variable = {
+			name = pause_lobby_cooldown
+			value = 12
+		}
+		custom_tooltip = suspended_lobbying_tt
+		custom_tooltip = suspended_lobbying_1_tt
+		custom_tooltip = suspended_lobbying_2_tt
 		remove_variable = supporting_monopolism_var
-		remove_variable = supporting_minarchism_var
 		remove_variable = supporting_molinarism_var
-		custom_tooltip = {
-			text = suspended_lobbying_1_tt
-		}
-		custom_tooltip = {
-			text = suspended_lobbying_2_tt
-		}
-		custom_tooltip = {
-			text = suspended_lobbying_3_tt
-		}
-		custom_tooltip = {
-			text = suspended_lobbying_4_tt
-		}
+		remove_variable = supporting_minarchism_var
+		add_modifier = ir_suspended_lobbying_modifier
 	}
 }
 
+## EVENTS
 sponsor_thinktanks_button = {
 	name = "sponsor_thinktanks_button"
 	desc = "sponsor_thinktanks_button_desc"
@@ -331,6 +397,7 @@ convene_egm_button = {
 		trigger_event = {
 			id = boardroom_schism.2
 			popup = yes
+			days = 7
 		}
 		set_variable = convened_egm
 	}

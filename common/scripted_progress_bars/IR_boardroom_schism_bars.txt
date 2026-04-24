@@ -6,7 +6,10 @@
 		if = {
 			limit = {
 				owner = {
-					NOT = { has_variable = boardroom_schism_freeze }
+					NOR = {
+						has_variable = boardroom_schism_freeze
+						has_variable = paused_lobbying_var
+					}
 				}
 			}
 			### From Interest Groups
@@ -132,15 +135,6 @@
 					value = owner.var:minarchist_effects_var
 				}
 			}
-			if = {
-				limit = {
-					has_variable = suspended_lobbying_var
-				}
-				subtract = {
-					desc = "progress_suspended_lobbying_tt"
-					value = 1
-				}
-			}
 		}
 	}
 	start_value = 15
@@ -154,7 +148,10 @@ schism_molinarist_bar = {
 	monthly_progress = {
 		if = {
 			limit = {
-				NOT = { has_variable = boardroom_schism_freeze }
+				NOR = {
+					has_variable = boardroom_schism_freeze
+					has_variable = paused_lobbying_var
+				}
 			}
 			### From Interest Groups
 			if = {
@@ -273,15 +270,6 @@ schism_molinarist_bar = {
 					value = owner.var:molinarist_effects_var
 				}
 			}
-			if = {
-				limit = {
-					has_variable = suspended_lobbying_var
-				}
-				subtract = {
-					desc = "progress_suspended_lobbying_tt"
-					value = 1
-				}
-			}
 		}
 	}
 	start_value = 10
@@ -295,7 +283,10 @@ schism_monopolist_bar = {
 	monthly_progress = {
 		if = {
 			limit = {
-				NOT = { has_variable = boardroom_schism_freeze }
+				NOR = {
+					has_variable = boardroom_schism_freeze
+					has_variable = paused_lobbying_var
+				}
 			}
 			### From Interest Groups
 			if = {
@@ -432,15 +423,6 @@ schism_monopolist_bar = {
 				add = {
 					desc = "monopolism_progress_from_events_tt"
 					value = owner.var:monopolist_effects_var
-				}
-			}
-			if = {
-				limit = {
-					has_variable = suspended_lobbying_var
-				}
-				subtract = {
-					desc = "progress_suspended_lobbying_tt"
-					value = 1
 				}
 			}
 		}

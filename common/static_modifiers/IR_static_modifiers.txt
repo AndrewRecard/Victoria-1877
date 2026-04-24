@@ -395,3 +395,9 @@ ir_defector_martyred_modifier = {
 	country_authority_add = 50
 	country_legitimacy_ideological_incoherence_mult = -0.1
 }
+
+ir_suspended_lobbying_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_authority_add = -50
+	country_legitimacy_ideological_incoherence_mult = 0.15
+}

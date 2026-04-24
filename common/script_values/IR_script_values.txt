@@ -71,7 +71,7 @@ lobbying_expenditure_value = {
 	divide = 1000
 	if = {
 		limit = {
-			has_variable = suspended_lobbying_var
+			has_variable = paused_lobbying_var
 		}
 		multiply = 0
 	}
