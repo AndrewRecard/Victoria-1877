@@ -276,10 +276,7 @@ propertarian_split_effect = {
 	every_scope_character = {
 		if = {
 			limit = {
-				OR = {
-					has_ideology = ideology:ideology_market_liberal
-					has_ideology = ideology:ideology_minarchist_leader
-				}
+				has_ideology = ideology:ideology_minarchist_leader
 			}
 			if = {
 				limit = { is_interest_group_type = ig_intelligentsia }
@@ -313,6 +310,39 @@ propertarian_split_effect = {
 					60 = {}
 					10 = { set_ideology = ideology:ideology_monopolist_leader }
 					30 = { set_ideology = ideology:ideology_molinarist_leader }
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_ideology = ideology:ideology_market_liberal
+			}
+			if = {
+				limit = { is_interest_group_type = ig_intelligentsia }
+				random_list = {
+					80 = { set_ideology = ideology:ideology_molinarist_leader }
+					20 = { set_ideology = ideology:ideology_monopolist_leader }
+				}
+			}else_if = {
+				limit = { is_interest_group_type = ig_rural_folk }
+				set_ideology = ideology:ideology_molinarist_leader
+			}else_if = {
+				limit = { is_interest_group_type = ig_landowners }
+				set_ideology = ideology:ideology_monopolist_leader
+			}else_if = {
+				limit = { is_interest_group_type = ig_devout }
+				set_ideology = ideology:ideology_minarchist_leader
+			}else_if = {
+				limit = { is_interest_group_type = ig_petty_bourgeoisie }
+				random_list = {
+					25 = { set_ideology = ideology:ideology_monopolist_leader }
+					5 = { set_ideology = ideology:ideology_molinarist_leader }
+				}
+			}else_if = {
+				limit = { is_interest_group_type = ig_armed_forces }
+				random_list = {
+					25 = { set_ideology = ideology:ideology_monopolist_leader }
+					75 = { set_ideology = ideology:ideology_molinarist_leader }
 				}
 			}
 		}

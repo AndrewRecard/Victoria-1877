@@ -3,10 +3,8 @@
 	desc = "monopolism_button_desc"
 
 	visible = {
-		owner = {
-			has_variable = chose_initial_propertarian_philosophy
-			NOT = { has_variable = boardroom_schism_freeze }
-		}
+		has_variable = chose_initial_propertarian_philosophy
+		NOT = { has_variable = boardroom_schism_freeze }
 	}
 
 	possible = {
@@ -24,6 +22,10 @@
 			leader = {
 				has_ideology = ideology:ideology_monopolist_leader
 			}
+		}
+		custom_tooltip = {
+			text = legitimate_government_tt
+			legitimacy >= 25
 		}
 		custom_tooltip = {
 			text = not_already_supporting_monopolism
@@ -44,9 +46,8 @@
 		set_variable = supported_monopolism_once_var
 		remove_variable = supporting_molinarism_var
 		remove_variable = supporting_minarchism_var
-		custom_tooltip = {
-			text = supporting_monopolism_tt
-		}
+		custom_tooltip = supporting_monopolism_tt
+		custom_tooltip = supporting_monopolism_2_tt
 		custom_tooltip = {
 			text = monopolism_progress_increase_10_tt
 			je:je_boardroom_schism = {
@@ -61,10 +62,8 @@ promote_minarchism_button = {
 	desc = "minarchism_button_desc"
 
 	visible = {
-		owner = {
-			has_variable = chose_initial_propertarian_philosophy
-			NOT = { has_variable = boardroom_schism_freeze }
-		}
+		has_variable = chose_initial_propertarian_philosophy
+		NOT = { has_variable = boardroom_schism_freeze }
 	}
 
 	possible = {
@@ -82,6 +81,10 @@ promote_minarchism_button = {
 			leader = {
 				has_ideology = ideology:ideology_minarchist_leader
 			}
+		}
+		custom_tooltip = {
+			text = legitimate_government_tt
+			legitimacy >= 25
 		}
 		custom_tooltip = {
 			text = not_already_supporting_minarchism
@@ -102,9 +105,8 @@ promote_minarchism_button = {
 		set_variable = supported_minarchism_once_var
 		remove_variable = supporting_molinarism_var
 		remove_variable = supporting_monopolism_var
-		custom_tooltip = {
-			text = supporting_minarchism_tt
-		}
+		custom_tooltip = supporting_minarchism_tt
+		custom_tooltip = supporting_minarchism_2_tt
 		custom_tooltip = {
 			text = minarchism_progress_increase_10_tt
 			je:je_boardroom_schism = {
@@ -119,10 +121,8 @@ promote_molinarism_button = {
 	desc = "molinarism_button_desc"
 
 	visible = {
-		owner = {
-			has_variable = chose_initial_propertarian_philosophy
-			NOT = { has_variable = boardroom_schism_freeze }
-		}
+		has_variable = chose_initial_propertarian_philosophy
+		NOT = { has_variable = boardroom_schism_freeze }
 	}
 
 	possible = {
@@ -140,6 +140,10 @@ promote_molinarism_button = {
 			leader = {
 				has_ideology = ideology:ideology_molinarist_leader
 			}
+		}
+		custom_tooltip = {
+			text = legitimate_government_tt
+			legitimacy >= 25
 		}
 		custom_tooltip = {
 			text = not_already_supporting_molinarism
@@ -160,9 +164,8 @@ promote_molinarism_button = {
 		set_variable = supported_molinarism_once_var
 		remove_variable = supporting_monopolism_var
 		remove_variable = supporting_minarchism_var
-		custom_tooltip = {
-			text = supporting_molinarism_tt
-		}
+		custom_tooltip = supporting_molinarism_tt
+		custom_tooltip = supporting_molinarism_2_tt
 		custom_tooltip = {
 			text = molinarism_progress_increase_10_tt
 			je:je_boardroom_schism = {
@@ -177,10 +180,8 @@ suspend_lobbying_button = {
 	desc = "suspend_lobbying_button_desc"
 
 	visible = {
-		owner = {
-			has_variable = chose_initial_propertarian_philosophy
-			NOT = { has_variable = boardroom_schism_freeze }
-		}
+		has_variable = chose_initial_propertarian_philosophy
+		NOT = { has_variable = boardroom_schism_freeze }
 	}
 
 	possible = {
@@ -223,10 +224,8 @@ sponsor_thinktanks_button = {
 	desc = "sponsor_thinktanks_button_desc"
 
 	visible = {
-		owner = {
-			has_variable = chose_initial_propertarian_philosophy
-			NOT = { has_variable = boardroom_schism_freeze }
-		}
+		has_variable = chose_initial_propertarian_philosophy
+		NOT = { has_variable = boardroom_schism_freeze }
 	}
 
 	cooldown = {
@@ -279,11 +278,9 @@ convene_egm_button = {
 	desc = "convene_egm_button_desc"
 
 	visible = {
-		owner = {
-			has_variable = chose_initial_propertarian_philosophy
-			NOT = {
-				has_variable = boardroom_schism_freeze
-			}
+		has_variable = chose_initial_propertarian_philosophy
+		NOT = {
+			has_variable = boardroom_schism_freeze
 		}
 	}
 

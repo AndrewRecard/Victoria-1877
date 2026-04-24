@@ -25,8 +25,6 @@
 		has_technology_researched = corporate_management
 		has_technology_researched = anarchism
 		has_technology_researched = corporatism
-		any_scope_politician = {
-		}
 		calc_true_if = {
 			amount >= 2
 			any_scope_politician = {
@@ -157,7 +155,7 @@
 			if = {
 				limit = {
 					scope:journal_entry = {
-						"scripted_bar_progress(schism_molinarist_bar)" >= 400
+						"scripted_bar_progress(schism_molinarist_bar)" >= 500
 					}
 					NOT = {
 						has_variable = boardroom_schism_freeze
@@ -171,7 +169,7 @@
 			if = {
 				limit = {
 					scope:journal_entry = {
-						"scripted_bar_progress(schism_monopolist_bar)" >= 400
+						"scripted_bar_progress(schism_monopolist_bar)" >= 500
 					}
 					NOT = {
 						has_variable = boardroom_schism_freeze
@@ -185,7 +183,7 @@
 			if = {
 				limit = {
 					scope:journal_entry = {
-						"scripted_bar_progress(schism_minarchist_bar)" >= 400
+						"scripted_bar_progress(schism_minarchist_bar)" >= 500
 					}
 					NOT = {
 						has_variable = boardroom_schism_freeze

@@ -57,9 +57,16 @@ REPLACE:ideology_market_liberal_valid_trigger = {
 	}
 	NOT = {
 		owner = {
-			any_political_movement = {
-				is_political_movement_type = movement_propertarian
-			}
+			has_law_or_variant = law_type:law_directorate
+		}
+	}
+}
+
+REPLACE:ideology_protectionist_valid_trigger = {
+	NOR = {
+		is_interest_group_type = ig_devout
+		owner = {
+			has_law_or_variant = law_type:law_directorate
 		}
 	}
 }

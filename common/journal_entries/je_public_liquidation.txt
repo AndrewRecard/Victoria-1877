@@ -6,10 +6,17 @@ je_public_liquidation = {
 
 	is_shown_when_inactive = {
 		has_technology_researched = corporate_charters
+		NOR = {
+			has_law_or_variant = law_type:law_directorate
+			has_modifier = ir_free_market_commons_modifier
+		}
 	}
 
 	possible = {
 		has_law_or_variant = law_type:law_directorate
+		NOT = {
+			has_modifier = ir_free_market_commons_modifier
+		}
 	}
 
 	modifiers_while_active = {
@@ -44,6 +51,31 @@ je_public_liquidation = {
 		add_modifier = {
 			name = ir_institutional_redress_modifier
 			years = 5
+		}
+		if = {
+			limit = {
+				ig:ig_intelligentsia = {
+					has_ideology = ideology:ideology_republican
+				}
+			}
+			ig:ig_intelligentsia = {
+				remove_ideology = ideology_republican
+				add_ideology = ideology_market_rationalist
+			}
+		}else_if = {
+			limit = {
+				ig:ig_intelligentsia = {
+					has_ideology = ideology:ideology_constitutionalist
+				}
+			}
+			ig:ig_intelligentsia = {
+				remove_ideology = ideology_constitutionalist
+				add_ideology = ideology_market_rationalist
+			}
+		}
+		custom_tooltip = {
+			text = propertarian_split_effect_tt
+			propertarian_split_effect = yes
 		}
 		set_variable = public_liquidation_completed
 	}

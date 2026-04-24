@@ -10,7 +10,7 @@ directorate_events.1 = {
     on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
     icon = "gfx/interface/icons/event_icons/event_election.dds"
     event_image = {
-        video = "europenorthamerica_capitalists_meeting"
+        video = "unspecific_signed_contract"
     }
 
     option = {

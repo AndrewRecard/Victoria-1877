@@ -17,7 +17,7 @@
 
  # DIRECTORATE EVENTS
  directorate_events.1.t: "Articles of Incorporation"
- directorate_events.1.d: "The ink is dry on the new Corporate Charter, which has formally replaced the old constitution. The immediate concern for the newly formed Board of Directors is how to structure the national hierarchy. We must decide whether to issue weighted voting shares to the populace, or to dispense with public relations entirely and consolidate all executive power strictly within the boardroom."
+ directorate_events.1.d: "The ink is dry on the new Corporate Charter, which has formally replaced the old constitution. The immediate concern for the interim Board of Directors is how to structure the national hierarchy. We must decide whether to issue weighted voting shares to the populace, or to dispense with public relations entirely and consolidate executive power within the boardroom."
  directorate_events.1.f: ""...naturally, the Class-A shares held by the Board will carry ten thousand times the voting weight."\nSterling frowned. "A wasteful endeavor. Why coddle them with illusions? We bought this country fair and square. The Board should dictate policy directly."\n"Because, my dear Sterling," Arthur smiled, "a man who believes he is voting for his manager is far less likely to riot than a man who knows he is a subject. Let them have their democracy. The house always wins.""
  directorate_events.1.a: "Every dollar is a vote. Let them buy their franchise."
  directorate_events.1.b: "The boardroom answers to no one but the market."
@@ -192,6 +192,12 @@
  ir_discredited_apostate_modifier: "Apostate Discredited"
  ir_boardroom_purge_modifier: "Purged from the Boardroom"
  ir_defector_martyred_modifier: "Defector Martyred"
+
+ boardroom_schism.8.t: "unions backlash"
+ boardroom_schism.8.d: ""
+ boardroom_schism.8.f: ""
+ boardroom_schism.8.a: "give concessions"
+ boardroom_schism.8.b: "increase spending"
 
  # OTHER
  caciquismo.1.i: "The house has already won."

@@ -70,10 +70,6 @@
 			id = directorate_events.1
 			popup = yes
 		}
-		custom_tooltip = {
-			text = propertarian_split_effect_tt
-			propertarian_split_effect = yes
-		}
 		if = {
 			limit = {
 				OR = {
@@ -88,27 +84,6 @@
 				has_law_or_variant = law_type:law_collectivized_agriculture
 			}
 			activate_law = law_type:law_homesteading
-		}
-		if = {
-			limit = {
-				ig:ig_intelligentsia = {
-					has_ideology = ideology:ideology_republican
-				}
-			}
-			ig:ig_intelligentsia = {
-				remove_ideology = ideology_republican
-				add_ideology = ideology_market_rationalist
-			}
-		}else_if = {
-			limit = {
-				ig:ig_intelligentsia = {
-					has_ideology = ideology:ideology_constitutionalist
-				}
-			}
-			ig:ig_intelligentsia = {
-				remove_ideology = ideology_constitutionalist
-				add_ideology = ideology_market_rationalist
-			}
 		}
 		if = {
 			limit = {
@@ -131,7 +106,7 @@
 		if = {
 			limit = {
 				NOT = {
-					has_law= law_type:law_public_health_insurance
+					has_law = law_type:law_public_health_insurance
 				}
 				OR = {
 					has_law = law_type:law_private_schools
@@ -142,6 +117,32 @@
 					has_law = law_type:law_no_social_security
 				}
 				has_law = law_type:law_private_defense_agencies
+			}
+			custom_tooltip = public_liquidation_bypassed_tt
+			custom_tooltip = {
+				text = propertarian_split_effect_tt
+				propertarian_split_effect = yes
+			}
+			if = {
+				limit = {
+					ig:ig_intelligentsia = {
+						has_ideology = ideology:ideology_republican
+					}
+				}
+				ig:ig_intelligentsia = {
+					remove_ideology = ideology_republican
+					add_ideology = ideology_market_rationalist
+				}
+			}else_if = {
+				limit = {
+					ig:ig_intelligentsia = {
+						has_ideology = ideology:ideology_constitutionalist
+					}
+				}
+				ig:ig_intelligentsia = {
+					remove_ideology = ideology_constitutionalist
+					add_ideology = ideology_market_rationalist
+				}
 			}
 			add_modifier = {
 				name = ir_free_market_commons_modifier

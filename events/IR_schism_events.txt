@@ -841,6 +841,9 @@ boardroom_schism.7 = {
 
 	cooldown = { days = normal_modifier_time }
 
+	gui_window = event_window_1char_tabloid
+	left_icon = scope:defector_executive
+
 	trigger = {
 		NOT = { has_variable = boardroom_schism_freeze }
 		NOT = { has_variable = suspended_lobbying_var }
@@ -906,13 +909,9 @@ boardroom_schism.7 = {
 		}
 	}
 
-	gui_window = event_window_1char_tabloid
-	left_icon = scope:defector_executive
-
 	option = {
 		name = boardroom_schism.7.a
 		default_option = yes
-
 		if = {
 			limit = { has_variable = defector_from_monopolist_var }
 			custom_tooltip = {
@@ -984,7 +983,6 @@ boardroom_schism.7 = {
 
 	option = {
 		name = boardroom_schism.7.b
-
 		if = {
 			limit = { has_variable = defector_from_monopolist_var }
 			every_interest_group = {
@@ -1127,3 +1125,44 @@ boardroom_schism.7 = {
 		}
 	}
 }
+
+boardroom_schism.8 = {
+	type = country_event
+	title = boardroom_schism.8.t
+	desc = boardroom_schism.8.d
+	flavor = boardroom_schism.8.f
+	duration = 3
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	event_image = { video = "votp_barricade" }
+
+	cooldown = { days = normal_modifier_time }
+
+	trigger = {
+		NOR = {
+			has_variable = boardroom_schism_freeze
+			has_variable = suspended_lobbying_var
+		}
+		any_interest_group = {
+			is_interest_group_type = ig_trade_unions
+			ig_counts_as_marginal = no
+			is_in_government = no
+		}
+	}
+
+	immediate = {
+
+	}
+
+	option = {
+		name = boardroom_schism.8.a
+
+	}
+
+	option = {
+		name = boardroom_schism.8.b
+
+	}
+}
+
