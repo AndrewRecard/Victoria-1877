@@ -76,10 +76,10 @@ REPLACE:law_women_in_the_workplace = {
 	}
 
 	modifier = {
-		state_birth_rate_mult = -0.04 
 		interest_group_ig_devout_pop_attraction_mult = -0.15
 		state_working_adult_ratio_add = 0.1
-		state_birth_rate_mult = 0.01
+		country_weekly_innovation_max_add = 5
+		state_birth_rate_mult = -0.02
 	}
 
 	ai_will_do = {
@@ -142,7 +142,7 @@ REPLACE:law_womens_suffrage = {
 		interest_group_ig_devout_pop_attraction_mult = -0.25
 		country_weekly_innovation_max_add = 10
 		state_working_adult_ratio_add = 0.15
-		state_birth_rate_mult = -0.06
+		state_birth_rate_mult = -0.05
 		state_dependent_political_participation_add = 0.33
 	}
 

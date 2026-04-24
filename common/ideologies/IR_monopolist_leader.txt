@@ -115,7 +115,7 @@
 			}
 			add = {
 				value = owner.ideology_monopolist_leader_disfavoured_laws
-				multiply = 6  # 1 less law than mins/mols so slightly more impactful
+				multiply = 8  # 1 less law than mins/mols so slightly more impactful
 			}
 		}
 		if = {
@@ -124,7 +124,7 @@
 			}
 			subtract = {
 				value = owner.ideology_monopolist_leader_favoured_laws
-				multiply = 6
+				multiply = 8
 			}
 		}
 
@@ -171,6 +171,7 @@
 				owner = {
 					NOT = {
 						has_law = law_type:law_sovereign_monopoly
+						has_journal_entry = je_boardroom_schism
 					}
 				}
 				ig_approval >= 5
@@ -197,18 +198,6 @@
 		if = {
 			limit = {
 					is_interest_group_type = ig_landowners
-			}
-			add = 50
-		}
-		# more likely for defense contractors with militarized police
-		if = {
-			limit = {
-				is_interest_group_type = ig_armed_forces
-				has_ideology = ideology:ideology_martial_corporatist
-				owner = {
-					has_law_or_variant = law_type:law_militarized_police
-				}
-
 			}
 			add = 50
 		}
@@ -263,7 +252,29 @@
 			limit = {
 				is_powerful = yes
 			}
-			add = 15
+			add = 25
+		}
+		# more likely for defense contractors with militarized police
+		if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				has_ideology = ideology:ideology_martial_corporatist
+				owner = {
+					has_law_or_variant = law_type:law_militarized_police
+				}
+
+			}
+			multiply = 1.25
+		}
+		# more likely if supporting
+		if = {
+			limit = {
+				owner = {
+					has_journal_entry = je_boardroom_schism
+					has_variable = supporting_monopolism_var
+				}
+			}
+			multiply = 1.25
 		}
 		# propertarian JE causes an uptick in propertarianism
 		if = {
@@ -309,7 +320,7 @@
 			}
 			add = {
 				value = owner.ideology_monopolist_leader_disfavoured_laws
-				multiply = 6  # 1 less law than mins/mols so slightly more impactful
+				multiply = 8  # 1 less law than mins/mols so slightly more impactful
 			}
 		}
 		if = {
@@ -318,7 +329,7 @@
 			}
 			subtract = {
 				value = owner.ideology_monopolist_leader_favoured_laws
-				multiply = 6
+				multiply = 8
 			}
 		}
 
@@ -365,6 +376,7 @@
 				owner = {
 					NOT = {
 						has_law = law_type:law_sovereign_monopoly
+						has_journal_entry = je_boardroom_schism
 					}
 				}
 				interest_group.ig_approval >= 5
@@ -391,19 +403,6 @@
 		if = {
 			limit = {
 					is_interest_group_type = ig_landowners
-			}
-			add = 50
-		}
-		# more likely for defense contractors with militarized police
-		if = {
-			limit = {
-				is_interest_group_type = ig_armed_forces
-				interest_group = {
-					has_ideology = ideology:ideology_martial_corporatist
-				}
-				owner = {
-					has_law_or_variant = law_type:law_militarized_police
-				}
 			}
 			add = 50
 		}
@@ -462,7 +461,30 @@
 					is_powerful = yes
 				}
 			}
-			add = 15
+			add = 25
+		}
+		# more likely for defense contractors with militarized police
+		if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				interest_group = {
+					has_ideology = ideology:ideology_martial_corporatist
+				}
+				owner = {
+					has_law_or_variant = law_type:law_militarized_police
+				}
+			}
+			multiply = 1.25
+		}
+		# more likely if supporting
+		if = {
+			limit = {
+				owner = {
+					has_journal_entry = je_boardroom_schism
+					has_variable = supporting_monopolism_var
+				}
+			}
+			multiply = 1.25
 		}
 		# propertarian JE causes an uptick in propertarianism
 		if = {

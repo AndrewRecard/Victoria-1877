@@ -24,6 +24,9 @@
  bureaucrats_trade_unions_shift_strong_tt: "The [GetInterestGroupVariant('ig_trade_unions',GetPlayer).GetNameWithCountryVariant] will attract more [GetPopType('bureaucrats').GetName]"
  bureaucrats_trade_unions_shift_negative_weak_tt: "The [GetInterestGroupVariant('ig_trade_unions',GetPlayer).GetNameWithCountryVariant] will attract slightly fewer [GetPopType('bureaucrats').GetName]"
  bureaucrats_trade_unions_shift_negative_strong_tt: "The [GetInterestGroupVariant('ig_trade_unions',GetPlayer).GetNameWithCountryVariant] will attract fewer [GetPopType('bureaucrats').GetName]"
+ defense_contractors_molinarism_tt: "The [GetInterestGroupVariant('ig_armed_forces',GetPlayer).GetName] will be more likely to select [GetIdeology('ideology_molinarist_leader').GetName] leaders"
+ defense_contractors_minarchism_tt: "The [GetInterestGroupVariant('ig_armed_forces',GetPlayer).GetName] will be more likely to select [GetIdeology('ideology_minarchist_leader').GetName] leaders"
+ defense_contractors_monopolism_tt: "The [GetInterestGroupVariant('ig_armed_forces',GetPlayer).GetName] will be more likely to select [GetIdeology('ideology_monopolist_leader').GetName] leaders"
    ## LAW/TECH TOOLTIPS
  education_append_1_tt: "Appends [GetInstitutionType('institution_schools').GetName] with #b #green +2%#!#! [concept_education_access] to each [concept_investment_level]"
  education_append_2_tt: "Appends [GetInstitutionType('institution_schools').GetName] with #b #green +5%#!#! [concept_education_access] to each [concept_investment_level]"

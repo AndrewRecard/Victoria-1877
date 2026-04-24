@@ -106,7 +106,7 @@
 			}
 			add = {
 				value = owner.ideology_molinarist_leader_disfavoured_laws
-				multiply = 5  # less ideological, more profit driven
+				multiply = 7  # less ideological, more profit driven
 			}
 		}
 		if = {
@@ -115,7 +115,7 @@
 			}
 			subtract = {
 				value = owner.ideology_molinarist_leader_favoured_laws
-				multiply = 5
+				multiply = 7
 			}
 		}
 
@@ -162,6 +162,7 @@
 				owner = {
 					NOT = {
 						has_law = law_type:law_polycentric_law
+						has_journal_entry = je_boardroom_schism
 					}
 				}
 				ig_approval >= 5
@@ -193,21 +194,6 @@
 				}
 			}
 			add = 50
-		}
-		# more likely for defense contractors with no/local police
-		if = {
-			limit = {
-				is_interest_group_type = ig_armed_forces
-				has_ideology = ideology:ideology_martial_corporatist
-				owner = {
-					OR = {
-						has_law_or_variant = law_type:law_local_police
-					    has_law_or_variant = law_type:law_no_police
-					}
-				}
-
-			}
-			add = 25
 		}
 		# more likely for defense contractors in general
 		if = {
@@ -259,7 +245,32 @@
 			limit = {
 				is_powerful = no
 			}
-			add = 15
+			add = 25
+		}
+		# more likely for defense contractors with no/local police
+		if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				has_ideology = ideology:ideology_martial_corporatist
+				owner = {
+					OR = {
+						has_law_or_variant = law_type:law_local_police
+						has_law_or_variant = law_type:law_no_police
+					}
+				}
+
+			}
+			multiply = 1.25
+		}
+		# more likely if supporting
+		if = {
+			limit = {
+				owner = {
+					has_journal_entry = je_boardroom_schism
+					has_variable = supporting_molinarism_var
+				}
+			}
+			multiply = 1.25
 		}
 		# propertarian JE causes an uptick in propertarianism
 		if = {
@@ -305,7 +316,7 @@
 			}
 			add = {
 				value = owner.ideology_molinarist_leader_disfavoured_laws
-				multiply = 5  # less ideological, more profit driven
+				multiply = 7  # less ideological, more profit driven
 			}
 		}
 		if = {
@@ -314,7 +325,7 @@
 			}
 			subtract = {
 				value = owner.ideology_molinarist_leader_favoured_laws
-				multiply = 5
+				multiply = 7
 			}
 		}
 
@@ -361,6 +372,7 @@
 				owner = {
 					NOT = {
 						has_law = law_type:law_polycentric_law
+						has_journal_entry = je_boardroom_schism
 					}
 				}
 				interest_group.ig_approval >= 5
@@ -392,22 +404,6 @@
 				}
 			}
 			add = 50
-		}
-		# more likely for defense contractors with no/local police
-		if = {
-			limit = {
-				is_interest_group_type = ig_armed_forces
-				interest_group = {
-					has_ideology = ideology:ideology_martial_corporatist
-				}
-				owner = {
-					OR = {
-						has_law_or_variant = law_type:law_local_police
-						has_law_or_variant = law_type:law_no_police
-					}
-				}
-			}
-			add = 25
 		}
 		# more likely for defense contractors in general
 		if = {
@@ -464,7 +460,33 @@
 					is_powerful = no
 				}
 			}
-			add = 15
+			add = 25
+		}
+		# more likely for defense contractors with no/local police
+		if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				interest_group = {
+					has_ideology = ideology:ideology_martial_corporatist
+				}
+				owner = {
+					OR = {
+						has_law_or_variant = law_type:law_local_police
+					    has_law_or_variant = law_type:law_no_police
+					}
+				}
+			}
+			multiply = 1.25
+		}
+		# more likely if supporting
+		if = {
+			limit = {
+				owner = {
+					has_journal_entry = je_boardroom_schism
+					has_variable = supporting_molinarism_var
+				}
+			}
+			multiply = 1.25
 		}
 		# propertarian JE causes an uptick in propertarianism
 		if = {
