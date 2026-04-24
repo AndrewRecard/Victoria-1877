@@ -185,8 +185,10 @@
 			limit = {
 				ig_approval <= -5
 				owner = {
-					NOT = {
+					NOR = {
 						has_law_or_variant = law_type:law_directorate
+						has_law = law_type:law_oligopoly
+						has_law = law_type:law_managed_democracy
 					}
 				}
 			}
@@ -195,13 +197,21 @@
 				multiply = 5
 			}
 		}
-		# even more likely if angry under powerful trade unions
+		# even more likely if angry under powerful trade unions or rivals
 		if = {
 			limit = {
 				ig_approval <= -5
 				owner = {
 					any_interest_group = {
-						is_interest_group_type = ig_trade_unions
+						OR = {
+						    is_interest_group_type = ig_trade_unions
+							leader = {
+								OR = {
+									has_ideology = ideology:ideology_monopolist_leader
+									has_ideology = ideology:ideology_molinarist_leader
+								}
+							}
+						}
 						is_powerful = yes
 						is_in_government = yes
 					}
@@ -209,7 +219,7 @@
 			}
 			subtract = {
 				value = ig_approval
-				multiply = 3
+				multiply = 5
 			}
 		}
 		# less likely if content without Directorate/Private admin
@@ -317,6 +327,31 @@
 				}
 			}
 			add = -25
+		}
+		# more likely for defense contractors with dedicated police (in directorate)
+		if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				has_ideology = ideology:ideology_martial_corporatist
+				owner = {
+					has_law_or_variant = law_type:law_dedicated_police
+					has_law_or_variant = law_type:law_directorate
+				}
+			}
+			add = 25
+		}
+		# much more likely for defense contractors in general (without directorate)
+		if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				has_ideology = ideology:ideology_martial_corporatist
+				owner = {
+					NOT = {
+						has_law_or_variant = law_type:law_directorate
+					}
+				}
+			}
+			add = 50
 		}
 		# less likely for non private defense agencies
 		if = {
@@ -456,8 +491,10 @@
 			limit = {
 				interest_group.ig_approval <= -5
 				owner = {
-					NOT = {
+					NOR = {
 						has_law_or_variant = law_type:law_directorate
+						has_law = law_type:law_oligopoly
+						has_law = law_type:law_managed_democracy
 					}
 				}
 			}
@@ -466,13 +503,21 @@
 				multiply = 5
 			}
 		}
-		# even more likely if angry under powerful trade unions
+		# even more likely if angry under powerful trade unions or rivals
 		if = {
 			limit = {
 				interest_group.ig_approval <= -5
 				owner = {
 					any_interest_group = {
-						is_interest_group_type = ig_trade_unions
+						OR = {
+							is_interest_group_type = ig_trade_unions
+							leader = {
+								OR = {
+									has_ideology = ideology:ideology_monopolist_leader
+									has_ideology = ideology:ideology_molinarist_leader
+								}
+							}
+						}
 						is_powerful = yes
 						is_in_government = yes
 					}
@@ -480,7 +525,7 @@
 			}
 			subtract = {
 				value = interest_group.ig_approval
-				multiply = 3
+				multiply = 5
 			}
 		}
 		# less likely if content without Directorate/Private admin
@@ -589,12 +634,43 @@
 			}
 			add = -25
 		}
+		# more likely for defense contractors with dedicated police (in directorate)
+		if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				interest_group = {
+					has_ideology = ideology:ideology_martial_corporatist
+				}
+				owner = {
+					has_law_or_variant = law_type:law_dedicated_police
+					has_law_or_variant = law_type:law_directorate
+				}
+			}
+			add = 25
+		}
+		# much more likely for defense contractors in general (without directorate)
+		if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				interest_group = {
+					has_ideology = ideology:ideology_martial_corporatist
+				}
+				owner = {
+					NOT = {
+						has_law_or_variant = law_type:law_directorate
+					}
+				}
+			}
+			add = 50
+		}
 		# less likely for non private defense agencies
 		if = {
 			limit = {
 				is_interest_group_type = ig_armed_forces
 				NOT = {
-					has_ideology = ideology:ideology_martial_corporatist
+					interest_group = {
+						has_ideology = ideology:ideology_martial_corporatist
+					}
 				}
 			}
 			add = -25

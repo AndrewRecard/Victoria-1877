@@ -134,13 +134,18 @@
 				multiply = 5
 			}
 		}
-		# even more likely if angry under powerful landowners
+		# even more likely if angry under powerful rivals
 		if = {
 			limit = {
 				ig_approval <= -5
 				owner = {
 					any_interest_group = {
-						is_interest_group_type = ig_landowners
+						leader = {
+							OR = {
+								has_ideology = ideology:ideology_minarchist_leader
+								has_ideology = ideology:ideology_monopolist_leader
+							}
+						}
 						is_powerful = yes
 						is_in_government = yes
 					}
@@ -148,7 +153,7 @@
 			}
 			subtract = {
 				value = ig_approval
-				multiply = 3
+				multiply = 5
 			}
 		}
 		# less likely if content without polycentric law
@@ -179,13 +184,6 @@
 				multiply = 5
 			}
 		}
-		# more likely for industrialists (higher value for minarchism)
-		if = {
-			limit = {
-				is_interest_group_type = ig_industrialists
-			}
-			add = 25
-		}
 		# home of the intelligentsia and rural folk
 		if = {
 			limit = {
@@ -196,17 +194,22 @@
 			}
 			add = 50
 		}
-		# home of defense contractors if not powerful
+		# more likely for defense contractors with no/local police
 		if = {
 			limit = {
 				is_interest_group_type = ig_armed_forces
 				has_ideology = ideology:ideology_martial_corporatist
-				is_powerful = yes
+				owner = {
+					OR = {
+						has_law_or_variant = law_type:law_local_police
+					    has_law_or_variant = law_type:law_no_police
+					}
+				}
 
 			}
-			add = 50
+			add = 25
 		}
-		# more likely for defense contractors otherwise
+		# more likely for defense contractors in general
 		if = {
 			limit = {
 				is_interest_group_type = ig_armed_forces
@@ -219,6 +222,13 @@
 		if = {
 			limit = {
 				is_interest_group_type = ig_petty_bourgeoisie
+			}
+			add = -25
+		}
+		# less likely for PB with fascist movement
+		if = {
+			limit = {
+				is_interest_group_type = ig_petty_bourgeoisie
 				owner = {
 					any_political_movement = {
 						is_political_movement_type = movement_fascist
@@ -226,6 +236,13 @@
 				}
 			}
 			add = -25
+		}
+		# much less likely for devout
+		if = {
+			limit = {
+				is_interest_group_type = ig_devout
+			}
+			add = -50
 		}
 		# more likely if in government with polycentric law
 		if = {
@@ -236,6 +253,13 @@
 				is_in_government = yes
 			}
 			add = 50
+		}
+		# slightly more likely if not powerful
+		if = {
+			limit = {
+				is_powerful = no
+			}
+			add = 15
 		}
 		# propertarian JE causes an uptick in propertarianism
 		if = {
@@ -274,5 +298,208 @@
 
 	non_interest_group_leader_weight = {
 		value = 100
+
+		if = {
+			limit = {
+				owner.ideology_molinarist_leader_disfavoured_laws > 0
+			}
+			add = {
+				value = owner.ideology_molinarist_leader_disfavoured_laws
+				multiply = 5  # less ideological, more profit driven
+			}
+		}
+		if = {
+			limit = {
+				owner.ideology_molinarist_leader_favoured_laws > 0
+			}
+			subtract = {
+				value = owner.ideology_molinarist_leader_favoured_laws
+				multiply = 5
+			}
+		}
+
+		# more likely if angry (non polycentric law)
+		if = {
+			limit = {
+				interest_group.ig_approval <= -5
+				owner = {
+					NOT = {
+						has_law = law_type:law_polycentric_law
+					}
+				}
+			}
+			subtract = {
+				value = interest_group.ig_approval
+				multiply = 5
+			}
+		}
+		# even more likely if angry under rivals
+		if = {
+			limit = {
+				interest_group.ig_approval <= -5
+				owner = {
+					any_interest_group = {
+						leader = {
+							OR = {
+								has_ideology = ideology:ideology_minarchist_leader
+								has_ideology = ideology:ideology_monopolist_leader
+							}
+						}
+						is_powerful = yes
+						is_in_government = yes
+					}
+				}
+			}
+			subtract = {
+				value = interest_group.ig_approval
+				multiply = 5
+			}
+		}
+		# less likely if content without polycentric law
+		if = {
+			limit = {
+				owner = {
+					NOT = {
+						has_law = law_type:law_polycentric_law
+					}
+				}
+				interest_group.ig_approval >= 5
+			}
+			subtract = {
+				value = interest_group.ig_approval
+				multiply = 5
+			}
+		}
+		# more likely if content with polycentric law
+		if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_polycentric_law
+				}
+				interest_group.ig_approval >= 5
+			}
+			add = {
+				value = interest_group.ig_approval
+				multiply = 5
+			}
+		}
+		# home of the intelligentsia and rural folk
+		if = {
+			limit = {
+				OR = {
+				    is_interest_group_type = ig_intelligentsia
+					is_interest_group_type = ig_rural_folk
+				}
+			}
+			add = 50
+		}
+		# more likely for defense contractors with no/local police
+		if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				interest_group = {
+					has_ideology = ideology:ideology_martial_corporatist
+				}
+				owner = {
+					OR = {
+						has_law_or_variant = law_type:law_local_police
+						has_law_or_variant = law_type:law_no_police
+					}
+				}
+			}
+			add = 25
+		}
+		# more likely for defense contractors in general
+		if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				interest_group = {
+					has_ideology = ideology:ideology_martial_corporatist
+				}
+			}
+			add = 25
+		}
+		# less likely for PB
+		if = {
+			limit = {
+				is_interest_group_type = ig_petty_bourgeoisie
+			}
+			add = -25
+		}
+		# less likely for PB with fascist movement
+		if = {
+			limit = {
+				is_interest_group_type = ig_petty_bourgeoisie
+				owner = {
+					any_political_movement = {
+						is_political_movement_type = movement_fascist
+					}
+				}
+			}
+			add = -25
+		}
+		# much less likely for devout
+		if = {
+			limit = {
+				is_interest_group_type = ig_devout
+			}
+			add = -50
+		}
+		# more likely if in government with polycentric law
+		if = {
+			limit = {
+				owner = {
+					has_law = law_type:law_polycentric_law
+				}
+				interest_group = {
+					is_in_government = yes
+				}
+			}
+			add = 50
+		}
+		# slightly more likely if not powerful
+		if = {
+			limit = {
+				interest_group = {
+					is_powerful = no
+				}
+			}
+			add = 15
+		}
+		# propertarian JE causes an uptick in propertarianism
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						has_journal_entry = je_industry_and_integrity
+						has_variable = completed_industry_and_integrity
+					}
+				}
+			}
+			multiply = 1.25
+		}
+		if = {
+			limit = {
+				owner = {
+					molinarists_failed_schism_trigger = yes
+				}
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				interest_group = {
+					OR = {
+						has_variable = communist_ig_var
+						has_variable = chose_vanguardism
+						has_variable = chose_anarchism
+						has_variable = chose_communism
+						has_variable = chose_ethno_nationalism
+						has_variable = chose_fascism
+					}
+				}
+			}
+			multiply = 0.1
+		}
 	}
 }
