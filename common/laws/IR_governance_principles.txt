@@ -67,7 +67,7 @@
 		custom_tooltip = directorate_unlocks_tt
 		custom_tooltip = directorate_unlocks_2_tt
 		trigger_event = {
-			id = ir_law_events.4
+			id = directorate_events.1
 			popup = yes
 		}
 		custom_tooltip = {

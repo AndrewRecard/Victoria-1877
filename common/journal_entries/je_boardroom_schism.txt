@@ -43,6 +43,13 @@
 			text = completed_public_liquidation_tt
 			has_variable = public_liquidation_completed
 		}
+		custom_tooltip = {
+			text = completed_defense_incorporation_tt
+			any_interest_group = {
+				is_interest_group_type = ig_armed_forces
+				has_ideology = ideology:ideology_martial_corporatist
+			}
+		}
 	}
 
 	status_desc = {

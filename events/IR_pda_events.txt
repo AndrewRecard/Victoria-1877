@@ -1,11 +1,11 @@
-﻿namespace = vic1877_defense_incorporation
+﻿namespace = defense_incorporation
 
-vic1877_defense_incorporation.1 = {
+defense_incorporation.1 = {
 	type = country_event
 	placement = root
-	title = vic1877_defense_incorporation.1.t
-	desc = vic1877_defense_incorporation.1.d
-	flavor = vic1877_defense_incorporation.1.f
+	title = defense_incorporation.1.t
+	desc = defense_incorporation.1.d
+	flavor = defense_incorporation.1.f
 	duration = 3
 
 	on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -27,7 +27,7 @@ vic1877_defense_incorporation.1 = {
 	}
 
 	option = {
-		name = vic1877_defense_incorporation.1.a
+		name = defense_incorporation.1.a
 		default_option = yes
 		add_radicals = {
 			value = very_large_radicals
@@ -41,12 +41,12 @@ vic1877_defense_incorporation.1 = {
 	}
 }
 # keys to the armory
-vic1877_defense_incorporation.2 = {
+defense_incorporation.2 = {
 	type = country_event
 	placement = scope:barracks_state
-	title = vic1877_defense_incorporation.2.t
-	desc = vic1877_defense_incorporation.2.d
-	flavor = vic1877_defense_incorporation.2.f
+	title = defense_incorporation.2.t
+	desc = defense_incorporation.2.d
+	flavor = defense_incorporation.2.f
 	duration = 3
 
 	on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -87,7 +87,7 @@ vic1877_defense_incorporation.2 = {
 	}
 
 	option = {
-		name = vic1877_defense_incorporation.2.a
+		name = defense_incorporation.2.a
 		custom_tooltip = {
 			text = defense_incorporation_progress_increase_5_tt
 			je:je_defense_incorporation = {
@@ -106,7 +106,7 @@ vic1877_defense_incorporation.2 = {
 	}
 
 	option = {
-		name = vic1877_defense_incorporation.2.b
+		name = defense_incorporation.2.b
 		default_option = yes
 		custom_tooltip = {
 			text = defense_incorporation_progress_decrease_5_tt
@@ -126,12 +126,12 @@ vic1877_defense_incorporation.2 = {
 	}
 }
 # proprietary logistics
-vic1877_defense_incorporation.3 = {
+defense_incorporation.3 = {
 	type = country_event
 	placement = root
-	title = vic1877_defense_incorporation.3.t
-	desc = vic1877_defense_incorporation.3.d
-	flavor = vic1877_defense_incorporation.3.f
+	title = defense_incorporation.3.t
+	desc = defense_incorporation.3.d
+	flavor = defense_incorporation.3.f
 	duration = 3
 
 	on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -154,7 +154,7 @@ vic1877_defense_incorporation.3 = {
 	}
 
 	option = {
-		name = vic1877_defense_incorporation.3.a
+		name = defense_incorporation.3.a
 		if = {
 			limit = {
 				NOT = {
@@ -204,7 +204,7 @@ vic1877_defense_incorporation.3 = {
 	}
 
 	option = {
-		name = vic1877_defense_incorporation.3.b
+		name = defense_incorporation.3.b
 		default_option = yes
 		add_modifier = {
 			name = ir_new_logistics_modifier
@@ -213,12 +213,12 @@ vic1877_defense_incorporation.3 = {
 	}
 }
 
-vic1877_defense_incorporation.4 = {
+defense_incorporation.4 = {
 	type = country_event
 	placement = scope:mercenary_state
-	title = vic1877_defense_incorporation.4.t
-	desc = vic1877_defense_incorporation.4.d
-	flavor = vic1877_defense_incorporation.4.f
+	title = defense_incorporation.4.t
+	desc = defense_incorporation.4.d
+	flavor = defense_incorporation.4.f
 	duration = 3
 
 	on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -273,7 +273,7 @@ vic1877_defense_incorporation.4 = {
 	}
 
 	option = {
-		name = vic1877_defense_incorporation.4.a
+		name = defense_incorporation.4.a
 		add_modifier = {
 			name = legitimacy_5_modifier
 			days = normal_modifier_time
@@ -305,7 +305,7 @@ vic1877_defense_incorporation.4 = {
 	}
 
 	option = {
-		name = vic1877_defense_incorporation.4.b
+		name = defense_incorporation.4.b
 		default_option = yes
 		scope:mercenary_state = {
 			add_loyalists_in_state = {
@@ -334,12 +334,12 @@ vic1877_defense_incorporation.4 = {
 	}
 }
 
-vic1877_defense_incorporation.5 = {
+defense_incorporation.5 = {
 	type = country_event
 	placement = root
-	title = vic1877_defense_incorporation.5.t
-	desc = vic1877_defense_incorporation.5.d
-	flavor = vic1877_defense_incorporation.5.f
+	title = defense_incorporation.5.t
+	desc = defense_incorporation.5.d
+	flavor = defense_incorporation.5.f
 	duration = 3
 
 	on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -375,7 +375,7 @@ vic1877_defense_incorporation.5 = {
 	}
 
 	option = {
-		name = vic1877_defense_incorporation.5.a
+		name = defense_incorporation.5.a
 		default_option = yes
 		scope:corrupt_leader = {
 			remove_as_interest_group_leader = yes
@@ -409,7 +409,7 @@ vic1877_defense_incorporation.5 = {
 	}
 
 	option = {
-		name = vic1877_defense_incorporation.5.b
+		name = defense_incorporation.5.b
 		ig:ig_armed_forces = {
 			add_modifier = {
 				name = ir_allowed_corruption_modifier
@@ -428,12 +428,12 @@ vic1877_defense_incorporation.5 = {
 	}
 }
 
-vic1877_defense_incorporation.6 = {
+defense_incorporation.6 = {
 	type = country_event
 	placement = root
-	title = vic1877_defense_incorporation.6.t
-	desc = vic1877_defense_incorporation.6.d
-	flavor = vic1877_defense_incorporation.6.f
+	title = defense_incorporation.6.t
+	desc = defense_incorporation.6.d
+	flavor = defense_incorporation.6.f
 	duration = 3
 
 	on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
@@ -452,7 +452,7 @@ vic1877_defense_incorporation.6 = {
 	}
 
 	option = {
-		name = vic1877_defense_incorporation.6.a
+		name = defense_incorporation.6.a
 		default_option = yes
 		ir_defense_contractors_evolution_effect = yes
 		add_modifier = {

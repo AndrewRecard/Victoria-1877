@@ -41,6 +41,7 @@
  close_the_borders_tt: "[GetLawType('law_closed_borders').GetName] is recommended prior to enacting this [concept_law]"
  halves_exile_cooldown_tt: "Can 'Exile Dissident' twice as often"
  completed_public_liquidation_tt: "Completed the #bold Liquidating the Public Trust#! [concept_journal_entry]"
+ completed_defense_incorporation_tt: "Completed the #bold Defense, Incorporated#! [concept_journal_entry]"
  unlocks_propertarian_paramilitary_tt: "Unlocks 'Paramilitary Attack' for the [Concept('concept_political_movement','$movement_propertarian$')] when [GetTechnology('political_agitation').GetName] is researched"
  ADD_JOURNAL_ENTRY_DEFENSE_INCORPORATION: "Adds the #variable Defense Incorporation#! [concept_journal_entry], resulting in significant temporary debuffs until the situation is resolved"
  loyalist_upgrade_tt: "[GetInterestGroupVariant('ig_armed_forces',GetPlayer).GetNameWithCountryVariant] has their [GetIdeology('ideology_loyalist_2').GetName] ideology upgraded"

@@ -1,0 +1,89 @@
+﻿namespace = directorate_events
+directorate_events.1 = {
+    type = country_event
+    placement = root
+    title = directorate_events.1.t
+    desc = directorate_events.1.d
+    flavor = directorate_events.1.f
+    duration = 3
+
+    on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+    icon = "gfx/interface/icons/event_icons/event_election.dds"
+    event_image = {
+        video = "europenorthamerica_capitalists_meeting"
+    }
+
+    option = {
+        name = directorate_events.1.a
+        default_option = yes
+        call_election = {
+            months = 6
+        }
+        update_party_support = yes
+        activate_law = law_type:law_managed_democracy
+        activate_law = law_type:law_contractual_subjecthood
+        trigger_event = {
+            id = directorate_events.2
+            days = 30
+            popup = yes
+        }
+    }
+
+    option = {
+        name = directorate_events.1.b
+        call_election = {
+            months = 6
+        }
+        update_party_support = yes
+        activate_law = law_type:law_oligopoly
+        activate_law = law_type:law_contractual_subjecthood
+        trigger_event = {
+            id = directorate_events.2
+            days = 30
+            popup = yes
+        }
+    }
+}
+
+directorate_events.2 = {
+    type = country_event
+    placement = root
+    title = directorate_events.2.t
+    desc = directorate_events.2.d
+    flavor = directorate_events.2.f
+    duration = 3
+
+    on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+    icon = "gfx/interface/icons/event_icons/event_election.dds"
+    event_image = {
+        video = "ep1_clandestine_meeting"
+    }
+
+    option = {
+        name = directorate_events.2.a
+        activate_law = law_type:law_voluntary_association
+        default_option = yes
+        highlighted_option = yes
+        add_radicals = {
+            interest_group = ig:ig_trade_unions
+            value = medium_radicals
+        }
+        add_loyalists = {
+            interest_group = ig:ig_industrialists
+            value = medium_radicals
+        }
+    }
+
+    option = {
+        name = directorate_events.2.b
+        activate_law = law_type:law_internal_arbitration
+        trigger = {
+            has_technology_researched = corporatism
+        }
+        highlighted_option = yes
+        add_radicals = {
+            interest_group = ig:ig_trade_unions
+            value = small_radicals
+        }
+    }
+}

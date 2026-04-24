@@ -27,10 +27,10 @@ entrenched_entitlements_timer_effect = {
                 limit = {
                     var:entrenched_entitlement_years = 10
                 }
-                trigger_event = { id = ir_law_events.2 }
+                trigger_event = { id = amendment_events.1 }
             } else_if = {
                 limit = { var:entrenched_entitlement_years = 15 }
-                trigger_event = { id = ir_law_events.3 }
+                trigger_event = { id = amendment_events.2 }
             }
         } else_if = {
             limit = {
