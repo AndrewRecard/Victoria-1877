@@ -12,6 +12,17 @@
 				has_law_or_variant = law_type:law_private_defense_agencies
 			}
 			custom_tooltip = defense_contractors_molinarism_tt
+			if = {
+				limit = {
+						has_law_or_variant = law_type:law_dedicated_police
+				}
+				custom_tooltip = defense_contractors_minarchism_negative_tt
+			}else_if = {
+				limit = {
+					has_law_or_variant = law_type:law_militarized_police
+				}
+				custom_tooltip = defense_contractors_monopolism_negative_tt
+			}
 		}
 	}
 }
@@ -36,6 +47,17 @@ INJECT:law_local_police = {
 				has_law_or_variant = law_type:law_private_defense_agencies
 			}
 			custom_tooltip = defense_contractors_molinarism_tt
+			if = {
+				limit = {
+					has_law_or_variant = law_type:law_dedicated_police
+				}
+				custom_tooltip = defense_contractors_minarchism_negative_tt
+			}else_if = {
+				limit = {
+					has_law_or_variant = law_type:law_militarized_police
+				}
+				custom_tooltip = defense_contractors_monopolism_negative_tt
+			}
 		}
 	}
 }
@@ -64,6 +86,20 @@ INJECT:law_dedicated_police = {
 				has_law_or_variant = law_type:law_private_defense_agencies
 			}
 			custom_tooltip = defense_contractors_minarchism_tt
+			if = {
+				limit = {
+					OR = {
+						has_law_or_variant = law_type:law_no_police
+						has_law_or_variant = law_type:law_local_police
+					}
+				}
+				custom_tooltip = defense_contractors_molinarism_negative_tt
+			}else_if = {
+				limit = {
+					has_law_or_variant = law_type:law_militarized_police
+				}
+				custom_tooltip = defense_contractors_monopolism_negative_tt
+			}
 		}
 	}
 }
@@ -118,6 +154,20 @@ REPLACE:law_militarized_police = {
 				has_law_or_variant = law_type:law_private_defense_agencies
 			}
 			custom_tooltip = defense_contractors_monopolism_tt
+			if = {
+				limit = {
+					OR = {
+						has_law_or_variant = law_type:law_no_police
+						has_law_or_variant = law_type:law_local_police
+					}
+				}
+				custom_tooltip = defense_contractors_molinarism_negative_tt
+			}else_if = {
+				limit = {
+					has_law_or_variant = law_type:law_dedicated_police
+				}
+				custom_tooltip = defense_contractors_minarchism_negative_tt
+			}
 		}
 	}
 

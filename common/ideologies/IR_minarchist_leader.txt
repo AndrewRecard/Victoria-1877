@@ -376,7 +376,7 @@
 					has_law_or_variant = law_type:law_directorate
 				}
 			}
-			multiply = 1.25
+			multiply = 1.5
 		}
 		# more likely if supporting
 		if = {
@@ -701,7 +701,7 @@
 					has_law_or_variant = law_type:law_directorate
 				}
 			}
-			multiply = 1.25
+			multiply = 1.5
 		}
 		# more likely if supporting
 		if = {

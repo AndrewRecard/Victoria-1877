@@ -223,6 +223,18 @@
 			}
 			add = -25
 		}
+		# less likely for PB with fascist movement
+		if = {
+			limit = {
+				is_interest_group_type = ig_petty_bourgeoisie
+				owner = {
+					any_political_movement = {
+						is_political_movement_type = movement_fascist
+					}
+				}
+			}
+			add = -25
+		}
 		# much less likely for devout
 		if = {
 			limit = {
@@ -260,7 +272,7 @@
 				}
 
 			}
-			multiply = 1.25
+			multiply = 1.5
 		}
 		# more likely if supporting
 		if = {
@@ -434,6 +446,18 @@
 			}
 			add = -25
 		}
+		# less likely for PB with fascist movement
+		if = {
+			limit = {
+				is_interest_group_type = ig_petty_bourgeoisie
+				owner = {
+					any_political_movement = {
+						is_political_movement_type = movement_fascist
+					}
+				}
+			}
+			add = -25
+		}
 		# much less likely for devout
 		if = {
 			limit = {
@@ -476,7 +500,7 @@
 					}
 				}
 			}
-			multiply = 1.25
+			multiply = 1.5
 		}
 		# more likely if supporting
 		if = {
