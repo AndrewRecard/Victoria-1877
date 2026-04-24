@@ -880,8 +880,6 @@ boardroom_schism.7 = {
 				}
 			}
 		}
-
-		# Determine old→new ideology direction via variable flags
 		if = {
 			limit = { scope:defector_executive = { has_ideology = ideology:ideology_monopolist_leader } }
 			set_variable = defector_from_monopolist_var

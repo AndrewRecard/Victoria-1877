@@ -195,7 +195,7 @@
 
 	on_monthly_pulse = {
 		random_events = {
-			15 = 0
+			1 = 0
 			1 = boardroom_schism.7
 		}
 	}

@@ -9,7 +9,7 @@
 		law_council_republic = strongly_disapprove
 		law_presidential_republic = disapprove
 		law_parliamentary_republic = disapprove
-		law_corporate_state = neutral
+		law_corporate_state = disapprove
 		law_directorate = approve
 	}
 
@@ -26,7 +26,7 @@
 	}
 
 	lawgroup_bureaucracy = {
-		law_hereditary_bureaucrats = neutral
+		law_hereditary_bureaucrats = disapprove
 		law_appointed_bureaucrats = disapprove
 		law_elected_bureaucrats = disapprove
 		law_private_administration = approve
@@ -36,7 +36,7 @@
 		law_cooperative_ownership = strongly_disapprove
 		law_command_economy = disapprove
 		law_interventionism = neutral
-		law_agrarianism = neutral
+		law_agrarianism = disapprove
 		law_traditionalism = strongly_disapprove
 		law_laissez_faire = approve
 		law_industry_banned = strongly_disapprove
@@ -84,14 +84,16 @@
 		has_technology_researched = shareholder_primacy
 	}
 
+	interest_group_leader_trigger = {
+		ideology_minarchist_valid_trigger = yes
+	}
+
 	non_interest_group_leader_trigger = {
 		NAND = {
 			has_role = agitator
 			owner = {
-				NOR = {
-					has_variable = minarchists_victorious
-					has_variable = molinarists_victorious
-					has_variable = monopolists_victorious
+				NOT = {
+					boardroom_schism_resolved_trigger = yes
 				}
 				has_law_or_variant = law_type:law_directorate
 				OR = {
@@ -99,6 +101,9 @@
 					has_law = law_type:law_managed_democracy
 				}
 			}
+		}
+		interest_group = {
+			ideology_minarchist_valid_trigger = yes
 		}
 	}
 
@@ -111,7 +116,7 @@
 			}
 			add = {
 				value = owner.ideology_minarchist_leader_disfavoured_laws
-				multiply = 8
+				multiply = 5  # less ideological, more profit driven
 			}
 		}
 
@@ -121,139 +126,221 @@
 			}
 			subtract = {
 				value = owner.ideology_minarchist_leader_favoured_laws
-				multiply = 8
+				multiply = 5
 			}
 		}
 
+		# more likely if bankrupt
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						in_default = yes
+						has_modifier = declared_bankruptcy
+					}
+				}
+			}
+			add = 25
+		}
+		# Less likely in council republic
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_council_republic
+				}
+			}
+			add = -75
+		}
+		# Less likely in theocracy
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_theocracy
+				}
+			}
+			add = -50
+		}
+		# Less likely in corporate state due to facilitated interaction between classes
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_corporate_state
+				}
+			}
+			add = -25
+		}
+		# More likely in presidential republic due to polarisation
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_presidential_republic
+				}
+			}
+			add = 15
+		}
+		# more likely if angry (non directorate)
+		if = {
+			limit = {
+				ig_approval <= -5
+				owner = {
+					NOT = {
+						has_law_or_variant = law_type:law_directorate
+					}
+				}
+			}
+			subtract = {
+				value = ig_approval
+				multiply = 5
+			}
+		}
+		# even more likely if angry under powerful trade unions
+		if = {
+			limit = {
+				ig_approval <= -5
+				owner = {
+					any_interest_group = {
+						is_interest_group_type = ig_trade_unions
+						is_powerful = yes
+						is_in_government = yes
+					}
+				}
+			}
+			subtract = {
+				value = ig_approval
+				multiply = 3
+			}
+		}
+		# less likely if content without Directorate/Private admin
+		if = {
+			limit = {
+				owner = {
+					NOR = {
+						has_law_or_variant = law_type:law_directorate
+						has_law_or_variant = law_type:law_private_administration
+					}
+				}
+				ig_approval >= 5
+			}
+			subtract = {
+				value = ig_approval
+				multiply = 5
+			}
+		}
+		# more likely if content with moderate directorate
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_directorate
+					OR = {
+						has_law_or_variant = law_type:law_oligarchy
+						has_law_or_variant = law_type:law_wealth_voting
+					}
+				}
+				ig_approval >= 5
+			}
+			add = {
+				value = ig_approval
+				multiply = 5
+			}
+		}
+		# more likely for industrialists
 		if = {
 			limit = {
 				is_interest_group_type = ig_industrialists
-				owner = {
-					has_law_or_variant = law_type:law_directorate
-				}
 			}
-			add = 150
-		}else_if = {
-			limit = {
-				is_interest_group_type = ig_industrialists
-			}
-			add = 75
+			add = 50
 		}
-
-		if = {
-			limit = {
-				is_interest_group_type = ig_armed_forces
-				has_ideology = ideology:ideology_martial_corporatist
-				owner = {
-					has_law_or_variant = law_type:law_directorate
-				}
-			}
-			add = 150
-		}else_if = {
-			limit = {
-				is_interest_group_type = ig_armed_forces
-				has_ideology = ideology:ideology_martial_corporatist
-			}
-			add = 75
-		}
-
+		# more likely for landowners with radical land reforms
 		if = {
 			limit = {
 				is_interest_group_type = ig_landowners
 				owner = {
-					has_law_or_variant = law_type:law_commercialized_agriculture
-				}
-			}
-			add = 50
-		}
-		if = {
-			limit = {
-				is_interest_group_type = ig_petty_bourgeoisie
-				owner = {
 					NOT = {
 						has_law_or_variant = law_type:law_directorate
-						any_political_movement = {
-							is_political_movement_type = movement_fascist
-						}
+					}
+					OR = {
+						has_law_or_variant = law_type:law_homesteading
+						has_law_or_variant = law_type:law_collectivized_agriculture
 					}
 				}
 			}
-			add = 50
+			add = 25
 		}
-
+		# more likely for intelligentsia in laissez-faire economic system
 		if = {
 			limit = {
 				is_interest_group_type = ig_intelligentsia
 				owner = {
+					NOT = {
+						has_law_or_variant = law_type:law_directorate
+					}
 					has_law_or_variant = law_type:law_free_trade
 					has_law_or_variant = law_type:law_laissez_faire
 				}
 			}
-			add = 30
+			add = 25
 		}
-
+		# more likely for rural folk owning property in laissez-faire system
 		if = {
 			limit = {
 				is_interest_group_type = ig_rural_folk
 				owner = {
 					has_law_or_variant = law_type:law_homesteading
-				}
-			}
-			add = 30
-		}
-
-		if = {
-			limit = {
-				is_interest_group_type = ig_trade_unions
-			}
-			add = -100
-		}
-
-		if = {
-			limit = {
-				OR = {
-					is_interest_group_type = ig_industrialists
-					is_interest_group_type = ig_petty_bourgeoisie
-					is_interest_group_type = ig_landowners
-				}
-				ig_approval <= 0
-				owner = {
-					any_interest_group = {
-						is_interest_group_type = ig_trade_unions
-						is_powerful = yes
+					OR = {
+						has_law_or_variant = law_type:law_laissez_faire
+						has_law_or_variant = law_type:law_free_trade
 					}
 				}
 			}
+			add = 50 # cut in half when socialism
+		}
+		# less likely for PB with fascist movement
+		if = {
+			limit = {
+				is_interest_group_type = ig_petty_bourgeoisie
+				owner = {
+					any_political_movement = {
+						is_political_movement_type = movement_fascist
+					}
+				}
+			}
+			add = -25
+		}
+		# less likely for rural folk with socialism
+		if = {
+			limit = {
+				is_interest_group_type = ig_rural_folk
+				owner = {
+					has_technology_researched = socialism
+				}
+			}
+			add = -25
+		}
+		# less likely for non private defense agencies
+		if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				NOT = {
+					has_ideology = ideology:ideology_martial_corporatist
+				}
+			}
+			add = -25
+		}
+		# more likely if in government with directorate/oligarchy/wealth voting
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_directorate
+					OR = {
+						has_law_or_variant = law_type:law_wealth_voting
+						has_law_or_variant = law_type:law_oligarchy
+					}
+				}
+				is_in_government = yes
+			}
 			add = 50
 		}
-
-		if = {
-			limit = {
-				has_variable = fascist_uptick
-				OR = {
-					is_interest_group_type = ig_industrialists
-					is_interest_group_type = ig_petty_bourgeoisie
-					is_interest_group_type = ig_landowners
-				}
-			}
-			multiply = 1.5
-		}
-
-		if = {
-			limit = {
-				OR = {
-					has_variable = communist_ig_var
-					has_variable = chose_vanguardism
-					has_variable = chose_anarchism
-					has_variable = chose_communism
-					has_variable = chose_ethno_nationalism
-					has_variable = chose_conservatism
-					has_variable = chose_fascism
-				}
-			}
-			multiply = 0.1
-		}
-
+		# propertarian JE causes an uptick in minarchism
 		if = {
 			limit = {
 				owner = {
@@ -265,9 +352,298 @@
 			}
 			multiply = 1.25
 		}
+		if = {
+			limit = {
+				owner = {
+					minarchists_failed_schism_trigger = yes
+				}
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				OR = {
+					has_variable = communist_ig_var
+					has_variable = chose_vanguardism
+					has_variable = chose_anarchism
+					has_variable = chose_communism
+					has_variable = chose_ethno_nationalism
+					has_variable = chose_fascism
+				}
+			}
+			multiply = 0.1
+		}
 	}
 
 	non_interest_group_leader_weight = {
 		value = 100
+
+		if = {
+			limit = {
+				owner.ideology_minarchist_leader_disfavoured_laws > 0
+			}
+			add = {
+				value = owner.ideology_minarchist_leader_disfavoured_laws
+				multiply = 5  # less ideological, more profit driven
+			}
+		}
+
+		if = {
+			limit = {
+				owner.ideology_minarchist_leader_favoured_laws > 0
+			}
+			subtract = {
+				value = owner.ideology_minarchist_leader_favoured_laws
+				multiply = 5
+			}
+		}
+
+		# more likely if bankrupt
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						in_default = yes
+						has_modifier = declared_bankruptcy
+					}
+				}
+			}
+			add = 25
+		}
+		# Less likely in council republic
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_council_republic
+				}
+			}
+			add = -75
+		}
+		# Less likely in theocracy
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_theocracy
+				}
+			}
+			add = -50
+		}
+		# Less likely in corporate state due to facilitated interaction between classes
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_corporate_state
+				}
+			}
+			add = -25
+		}
+		# More likely in presidential republic due to polarisation
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_presidential_republic
+				}
+			}
+			add = 15
+		}
+		# more likely if angry (non directorate)
+		if = {
+			limit = {
+				interest_group.ig_approval <= -5
+				owner = {
+					NOT = {
+						has_law_or_variant = law_type:law_directorate
+					}
+				}
+			}
+			subtract = {
+				value = interest_group.ig_approval
+				multiply = 5
+			}
+		}
+		# even more likely if angry under powerful trade unions
+		if = {
+			limit = {
+				interest_group.ig_approval <= -5
+				owner = {
+					any_interest_group = {
+						is_interest_group_type = ig_trade_unions
+						is_powerful = yes
+						is_in_government = yes
+					}
+				}
+			}
+			subtract = {
+				value = interest_group.ig_approval
+				multiply = 3
+			}
+		}
+		# less likely if content without Directorate/Private admin
+		if = {
+			limit = {
+				owner = {
+					NOR = {
+						has_law_or_variant = law_type:law_directorate
+						has_law_or_variant = law_type:law_private_administration
+					}
+				}
+				interest_group.ig_approval >= 5
+			}
+			subtract = {
+				value = interest_group.ig_approval
+				multiply = 5
+			}
+		}
+		# more likely if content with moderate directorate
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_directorate
+					OR = {
+						has_law_or_variant = law_type:law_oligarchy
+						has_law_or_variant = law_type:law_wealth_voting
+					}
+				}
+				interest_group.ig_approval >= 5
+			}
+			add = {
+				value = interest_group.ig_approval
+				multiply = 5
+			}
+		}
+		# more likely for industrialists
+		if = {
+			limit = {
+				is_interest_group_type = ig_industrialists
+			}
+			add = 50
+		}
+		# more likely for landowners with radical land reforms
+		if = {
+			limit = {
+				is_interest_group_type = ig_landowners
+				owner = {
+					NOT = {
+						has_law_or_variant = law_type:law_directorate
+					}
+					OR = {
+						has_law_or_variant = law_type:law_homesteading
+						has_law_or_variant = law_type:law_collectivized_agriculture
+					}
+				}
+			}
+			add = 25
+		}
+		# more likely for intelligentsia in laissez-faire economic system
+		if = {
+			limit = {
+				is_interest_group_type = ig_intelligentsia
+				owner = {
+					NOT = {
+						has_law_or_variant = law_type:law_directorate
+					}
+					has_law_or_variant = law_type:law_free_trade
+					has_law_or_variant = law_type:law_laissez_faire
+				}
+			}
+			add = 25
+		}
+		# more likely for rural folk owning property in laissez-faire system
+		if = {
+			limit = {
+				is_interest_group_type = ig_rural_folk
+				owner = {
+					has_law_or_variant = law_type:law_homesteading
+					OR = {
+						has_law_or_variant = law_type:law_laissez_faire
+						has_law_or_variant = law_type:law_free_trade
+					}
+				}
+			}
+			add = 50 # cut in half when socialism
+		}
+		# less likely for PB with fascist movement
+		if = {
+			limit = {
+				is_interest_group_type = ig_petty_bourgeoisie
+				owner = {
+					any_political_movement = {
+						is_political_movement_type = movement_fascist
+					}
+				}
+			}
+			add = -25
+		}
+		# less likely for rural folk with socialism
+		if = {
+			limit = {
+				is_interest_group_type = ig_rural_folk
+				owner = {
+					has_technology_researched = socialism
+				}
+			}
+			add = -25
+		}
+		# less likely for non private defense agencies
+		if = {
+			limit = {
+				is_interest_group_type = ig_armed_forces
+				NOT = {
+					has_ideology = ideology:ideology_martial_corporatist
+				}
+			}
+			add = -25
+		}
+		# more likely if in government with directorate/oligarchy/wealth voting
+		if = {
+			limit = {
+				owner = {
+					has_law_or_variant = law_type:law_directorate
+					OR = {
+						has_law_or_variant = law_type:law_wealth_voting
+						has_law_or_variant = law_type:law_oligarchy
+					}
+				}
+				interest_group = {
+					is_in_government = yes
+				}
+			}
+			add = 50
+		}
+		# propertarian JE causes an uptick in minarchism
+		if = {
+			limit = {
+				owner = {
+					OR = {
+						has_journal_entry = je_industry_and_integrity
+						has_variable = completed_industry_and_integrity
+					}
+				}
+			}
+			multiply = 1.25
+		}
+		if = {
+			limit = {
+				owner = {
+					minarchists_failed_schism_trigger = yes
+				}
+			}
+			multiply = 0.5
+		}
+		if = {
+			limit = {
+				interest_group = {
+					OR = {
+						has_variable = communist_ig_var
+						has_variable = chose_vanguardism
+						has_variable = chose_anarchism
+						has_variable = chose_communism
+						has_variable = chose_ethno_nationalism
+						has_variable = chose_fascism
+					}
+				}
+			}
+			multiply = 0.1
+		}
 	}
 }

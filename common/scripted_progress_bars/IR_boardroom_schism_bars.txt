@@ -128,7 +128,7 @@
 					NOT = { var:minarchist_effects_var = 0 }
 				}
 				add = {
-					desc = "minarchism_progress_from_effects_tt"
+					desc = "minarchism_progress_from_events_tt"
 					value = owner.var:minarchist_effects_var
 				}
 			}
@@ -269,7 +269,7 @@ schism_molinarist_bar = {
 					NOT = { var:molinarist_effects_var = 0 }
 				}
 				add = {
-					desc = "molinarism_progress_from_effects_tt"
+					desc = "molinarism_progress_from_events_tt"
 					value = owner.var:molinarist_effects_var
 				}
 			}
@@ -387,18 +387,10 @@ schism_monopolist_bar = {
 					subtract = 0.5
 				}
 			}
-			### From BIG companies
-			if = {
-				desc = "monopolism_progress_already_monopoly_tt"
-				limit = {
-					num_companies = 1
-				}
-				add = 10
-			}
 			### HHI Index
 			if = {
 				limit = {
-					num_companies > 1
+					num_companies > 0
 					any_company = { company_employed_levels > 0 }
 				}
 				add = {
@@ -438,7 +430,7 @@ schism_monopolist_bar = {
 					NOT = { var:monopolist_effects_var = 0 }
 				}
 				add = {
-					desc = "monopolism_progress_from_effects_tt"
+					desc = "monopolism_progress_from_events_tt"
 					value = owner.var:monopolist_effects_var
 				}
 			}

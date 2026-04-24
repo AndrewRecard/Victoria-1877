@@ -126,7 +126,7 @@
  monopolism_progress_from_monopolies_tt: "Share of [Concept('concept_company','$concept_companies$')] with a [concept_monopoly]"
  monopolism_progress_market_consolidation_tt: "#bold HHI Index#! of [concept_company] [Concept('concept_building_level','$building_level_share$')]"
  building_level_share: "Building Level Share"
- monopolism_progress_from_effects_tt: "Ongoing lobby effects from events and sponsored actions"
+ monopolism_progress_from_events_tt: "Events"
 
  minarchism_progress_from_funding_tt: "Funding [GetIdeology('ideology_minarchist_leader').GetName] Lobbies"
  minarchism_progress_from_igs_tt: "[concept_clout] of [Concept('concept_interest_group', '$concept_interest_groups$')] with [GetIdeology('ideology_minarchist_leader').GetName] [Concept('concept_leader', '$concept_leaders$')]"
@@ -134,7 +134,7 @@
  minarchism_progress_from_minarchist_legitimacy_tt: "[concept_legitimacy] with a [GetIdeology('ideology_minarchist_leader').GetName] [concept_interest_group] [concept_in_government]"
  minarchism_progress_from_company_productivity_tt: "[GetIdeology('ideology_minarchist_leader').GetName] [Concept('concept_company','$concept_companies$')] [concept_productivity]"
  minarchism_progress_from_average_prosperity_tt: "Average [concept_prosperity] of [Concept('concept_company','$concept_companies$')]"
- minarchism_progress_from_effects_tt: "Ongoing lobby effects from events and sponsored actions"
+ minarchism_progress_from_events_tt: "Events"
 
  molinarism_progress_from_funding_tt: "Funding [GetIdeology('ideology_molinarist_leader').GetName] Lobbies"
  molinarism_progress_from_igs_tt: "[concept_clout] of [Concept('concept_interest_group', '$concept_interest_groups$')] with [GetIdeology('ideology_molinarist_leader').GetName] [Concept('concept_leader', '$concept_leaders$')]"
@@ -142,7 +142,7 @@
  molinarism_progress_from_company_productivity_tt: "[GetIdeology('ideology_molinarist_leader').GetName] [Concept('concept_company','$concept_companies$')] [concept_productivity]"
  molinarism_progress_from_competition_tt: "Share of [Concept('concept_company','$concept_companies$')] without a [concept_monopoly]"
  molinarism_progress_from_prestige_goods_tt: "[Concept('concept_company','$concept_companies$')] producing [Concept('concept_prestige_good','$concept_prestige_goods$')]"
- molinarism_progress_from_effects_tt: "Ongoing lobby effects from events and sponsored actions"
+ molinarism_progress_from_events_tt: "Events"
  ## LOBBYING
  monopolism_button: "Fund Monopolist Lobbies"
  monopolism_button_desc: "The free market is a war, and in war, there is only one victor. After all, why tolerate the messy inefficiency of competition when we can simply own the entire world?"

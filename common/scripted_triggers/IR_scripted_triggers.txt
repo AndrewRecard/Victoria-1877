@@ -84,3 +84,31 @@ ideology_monopolist_valid_trigger = {
 	}
 }
 
+boardroom_schism_resolved_trigger = {
+	OR = {
+		has_variable = minarchists_victorious
+		has_variable = molinarists_victorious
+		has_variable = monopolists_victorious
+	}
+}
+
+minarchists_failed_schism_trigger = {
+	OR = {
+		has_variable = molinarists_victorious
+		has_variable = monopolists_victorious
+	}
+}
+
+molinarists_failed_schism_trigger = {
+	OR = {
+		has_variable = minarchists_victorious
+		has_variable = monopolists_victorious
+	}
+}
+
+monopolists_failed_schism_trigger = {
+	OR = {
+		has_variable = molinarists_victorious
+		has_variable = minarchists_victorious
+	}
+}
