@@ -1,4 +1,4 @@
-promote_monopolism_button = {
+﻿promote_monopolism_button = {
 	name = "monopolism_button"
 	desc = "monopolism_button_desc"
 

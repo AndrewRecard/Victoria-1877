@@ -1,5 +1,5 @@
 ﻿shareholders_alliance = {
-	color = { 25 55 105 }
+	color = { 40 80 150 }
 
 	name = {
 		first_valid = {
@@ -133,7 +133,7 @@
 		if = {
 			limit = {
 				owner = {
-					py:national_trust_party = {
+					py:national_trust_party ?= {
 						any_member = {
 							count >= 3
 						}
@@ -160,7 +160,7 @@
 					any_active_party = {
 						is_party_type = voluntaryist_league
 					}
-					py:voluntaryist_league = {
+					py:voluntaryist_league ?= {
 						any_member = {
 							count >= 3
 						}

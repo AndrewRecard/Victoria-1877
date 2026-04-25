@@ -11,7 +11,7 @@
 		}
 	}
 	icon = {
-		default = "gfx/interface/icons/political_parties/free_trade.dds"
+		default = "gfx/interface/icons/political_parties/radical.dds"
 	}
 	valid_for_country = {
 		always = yes

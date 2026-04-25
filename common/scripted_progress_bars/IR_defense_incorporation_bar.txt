@@ -29,8 +29,8 @@
 					every_scope_pop = {
 						limit = { is_pop_type = officers }
 						add = total_size
-						min = 1
 					}
+					min = 1
 				}
 				multiply = -1
 			}
@@ -50,8 +50,8 @@
 					every_scope_pop = {
 						limit = { is_pop_type = officers }
 						add = total_size
-						min = 1
 					}
+					min = 1
 				}
 				multiply = 1
 			}
@@ -91,7 +91,7 @@
 				}
 			}
 			add = {
-				value = 2
+				value = 1
 				desc = "propertarian_armed_forces_leader"
 			}
 		}

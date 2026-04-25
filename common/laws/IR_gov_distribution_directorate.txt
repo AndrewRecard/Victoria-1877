@@ -346,7 +346,7 @@ law_managed_democracy = {
 		country_capitalists_voting_power_add = 100
 		country_aristocrats_voting_power_add = 50
 		country_officers_voting_power_add = 50
-		state_radicals_from_political_movements_mult = -0.1
+		country_loyalists_from_legitimacy_mult = 0.25
 	}
 
 	on_activate = {

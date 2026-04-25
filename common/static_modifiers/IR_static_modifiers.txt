@@ -24,7 +24,6 @@ ir_defense_agencies_investment_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
 	state_officers_investment_pool_efficiency_mult = 0.25
 	country_military_tech_research_speed_mult = 0.10
-	interest_group_ig_devout_pop_attraction_mult = -0.15
 	country_diplomatic_play_maneuvers_add = 10
 }
 
@@ -32,26 +31,22 @@ ir_austerity_measures_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
 	country_minting_mult = 0.25
 	country_loyalists_from_legitimacy_mult = -0.5
-	state_radicals_from_political_movements_mult = 0.25
-
-	state_farmers_investment_pool_efficiency_mult = -0.66
-	state_machinists_investment_pool_efficiency_mult = -0.66
-	state_bureaucrats_investment_pool_efficiency_mult = -0.66
-	state_shopkeepers_investment_pool_efficiency_mult = -0.66
-	state_clergymen_investment_pool_efficiency_mult = -0.66
-	state_aristocrats_investment_pool_efficiency_mult = -0.66
-	state_capitalists_investment_pool_efficiency_mult = -0.66
-	state_officers_investment_pool_efficiency_mult = -0.66
+	state_farmers_investment_pool_efficiency_mult = -0.75
+	state_machinists_investment_pool_efficiency_mult = -0.75
+	state_bureaucrats_investment_pool_efficiency_mult = -0.75
+	state_shopkeepers_investment_pool_efficiency_mult = -0.75
+	state_clergymen_investment_pool_efficiency_mult = -0.75
+	state_aristocrats_investment_pool_efficiency_mult = -0.75
+	state_capitalists_investment_pool_efficiency_mult = -0.75
+	state_officers_investment_pool_efficiency_mult = -0.75
+	state_cannot_construct_government_administration_bool = yes
 }
 
 ir_public_divestiture_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_lightbulb_negative.dds
 	building_government_administration_throughput_add = -0.75
 	country_institution_size_change_speed_mult = 0.5
-	country_law_enactment_stall_mult = -0.25
 	country_law_enactment_time_mult = -0.25
-	political_movement_radicalism_from_enactment_disapproval_mult = -0.33
-	political_movement_radicalism_from_enactment_approval_mult = -0.33
 }
 
 ir_free_market_commons_modifier = {
@@ -63,7 +58,6 @@ ir_free_market_commons_modifier = {
 ir_institutional_redress_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
 	country_institution_size_change_speed_mult = 0.5
-	country_loyalists_from_legitimacy_mult = 0.25
 }
 
 ir_repeal_welfare_modifier = {
@@ -202,9 +196,9 @@ ir_propertarians_rebuked_modifier = {
 
 ir_capital_strike_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
-	state_capitalists_investment_pool_contribution_add = -0.25
-	country_company_throughput_bonus_add = -0.3
-	country_company_construction_efficiency_bonus_add = -0.5
+	state_capitalists_investment_pool_contribution_add = -0.3
+	country_company_throughput_bonus_add = -1
+	country_company_construction_efficiency_bonus_add = -1
 }
 
 ir_discredited_propertarian_modifier = {
@@ -400,4 +394,43 @@ ir_suspended_lobbying_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
 	country_authority_add = -50
 	country_legitimacy_ideological_incoherence_mult = 0.15
+}
+
+ir_refinanced_loan_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_loan_interest_rate_mult = 0.1
+	state_capitalists_investment_pool_efficiency_mult = 0.1
+}
+
+ir_dishonored_loan_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_prestige_mult = -0.15
+	country_loan_interest_rate_mult = 0.25
+	state_capitalists_investment_pool_efficiency_mult = -0.25
+}
+
+ir_auctioning_assets_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
+	state_capitalists_investment_pool_efficiency_mult = 0.75
+	country_force_privatization_bool = yes
+}
+
+ir_municipal_default_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	state_turmoil_effects_mult = 0.25
+	state_pop_qualifications_mult = -0.10
+	state_migration_pull_mult = -0.25
+	state_construction_mult = -0.15
+}
+
+ir_mass_layoffs_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_negative.dds
+	country_government_wages_mult = -0.15
+	state_turmoil_effects_mult = 0.10
+}
+
+ir_severance_program_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
+	state_middle_strata_standard_of_living_add = 2
+	country_legitimacy_base_add = 5
 }

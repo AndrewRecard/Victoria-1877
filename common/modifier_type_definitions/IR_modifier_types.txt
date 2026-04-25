@@ -147,3 +147,9 @@ country_disable_support_separatism_bool = {
     boolean = yes
     color = neutral
 }
+
+state_cannot_construct_government_administration_bool = {
+    script_only = yes
+    boolean = yes
+    color = neutral
+}

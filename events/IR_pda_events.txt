@@ -15,7 +15,10 @@ defense_incorporation.1 = {
 	}
 
 	immediate = {
-		ruler = {
+		random_scope_character = {
+			limit = {
+				is_ruler = yes
+			}
 			save_scope_as = head_of_state1
 		}
 	}

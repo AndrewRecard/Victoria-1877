@@ -60,13 +60,13 @@
 					}
 				}
 			}
-			triggered_desc = { # Cementing the Rightful Dynasty is active
+			triggered_desc = {
 				desc = status_monopolist_mandate
 				trigger = {
 					has_journal_entry = je_monopolist_mandate
 				}
 			}
-			triggered_desc = { # Cementing the Rightful Dynasty is active
+			triggered_desc = {
 				desc = status_molinarist_mandate
 				trigger = {
 					has_journal_entry = je_molinarist_mandate
@@ -109,6 +109,7 @@
 		triggered_desc = {
 			desc = status_boardroom_lobbying_cost
 			trigger = {
+				has_journal_entry = je_boardroom_schism
 				NOR = {
 					has_variable = boardroom_schism_freeze
 					has_variable = paused_lobbying_var

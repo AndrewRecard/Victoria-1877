@@ -15,13 +15,11 @@ directorate_events.1 = {
 
     option = {
         name = directorate_events.1.a
-        default_option = yes
         call_election = {
             months = 6
         }
         update_party_support = yes
         activate_law = law_type:law_managed_democracy
-        activate_law = law_type:law_contractual_subjecthood
         trigger_event = {
             id = directorate_events.2
             days = 30
@@ -31,16 +29,18 @@ directorate_events.1 = {
 
     option = {
         name = directorate_events.1.b
+        default_option = yes
         call_election = {
             months = 6
         }
         update_party_support = yes
         activate_law = law_type:law_oligopoly
-        activate_law = law_type:law_contractual_subjecthood
-        trigger_event = {
-            id = directorate_events.2
-            days = 30
-            popup = yes
+        hidden_effect = {
+            trigger_event = {
+                id = directorate_events.2
+                days = 30
+                popup = yes
+            }
         }
     }
 }
@@ -56,14 +56,14 @@ directorate_events.2 = {
     on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
     icon = "gfx/interface/icons/event_icons/event_election.dds"
     event_image = {
-        video = "ep1_clandestine_meeting"
+        video = "southamerica_aristocrats"
     }
 
     option = {
         name = directorate_events.2.a
         activate_law = law_type:law_voluntary_association
+        activate_law = law_type:law_contractual_subjecthood
         default_option = yes
-        highlighted_option = yes
         add_radicals = {
             interest_group = ig:ig_trade_unions
             value = medium_radicals
@@ -76,14 +76,393 @@ directorate_events.2 = {
 
     option = {
         name = directorate_events.2.b
+	highlighted_option = yes
         activate_law = law_type:law_internal_arbitration
+        activate_law = law_type:law_contractual_subjecthood
         trigger = {
             has_technology_researched = corporatism
         }
-        highlighted_option = yes
         add_radicals = {
             interest_group = ig:ig_trade_unions
             value = small_radicals
+        }
+    }
+}
+
+directorate_events.3 = {
+    type = country_event
+    placement = root
+    title = directorate_events.3.t
+    desc = directorate_events.3.d
+    flavor = directorate_events.3.f
+    duration = 3
+
+    on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+    icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+    event_image = {
+        video = "unspecific_factory_closed"
+    }
+
+    trigger = {
+        taking_loans = yes
+        scaled_debt >= 0.2
+        je:je_public_liquidation = {
+            "scripted_bar_progress(ir_insolvency_bar)" >= 200
+        }
+    }
+
+    cooldown = {
+        days = normal_modifier_time
+    }
+
+    immediate = {
+        random_company = {
+            limit = {
+                company_is_prosperous = yes
+            }
+            save_scope_as = creditor_company
+            executive = {
+                interest_group = {
+                    save_scope_as = creditor_ig
+                }
+            }
+        }
+    }
+
+    option = {
+        name = directorate_events.3.a
+        default_option = yes
+        add_modifier = {
+            name = ir_refinanced_loan_modifier
+            days = normal_modifier_time
+        }
+        add_loyalists = {
+            interest_group = scope:creditor_ig
+            value = small_radicals
+        }
+    }
+
+    option = {
+        name = directorate_events.3.b
+        add_modifier = {
+            name = ir_dishonored_loan_modifier
+            days = normal_modifier_time
+        }
+        add_treasury = {
+            value = {
+                add = credit
+                multiply = 0.25
+            }
+        }
+        custom_tooltip = {
+            text = insolvency_bar_decrease_200_tt
+            je:je_public_liquidation = {
+                add_progress = {
+                    value = -200
+                    name = ir_insolvency_bar
+                }
+            }
+        }
+        add_radicals = {
+            interest_group = scope:creditor_ig
+            value = large_radicals
+        }
+    }
+
+    option = {
+        name = directorate_events.3.c
+        highlighted_option = yes
+        trigger = {
+            NOT = {
+                has_law = law_type:law_laissez_faire
+            }
+        }
+        add_modifier = {
+            name = ir_auctioning_assets_modifier
+            years = 2
+        }
+        custom_tooltip = {
+            text = insolvency_bar_decrease_100_tt
+            je:je_public_liquidation = {
+                add_progress = {
+                    value = -100
+                    name = ir_insolvency_bar
+                }
+            }
+        }
+        add_radicals = {
+            interest_group = ig:ig_trade_unions
+            value = large_radicals
+        }
+    }
+
+    cancellation_trigger = {
+        NOT = {
+            has_journal_entry = je_public_liquidation
+        }
+    }
+}
+
+directorate_events.4 = {
+    type = country_event
+    placement = scope:defaulting_state
+    title = directorate_events.4.t
+    desc = directorate_events.4.d
+    flavor = directorate_events.4.f
+    duration = 3
+
+    on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+    icon = "gfx/interface/icons/event_icons/event_scales.dds"
+    event_image = {
+        video = "asia_poor_people_moving"
+    }
+
+    trigger = {
+        je:je_public_liquidation = {
+            scripted_bar_progress = { name = ir_insolvency_bar value >= 100 }
+        }
+        any_scope_state = {
+            is_capital = no
+            is_incorporated = yes
+            state_population >= 100000
+        }
+    }
+
+    cooldown = {
+        days = normal_modifier_time
+    }
+
+    immediate = {
+        random_scope_state = {
+            limit = {
+                is_capital = no
+                is_incorporated = yes
+                state_population >= 100000
+            }
+            weight = {
+                factor = 1
+                modifier = {
+                    factor = 1.2
+                    trigger = {
+                        average_sol = {
+                            value = root.average_sol
+                            subtract = 1
+                        }
+                    }
+                }
+                modifier = {
+                    factor = 1.5
+                    trigger = {
+                        average_sol = {
+                            value = root.average_sol
+                            subtract = 2
+                        }
+                    }
+                }
+                modifier = {
+                    factor = 2
+                    trigger = {
+                        average_sol = {
+                            value = root.average_sol
+                            subtract = 3
+                        }
+                    }
+                }
+            }
+            save_scope_as = defaulting_state
+        }
+    }
+
+    option = {
+        name = directorate_events.4.a
+        default_option = yes
+        custom_tooltip = {
+            text = insolvency_bar_increase_75_tt
+            je:je_public_liquidation = {
+                add_progress = {
+                    value = 75
+                    name = ir_insolvency_bar
+                }
+            }
+        }
+        scope:defaulting_state = {
+            add_loyalists_in_state = {
+                strata = lower
+                value = large_radicals
+            }
+        }
+        add_loyalists = {
+            interest_group = ig:ig_trade_unions
+            value = small_radicals
+        }
+    }
+
+    option = {
+        name = directorate_events.4.b
+        scope:defaulting_state = {
+            add_devastation = 25
+            add_radicals_in_state = {
+                strata = lower
+                value = huge_radicals
+            }
+            add_modifier = {
+                name = ir_municipal_default_modifier
+                years = 5
+            }
+        }
+    }
+
+    option = {
+        name = directorate_events.4.c
+        highlighted_option = yes
+        trigger = {
+            has_law = law_type:law_laissez_faire
+        }
+        scope:defaulting_state = {
+            add_modifier = {
+                name = ir_municipal_default_modifier
+                years = 3
+            }
+            add_radicals_in_state = {
+                strata = lower
+                value = large_radicals
+            }
+        }
+        add_treasury = {
+            value = {
+                add = gdp
+                multiply = 0.03
+            }
+        }
+        custom_tooltip = {
+            text = insolvency_bar_decrease_100_tt
+            je:je_public_liquidation = {
+                add_progress = {
+                    value = -100
+                    name = ir_insolvency_bar
+                }
+            }
+        }
+    }
+}
+
+directorate_events.5 = {
+    type = country_event
+    placement = scope:layoff_state
+    title = directorate_events.5.t
+    desc = directorate_events.5.d
+    flavor = directorate_events.5.f
+    duration = 3
+
+    on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+    icon = "gfx/interface/icons/event_icons/event_scales.dds"
+    event_image = {
+        video = "ep1_octopus"
+    }
+
+    trigger = {
+        je:je_public_liquidation = {
+            scripted_bar_progress = { name = ir_insolvency_bar value >= 150 }
+        }
+        any_scope_state = {
+            any_scope_building = {
+                is_building_type = building_government_administration
+                level >= 5
+            }
+        }
+    }
+
+    cooldown = {
+        days = normal_modifier_time
+    }
+
+    immediate = {
+        random_scope_state = {
+            limit = {
+                any_scope_building = {
+                    is_building_type = building_government_administration
+                    level >= 5
+                }
+            }
+            weight = {
+                factor = 1
+                modifier = {
+                    factor = 2
+                    trigger = {
+                        any_scope_building = {
+                            is_building_type = building_government_administration
+                            level >= 10
+                        }
+                    }
+                }
+                modifier = {
+                    factor = 3
+                    trigger = {
+                        any_scope_building = {
+                            is_building_type = building_government_administration
+                            level >= 20
+                        }
+                    }
+                }
+            }
+            save_scope_as = layoff_state
+        }
+    }
+
+    option = {
+        name = directorate_events.5.a
+        default_option = yes
+        add_modifier = {
+            name = ir_mass_layoffs_modifier
+            years = 5
+            is_decaying = yes
+        }
+        add_radicals = {
+            strata = middle
+            value = medium_radicals
+        }
+        custom_tooltip = {
+            text = insolvency_bar_decrease_75_tt
+            je:je_public_liquidation = {
+                add_progress = {
+                    value = -75
+                    name = ir_insolvency_bar
+                }
+            }
+        }
+    }
+
+    option = {
+        name = directorate_events.5.b
+        add_treasury = {
+            value = {
+                add = gdp
+                multiply = -0.03
+            }
+        }
+        add_modifier = {
+            name = ir_severance_program_modifier
+            days = normal_modifier_time
+            is_decaying = yes
+        }
+        add_loyalists = {
+            strata = middle
+            value = medium_radicals
+        }
+        custom_tooltip = {
+            text = insolvency_bar_increase_25_tt
+            je:je_public_liquidation = {
+                add_progress = {
+                    value = 25
+                    name = ir_insolvency_bar
+                }
+            }
+        }
+    }
+
+    cancellation_trigger = {
+        NOT = {
+            has_journal_entry = je_public_liquidation
         }
     }
 }

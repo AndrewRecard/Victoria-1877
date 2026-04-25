@@ -45,6 +45,14 @@
  ir_insolvency_bar: "Insolvency"
  ir_insolvency_bar_desc: "Insolvency Pressure: #variable [JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|1]/1000#!"
  ir_insolvency_bar_full: "#bold Insolvency Pressure#! has reached 1000"
+ insolvency_bar_decrease_200_tt: "#bold Decreases Insolvency Pressure#! by #variable 200#!"
+ insolvency_bar_decrease_150_tt: "#bold Decreases Insolvency Pressure#! by #variable 150#!"
+ insolvency_bar_decrease_100_tt: "#bold Decreases Insolvency Pressure#! by #variable 100#!"
+ insolvency_bar_decrease_25_tt: "#bold Decreases Insolvency Pressure#! by #variable 25#!"
+ insolvency_bar_increase_25_tt: "#bold Increases Insolvency Pressure#! by #variable 25#!"
+ insolvency_bar_increase_75_tt: "#bold Increases Insolvency Pressure#! by #variable 75#!"
+ insolvency_bar_decrease_75_tt: "#bold Decreases Insolvency Pressure#! by #variable 75#!"
+ ir_municipal_default_modifier: "Municipal Default"
  progress_bar_fail:1 "The #bold Progress Bar#! has reached #variable 0%#!"
  ir_institutional_collapse_modifier: "Institutional Collapse"
  ir_austerity_measures_modifier: "Austerity Measures"
@@ -84,7 +92,7 @@
  propertarianism_progress_from_movement_activism_tt: "[Concept('concept_activism', '$concept_activism_short$')] of [GetIdeology('ideology_propertarian_movement').GetName] [concept_political_movement]"
  propertarianism_progress_from_interest_groups_tt: "[concept_clout] of [Concept('concept_interest_group', '$concept_interest_groups$')] with #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! [Concept('concept_leader', '$concept_leaders$')] or the [GetIdeology('ideology_market_liberal').GetName] [concept_ideology]"
  no_relevant_propertarian_igs_tt: "#bold no#! non-marginal [Concept('concept_interest_group', '$concept_interest_groups$')] with #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! [Concept('concept_leader', '$concept_leaders$')] or the [GetIdeology('ideology_market_liberal').GetName] [concept_ideology]"
- propertarianism_progress_from_characters_tt: "#tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! [Concept('concept_character', '$concept_characters$')]"
+ propertarianism_progress_from_characters_tt: "[concept_popularity] of #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! [Concept('concept_character', '$concept_characters$')]"
  propertarianism_progress_no_propertarian_characters_tt: "#bold no#! #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! [Concept('concept_character', '$concept_characters$')]"
 
  # Boardroom Schism

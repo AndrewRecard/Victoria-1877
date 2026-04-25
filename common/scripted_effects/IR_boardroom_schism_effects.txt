@@ -9,9 +9,6 @@ clear_boardroom_schism_variables = {
     remove_variable = mandate_wasted
     remove_variable = paused_lobbying_var
     remove_variable = convened_egm
-    remove_variable = supported_minarchism_once_var
-    remove_variable = supported_monopolism_once_var
-    remove_variable = supported_molinarism_once_var
     remove_variable = boardroom_schism_freeze
     remove_variable = boardroom_schism_startup_var
     remove_variable = supporting_monopolism_var
@@ -26,9 +23,6 @@ clear_boardroom_schism_variables = {
     remove_variable = defector_to_monopolist_var
     remove_variable = defector_to_minarchist_var
     remove_variable = defector_to_molinarist_var
-    remove_variable = was_supporting_monopolism
-    remove_variable = was_supporting_molinarism
-    remove_variable = was_supporting_minarchism
 }
 
 ## for the EXTRAORDINARY GENERAL MEETING ##

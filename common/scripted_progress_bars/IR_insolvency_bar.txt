@@ -4,7 +4,7 @@
 
 	default_bad = yes
 
-	monthly_progress = {
+	weekly_progress = {
 		if = {
 			limit = {
 				has_law_or_variant = law_type:law_compulsory_primary_school
@@ -49,14 +49,6 @@
 				multiply = 2
 				desc = "INSTITUTION_FUNDING_LEVEL_schools"
 			}
-		}else_if = {
-			limit = {
-				has_law_or_variant = law_type:law_no_schools
-			}
-			add = {
-				value = -2
-				desc = "law_no_schools"
-			}
 		}
 
 		if = {
@@ -68,14 +60,6 @@
 				multiply = 1.25
 				multiply = 2
 				desc = "INSTITUTION_FUNDING_LEVEL_health_system"
-			}
-		}else_if = {
-			limit = {
-				has_law_or_variant = law_type:law_no_health_system
-			}
-			add = {
-				value = -2
-				desc = "law_no_health_system"
 			}
 		}
 
@@ -123,26 +107,6 @@
 
 		if = {
 			limit = {
-				has_law_or_variant = law_type:law_no_police
-			}
-			add = {
-				value = -2
-				desc = "law_no_police"
-			}
-		}
-
-		if = {
-			limit = {
-				has_law_or_variant = law_type:law_no_home_affairs
-			}
-			add = {
-				value = -2
-				desc = "law_no_home_affairs"
-			}
-		}
-
-		if = {
-			limit = {
 				scaled_gold_reserves > 0
 			}
 			add = {
@@ -150,7 +114,7 @@
 					value = scaled_gold_reserves
 					max = 1
 				}
-				multiply = -10
+				multiply = -5
 				desc = "gold_reserves_any"
 			}
 		}else = {
@@ -159,7 +123,7 @@
 					value = scaled_debt
 					max = 1
 				}
-				multiply = 10
+				multiply = 5
 				desc = "loans_any"
 			}
 		}

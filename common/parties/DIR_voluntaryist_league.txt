@@ -1,5 +1,5 @@
 ﻿voluntaryist_league = {
-	color = { 240 185 30 }
+	color = { 215 160 30 }
 	name = {
 		first_valid = {
 			triggered_desc = {
@@ -11,7 +11,7 @@
 		}
 	}
 	icon = {
-		default = "gfx/interface/icons/political_parties/free_trade.dds"
+		default = "gfx/interface/icons/political_parties/anarchist.dds"
 	}
 	valid_for_country = {
 		always = yes
@@ -132,7 +132,7 @@
 		if = {
 			limit = {
 				owner = {
-					py:national_trust_party = {
+					py:national_trust_party ?= {
 						any_member = {
 							count >= 3
 						}

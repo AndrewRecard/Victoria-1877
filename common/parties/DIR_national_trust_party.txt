@@ -1,5 +1,5 @@
 ﻿national_trust_party = {
-	color = { 50 55 60 }
+	color = { 65 50 80 }
 	name = {
 		first_valid = {
 			triggered_desc = {
@@ -11,7 +11,7 @@
 		}
 	}
 	icon = {
-		default = "gfx/interface/icons/political_parties/free_trade.dds"
+		default = "gfx/interface/icons/political_parties/fascists.dds"
 	}
 	valid_for_country = {
 		always = yes
@@ -136,7 +136,7 @@
 		if = {
 			limit = {
 				owner = {
-					py:voluntaryist_league = {
+					py:voluntaryist_league ?= {
 						any_member = {
 							count >= 3
 						}

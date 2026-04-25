@@ -199,7 +199,6 @@
  country_institution_cost_institution_corporate_unions_mult: "@bur![Nbsp][concept_bureaucracy] Cost of [GetInstitutionType('institution_corporate_unions').GetName]"
  country_institution_cost_institution_civil_service_mult: "@bur![Nbsp][concept_bureaucracy] Cost of [GetInstitutionType('institution_civil_service').GetName]"
 
-
  country_enactment_success_chance_law_directorate_add: "[concept_enactment_success] chance for [GetLawType('law_directorate').GetName]"
  country_enactment_success_chance_law_directorate_add_desc: "A flat percentage point increase to the likelihood of enacting the specific law"
  country_enactment_success_chance_law_no_social_security_add: "[concept_enactment_success] chance for [GetLawType('law_no_social_security').GetName]"
@@ -234,6 +233,8 @@
  country_disable_support_separatism_bool: "Disables [GetDiplomaticActionType('support_separatism').GetName]"
  country_disable_support_separatism_bool_desc: "[GetDiplomaticActionType('support_separatism').GetName] is no longer allowed as [Concept('concept_primary_cultures','$nationality$')] has no bearing on [concept_dividends] under the [GetLawType('law_directorate').GetName]"
  nationality: "Nationality"
+ state_cannot_construct_government_administration_bool: "Disable Government Administration Construction"
+ state_cannot_construct_government_administration_bool_desc: "New construction of [GetBuildingType('building_government_administration').GetName] disallowed "
 
  # COUNTRIES & POLITICS
   ## GOVERNMENT TYPES
