@@ -161,7 +161,6 @@ shareholder_primacy = {
 	modifier = {
 		state_bureaucrats_investment_pool_efficiency_mult = 0.1
 		state_capitalists_investment_pool_efficiency_mult = 0.1
-		country_agitator_slots_add = 1
 	}
 
 	unlocking_technologies = {

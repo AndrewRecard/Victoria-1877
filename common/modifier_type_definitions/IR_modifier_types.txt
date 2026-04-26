@@ -74,6 +74,24 @@ country_enactment_success_chance_law_sovereign_monopoly_add = {
     percent = yes
 }
 
+country_enactment_success_chance_law_private_schools_add = {
+    decimals = 0
+    color = good
+    percent = yes
+}
+
+country_enactment_success_chance_law_private_health_insurance_add = {
+    decimals = 0
+    color = good
+    percent = yes
+}
+
+country_enactment_success_chance_law_private_defense_agencies_add = {
+    decimals = 0
+    color = good
+    percent = yes
+}
+
 state_pop_support_movement_propertarian_add = {
 	decimals = 1
 	color = neutral

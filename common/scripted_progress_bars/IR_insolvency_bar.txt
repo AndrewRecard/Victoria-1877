@@ -84,13 +84,16 @@
 				multiply = 2
 				desc = "INSTITUTION_FUNDING_LEVEL_social_security"
 			}
-		}else_if = {
+		}
+
+		if = {
 			limit = {
-				has_law_or_variant = law_type:law_no_social_security
+				has_law_or_variant = law_type:law_guaranteed_liberties
 			}
 			add = {
-				value = -2
-				desc = "law_no_social_security"
+				value = institution_investment_level:institution_home_affairs
+				multiply = 2
+				desc = "INSTITUTION_FUNDING_LEVEL_home_affairs"
 			}
 		}
 

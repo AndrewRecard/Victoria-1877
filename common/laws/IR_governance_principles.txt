@@ -12,6 +12,10 @@
 		shareholder_primacy
 	}
 
+	can_enact = {
+		has_technology_researched = military_statistics
+	}
+
 	unlocking_laws = {
 		law_private_administration
 	}
@@ -111,18 +115,17 @@
 		}
 		if = {
 			limit = {
-				NOT = {
-					has_law = law_type:law_public_health_insurance
+				has_law_or_variant = law_type:law_private_defense_agencies
+				NOT = { has_law_or_variant = law_type:law_guaranteed_liberties }
+				NOT = { has_law = law_type:law_public_health_insurance }
+				OR = {
+					has_law_or_variant = law_type:law_private_schools
+					has_law_or_variant = law_type:law_no_schools
 				}
 				OR = {
-					has_law = law_type:law_private_schools
-					has_law = law_type:law_no_schools
+					has_law_or_variant = law_type:law_poor_laws
+					has_law_or_variant = law_type:law_no_social_security
 				}
-				OR = {
-					has_law = law_type:law_poor_laws
-					has_law = law_type:law_no_social_security
-				}
-				has_law = law_type:law_private_defense_agencies
 			}
 			custom_tooltip = public_liquidation_bypassed_tt
 			custom_tooltip = {

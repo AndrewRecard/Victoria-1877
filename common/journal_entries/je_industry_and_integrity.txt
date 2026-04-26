@@ -9,6 +9,70 @@
 
 	timeout = 1095
 
+	is_shown_when_inactive = {
+		NOR = {
+			has_variable = completed_industry_and_integrity
+			has_law_or_variant = law_type:law_directorate
+			has_law_or_variant = law_type:law_council_republic
+		}
+		has_technology_researched = corporate_charters
+	}
+
+	possible = {
+		hidden_trigger = {
+			has_global_variable = molinari_happened
+			NOR = {
+				has_journal_entry = je_communism_1
+				has_journal_entry = je_fascism_1
+				has_journal_entry = je_technocracy
+				has_journal_entry = je_positivist_movement
+			}
+		}
+		has_technology_researched = shareholder_primacy
+		ig:ig_industrialists = {
+			ig_counts_as_marginal = no
+		}
+		OR = {
+			any_interest_group = {
+				OR = {
+					AND = {
+					    is_powerful = yes
+    					is_in_government = yes
+					}
+					is_insurrectionary = yes
+				}
+				OR = {
+					has_ideology = ideology:ideology_socialist
+					leader = {
+						has_socialist_fascist_ideology = yes
+					}
+				}
+			}
+			any_interest_group = {
+				is_interest_group_type = ig_industrialists
+				leader = {
+					propertarian_or_market_liberal = yes
+				}
+				is_powerful = yes
+				ig_approval < 0
+			}
+		}
+	}
+
+	immediate = {
+		every_scope_character = {
+			limit = {
+				OR = {
+					has_role = politician
+					has_role = agitator
+				}
+				has_propertarian_ideology = yes
+			}
+			set_variable = propertarian_char_var
+		}
+		trigger_event = { id = propertarian_origins.7 popup = yes }
+	}
+
 	status_desc = {
 		first_valid = {
 			triggered_desc = {
@@ -52,6 +116,9 @@
 				limit = {
 					any_interest_group = {
 						is_in_government = yes
+						NOT = {
+							is_interest_group_type = ig_industrialists
+						}
 						leader = {
 							has_propertarian_ideology = yes
 							NOT = {
@@ -78,87 +145,6 @@
 			14 = 0
 			1 = propertarian_origins.4
 			1 = propertarian_origins.5
-		}
-	}
-
-	is_shown_when_inactive = {
-		NOR = {
-			has_variable = completed_industry_and_integrity
-			has_law_or_variant = law_type:law_directorate
-			has_law_or_variant = law_type:law_council_republic
-		}
-		has_technology_researched = corporate_charters
-	}
-
-	possible = {
-		hidden_trigger = {
-			has_global_variable = molinari_happened
-			NOR = {
-				has_journal_entry = je_communism_1
-				has_journal_entry = je_fascism_1
-			}
-		}
-		has_technology_researched = shareholder_primacy
-		ig:ig_industrialists = {
-			ig_counts_as_marginal = no
-		}
-		OR = {
-			any_interest_group = {
-				OR = {
-					is_powerful = yes
-					is_in_government = yes
-					is_insurrectionary = yes
-				}
-				OR = {
-					has_ideology = ideology:ideology_socialist
-					leader = {
-						has_socialist_fascist_ideology = yes
-					}
-				}
-			}
-			any_interest_group = {
-				is_interest_group_type = ig_industrialists
-				is_powerful = yes
-				ig_approval <= 0
-			}
-		}
-	}
-
-	immediate = {
-		if = {
-			limit = {
-				any_scope_character = {
-					is_interest_group_type = ig_industrialists
-					has_role = politician
-					has_propertarian_ideology = no
-				}
-			}
-			ig:ig_industrialists = {
-				leader = {
-					set_ideology = ideology:ideology_minarchist_leader
-				}
-			}
-		}
-
-		if = {
-			limit = {
-				NOT = {
-					any_political_movement = {
-						is_political_movement_type = movement_propertarian
-					}
-				}
-			}
-			create_political_movement = { type = movement_propertarian }
-		}
-		every_scope_character = {
-			limit = {
-				OR = {
-					has_role = politician
-					has_role = agitator
-				}
-				has_propertarian_ideology = yes
-			}
-			set_variable = propertarian_char_var
 		}
 	}
 
@@ -245,12 +231,26 @@
 		custom_tooltip = {
 			text = propertarian_characters_return_to_normal_tt
 		}
+		hidden_effect = {
+			ig:ig_industrialists = {
+				leader = {
+					remove_modifier = ir_propertarian_figurehead_modifier
+				}
+			}
+		}
 	}
 
 	on_timeout = {
 		trigger_event = { id = propertarian_origins.3 popup = yes }
 		custom_tooltip = {
 			text = propertarian_characters_return_to_normal_tt
+		}
+		hidden_effect = {
+			ig:ig_industrialists = {
+				leader = {
+					remove_modifier = ir_propertarian_figurehead_modifier
+				}
+			}
 		}
 	}
 }

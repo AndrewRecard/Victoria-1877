@@ -107,6 +107,9 @@
 			limit = {
 				owner = {
 					num_companies > 4
+					NOT = {
+						has_law = law_type:law_sovereign_monopoly
+					}
 				}
 			}
 			multiply = {
@@ -119,6 +122,9 @@
 			limit = {
 				owner = {
 					num_companies < 4
+					NOT = {
+						has_law = law_type:law_sovereign_monopoly
+					}
 				}
 			}
 			multiply = {
@@ -255,6 +261,9 @@
 					limit = {
 						owner = {
 							num_companies > 4
+							NOT = {
+								has_law = law_type:law_sovereign_monopoly
+							}
 						}
 					}
 					multiply = {
@@ -386,6 +395,9 @@
 					limit = {
 						owner = {
 							num_companies > 4
+							NOT = {
+								has_law = law_type:law_sovereign_monopoly
+							}
 						}
 					}
 					multiply = {

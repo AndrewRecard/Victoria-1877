@@ -128,7 +128,7 @@ REPLACE:law_appointed_bureaucrats = {
 	}
 
 	modifier = {
-		interest_group_in_opposition_approval_add = -1
+		interest_group_in_opposition_approval_add = -2
 		country_legitimacy_govt_total_clout_add = 10
 		country_prestige_mult = 0.05
 		country_government_wages_mult = 0.15
@@ -200,7 +200,7 @@ REPLACE:law_elected_bureaucrats = {
 	modifier = {
 		country_institution_cost_institution_civil_service_mult = -0.15
 		country_legitimacy_govt_total_votes_add = 10
-		country_legitimacy_ideological_incoherence_mult = 0.1
+		country_legitimacy_ideological_incoherence_mult = 0.15
 		country_bureaucracy_investment_cost_factor_mult = -0.1
 	}
 	institution = institution_civil_service
@@ -241,7 +241,7 @@ law_private_administration = {
 	modifier = {
 		country_institution_cost_institution_civil_service_mult = -0.75
 		country_bureaucracy_investment_cost_factor_mult = 0.25
-		country_government_wages_mult = -0.25
+		country_government_wages_mult = -0.1
 		country_prestige_mult = -0.05
 	}
 	

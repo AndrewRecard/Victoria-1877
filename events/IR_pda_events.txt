@@ -58,11 +58,15 @@ defense_incorporation.2 = {
 		video = "ip2_unruly_soldiers"
 	}
 
+	cooldown = {
+		days = normal_modifier_time
+	}
+
 	trigger = {
 		any_scope_state = {
+			is_capital = no
 			any_scope_building = {
 				is_building_type = building_barrack
-				level >= 20
 			}
 		}
 	}
@@ -70,22 +74,51 @@ defense_incorporation.2 = {
 	immediate = {
 		random_scope_state = {
 			limit = {
+				is_capital = no
 				any_scope_building = {
 					is_building_type = building_barrack
-					level >= 20
+				}
+			}
+			weight = {
+				factor = 1
+				modifier = {
+					factor = 2
+					trigger = {
+					    any_scope_building = {
+    						is_building_type = building_barrack
+							level >= 10
+    					}
+					}
+				}
+				modifier = {
+					factor = 2
+					trigger = {
+						any_scope_building = {
+							is_building_type = building_barrack
+							level >= 20
+						}
+					}
+				}
+				modifier = {
+					factor = 2
+					trigger = {
+						any_scope_building = {
+							is_building_type = building_barrack
+							level >= 30
+						}
+					}
+				}
+				modifier = {
+					factor = 2
+					trigger = {
+						any_scope_building = {
+							is_building_type = building_barrack
+							level >= 40
+						}
+					}
 				}
 			}
 			save_scope_as = barracks_state
-		}
-	}
-
-	cooldown = {
-		days = long_modifier_time
-	}
-
-	cancellation_trigger = {
-		NOT = {
-			has_journal_entry = je_defense_incorporation
 		}
 	}
 
@@ -127,6 +160,12 @@ defense_incorporation.2 = {
 			}
 		}
 	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_journal_entry = je_defense_incorporation
+		}
+	}
 }
 # proprietary logistics
 defense_incorporation.3 = {
@@ -143,17 +182,8 @@ defense_incorporation.3 = {
 		video = "ip4_mining_scene"
 	}
 
-	immediate = {
-	}
-
 	cooldown = {
 		days = long_modifier_time
-	}
-
-	cancellation_trigger = {
-		NOT = {
-			has_journal_entry = je_defense_incorporation
-		}
 	}
 
 	option = {
@@ -214,6 +244,12 @@ defense_incorporation.3 = {
 			days = normal_modifier_time
 		}
 	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_journal_entry = je_defense_incorporation
+		}
+	}
 }
 
 defense_incorporation.4 = {
@@ -225,23 +261,23 @@ defense_incorporation.4 = {
 	duration = 3
 
 	on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-	icon = "gfx/interface/icons/invention_icons/wargaming.dds"
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
 	event_image = {
 		video = "votp_cops_march"
 	}
 
 	trigger = {
-		any_scope_building = {
-			is_building_type = building_barrack
-			level >= 10
-		}
-		any_scope_building = {
-			OR = {
-				is_building_type = building_munition_plant
-				is_building_type = building_arms_industry
-				is_building_type = building_artillery_foundry
+		any_scope_state = {
+			any_scope_building = {
+				is_building_type = building_barrack
 			}
-			level >= 5
+			any_scope_building = {
+				OR = {
+					is_building_type = building_munition_plant
+					is_building_type = building_arms_industry
+					is_building_type = building_artillery_foundry
+				}
+			}
 		}
 	}
 
@@ -250,7 +286,6 @@ defense_incorporation.4 = {
 			limit = {
 				any_scope_building = {
 					is_building_type = building_barrack
-					level >= 10
 				}
 				any_scope_building = {
 					OR = {
@@ -258,7 +293,43 @@ defense_incorporation.4 = {
 						is_building_type = building_arms_industry
 						is_building_type = building_artillery_foundry
 					}
-					level >= 5
+				}
+			}
+			weight = {
+				factor = 1
+				modifier = {
+					factor = 3
+					trigger = {
+						any_scope_building = {
+							is_building_type = building_barrack
+							level >= 10
+						}
+						any_scope_building = {
+							OR = {
+								is_building_type = building_munition_plant
+								is_building_type = building_arms_industry
+								is_building_type = building_artillery_foundry
+								level >= 5
+							}
+						}
+					}
+				}
+				modifier = {
+					factor = 3
+					trigger = {
+						any_scope_building = {
+							is_building_type = building_barrack
+							level >= 20
+						}
+						any_scope_building = {
+							OR = {
+								is_building_type = building_munition_plant
+								is_building_type = building_arms_industry
+								is_building_type = building_artillery_foundry
+								level >= 10
+							}
+						}
+					}
 				}
 			}
 			save_scope_as = mercenary_state
@@ -266,13 +337,7 @@ defense_incorporation.4 = {
 	}
 
 	cooldown = {
-		days = long_modifier_time
-	}
-
-	cancellation_trigger = {
-		NOT = {
-			has_journal_entry = je_defense_incorporation
-		}
+		days = normal_modifier_time
 	}
 
 	option = {
@@ -335,6 +400,12 @@ defense_incorporation.4 = {
 			}
 		}
 	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_journal_entry = je_defense_incorporation
+		}
+	}
 }
 
 defense_incorporation.5 = {
@@ -362,24 +433,11 @@ defense_incorporation.5 = {
 	}
 
 	cooldown = {
-		days = long_modifier_time
-	}
-
-	trigger = {
-		NOT = {
-			has_law_or_variant = law_type:law_directorate
-		}
-	}
-
-	cancellation_trigger = {
-		NOT = {
-			has_journal_entry = je_defense_incorporation
-		}
+		days = normal_modifier_time
 	}
 
 	option = {
 		name = defense_incorporation.5.a
-		default_option = yes
 		scope:corrupt_leader = {
 			remove_as_interest_group_leader = yes
 		}
@@ -413,6 +471,7 @@ defense_incorporation.5 = {
 
 	option = {
 		name = defense_incorporation.5.b
+		default_option = yes
 		ig:ig_armed_forces = {
 			add_modifier = {
 				name = ir_allowed_corruption_modifier
@@ -427,6 +486,12 @@ defense_incorporation.5 = {
 				strata = upper
 				value = large_radicals
 			}
+		}
+	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_journal_entry = je_defense_incorporation
 		}
 	}
 }

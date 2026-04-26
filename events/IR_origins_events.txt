@@ -295,9 +295,7 @@ propertarian_origins.2 = { # A Capital Strike
 			}
 			if = {
 				limit = {
-					scope:origins_propertarian_ig = {
-						has_party = yes
-					}
+					scope:origins_propertarian_ig = { has_party = yes }
 				}
 				scope:origins_propertarian_ig.party = {
 					set_ruling_party = yes
@@ -309,7 +307,17 @@ propertarian_origins.2 = { # A Capital Strike
 				}
 			}
 		}
-		activate_law = law_type:law_private_administration
+		if = {
+			limit = {
+				NOT = { has_law_or_variant = law_type:law_private_administration }
+			}
+			activate_law = law_type:law_private_administration
+		}else = {
+			add_modifier = {
+				name = ir_government_restructure_modifier
+				days = normal_modifier_time
+			}
+		}
 		scope:origins_propertarian_ig = {
 			add_modifier = {
 				name = ir_propertarians_welcomed_modifier
@@ -704,21 +712,31 @@ propertarian_origins.5 = {
 				}
 			}
 		}
-		random_law = {
-			limit = {
-				type = law_type:law_private_defense_agencies
+		if = {
+		    limit = {
+				has_technology_researched = military_statistics
+		    }
+		    random_law = {
+    			limit = {
+    				type = law_type:law_private_defense_agencies
+    			}
+    			save_temporary_scope_as = promised_law
+    		}
+    		set_variable = {
+    			name = desired_law_var
+    			value = scope:promised_law
+    		}
+    		ig:ig_industrialists = {
+    			set_variable = petitioning_ig
+    		}
+			add_journal_entry = {
+				type = je_government_petition
 			}
-			save_temporary_scope_as = promised_law
-		}
-		set_variable = {
-			name = desired_law_var
-			value = scope:promised_law
-		}
-		ig:ig_industrialists = {
-			set_variable = petitioning_ig
-		}
-		add_journal_entry = {
-			type = je_government_petition
+		}else = {
+			add_technology_progress = {
+				technology = military_statistics
+				progress = 6000
+			}
 		}
 		scope:strike_state = {
 			add_modifier = {
@@ -865,6 +883,123 @@ propertarian_origins.6 = {
 				ig_leader = yes
 				ideology = ideology_moderate
 				interest_group = scope:new_propertarian_leader_ig
+			}
+		}
+	}
+}
+
+propertarian_origins.7 = {
+	type = country_event
+	placement = root
+
+	title = propertarian_origins.7.t
+	desc = propertarian_origins.7.d
+	flavor = propertarian_origins.7.f
+	duration = 3
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+	event_image = {
+		video = "ep1_clandestine_meeting"
+	}
+
+	option = {
+		name = propertarian_origins.7.a
+		default_option = yes
+		if = {
+			limit = {
+				any_scope_character = {
+					is_interest_group_type = ig_industrialists
+					has_role = politician
+					has_propertarian_ideology = no
+				}
+			}
+			if = {
+				limit = {
+					ig:ig_industrialists = {
+						leader = {
+							has_ideology = ideology:ideology_market_liberal
+						}
+					}
+				}
+				ig:ig_industrialists = {
+					leader = {
+						set_ideology = ideology:ideology_minarchist_leader
+						save_scope_as = popular_propertarian
+					}
+				}
+			}else_if = {
+				limit = {
+					any_scope_character = {
+						is_interest_group_type = ig_industrialists
+						has_role = executive
+						has_propertarian_ideology = yes
+					}
+				}
+				random_scope_character = {
+					limit = {
+						is_interest_group_type = ig_industrialists
+						has_role = executive
+						has_propertarian_ideology = yes
+					}
+					set_as_interest_group_leader = yes
+					save_scope_as = popular_propertarian
+				}
+			}else_if = {
+				limit = {
+					any_scope_character = {
+						is_interest_group_type = ig_industrialists
+						has_role = executive
+						has_ideology = ideology:ideology_market_liberal
+					}
+				}
+				random_scope_character = {
+					limit = {
+						is_interest_group_type = ig_industrialists
+						has_role = executive
+						has_ideology = ideology:ideology_market_liberal
+					}
+					set_ideology = ideology:ideology_minarchist_leader
+					set_as_interest_group_leader = yes
+					save_scope_as = popular_propertarian
+				}
+			}else = {
+				ig:ig_industrialists = {
+				    leader = {
+    					exile_character = yes
+    				}
+				}
+				create_character = {
+					ideology = ideology:ideology_minarchist_leader
+					interest_group = ig_industrialists
+					ig_leader = yes
+				}
+			}
+		}else = {
+			ig:ig_industrialists = {
+				leader = {
+					save_scope_as = popular_propertarian
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				NOT = {
+					any_political_movement = {
+						is_political_movement_type = movement_propertarian
+					}
+				}
+			}
+			create_political_movement = { type = movement_propertarian }
+		}
+	}
+	after = {
+		scope:popular_propertarian = {
+			set_variable = propertarian_char_var
+			add_modifier = {
+				name = ir_propertarian_figurehead_modifier
+				days = normal_modifier_time
 			}
 		}
 	}

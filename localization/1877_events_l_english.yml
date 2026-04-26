@@ -21,12 +21,14 @@
  directorate_events.1.f: ""...naturally, the Class-A shares held by the Board will carry ten thousand times the voting weight."\n\nSterling frowned. "A wasteful endeavor. Why coddle them with illusions? We bought this country fair and square. The Board should dictate policy directly."\n\n"Because, my dear Sterling," Arthur smiled, "a man who believes he is voting for his manager is far less likely to riot than a man who knows he is a subject. Let them have their democracy. The house always wins.""
  directorate_events.1.a: "Allow them to buy their franchise."
  directorate_events.1.b: "The Board answers to no one but the market."
+ directorate_events.1.c: "Our technocratic foundation has evolved."
+ directorate_events.1.e: "Grant [SCOPE.sCharacter('incorporation_ruler').GetFullName] executive powers over the Board."
 
  directorate_events.2.t: "Human Capital"
  directorate_events.2.d: "With the Directorate now formally established, the Board must address the persistent nuisance of organized labor. The [GetInterestGroupVariant('ig_trade_unions',GetPlayer).GetName] are threatening strikes, demanding to know how collective bargaining will function under the new regime. The interim Board is sharply divided on how to manage our most volatile asset: human capital."
  directorate_events.2.f: ""A union is nothing but a monopoly on labor," Sterling argued. "It is an illegal cartel designed to extort the shareholders. We must outlaw them entirely. Let every man negotiate his own wage, or let him starve."\n\nArthur adjusted his cuffs, entirely unbothered. "If you crush them, they will simply organize in the dark, and dynamite will be bought factory floor. No, we don't ban the unions. We mandate internal arbitration. We give them a grievance box, and we keep the key.""
  directorate_events.2.a: "Dissolve the cartels, let us consider labor an individual contract."
- directorate_events.2.b: "Unions works best when they work for us; incorporate them."
+ directorate_events.2.b: "Unions work best when they work for us. Incorporate them."
 
  directorate_events.3.t: "Creditor Ultimatum"
  directorate_events.3.d: "The Directorate's books have crossed a line the bondholders will no longer ignore. A delegation of underwriters — led by men with significant stakes in the [SCOPE.sCompany('creditor_company').GetExecutive.GetInterestGroup.GetName] — has arrived to "renegotiate the terms of our facility." The implication is unsubtle: produce collateral, restructure, or watch our credit rating collapse alongside our remaining institutions."
@@ -76,9 +78,10 @@
  propertarian_origins.2.f: ""We will no longer subsidize the inefficiencies of the state with the sweat of private enterprise. You have operated at a deficit for far too long. Hand over the ledgers, or we will demonstrate exactly who truly keeps the engines of this nation running.""
  propertarian_origins.2.a: "Appoint [SCOPE.sCharacter('origins_propertarian_leader').GetHerHim] to restructure the government."
  propertarian_origins.2.b: "Let them strike. The sovereign state cannot be bought."
- propertarian_origins.2.c: "A blatant conspiracy! Seize their assets and deport this [SCOPE.sCharacter('integrity_propertarian_leader').GetWomanMan]!"
+ propertarian_origins.2.c: "A blatant conspiracy! Seize [SCOPE.sCharacter('integrity_propertarian_leader').GetHerHis] assets and deport this [SCOPE.sCharacter('integrity_propertarian_leader').GetWomanMan]!"
  ir_propertarians_welcomed_modifier: "Propertarian Cabinet"
  ir_propertarians_rebuked_modifier: "Propertarians Rebuked"
+ ir_government_restructure_modifier: "Private Restructuring"
  ir_capital_strike_modifier: "Capital Strike"
 
  propertarian_origins.3.t: "Market Correction"
@@ -91,7 +94,7 @@
 
  propertarian_origins.4.t: "A Treatise on Property"
  propertarian_origins.4.d: "A widely circulated essay authored by [SCOPE.sCharacter('propertarian_leader').GetFullName], a prominent [SCOPE.sCharacter('propertarian_leader').GetIdeology.GetName], has become the primary topic of discussion in the nation's financial districts, universities, and private clubs. The unapologetic arguments for free-market absolutism are beginning to resonate deeply among the economic elite."
- propertarian_origins.4.f: ""The state, in all its bureaucratic majesty, produces absolutely nothing. It merely confiscates and redistributes the fruits of private enterprise under the threat of force. To subject the genius of industry to the whims of politicians is a crime against efficiency. When the provision of security and administration is finally submitted to the rigors of market competition, only then, shall we see true prosperity.""
+ propertarian_origins.4.f: ""The state, in all its bureaucratic majesty, produces absolutely nothing. It merely confiscates and redistributes the fruits of private enterprise under the threat of force. To subject the genius of industry to the whims of politicians is a crime against efficiency. When the provision of security and administration is finally submitted to the rigors of market competition, then, and only then, shall we see true prosperity.""
  propertarian_origins.4.a: "A flawless economic doctrine."
  propertarian_origins.4.b: "A dangerous disregard for sovereign authority."
  propertarian_origins.4.c: "[SCOPE.sCharacter('propertarian_leader_2').GetFullName] offers a more pragmatic approach."
@@ -117,6 +120,12 @@
  propertarian_origins.6.a: "Let them test their theories in government."
  propertarian_origins.6.b: "The state is not a business. Force a leadership change."
  ir_refused_propertarian_seat_modifier: "Refused Propertarian Leadership"
+
+ propertarian_origins.7.t: "Industry and Integrity"
+ propertarian_origins.7.d: "The ideas have long existed on paper; what they lacked was a moment. Such a moment now arrives in [ROOT.GetCountry.GetNameNoFlag]. On one hand, agitators are clamouring for the seizure of private enterprise, and on the other a class of industrialists grown weary of underwriting a state indifferent to their concerns. From this convergence, the Propertarian creed threatens at last to harden into an organised political force."
+ propertarian_origins.7.f: "“When the apparatus of government ceases to protect the property of its primary shareholders - the captains of industry - it must be treated like any other failing enterprise. It must be acquired, restructured, and fundamentally privatized.”"
+ propertarian_origins.7.a: "Let history be the auditor."
+ ir_propertarian_figurehead_modifier: "Propertarian Figurehead"
 
  # DEFENSE INCORPORATION
  defense_incorporation.1.t: "The Business of War"

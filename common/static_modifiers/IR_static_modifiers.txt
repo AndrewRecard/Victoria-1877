@@ -189,6 +189,11 @@ ir_ditched_molinari_modifier = {
 	interest_group_approval_add = -2
 }
 
+ir_propertarian_figurehead_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	character_popularity_add = 50
+}
+
 ir_propertarians_welcomed_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
 	interest_group_pol_str_mult = 0.75
@@ -199,6 +204,13 @@ ir_propertarians_rebuked_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
 	interest_group_pop_attraction_mult = -0.15
 	interest_group_approval_add = -10
+}
+
+ir_government_restructure_modifier = {
+	country_enactment_success_chance_law_directorate_add = 0.1
+	country_enactment_success_chance_law_private_schools_add = 0.1
+	country_enactment_success_chance_law_private_health_insurance_add = 0.1
+	country_enactment_success_chance_law_private_defense_agencies_add = 0.1
 }
 
 ir_capital_strike_modifier = {

@@ -61,7 +61,7 @@ je_defense_incorporation = {
 	
 	on_monthly_pulse = {
 		random_events = {
-			24 = 0
+			22 = 0
 			1 = defense_incorporation.2
 			1 = defense_incorporation.3
 			1 = defense_incorporation.4
