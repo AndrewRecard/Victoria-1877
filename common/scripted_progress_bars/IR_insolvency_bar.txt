@@ -5,6 +5,7 @@
 	default_bad = yes
 
 	weekly_progress = {
+		add = 100
 		if = {
 			limit = {
 				has_law_or_variant = law_type:law_compulsory_primary_school

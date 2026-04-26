@@ -41,7 +41,7 @@
 
  # Liquidating the Public Trust
  je_public_liquidation: "Liquidating the Public Trust"
- je_public_liquidation_reason: "The transition to a Directorate has left the state's balance sheets in unacceptable condition. The previous administration saddled us with exorbitant, non-profit public services that drain our dividends and provide zero return on investment. The Board demands immediate austerity. We must divest from the public sector and open these captive markets to private enterprise, or the weight of these unfunded liabilities will bankrupt the state."
+ je_public_liquidation_reason: "The Directorate has inherited a balance sheet bloated with unfunded public liabilities; captive markets squandered on non-profit services that return nothing to shareholders. The Board demands austerity. Divest, privatize, and unlock these assets, or the state itself will be written down."
  ir_insolvency_bar: "Insolvency"
  ir_insolvency_bar_desc: "Insolvency Pressure: #variable [JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|1]/1000#!"
  ir_insolvency_bar_full: "#bold Insolvency Pressure#! has reached 1000"
@@ -58,6 +58,7 @@
  ir_austerity_measures_modifier: "Austerity Measures"
  ir_public_divestiture_modifier: "Public Divestiture"
  ir_free_market_commons_modifier: "Free Market Commons"
+ ir_market_commons_modifier: "Market Commons"
  ir_institutional_redress_modifier: "Institutional Redress"
 
  institutional_collapse_tt: "All of our institutions will be #b abolished#!"

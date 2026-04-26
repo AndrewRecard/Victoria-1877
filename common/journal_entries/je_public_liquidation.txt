@@ -6,8 +6,9 @@ je_public_liquidation = {
 
 	is_shown_when_inactive = {
 		has_technology_researched = corporate_charters
-		NOT = {
+		NOR = {
 			has_modifier = ir_free_market_commons_modifier
+			has_modifier = ir_market_commons_modifier
 		}
 	}
 
@@ -100,18 +101,14 @@ je_public_liquidation = {
 	on_fail = {
 		custom_tooltip = {
 			text = institutional_collapse_tt
-			activate_law = law_type:law_private_administration
-			activate_law = law_type:law_no_workers_rights
-			activate_law = law_type:law_no_social_security
-			activate_law = law_type:law_no_schools
-			activate_law = law_type:law_no_health_system
-			activate_law = law_type:law_no_home_affairs
-			activate_law = law_type:law_no_police
-			activate_law = law_type:law_no_colonial_affairs
-			activate_law = law_type:law_voluntary_association
-			activate_law = law_type:law_oligopoly
-			activate_law = law_type:law_laissez_faire
-			activate_law = law_type:law_child_labor_allowed
+			trigger_event = {
+				id = directorate_events.8
+				popup = yes
+			}
+		}
+		custom_tooltip = {
+			text = propertarian_split_effect_tt
+			propertarian_split_effect = yes
 		}
 		set_variable = public_liquidation_completed
 	}

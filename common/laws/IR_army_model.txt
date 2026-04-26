@@ -142,6 +142,12 @@ REPLACE:law_peasant_levies = {
 	disallowing_laws = {
 		law_council_republic
 	}
+	can_enact = {
+		custom_tooltip = {
+			text = public_institutions_liquidated_tt
+			modifier:country_public_institutions_liquidated_bool = no
+		}
+	}
 
 	modifier = {
 		country_can_only_conscript_peasants_bool = yes
@@ -240,7 +246,12 @@ REPLACE:law_professional_army = {
 	progressiveness = 0
 
 	unlocking_technologies = { military_drill }
-
+	can_enact = {
+		custom_tooltip = {
+			text = public_institutions_liquidated_tt
+			modifier:country_public_institutions_liquidated_bool = no
+		}
+	}
 	modifier = {
 		unit_morale_loss_mult = -0.1
 		state_conscription_rate_add = 0.01
@@ -355,7 +366,12 @@ REPLACE:law_national_militia = {
 	progressiveness = 0
 
 	unlocking_technologies = { mandatory_service }
-
+	can_enact = {
+		custom_tooltip = {
+			text = public_institutions_liquidated_tt
+			modifier:country_public_institutions_liquidated_bool = no
+		}
+	}
 	modifier = {
 		unit_morale_loss_mult = -0.05
 		state_conscription_rate_add = 0.05
@@ -446,7 +462,12 @@ REPLACE:law_mass_conscription = {
 	progressiveness = 50
 
 	unlocking_technologies = { enlistment_offices }
-
+	can_enact = {
+		custom_tooltip = {
+			text = public_institutions_liquidated_tt
+			modifier:country_public_institutions_liquidated_bool = no
+		}
+	}
 	modifier = {
 		unit_morale_loss_mult = 0.05
 		state_conscription_rate_add = 0.03

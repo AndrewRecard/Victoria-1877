@@ -45,16 +45,21 @@
 		activate_law = law_type:law_right_to_associate
 		remove_variable = public_liquidation_completed
 		if = {
-			limit = {
-				has_modifier = ir_free_market_commons_modifier
-			}
+			limit = { has_modifier = ir_free_market_commons_modifier }
 			remove_modifier = ir_free_market_commons_modifier
+		}else_if = {
+			limit = { has_modifier = ir_market_commons_modifier }
+			remove_modifier = ir_market_commons_modifier
 		}
 		if = {
-			limit = {
-				has_modifier = ir_guilded_charter_modifier
-			}
+			limit = { has_modifier = ir_guilded_charter_modifier}
 			remove_modifier = ir_guilded_charter_modifier
+		}else_if = {
+			limit = { has_modifier = ir_privatized_peace_modifier }
+			remove_modifier = ir_privatized_peace_modifier
+		}else_if = {
+			limit = { has_modifier = ir_monopolized_integration_modifier }
+			remove_modifier = ir_monopolized_integration_modifier
 		}
 		ig:ig_intelligentsia = {
 			remove_ideology = ideology_market_rationalist

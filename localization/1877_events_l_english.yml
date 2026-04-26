@@ -53,6 +53,11 @@
  ir_mass_layoffs_modifier: "Mass Layoffs"
  ir_severance_program_modifier: "Severance Program"
 
+ directorate_events.8.t: "Public Trust, Liquidated"
+ directorate_events.8.d: "The insolvency proceedings are closed. With our balance sheet a monument to fiscal mismanagement, the Board of Directors has voted to authorize the immediate dissolution of every remaining public liability. Schools, hospitals, welfare programs, police forces — every instrument of the old public order is to be sold, disbanded, or simply abandoned.\n\nThe civil service will be maintained at minimum operational capacity, if only to sign the dissolution papers."
+ directorate_events.8.f: "Every institution has a price. We have simply run out of buyers."
+ directorate_events.8.a: "There is only the Boardroom now."
+
  # PROPERTARIAN AGITATION EVENTS
  propertarian_origins.1.t: "The Production of Security"
  propertarian_origins.1.d: "The increasing bureaucratic overreach of the state apparatus has become a significant burden on the engines of industry. An essay titled "The Production of Security," written by a radical economist, has captivated the attention of our wealthiest elites, proposing that the state itself be subject to market competition."
