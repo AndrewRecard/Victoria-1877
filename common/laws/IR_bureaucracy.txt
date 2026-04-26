@@ -36,12 +36,6 @@
 			}
 			custom_tooltip = bureaucrats_pb_ig_shift_effect_negative_tt
 		}
-		if = {
-			limit = {
-				has_law = law_type:law_private_administration
-			}
-			custom_tooltip = clerks_intelligentsia_ig_shift_effect_negative_tt
-		}
 	}
 
 	ai_will_do = {
@@ -99,12 +93,6 @@ REPLACE:law_crownland_diets = {
 			}
 			custom_tooltip = bureaucrats_pb_ig_shift_effect_negative_tt
 		}
-		if = {
-			limit = {
-				has_law = law_type:law_private_administration
-			}
-			custom_tooltip = clerks_intelligentsia_ig_shift_effect_negative_tt
-		}
 	}
 
 	disallowing_laws = {
@@ -140,14 +128,13 @@ REPLACE:law_appointed_bureaucrats = {
 	}
 
 	modifier = {
-		interest_group_in_opposition_approval_add = -2
+		interest_group_in_opposition_approval_add = -1
 		country_legitimacy_govt_total_clout_add = 10
 		country_prestige_mult = 0.05
 		country_government_wages_mult = 0.15
 	}
 	institution = institution_civil_service
 	institution_modifier = {
-		interest_group_ig_intelligentsia_pol_str_mult = 0.05
 		state_construction_mult = 0.015
 		state_tax_capacity_mult = 0.05
 	}
@@ -164,12 +151,6 @@ REPLACE:law_appointed_bureaucrats = {
 				has_law_or_variant = law_type:law_hereditary_bureaucrats
 			}
 			custom_tooltip = urban_aristocrats_int_ig_shift_effect_negative_tt
-		}
-		if = {
-			limit = {
-				has_law = law_type:law_private_administration
-			}
-			custom_tooltip = clerks_intelligentsia_ig_shift_effect_negative_tt
 		}
 	}
 
@@ -214,23 +195,16 @@ REPLACE:law_elected_bureaucrats = {
 			}
 			custom_tooltip = urban_aristocrats_int_ig_shift_effect_negative_tt
 		}
-		if = {
-			limit = {
-				has_law = law_type:law_private_administration
-			}
-			custom_tooltip = clerks_intelligentsia_ig_shift_effect_negative_tt
-		}
 	}
 
 	modifier = {
 		country_institution_cost_institution_civil_service_mult = -0.15
 		country_legitimacy_govt_total_votes_add = 10
-		country_legitimacy_ideological_incoherence_mult = 0.15
+		country_legitimacy_ideological_incoherence_mult = 0.1
 		country_bureaucracy_investment_cost_factor_mult = -0.1
 	}
 	institution = institution_civil_service
 	institution_modifier = {
-		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.05
 		building_government_administration_throughput_add = 0.03
 		state_infrastructure_from_population_mult = 0.05
 		state_infrastructure_from_population_max_mult = 0.05
@@ -280,7 +254,6 @@ law_private_administration = {
 	}
 
 	on_enact = {
-		custom_tooltip = clerks_intelligentsia_ig_shift_effect_tt
 		if = {
 			limit = {
 				has_law_or_variant = law_type:law_hereditary_bureaucrats
