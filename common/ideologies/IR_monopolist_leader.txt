@@ -93,7 +93,7 @@
 
 	non_interest_group_leader_trigger = {
 		NAND = {
-			has_role = agitator
+			has_role_of_type = agitator
 			owner = {
 				NOT = {
 					boardroom_schism_resolved_trigger = yes

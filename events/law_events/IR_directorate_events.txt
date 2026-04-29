@@ -434,10 +434,7 @@ directorate_events.5 = {
                 }
             }
             order_by = {
-                random_scope_building = {
-                    limit = {
-                        is_building_type = building_government_administration
-                    }
+                b:building_government_administration = {
                     value = level
                 }
             }
@@ -501,98 +498,6 @@ directorate_events.5 = {
     cancellation_trigger = {
         NOT = {
             has_journal_entry = je_public_liquidation
-        }
-    }
-}
-
-directorate_events.8 = {
-    type = country_event
-    placement = root
-    title = directorate_events.8.t
-    desc = directorate_events.8.d
-    flavor = directorate_events.8.f
-    duration = 3
-
-    on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-    icon = "gfx/interface/icons/event_icons/event_election.dds"
-    event_image = {
-        video = "unspecific_vandalized_storefront"
-    }
-
-    option = {
-        name = directorate_events.8.a
-        default_option = yes
-        if = {
-            limit = {
-                NOT = { has_law = law_type:law_no_workers_rights }
-            }
-            activate_law = law_type:law_no_workers_rights
-        }
-        if = {
-            limit = {
-                NOT = { has_law = law_type:law_no_social_security }
-            }
-            activate_law = law_type:law_no_social_security
-        }
-        if = {
-            limit = {
-                NOT = { has_law = law_type:law_no_schools }
-            }
-            activate_law = law_type:law_no_schools
-        }
-        if = {
-            limit = {
-                NOT = { has_law = law_type:law_no_health_system }
-            }
-            activate_law = law_type:law_no_health_system
-        }
-        if = {
-            limit = {
-                NOT = { has_law = law_type:law_no_home_affairs }
-            }
-            activate_law = law_type:law_no_home_affairs
-        }
-        if = {
-            limit = {
-                NOT = { has_law = law_type:law_no_police }
-            }
-            activate_law = law_type:law_no_police
-        }
-        if = {
-            limit = {
-                NOT = { has_law = law_type:law_no_colonial_affairs }
-            }
-            activate_law = law_type:law_no_colonial_affairs
-        }
-        if = {
-            limit = {
-                NOT = { has_law = law_type:law_voluntary_association }
-            }
-            activate_law = law_type:law_voluntary_association
-        }
-        if = {
-            limit = {
-                NOT = { has_law = law_type:law_laissez_faire }
-            }
-            activate_law = law_type:law_laissez_faire
-        }
-        if = {
-            limit = {
-                NOT = { has_law = law_type:law_child_labor_allowed }
-            }
-            activate_law = law_type:law_child_labor_allowed
-        }
-        if = {
-            limit = {
-                institution_investment_level:institution_civil_service > 1
-            }
-            set_institution_investment_level = {
-                institution = institution_civil_service
-                level = 1
-            }
-        }
-        add_modifier = {
-            name = ir_market_commons_modifier
         }
     }
 }

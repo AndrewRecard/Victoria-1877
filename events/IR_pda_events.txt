@@ -17,7 +17,7 @@ defense_incorporation.1 = {
 	immediate = {
 		random_scope_character = {
 			limit = {
-				is_ruler = yes
+				is_ruler_of_own_country = yes
 			}
 			save_scope_as = head_of_state1
 		}
@@ -425,7 +425,7 @@ defense_incorporation.5 = {
 	immediate = {
 		random_scope_character = {
 			limit = {
-				has_role = politician
+				has_role_of_type = politician
 				is_interest_group_type = ig_armed_forces
 			}
 			save_scope_as = corrupt_leader

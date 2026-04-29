@@ -7,6 +7,7 @@
 		law_presidential_republic = neutral
 		law_parliamentary_republic = neutral
 		law_corporate_state = neutral
+		law_social_monarchy = approve
 		law_council_republic = strongly_disapprove
 		law_directorate = neutral
 	}
@@ -77,6 +78,13 @@ REPLACE:ideology_laissez_faire = {
 		law_isolationism = strongly_disapprove
 	}
 
+	lawgroup_navy_model = {
+		law_merchant_navy = approve
+		law_jeune_ecole = neutral
+		law_professional_navy = disapprove
+		law_diplomatic_navy = neutral
+	}
+
 	lawgroup_childrens_rights = {
 		law_child_labor_allowed = approve
 		law_restricted_child_labor = neutral
@@ -93,7 +101,7 @@ REPLACE:ideology_laissez_faire = {
 		law_collectivized_agriculture = strongly_disapprove
 		law_serfdom = disapprove
 		law_tenant_farmers = neutral
-		law_homesteading = neutral
+		law_peasant_proprietorship = neutral
 		law_commercialized_agriculture = approve
 	}
 
@@ -176,7 +184,7 @@ REPLACE:ideology_hierarchic = {
 		law_serfdom = strongly_approve
 		law_tenant_farmers = approve
 		law_commercialized_agriculture = neutral
-		law_homesteading = strongly_disapprove
+		law_peasant_proprietorship = strongly_disapprove
 		law_collectivized_agriculture = strongly_disapprove
 	}
 
@@ -210,6 +218,12 @@ REPLACE:ideology_hierarchic = {
 		law_hindu_caste_not_enforced = disapprove
 		law_affirmative_action = strongly_disapprove
 	}
+
+	lawgroup_edo_social_system = {
+		law_strict_edo_system = strongly_approve
+		law_intermediate_edo_system = approve
+		law_lax_edo_system = disapprove
+	}
 }
 
 REPLACE:ideology_oligarchic = {
@@ -219,7 +233,7 @@ REPLACE:ideology_oligarchic = {
 		law_tenant_farmers = strongly_approve
 		law_serfdom = approve
 		law_commercialized_agriculture = approve
-		law_homesteading = strongly_disapprove
+		law_peasant_proprietorship = strongly_disapprove
 		law_collectivized_agriculture = strongly_disapprove
 	}
 
@@ -290,7 +304,7 @@ REPLACE:ideology_agrarian = {
 		law_tenant_farmers = disapprove
 		law_commercialized_agriculture = neutral
 		law_collectivized_agriculture = neutral
-		law_homesteading = approve
+		law_peasant_proprietorship = approve
 	}
 
 	lawgroup_taxation = {
@@ -375,6 +389,13 @@ REPLACE:ideology_isolationist = {
 		law_free_trade = disapprove
 	}
 
+	lawgroup_navy_model = {
+		law_merchant_navy = approve
+		law_jeune_ecole = neutral
+		law_professional_navy = disapprove
+		law_diplomatic_navy = neutral
+	}
+
 	lawgroup_citizenship = {
 		law_ethnostate = disapprove
 		law_national_supremacy = neutral
@@ -394,6 +415,7 @@ REPLACE:ideology_moralist = {
 		law_presidential_republic = neutral
 		law_parliamentary_republic = neutral
 		law_corporate_state = neutral
+		law_social_monarchy = neutral
 		law_council_republic = strongly_disapprove
 		law_directorate = strongly_disapprove
 	}
@@ -414,6 +436,7 @@ REPLACE:ideology_montenegrin_moralist = {
 		law_presidential_republic = disapprove
 		law_parliamentary_republic = disapprove
 		law_corporate_state = disapprove
+		law_social_monarchy = disapprove
 		law_monarchy = disapprove
 		law_council_republic = strongly_disapprove
 		law_directorate = strongly_disapprove
@@ -471,6 +494,12 @@ REPLACE:ideology_meritocratic = {
 		law_affirmative_action = neutral
 	}
 
+	lawgroup_edo_social_system = {
+		law_strict_edo_system = strongly_disapprove
+		law_intermediate_edo_system = disapprove
+		law_lax_edo_system = approve
+	}
+
 	lawgroup_health_system = {
 		law_no_health_system = disapprove
 		law_charitable_health_system = neutral
@@ -504,10 +533,17 @@ REPLACE:ideology_patriotic = {
 		law_protected_speech = disapprove
 	}
 
+	lawgroup_navy_model = {
+		law_merchant_navy = strongly_disapprove
+		law_jeune_ecole = neutral
+		law_professional_navy = strongly_approve
+		law_diplomatic_navy = approve
+	}
+
 	lawgroup_migration = {
 		law_no_migration_controls = disapprove
 		law_migration_controls = approve
-		law_closed_borders = approve
+		law_closed_borders = neutral
 	}
 }
 
@@ -640,6 +676,7 @@ REPLACE:ideology_republican = {
 		law_presidential_republic = strongly_approve
 		law_parliamentary_republic = approve
 		law_corporate_state = neutral
+		law_social_monarchy = neutral
 		law_monarchy = neutral
 		law_theocracy = neutral
 		law_council_republic = disapprove
@@ -741,6 +778,12 @@ REPLACE:ideology_egalitarian = {
 		law_regulatory_bodies = approve
 		law_no_workers_rights = neutral
 	}
+
+	lawgroup_edo_social_system = {
+		law_strict_edo_system = strongly_disapprove
+		law_intermediate_edo_system = disapprove
+		law_lax_edo_system = strongly_approve
+	}
 }
 
 REPLACE:ideology_populist = {
@@ -787,6 +830,7 @@ REPLACE:ideology_socialist = {
 		law_council_republic = approve
 		law_parliamentary_republic = neutral
 		law_corporate_state = disapprove
+		law_social_monarchy = strongly_disapprove
 		law_presidential_republic = neutral
 		law_theocracy = strongly_disapprove
 		law_monarchy = strongly_disapprove
@@ -814,6 +858,7 @@ REPLACE:ideology_reactionary = {
 		law_presidential_republic = neutral
 		law_parliamentary_republic = neutral
 		law_corporate_state = neutral
+		law_social_monarchy = approve
 		law_council_republic = disapprove
 		law_directorate = disapprove
 	}
@@ -865,6 +910,7 @@ REPLACE:ideology_plutocratic = {
 		law_presidential_republic = neutral
 		law_parliamentary_republic = neutral
 		law_corporate_state = disapprove
+		law_social_monarchy = disapprove
 		law_theocracy = disapprove
 		law_council_republic = strongly_disapprove
 		law_directorate = approve
@@ -918,7 +964,7 @@ REPLACE:ideology_anti_slavery = {
 	lawgroup_land_reform = {
 		law_serfdom = strongly_disapprove
 		law_tenant_farmers = neutral
-		law_homesteading = neutral
+		law_peasant_proprietorship = neutral
 		law_collectivized_agriculture = neutral
 		law_commercialized_agriculture = neutral
 	}
@@ -928,30 +974,6 @@ REPLACE:ideology_anti_slavery = {
 		law_local_police = disapprove
 		law_dedicated_police = neutral
 		law_militarized_police = neutral
-	}
-}
-
-REPLACE:ideology_pro_slavery = {
-	icon = "gfx/interface/icons/ideology_icons/slaver.dds"
-
-	lawgroup_slavery = {
-		law_slave_trade = approve
-		law_debt_slavery = approve
-		law_legacy_slavery = approve
-		law_colonial_slavery = disapprove
-		law_slavery_banned = strongly_disapprove
-	}
-}
-
-REPLACE:ideology_pro_slavery_colonial = {
-	icon = "gfx/interface/icons/ideology_icons/slaver.dds"
-
-	lawgroup_slavery = {
-		law_slave_trade = disapprove
-		law_debt_slavery = neutral
-		law_legacy_slavery = neutral
-		law_colonial_slavery = approve
-		law_slavery_banned = strongly_disapprove
 	}
 }
 

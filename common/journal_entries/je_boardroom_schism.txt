@@ -1,6 +1,8 @@
 ﻿je_boardroom_schism = {
 	icon = "gfx/interface/icons/invention_icons/corporate_management.dds"
 	group = je_group_propertarianism
+	should_be_pinned_by_default_uninvolved_or_context = yes
+	weight = 100
 
 	scripted_progress_bar = schism_monopolist_bar
 	scripted_progress_bar = schism_minarchist_bar
@@ -12,6 +14,18 @@
 	scripted_button = suspend_lobbying_button
 	scripted_button = sponsor_thinktanks_button
 	scripted_button = convene_egm_button
+
+	widget = {
+		gui = "gui/journal_entry_widgets/IR_boardroom_schism_widgets.gui"
+		name = "widget_je_boardroom_schism_ruler"
+		container = "custom_widget_container_je_icon"
+	}
+
+	widget = {
+		gui = "gui/journal_entry_widgets/IR_boardroom_schism_widgets.gui"
+		name = "widget_je_boardroom_schism_propertarian_list"
+		container = "custom_widget_container_4"
+	}
 
 	is_shown_when_inactive = {
 		has_technology_researched = corporate_charters
@@ -140,6 +154,8 @@
 			limit = { type = law_type:law_directorate }
 			save_scope_as = directorate_scope
 		}
+		set_variable = boardroom_schism_je_marker
+		update_propertarian_characters_list = yes
 		set_variable = {
 			name = minarchist_effects_var
 			value = 0
@@ -156,6 +172,7 @@
 
 	on_weekly_pulse = {
 		effect = {
+			update_propertarian_characters_list = yes
 			remove_modifier = ir_funding_lobbies_modifier
 			add_modifier = {
 				name = ir_funding_lobbies_modifier
@@ -303,7 +320,4 @@
 	on_invalid = {
 		clear_boardroom_schism_variables = yes
 	}
-
-	weight = 100
-	should_be_pinned_by_default = yes
 }

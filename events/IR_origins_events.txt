@@ -564,7 +564,7 @@ propertarian_origins.4 = {
 		if = {
 			limit = {
 				scope:propertarian_leader = {
-					has_role = politician
+					has_role_of_type = politician
 				}
 			}
 			scope:propertarian_leader.interest_group = {
@@ -584,7 +584,7 @@ propertarian_origins.4 = {
 			save_scope_as = propertarian_leader_2
 			if = {
 				limit = {
-					has_role = politician
+					has_role_of_type = politician
 				}
 				interest_group = {
 					save_scope_as = propertarian_ig_2
@@ -910,7 +910,7 @@ propertarian_origins.7 = {
 			limit = {
 				any_scope_character = {
 					is_interest_group_type = ig_industrialists
-					has_role = politician
+					has_role_of_type = politician
 					has_propertarian_ideology = no
 				}
 			}
@@ -932,14 +932,14 @@ propertarian_origins.7 = {
 				limit = {
 					any_scope_character = {
 						is_interest_group_type = ig_industrialists
-						has_role = executive
+						has_role_of_type = executive
 						has_propertarian_ideology = yes
 					}
 				}
 				random_scope_character = {
 					limit = {
 						is_interest_group_type = ig_industrialists
-						has_role = executive
+						has_role_of_type = executive
 						has_propertarian_ideology = yes
 					}
 					set_as_interest_group_leader = yes
@@ -949,14 +949,14 @@ propertarian_origins.7 = {
 				limit = {
 					any_scope_character = {
 						is_interest_group_type = ig_industrialists
-						has_role = executive
+						has_role_of_type = executive
 						has_ideology = ideology:ideology_market_liberal
 					}
 				}
 				random_scope_character = {
 					limit = {
 						is_interest_group_type = ig_industrialists
-						has_role = executive
+						has_role_of_type = executive
 						has_ideology = ideology:ideology_market_liberal
 					}
 					set_ideology = ideology:ideology_minarchist_leader

@@ -51,8 +51,8 @@ boardroom_schism.1 = {
 					any_scope_character = {
 						has_ideology = ideology:ideology_molinarist_leader
 						OR = {
-							has_role = politician
-							has_role = agitator
+							has_role_of_type = politician
+							has_role_of_type = agitator
 						}
 					}
 				}
@@ -142,8 +142,8 @@ boardroom_schism.1 = {
 					any_scope_character = {
 						has_ideology = ideology:ideology_monopolist_leader
 						OR = {
-							has_role = politician
-							has_role = agitator
+							has_role_of_type = politician
+							has_role_of_type = agitator
 						}
 					}
 				}
@@ -222,8 +222,8 @@ boardroom_schism.1 = {
 					any_scope_character = {
 						has_ideology = ideology:ideology_minarchist_leader
 						OR = {
-							has_role = politician
-							has_role = agitator
+							has_role_of_type = politician
+							has_role_of_type = agitator
 						}
 					}
 				}

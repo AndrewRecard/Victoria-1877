@@ -448,7 +448,7 @@
 				limit = {
 					is_pop_type = farmers
 					owner = {
-						has_law_or_variant = law_type:law_homesteading
+						has_law_or_variant = law_type:law_peasant_proprietorship
 						NOT = {
 							has_law_or_variant = law_type:law_council_republic
 						}

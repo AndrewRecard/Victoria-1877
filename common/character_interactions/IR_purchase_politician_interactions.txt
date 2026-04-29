@@ -1,5 +1,5 @@
 ﻿sway_to_minarchism = {
-	icon = "gfx/interface/icons/ideology_icons/ideology_leader/unused/ideology_leader_isolationist.dds"
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/unused/ideology_leader_particularist.dds"
 	potential = {
 		owner ?= scope:actor
 		owner ?= {
@@ -13,11 +13,13 @@
 		custom_tooltip = {
 			text = sway_to_minarchism_correct_ig_in_government_tt
 			OR = {
-				has_role = executive
-				has_role = politician
+				has_role_of_type = executive
+				has_role_of_type = politician
+				has_role_of_type = magnate
 			}
-			NOT = {
+			NOR = {
 				is_interest_group_type = ig_trade_unions
+				is_ruler_of_own_country = yes
 			}
 		}
 		custom_tooltip = {
@@ -73,13 +75,15 @@ sway_to_molinarism = {
 		custom_tooltip = {
 			text = sway_to_molinarism_correct_ig_in_government_tt
 			OR = {
-				has_role = executive
-				has_role = politician
+				has_role_of_type = executive
+				has_role_of_type = politician
+				has_role_of_type = magnate
 			}
 			NOR = {
 				is_interest_group_type = ig_trade_unions
 				is_interest_group_type = ig_devout
 				is_interest_group_type = ig_landowners
+				is_ruler_of_own_country = yes
 			}
 		}
 		custom_tooltip = {
@@ -134,13 +138,15 @@ sway_to_monopolism = {
 		custom_tooltip = {
 			text = sway_to_monopolism_correct_ig_in_government_tt
 			OR = {
-				has_role = executive
-				has_role = politician
+				has_role_of_type = executive
+				has_role_of_type = politician
+				has_role_of_type = magnate
 			}
 			NOR = {
 				is_interest_group_type = ig_trade_unions
 				is_interest_group_type = ig_devout
 				is_interest_group_type = ig_rural_folk
+				is_ruler_of_own_country = yes
 			}
 		}
 		custom_tooltip = {

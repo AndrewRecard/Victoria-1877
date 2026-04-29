@@ -1,0 +1,463 @@
+### TYPES
+types IR_boardroom_schism_types
+{
+	type IR_boardroom_schism_ruler_with_background = widget {
+
+		datacontext = "[JournalEntry.GetCountry.GetRuler]"
+
+		# background
+		widget = {
+			size = { 100% 100% }
+			position = { 0 1 }
+
+			background = {
+				texture = "gfx/interface/character_panel/backgrounds/char_role_executive.dds"
+				fittype = centercrop
+			}
+		}
+
+		# everything character-dependent: only show if ruler is valid
+		widget = {
+			size = { 100% 100% }
+			visible = "[Character.IsValid]"
+
+			character_portrait_base_no_mask = {
+				ignore_in_debug_draw = yes
+				size = { 217 261 }
+
+				block "character_layout" {
+					position = { 50 10 }
+					size = { 250 400 }
+				}
+
+				blockoverride "portrait_size" {
+					block "character_portrait_size" {
+						size = { 575 575 }
+					}
+				}
+				blockoverride "portrait_texture" {
+					portrait_texture = "[Character.GetAnimatedPortrait('ruler_environment', 'camera_body', 'idle', GetPortraitRenderSize(PdxGuiWidget.Self))]"
+				}
+
+				blockoverride "portrait_icons" {}
+			}
+
+			icon = {
+				using = dark_area
+				parentanchor = bottom|hcenter
+				size = { 100% 40% }
+				alpha = 0.65
+				position = { 0 2 }
+
+				modify_texture = {
+					texture = "gfx/interface/masks/fade_vertical_top.dds"
+					spriteType = Corneredstretched
+					spriteborder = { 0 0 }
+					blend_mode = alphamultiply
+				}
+			}
+		}
+
+		# frame (always visible — purely decorative)
+		widget = {
+			size = { 100% 100% }
+
+			background = {
+				texture = "gfx/interface/character_panel/char_bg_frame.dds"
+				margin_left = 18
+				margin_right = 10
+				margin_bottom = 10
+				spriteType = Corneredtiled
+
+				spriteborder_left = 200
+				spriteborder_right = 60
+				spriteborder_top = 170
+				spriteborder_bottom = 180
+
+				texture_density = 2
+			}
+		}
+	}
+
+	type IR_propertarian_character_widget = flowcontainer {
+		direction = vertical
+
+		divider_clean = {}
+
+		widget = {
+			parentanchor = hcenter
+			size = { 500 90 }
+			maximumsize = { 500 90 }
+			datacontext = "[Scope.GetCharacter]"
+			visible = "[Scope.GetCharacter.IsValid]"
+
+			vbox = {
+				layoutpolicy_vertical = expanding
+				layoutpolicy_horizontal = expanding
+
+				hbox = {
+					layoutpolicy_vertical = expanding
+					layoutpolicy_horizontal = expanding
+
+					margin_left = 10
+					spacing = 5
+
+					### PORTRAIT + IG + IDEOLOGY OVERLAYS
+					widget = {
+						size = { 80 80 }
+
+						character_portrait_medium = {
+							datacontext = "[Scope.AccessCharacter]"
+							using = tooltip_es
+							blockoverride "show_hat" {}
+							parentanchor = vcenter
+							blockoverride "highlight" {}
+							blockoverride "rank_icon" {}
+						}
+
+						ig_button = {
+							datacontext = "[Character.GetInterestGroup]"
+							parentanchor = bottom|left
+							block "ig_button_size" {
+								size = { 32 32 }
+							}
+							using = tooltip_ws
+							blockoverride "in_government_icon" {}
+						}
+
+						icon = {
+							datacontext = "[Character.GetIdeology]"
+							texture = "[Ideology.GetTexture]"
+							tooltipwidget = {
+								FancyTooltip_Ideology = {}
+							}
+							size = { 32 32 }
+							parentanchor = bottom|right
+						}
+					}
+
+					### NAME + ROLE
+					vbox = {
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+
+						background = {
+							using = dark_area
+
+							modify_texture = {
+								texture = "gfx/interface/masks/fade_horizontal_center.dds"
+								spriteType = Corneredstretched
+								spriteborder = { 0 0 }
+								blend_mode = alphamultiply
+							}
+						}
+
+						textbox = {
+							layoutpolicy_horizontal = expanding
+							size = { 0 30 }
+							text = "[Character.GetFullNameNoFormatting]"
+							default_format = "#v"
+							align = left|nobaseline
+							using = regular_font
+							margin_left = 10
+						}
+
+						textbox = {
+							layoutpolicy_horizontal = expanding
+							size = { 0 25 }
+							text = "[Character.GetPrimaryRoleTitle]"
+							align = left|nobaseline
+							using = fontsize_medium
+							margin_left = 10
+						}
+					}
+
+					### PROMINENCE
+					vbox = {
+						tooltip = "PROMINENCE_BREAKDOWN"
+						spacing = 2
+
+						icon = {
+							size = { 36 36 }
+							parentanchor = hcenter
+							texture = "gfx/interface/icons/generic_icons/prominence.dds"
+						}
+
+						textbox = {
+							size = { 70 25 }
+							text = "CHARACTER_PROMINENCE"
+							align = center|nobaseline
+							using = fontsize_medium
+							elide = right
+						}
+					}
+
+					### POPULARITY
+					vbox = {
+						tooltip = "POPULARITY_BREAKDOWN"
+						spacing = 2
+
+						icon = {
+							size = { 36 36 }
+							parentanchor = hcenter
+							texture = "gfx/interface/icons/generic_icons/popularity.dds"
+						}
+
+						textbox = {
+							size = { 70 25 }
+							text = "[Character.GetPopularity|0+]"
+							align = center|nobaseline
+							using = fontsize_medium
+							elide = right
+						}
+					}
+
+					### SWAY BUTTON (one of three, depending on supported lobby)
+					widget = {
+						size = { 60 80 }
+						parentanchor = vcenter
+
+						# Minarchism
+						button_standard = {
+							visible = "[JournalEntry.GetCountry.MakeScope.Var('supporting_minarchism_var').IsValid]"
+							parentanchor = center
+							size = { 50 50 }
+							enabled = "[Character.GetInteraction('sway_to_minarchism').IsCommandValid(Character.Self)]"
+							onclick = "[Character.GetInteraction('sway_to_minarchism').ExecuteCommand(Character.Self)]"
+							tooltip = "[Character.GetInteraction('sway_to_minarchism').GetTooltip]"
+
+							icon = {
+								parentanchor = center
+								size = { 40 40 }
+								texture = "gfx/interface/icons/ideology_icons/ideology_leader/unused/ideology_leader_particularist.dds"
+							}
+						}
+
+						# Monopolism
+						button_standard = {
+							visible = "[JournalEntry.GetCountry.MakeScope.Var('supporting_monopolism_var').IsValid]"
+							parentanchor = center
+							size = { 50 50 }
+							enabled = "[Character.GetInteraction('sway_to_monopolism').IsCommandValid(Character.Self)]"
+							onclick = "[Character.GetInteraction('sway_to_monopolism').ExecuteCommand(Character.Self)]"
+							tooltip = "[Character.GetInteraction('sway_to_monopolism').GetTooltip]"
+
+							icon = {
+								parentanchor = center
+								size = { 40 40 }
+								texture = "gfx/interface/icons/ideology_icons/ideology_leader/unused/idealogy_leader_technocratic.dds"
+							}
+						}
+
+						# Molinarism
+						button_standard = {
+							visible = "[JournalEntry.GetCountry.MakeScope.Var('supporting_molinarism_var').IsValid]"
+							parentanchor = center
+							size = { 50 50 }
+							enabled = "[Character.GetInteraction('sway_to_molinarism').IsCommandValid(Character.Self)]"
+							onclick = "[Character.GetInteraction('sway_to_molinarism').ExecuteCommand(Character.Self)]"
+							tooltip = "[Character.GetInteraction('sway_to_molinarism').GetTooltip]"
+
+							icon = {
+								parentanchor = center
+								size = { 40 40 }
+								texture = "gfx/interface/icons/ideology_icons/ideology_leader/unused/ideology_leader_individualist.dds"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+### WIDGETS
+flowcontainer = {
+	name = "widget_je_boardroom_schism_ruler"
+	ignoreinvisible = yes
+
+	flowcontainer = {
+		direction = vertical
+
+		IR_boardroom_schism_ruler_with_background = {
+			layoutpolicy_horizontal = expanding
+			layoutpolicy_vertical = expanding
+			minimumsize = { 520 280 }
+
+			blockoverride "character_layout" {
+				position = { -25 5 }
+				size = { 80% 100% }
+			}
+			blockoverride "character_portrait_size" {
+				size = { 110% 110% }
+			}
+
+			# ruler stats panel — only built if ruler is valid
+			flowcontainer = {
+				visible = "[Character.IsValid]"
+				parentanchor = right|top
+				position = { -8 5 }
+				direction = vertical
+				spacing = 5
+
+				background = {
+					using = dark_area
+					alpha = 0.75
+
+					modify_texture = {
+						texture = "gfx/interface/masks/fade_horizontal_left_full.dds"
+						blend_mode = alphamultiply
+					}
+				}
+
+				### ROLE
+				ruler_stats_entry = {
+					tooltipwidget = {
+						FancyTooltip_Character = {}
+					}
+
+					blockoverride "ruler_icon" {
+						icon = {
+							size = { 38 38 }
+							texture = "gfx/interface/main_hud/companies_btn.dds"
+						}
+					}
+					blockoverride "label" {
+						text = "[Character.GetPrimaryRoleTitle]"
+					}
+					blockoverride "text" {
+						raw_text = "[Character.GetFullName]"
+					}
+				}
+
+				### INTEREST GROUP
+				ruler_stats_entry = {
+					datacontext = "[Character.GetInterestGroup]"
+
+					blockoverride "ruler_icon" {
+						character_ig_button = {
+							size = { 35 35 }
+							blockoverride "in_government_icon" {}
+						}
+					}
+
+					tooltipwidget = {
+						FancyTooltip_IG = {}
+					}
+
+					blockoverride "label" {
+						text = "INTEREST_GROUP"
+					}
+					blockoverride "text" {
+						raw_text = "#v [Character.GetInterestGroup.GetNameNoFormatting]#!"
+					}
+				}
+
+				### IDEOLOGY
+				ruler_stats_entry = {
+					datacontext = "[Character.GetIdeology]"
+
+					tooltipwidget = {
+						FancyTooltip_Ideology = {}
+					}
+					blockoverride "icon_texture" {
+						texture = "[Ideology.GetTexture]"
+					}
+					blockoverride "label" {
+						text = "IDEOLOGY_CONCEPT"
+					}
+					blockoverride "text" {
+						text = "CHARACTER_IDEOLOGY"
+					}
+				}
+
+				### POPULARITY
+				ruler_stats_entry = {
+					tooltip = "PROMINENCE_BREAKDOWN"
+
+					blockoverride "icon_texture" {
+						texture = "gfx/interface/icons/generic_icons/prominence.dds"
+					}
+					blockoverride "label" {
+						text = "PROMINENCE"
+					}
+					blockoverride "text" {
+						text = "CHARACTER_PROMINENCE"
+					}
+				}
+
+				### TRAITS
+				character_traits_no_label = {
+					parentanchor = right
+				}
+			}
+
+			### ACTIVE MODIFIERS (bottom-left overlay)
+			flowcontainer = {
+				parentanchor = bottom|left
+				position = { 25 -20 }
+				datamodel = "[JournalEntry.GetTimedModifiers]"
+				visible = "[Not(IsDataModelEmpty(JournalEntry.GetTimedModifiers))]"
+				spacing = 5
+				datamodel_wrap = 4
+
+				item = {
+					icon = {
+						tooltip = "[TimedModifier.GetTooltip]"
+						texture = "[TimedModifier.GetIcon]"
+						size = { 35 35 }
+					}
+				}
+			}
+		}
+	}
+}
+
+flowcontainer = {
+	name = "widget_je_boardroom_schism_propertarian_list"
+	ignoreinvisible = yes
+
+	flowcontainer = {
+		direction = vertical
+
+		section_header_button = {
+			blockoverride "layout" {
+				size = { 520 38 }
+			}
+			blockoverride "left_text" {
+				text = "PROPERTARIAN_CHARACTERS_LIST_HEADER"
+			}
+			blockoverride "onclick" {
+				onclick = "[GetVariableSystem.Toggle('propertarian_characters_list_toggle')]"
+			}
+			blockoverride "onclick_showmore" {
+				visible = "[Not(GetVariableSystem.Exists('propertarian_characters_list_toggle'))]"
+			}
+			blockoverride "onclick_showless" {
+				visible = "[GetVariableSystem.Exists('propertarian_characters_list_toggle')]"
+			}
+		}
+
+		fixedgridbox = {
+			visible = "[GetVariableSystem.Exists('propertarian_characters_list_toggle')]"
+			datamodel = "[JournalEntry.GetCountry.MakeScope.GetList('propertarian_characters_list')]"
+			addcolumn = 500
+			addrow = 95
+
+			background = {
+				texture = "gfx/interface/tooltip/tooltip_title_bg.dds"
+				color = { 0.69 0.47 0.33 1 }
+				alpha = 0.4
+
+				modify_texture = {
+					using = texture_velvet
+				}
+			}
+
+			item = {
+				IR_propertarian_character_widget = {}
+			}
+		}
+		expand = {}
+	}
+}

@@ -553,7 +553,7 @@
 			limit = {
 				OR = {
 					has_paternalist_ideology = yes
-					has_ideology = ideology:ideology_hierarchic
+					has_hierarchic_ideology = yes
 					has_ideology = ideology:ideology_patriarchal
 					has_ideology = ideology:ideology_moralist
 					has_ideology = ideology:ideology_corporatist
@@ -665,7 +665,7 @@
 			limit = {
 				OR = {
 					has_ideology = ideology:ideology_plutocratic
-					has_ideology = ideology:ideology_hierarchic
+					has_hierarchic_ideology = yes
 				}
 				owner = {
 					has_law_or_variant = law_type:law_graduated_taxation
@@ -828,8 +828,9 @@
 		if = { # landowners and industrialists hate labor rights
 			limit = {
 				OR = {
-					has_ideology = ideology:ideology_hierarchic
+					has_hierarchic_ideology = yes
 					has_ideology = ideology:ideology_laissez_faire
+					has_ideology = ideology:ideology_interventionist
 				}
 				OR = {
 					owner = {
@@ -846,7 +847,7 @@
 		if = { # conservatives hate welfare
 			limit = {
 				OR = {
-					has_ideology = ideology:ideology_hierarchic
+					has_hierarchic_ideology = yes
 					has_ideology = ideology:ideology_individualist
 				}
 				OR = {

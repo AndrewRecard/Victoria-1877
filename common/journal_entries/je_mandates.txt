@@ -1,6 +1,8 @@
 ﻿je_monopolist_mandate = {
 	icon = "gfx/interface/icons/invention_icons/corporate_charters.dds"
 	group = je_group_propertarianism
+	should_be_pinned_by_default_uninvolved_or_context = yes
+	weight = 100
 
 	is_shown_when_inactive = {
 		always = no
@@ -52,14 +54,13 @@
 		set_variable = mandate_wasted
 		remove_modifier = ir_schism_mandate_modifier
 	}
-
-	weight = 100
-	should_be_pinned_by_default = yes
 }
 
 je_molinarist_mandate = {
 	icon = "gfx/interface/icons/invention_icons/corporate_charters.dds"
 	group = je_group_propertarianism
+	should_be_pinned_by_default_uninvolved_or_context = yes
+	weight = 100
 
 	is_shown_when_inactive = {
 		always = no
@@ -111,7 +112,4 @@ je_molinarist_mandate = {
 		set_variable = mandate_wasted
 		remove_modifier = ir_schism_mandate_modifier
 	}
-
-	weight = 100
-	should_be_pinned_by_default = yes
 }

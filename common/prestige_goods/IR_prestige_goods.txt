@@ -1,18 +1,27 @@
 ﻿# prestige_goods types
 
 prestige_good_arasaka_secure_comms = {
+	possible = {
+		has_dlc_feature = mp1_content
+	}
 	base_good = telephones
 	prestige_bonus = 0.1
 	texture = "gfx/interface/icons/goods_icons/arasaka_secure_comms.dds"
 }
 
 prestige_good_militech_heavy_ordnance = {
+	possible = {
+		has_dlc_feature = mp1_content
+	}
 	base_good = ammunition
 	prestige_bonus = 0.1
 	texture = "gfx/interface/icons/goods_icons/heavy_ordnance_munitions.dds"
 }
 
 prestige_good_chooh2 = {
+	possible = {
+		has_dlc_feature = mp1_content
+	}
 	base_good = fertilizer
 	prestige_bonus = 0.1
 	texture = "gfx/interface/icons/goods_icons/prestige_goods/generic_fertilizer_prestige.dds"

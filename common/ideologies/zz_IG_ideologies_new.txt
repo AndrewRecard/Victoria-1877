@@ -115,9 +115,10 @@ ideology_market_rationalist = {
 	priority = 250
 
 	lawgroup_governance_principles = {
-		law_presidential_republic = neutral
+		law_presidential_republic = disapprove
 		law_parliamentary_republic = disapprove
-		law_corporate_state = neutral
+		law_corporate_state = disapprove
+		law_social_monarchy = disapprove
 		law_monarchy = disapprove
 		law_theocracy = disapprove
 		law_council_republic = disapprove

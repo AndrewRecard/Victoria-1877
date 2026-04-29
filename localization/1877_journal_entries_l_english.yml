@@ -104,7 +104,7 @@
  je_schism_resulting_je: "The most influential out of the [GetIdeology('ideology_monopolist_leader').GetName] or [GetIdeology('ideology_molinarist_leader').GetName] lobbies will receive a mandate to implement their ideology. The [GetIdeology('ideology_minarchist_leader').GetName] lobby will be exempt, as they wish to maintain status-quo."
  je_schism_complete: "One of the three #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! lobbies have won over the Board and suited the Directorate to their ideals."
  je_schism_no_mandate: "Either of the [GetIdeology('ideology_monopolist_leader').GetName] or [GetIdeology('ideology_molinarist_leader').GetName] lobbies fail to implement their mandate."
- je_schism_early_laws: "Enacting [GetLawType('law_polycentric_law').GetName] or [GetLawType('law_sovereign_monopoly').GetName] early will invalidate the [concept_journal_entry] and void any potential rewards."
+ je_schism_early_laws: "Enacting [GetLawType('law_sovereign_monopoly').GetName] or [GetLawType('law_polycentric_law').GetName] early will invalidate the [concept_journal_entry] and void any potential rewards."
 
  status_no_winner: "No lobby is ahead of the other"
  status_monopolist_mandate: "The [GetIdeology('ideology_monopolist_leader').GetName] lobby has received a Mandate"
@@ -253,3 +253,5 @@
  ir_mandate_opposed_ig_modifier: "Propertarian Backlash"
  ir_schism_resolved_modifier: "Resolved Boardroom Schism"
  je_schism_fail: "The Boardroom Schism [concept_journal_entry] will fail."
+
+ PROPERTARIAN_CHARACTERS_LIST_HEADER: "Propertarian Characters"

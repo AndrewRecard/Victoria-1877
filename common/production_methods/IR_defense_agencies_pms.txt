@@ -26,7 +26,7 @@ pm_private_defense_agencies = {
 	}
 }
 
-## BARRACKS/NAVAL BASES
+## BARRACKS
 
 pm_corporate_paramilitary_doctrine = {
 	texture = "gfx/interface/icons/production_method_icons/infiltrators.dds"
@@ -55,39 +55,6 @@ pm_corporate_paramilitary_doctrine = {
 
 		level_scaled = {
 			building_training_rate_add = 22
-		}
-	}
-}
-
-pm_maritime_security_contracting = {
-	texture = "gfx/interface/icons/production_method_icons/carriers.dds"
-
-	profession_ratio = {
-		soldiers = 70
-		officers = 20
-		machinists = 10
-	}
-
-	unlocking_laws = {
-		law_private_defense_agencies
-	}
-
-	state_modifiers = {
-		level_scaled = {
-			state_blockade_resistance_add = 35
-			state_pollution_generation_add = 5
-		}
-	}
-
-	building_modifiers = {
-		level_scaled = {
-			building_training_rate_add = 7
-		}
-
-		unscaled = {
-			unit_morale_loss_mult = -0.15
-			unit_morale_damage_mult = 0.3
-			building_training_rate_add = 10
 		}
 	}
 }
@@ -123,36 +90,6 @@ INJECT:pm_nco_incorporation = {
 }
 
 INJECT:pm_mobile_warfare_tactics = {
-	disallowing_laws = {
-		law_private_defense_agencies
-	}
-}
-
-INJECT:pm_no_naval_theory = {
-	disallowing_laws = {
-		law_private_defense_agencies
-	}
-}
-
-INJECT:pm_power_of_the_purse = {
-	disallowing_laws = {
-		law_private_defense_agencies
-	}
-}
-
-INJECT:pm_jeune_ecole = {
-	disallowing_laws = {
-		law_private_defense_agencies
-	}
-}
-
-INJECT:pm_sea_lane_strategies = {
-	disallowing_laws = {
-		law_private_defense_agencies
-	}
-}
-
-INJECT:pm_battlefleet_tactics = {
 	disallowing_laws = {
 		law_private_defense_agencies
 	}

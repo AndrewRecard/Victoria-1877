@@ -2144,6 +2144,16 @@ REPLACE:movement_liberal = {
 				value = 2
 			}
 		}
+		if = {
+			limit = {
+				c:JAP ?= this
+				has_law = law_type:law_bakufu
+				country_has_pending_meiji_restoration = yes
+			}
+			multiply = {
+				value = 0.01
+			}
+		}
 	}
 	on_created = {
 		add_movement_enthusiasm_modifier = yes

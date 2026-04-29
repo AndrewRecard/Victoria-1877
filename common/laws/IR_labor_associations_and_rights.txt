@@ -82,6 +82,9 @@ INJECT:law_worker_protections = {
 INJECT:law_guild_system = {
 	can_enact = {
 		OR = {
+			hidden_trigger = {
+				has_law_or_variant = law_type:law_guild_system
+			}
 			is_revolutionary = yes
 			any_interest_group = {
 				is_insurrectionary = yes
@@ -93,11 +96,9 @@ INJECT:law_guild_system = {
 		}
 	}
 	modifier = {
-		state_expected_sol_from_literacy = -2
+		state_expected_sol_from_literacy = -1
 		interest_group_ig_trade_unions_pop_attraction_mult = -0.75
-		state_capitalists_investment_pool_efficiency_mult = -0.15
-		state_shopkeepers_investment_pool_efficiency_mult = 0.15
-		country_shopkeepers_pol_str_mult = -0.25
+		state_capitalists_investment_pool_efficiency_mult = -0.1
 	}
 }
 

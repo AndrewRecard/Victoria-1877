@@ -413,7 +413,7 @@ amendment_anti_trust_acts = {
 
 amendment_native_homesteading = {
 
-	parent = law_homesteading
+	parent = law_peasant_proprietorship
 
 	allowed_laws = {
 		law_national_supremacy

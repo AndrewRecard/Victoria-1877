@@ -154,6 +154,13 @@ REPLACE:law_private_schools = {
 		country_prestige_mult = 0.05
 	}
 
+	is_visible = {
+		NAND = {
+			c:JAP ?= this
+			has_law = law_type:law_terakoya
+		}
+	}
+
 	institution = institution_schools
 	institution_modifier = {
 		country_academics_pol_str_mult = 0.1
@@ -204,7 +211,6 @@ REPLACE:law_private_schools = {
 				limit = {
 					OR = {
 						has_journal_entry = je_sick_man_education
-						has_journal_entry = je_terakoya
 						has_journal_entry = je_portugal_regeneration_institutions
 					}
 				}
@@ -328,7 +334,6 @@ REPLACE:law_public_schools = {
 				limit = {
 					OR = {
 						has_journal_entry = je_sick_man_education
-						has_journal_entry = je_terakoya
 						has_journal_entry = je_portugal_regeneration_institutions
 					}
 				}

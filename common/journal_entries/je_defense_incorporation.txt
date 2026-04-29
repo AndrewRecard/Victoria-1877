@@ -2,7 +2,7 @@
 je_defense_incorporation = {
 	icon = "gfx/interface/icons/invention_icons/power_of_the_purse.dds"
 	group = je_group_propertarianism
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 
 	is_shown_when_inactive = {
 		has_technology_researched = general_staff

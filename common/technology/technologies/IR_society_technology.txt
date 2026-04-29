@@ -364,7 +364,7 @@ REPLACE:philosophical_pragmatism = {
 
 	modifier = {
 		country_influence_mult = 0.25
-		country_diplomatic_play_maneuvers_add = 10
+		country_diplomatic_play_maneuvers_mult = 0.25
 		state_bureaucracy_population_base_cost_factor_mult = -0.05
 	}
 

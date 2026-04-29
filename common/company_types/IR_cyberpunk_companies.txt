@@ -21,7 +21,7 @@
 	}
 
 	potential = {
-		has_interest_marker_in_region = region_japan
+		has_interest_marker_in_region = sr:region_northeast_asia
 	}
 
 	attainable = {
@@ -98,13 +98,13 @@ company_militech = {
 	}
 
 	potential = {
-		has_interest_marker_in_region = region_new_england
+		has_interest_marker_in_region = sr:region_atlantic_coast
 	}
 
 	attainable = {
 		hidden_trigger = {
 			any_scope_state = {
-				region = sr:region_new_england
+				region = sr:region_atlantic_coast
 			}
 		}
 	}
@@ -112,7 +112,7 @@ company_militech = {
 	possible = {
 		has_technology_researched = automatic_machine_guns
 		any_scope_state = {
-			region = sr:region_new_england
+			region = sr:region_atlantic_coast
 			is_incorporated = yes
 			any_scope_building = {
 				is_building_type = building_arms_industry
@@ -136,7 +136,7 @@ company_militech = {
 	ai_will_do = {
 		has_technology_researched = automatic_machine_guns
 		any_scope_state = {
-			region = sr:region_new_england
+			region = sr:region_atlantic_coast
 			is_incorporated = yes
 		}
 	}
@@ -145,7 +145,7 @@ company_militech = {
 		building_arms_industry = {
 			level = 5
 			state_trigger = {
-				region = sr:region_new_england
+				region = sr:region_atlantic_coast
 			}
 		}
 	}
@@ -178,19 +178,13 @@ company_sovoil = {
 	}
 
 	potential = {
-		OR = {
-			has_interest_marker_in_region = region_dnieper
-			has_interest_marker_in_region = region_caucasus
-		}
+		has_interest_marker_in_region = sr:region_russia
 	}
 
 	attainable = {
 		hidden_trigger = {
 			any_scope_state = {
-				OR = {
-					region = sr:region_dnieper
-					region = sr:region_caucasus
-				}
+				region = sr:region_russia
 			}
 		}
 	}
@@ -198,10 +192,7 @@ company_sovoil = {
 	possible = {
 		has_technology_researched = pumpjacks
 		any_scope_state = {
-			OR = {
-				region = sr:region_dnieper
-				region = sr:region_caucasus
-			}
+			region = sr:region_russia
 			is_incorporated = yes
 			any_scope_building = {
 				is_building_type = building_oil_rig
@@ -218,10 +209,7 @@ company_sovoil = {
 	ai_will_do = {
 		has_technology_researched = pumpjacks
 		any_scope_state = {
-			OR = {
-				region = sr:region_dnieper
-				region = sr:region_caucasus
-			}
+			region = sr:region_russia
 			is_incorporated = yes
 		}
 	}
@@ -230,10 +218,7 @@ company_sovoil = {
 		building_oil_rig = {
 			level = 5
 			state_trigger = {
-				OR = {
-					region = sr:region_dnieper
-					region = sr:region_caucasus
-				}
+				region = sr:region_russia
 			}
 		}
 	}
@@ -267,13 +252,13 @@ company_biotechnica = {
 	}
 
 	potential = {
-		has_interest_marker_in_region = region_italy
+		has_interest_marker_in_region = sr:region_southern_europe
 	}
 
 	attainable = {
 		hidden_trigger = {
 			any_scope_state = {
-				region = sr:region_italy
+				region = sr:region_southern_europe
 			}
 		}
 	}
@@ -281,7 +266,7 @@ company_biotechnica = {
 	possible = {
 		has_technology_researched = intensive_agriculture
 		any_scope_state = {
-			region = sr:region_italy
+			region = sr:region_southern_europe
 			is_incorporated = yes
 			any_scope_building = {
 				is_building_type = building_chemical_plant
@@ -302,7 +287,7 @@ company_biotechnica = {
 	ai_will_do = {
 		has_technology_researched = intensive_agriculture
 		any_scope_state = {
-			region = sr:region_italy
+			region = sr:region_southern_europe
 			is_incorporated = yes
 		}
 	}
@@ -311,7 +296,7 @@ company_biotechnica = {
 		building_oil_rig = {
 			level = 5
 			state_trigger = {
-				region = sr:region_italy
+				region = sr:region_southern_europe
 			}
 		}
 	}

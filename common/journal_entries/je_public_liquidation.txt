@@ -2,18 +2,19 @@
 je_public_liquidation = {
 	icon = "gfx/interface/icons/invention_icons/elevator.dds"
 	group = je_group_propertarianism
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 
 	is_shown_when_inactive = {
 		has_technology_researched = corporate_charters
 		NOR = {
 			has_modifier = ir_free_market_commons_modifier
 			has_modifier = ir_market_commons_modifier
+			has_law_or_variant = law_type:law_directorate
 		}
 	}
 
 	possible = {
-		has_law_or_variant = law_type:law_directorate
+		always = no
 	}
 
 	modifiers_while_active = {

@@ -6,7 +6,7 @@
 
  	monthly_progress = {
 		add = {
-			value = 1
+			value = 500
 			desc = monthly_progress
 		}
 

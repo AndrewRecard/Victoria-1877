@@ -1,11 +1,12 @@
 ﻿REPLACE:je_fascism_1 = {
 	icon = "gfx/interface/icons/event_icons/waving_flag.dds"
-
 	group = je_group_internal_affairs
+	should_be_pinned_by_default_uninvolved_or_context = yes
+	weight = 10000
+	can_deactivate = no
+	timeout = 1095
 
 	scripted_progress_bar = fascism_progress_bar
-
-	timeout = 1095
 
 	status_desc = {
 		first_valid = {
@@ -119,8 +120,8 @@
 		every_scope_character = {
 			limit = {
 				OR = {
-					has_role = politician
-					has_role = agitator
+					has_role_of_type = politician
+					has_role_of_type = agitator
 				}
 				OR = {
 					has_ideology = ideology:ideology_fascist
@@ -198,14 +199,7 @@
 			custom_tooltip = {
 				text = fascist_leader_seizes_control_tt
 				scope:fascist_leader = {
-					add_character_role = politician
 					set_as_interest_group_leader = yes
-					if = {
-						limit = {
-							has_role = agitator
-						}
-						remove_character_role = politician
-					}
 				}
 			}
 		}
@@ -278,10 +272,6 @@
 	invalid = {
 		# pelly_says = no
 	}
-
-	weight = 10000
-	can_deactivate = no
-	should_be_pinned_by_default = yes
 }
 
 REPLACE:je_fascism_2 = {
@@ -409,7 +399,7 @@ REPLACE:je_fascism_2 = {
 
 	weight = 10000
 	can_deactivate = no
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }
 
 REPLACE:je_technocracy = {
@@ -487,14 +477,14 @@ REPLACE:je_technocracy = {
 
 	weight = 100
 
-    should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 }
 
 REPLACE:je_cre_bread_and_roses = {
 	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_social_democrat.dds"
 
 	group = je_group_cre_socialism
-	should_be_pinned_by_default = yes
+	should_be_pinned_by_default_uninvolved_or_context = yes
 
 	is_shown_when_inactive = {
 		has_technology_researched = socialism

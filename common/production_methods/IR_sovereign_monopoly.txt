@@ -5,7 +5,7 @@ REPLACE:pm_traditional_patronage = {
 	disallowing_laws = {
 		law_command_economy
 		law_cooperative_ownership
-		law_sovereign_monopoly
+		law_directorate
 	}
 
 	building_modifiers = {
@@ -19,57 +19,7 @@ REPLACE:pm_traditional_patronage = {
 
 INJECT:pm_independent_artists = {
 	disallowing_laws = {
-		law_sovereign_monopoly
-	}
-}
-
-## URBAN CHURCHES
-pm_urban_trusts = {
-	texture = "gfx/interface/icons/production_method_icons/ownership_aristocrats.dds"
-
-	unlocking_laws = {
-		law_sovereign_monopoly
-	}
-
-	building_modifiers = {
-		level_scaled = {
-			building_employment_clerks_add = 50
-			building_employment_bureaucrats_add = 50
-			building_employment_capitalists_add = 100
-		}
-
-		unscaled = {
-			building_capitalists_standard_of_living_add = 25
-		}
-	}
-}
-
-INJECT:pm_state_urban_clergy = {
-	disallowing_laws = {
-		law_sovereign_monopoly
-	}
-}
-
-REPLACE:pm_free_urban_clergy = {
-	texture = "gfx/interface/icons/production_method_icons/ownership_bureacrats.dds"
-
-	disallowing_laws = {
-		law_state_religion
-		law_state_atheism
-		law_sovereign_monopoly
-	}
-
-	building_modifiers = {
-		level_scaled = {
-			building_employment_clerks_add = 100
-			building_employment_clergymen_add = 150
-		}
-	}
-}
-
-INJECT:pm_no_urban_clergy = {
-	disallowing_laws = {
-		law_sovereign_monopoly
+		law_directorate
 	}
 }
 

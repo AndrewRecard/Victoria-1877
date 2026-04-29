@@ -242,5 +242,12 @@ REPLACE:law_closed_borders = {
 			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
+
+		if = {
+			limit = {
+				has_journal_entry = je_meiji_imperial_marriage
+			}
+			add = 10000 # Top priority for Imperial Marriage JE is to enact this law
+		}
 	}
 }

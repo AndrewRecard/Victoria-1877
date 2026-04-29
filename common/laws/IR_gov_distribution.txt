@@ -13,6 +13,7 @@
 	is_visible = {
 		NOR = { # Replaced by Neo-Absolutism
 			has_law = law_type:law_neo_absolutism
+			has_law = law_type:law_bakufu
 			has_law_or_variant = law_type:law_directorate
 		}
 	}
@@ -112,7 +113,6 @@ INJECT:law_neo_absolutism = {
 		country_legitimacy_headofstate_add = 10
 		country_legitimacy_govt_total_clout_add = -20
 		country_legitimacy_ideological_incoherence_mult = -0.2
-		country_law_enactment_time_mult = -0.2
 	}
 }
 
@@ -186,6 +186,16 @@ REPLACE:law_oligarchy = {
 		if = {
 			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
+		}
+
+		if = {
+			limit = {
+				owner ?= {
+					has_journal_entry = je_zaibatsu
+					has_variable = ai_zaibatsu_cement
+				}
+			}
+			add = 500
 		}
 	}
 
@@ -412,7 +422,7 @@ REPLACE:law_single_party_state = {
 	ai_will_do = {
 		exists = ruler
 		ruler = {
-			interest_group = {
+			interest_group ?= {
 				has_party = yes
 			}
 			law_stance = {
@@ -443,6 +453,16 @@ REPLACE:law_single_party_state = {
 		if = {
 			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
+		}
+
+		if = {
+			limit = {
+				owner ?= {
+					has_journal_entry = je_zaibatsu
+					has_variable = ai_zaibatsu_cement
+				}
+			}
+			add = 500
 		}
 	}
 

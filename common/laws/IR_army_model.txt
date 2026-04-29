@@ -14,6 +14,8 @@
 		law_traditionalism
 		law_cooperative_ownership
 		law_council_republic
+		law_strict_edo_system
+		law_intermediate_edo_system
 	}
 
 	is_visible = {
@@ -134,6 +136,12 @@ REPLACE:law_peasant_levies = {
 
 	progressiveness = -50
 
+	is_visible = {
+		NOT = {
+			country_has_primary_culture = cu:japanese
+		}
+	}
+
 	unlocking_laws = {
 		law_traditionalism
 		law_hereditary_bureaucrats
@@ -246,6 +254,12 @@ REPLACE:law_professional_army = {
 	progressiveness = 0
 
 	unlocking_technologies = { military_drill }
+
+	disallowing_laws = {
+		law_strict_edo_system
+		law_intermediate_edo_system
+	}
+
 	can_enact = {
 		custom_tooltip = {
 			text = public_institutions_liquidated_tt
@@ -366,12 +380,12 @@ REPLACE:law_national_militia = {
 	progressiveness = 0
 
 	unlocking_technologies = { mandatory_service }
-	can_enact = {
-		custom_tooltip = {
-			text = public_institutions_liquidated_tt
-			modifier:country_public_institutions_liquidated_bool = no
-		}
+
+	disallowing_laws = {
+		law_strict_edo_system
+		law_intermediate_edo_system
 	}
+
 	modifier = {
 		unit_morale_loss_mult = -0.05
 		state_conscription_rate_add = 0.05
@@ -382,6 +396,10 @@ REPLACE:law_national_militia = {
 	}
 
 	can_enact = {
+		custom_tooltip = {
+			text = public_institutions_liquidated_tt
+			modifier:country_public_institutions_liquidated_bool = no
+		}
 		OR = {
 			is_power_bloc_leader = no
 			power_bloc ?= {
@@ -462,6 +480,12 @@ REPLACE:law_mass_conscription = {
 	progressiveness = 50
 
 	unlocking_technologies = { enlistment_offices }
+
+	disallowing_laws = {
+		law_strict_edo_system
+		law_intermediate_edo_system
+	}
+
 	can_enact = {
 		custom_tooltip = {
 			text = public_institutions_liquidated_tt

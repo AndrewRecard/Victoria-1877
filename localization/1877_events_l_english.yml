@@ -168,8 +168,8 @@
 
  defense_incorporation.6.t: "Defense, Incorporated"
  defense_incorporation.6.d: "The military restructuring is finally complete. The last of the old guard has either retired in protest or accepted lucrative executive positions. From logistics and munitions to frontline combat, our national defense is now entirely operated by private military corporations. The traditional state army is dead; the era of the Defense Contractor has begun."
- defense_incorporation.6.f: "The transition was remarkably quiet. Where recruitment posters once appealed to patriotism and glory, sleek brochures now advertise competitive wages and hazard pay dividends. The War Office ledgers no longer track casualties and medals; they track profit margins, ammunition expenditures, and quarterly combat performance metrics. Blood is still spilled, but now, every drop is itemized."
- defense_incorporation.6.a: "The business of war is business."
+ defense_incorporation.6.f: "The transition was remarkably quiet. Where recruitment posters once appealed to patriotism and glory, sleek brochures now advertise competitive wages and hazard pay dividends. The War Office ledgers no longer track casualties and medals; they track profit margins, ammunition expenditures, and quarterly combat performance metrics. When blood is spilled, every drop is itemized."
+ defense_incorporation.6.a: "To a new era of warfare."
 
  propertarian_government_remains_tt: "[SCOPE.sCharacter('new_propertarian_leader_scope').GetFullName] will be allowed to take [SCOPE.sCharacter('new_propertarian_leader_scope').GetHerHis] seat in government"
  propertarian_government_expelled_tt: "A [GetIdeology('ideology_moderate').GetName] [concept_politician] will assume leadership of the [SCOPE.sCharacter('new_propertarian_leader_scope').GetInterestGroup.GetName]"

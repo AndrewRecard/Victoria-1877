@@ -104,6 +104,16 @@ REPLACE:law_freedom_of_conscience = {
 			}
 			add = 1000
 		}
+
+		# For Japanese religion Journal Entries
+		# If Shinbutsu Bunri is active, but the Taikyo Proclamation has not been made
+		if = {
+			limit = {
+				has_journal_entry = je_shinbutsu_bunri
+				country_has_state_religion = rel:mahayana
+			}
+			add = 1000
+		}
 	}
 }
 
