@@ -80,7 +80,6 @@ je_defense_incorporation = {
 	}
 	
 	immediate = {
-		set_variable = defense_incorporation_je_marker
 		ig:ig_armed_forces = {
 			leader = {
 				save_scope_as = af_leader_scope
@@ -98,6 +97,16 @@ je_defense_incorporation = {
 			ig:ig_armed_forces = {
 				leader = {
 					save_scope_as = af_leader_refresh
+					if = {
+						limit = {
+							NOT = {
+								has_modifier = ir_leading_restructure_modifier
+							}
+						}
+						add_modifier = {
+							name = ir_leading_restructure_modifier
+						}
+					}
 				}
 			}
 			set_variable = {
@@ -124,9 +133,23 @@ je_defense_incorporation = {
 	}
 
 	on_complete = {
-		trigger_event = defense_incorporation.6
-		remove_variable = defense_incorporation_je_marker
+		trigger_event = {
+			id = defense_incorporation.6
+			popup = yes
+		}
 		remove_variable = af_leader_var
+		hidden_effect = {
+			if = {
+				limit = {
+					any_scope_character = {
+						has_modifier = ir_leading_restructure_modifier
+					}
+				}
+				every_scope_character = {
+					remove_modifier = ir_leading_restructure_modifier
+				}
+			}
+		}
 	}
 
 	invalid = {
@@ -136,7 +159,18 @@ je_defense_incorporation = {
 	}
 
 	on_invalid = {
-		remove_variable = defense_incorporation_je_marker
 		remove_variable = af_leader_var
+		hidden_effect = {
+			if = {
+				limit = {
+					any_scope_character = {
+						has_modifier = ir_leading_restructure_modifier
+					}
+				}
+				every_scope_character = {
+					remove_modifier = ir_leading_restructure_modifier
+				}
+			}
+		}
 	}
 }

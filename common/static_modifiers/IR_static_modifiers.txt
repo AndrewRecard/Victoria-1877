@@ -158,6 +158,11 @@ ir_unrestrained_defense_agencies_modifier = {
 	country_legitimacy_base_add = -5
 }
 
+ir_local_authority_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	country_authority_mult = 0.1
+}
+
 ir_repealed_pda_modifier= {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
 	country_legitimacy_base_add = -10
@@ -287,27 +292,29 @@ ir_funding_lobbies_modifier = {
 	country_expenses_add = 1
 }
 
-ir_guilded_charter_modifier = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
-	state_capitalists_investment_pool_efficiency_mult = 0.15
-	state_trade_advantage_mult = 0.25
-}
-
-ir_privatized_peace_modifier = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
-	state_radicals_from_political_movements_mult = -0.15
-	state_turmoil_effects_mult = -0.3
-}
-
 ir_monopolized_integration_modifier = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
 	country_company_throughput_bonus_add = 0.05
-	country_company_construction_efficiency_bonus_add = 0.05
+	country_company_construction_efficiency_bonus_add = 0.075
 	state_market_access_price_impact = 0.05
 }
 
+ir_guilded_charter_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
+	country_legitimacy_base_add = 10
+	state_trade_advantage_mult = 0.25
+	country_free_charters_add = 1
+}
+
+ir_production_of_security_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
+	state_capitalists_investment_pool_efficiency_mult = 0.25
+	state_officers_investment_pool_efficiency_mult = 0.25
+	state_turmoil_effects_mult = -0.25
+}
+
 ir_politician_purchased_modifier = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
 	country_opposition_ig_approval_add = -2
 }
 
@@ -385,11 +392,6 @@ ir_ideological_flagship_modifier = {
 	country_authority_add = 50
 }
 
-legitimacy_5_modifier = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
-	country_legitimacy_base_add = 5
-}
-
 ir_discredited_apostate_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
 	interest_group_pol_str_mult = 0.15
@@ -415,7 +417,7 @@ ir_defector_martyred_modifier = {
 
 ir_suspended_lobbying_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
-	country_authority_add = -50
+	country_authority_add = -100
 	country_legitimacy_ideological_incoherence_mult = 0.15
 }
 
@@ -458,3 +460,27 @@ ir_severance_program_modifier = {
 	country_legitimacy_base_add = 5
 }
 
+ir_leading_restructure_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	character_prominence_add = 25
+}
+
+ir_ousted_popular_leader = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	character_loyalty_add = -25
+}
+
+ir_franchising_level_1_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
+	state_capitalists_investment_pool_efficiency_mult = 0.02
+}
+
+ir_franchising_level_2_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
+	state_capitalists_investment_pool_efficiency_mult = 0.03
+}
+
+ir_franchising_level_3_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
+	state_capitalists_investment_pool_efficiency_mult = 0.04
+}

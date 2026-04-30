@@ -20,3 +20,7 @@
  POWER_BLOC_COHESION_WORST_ECONOMIC_DEPENDENCE_CORPORATE_HEGEMONY: "#indent_newline:3 [concept_power_bloc_member] with lowest [concept_economic_dependence] on the [concept_power_bloc_leader] and [concept_rank] ($identity_trade_league$)\n [SCOPE.GetRootScope.GetCountry.GetPowerBloc.GetParticipantWithLowestEconomicDependence.GetName] ([SCOPE.GetRootScope.GetCountry.GetPowerBloc.GetParticipantWithLowestEconomicDependence.GetRank]) with [SCOPE.GetRootScope.GetCountry.GetPowerBloc.GetParticipantWithLowestEconomicDependenceOnLeader.GetEconomicDependenceOn(SCOPE.GetRootScope.GetCountry.Self)]#!"
  POWER_BLOC_COHESION_NON_DIRECTORATE_MEMBERS: "independent non-[GetLawType('law_directorate').GetName] [Concept('concept_power_bloc_member','$concept_power_bloc_members_short_non_leader$')]"
  POWER_BLOC_COHESION_SOVEREIGN_MONOPOLY: "$law_sovereign_monopoly$ [concept_law]"
+
+ ir_franchising_level_1_modifier: "@capitalists! Franchising!"
+ ir_franchising_level_2_modifier: "@capitalists! Franchising!"
+ ir_franchising_level_3_modifier: "@capitalists! Franchising!"

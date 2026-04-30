@@ -73,7 +73,7 @@
 					every_company = {
 						limit = {
 							company_is_prosperous = yes
-							executive = {
+							executive ?= {
 								has_ideology = ideology:ideology_minarchist_leader
 							}
 						}
@@ -137,9 +137,9 @@
 			}
 		}
 	}
-	start_value = 15
+	start_value = 10
 	min_value = 0
-	max_value = 500
+	max_value = 600
 }
 schism_molinarist_bar = {
 	name = "molinarism_bar"
@@ -274,7 +274,7 @@ schism_molinarist_bar = {
 	}
 	start_value = 10
 	min_value = 0
-	max_value = 500
+	max_value = 600
 }
 schism_monopolist_bar = {
 	name = "monopolism_bar"
@@ -429,5 +429,5 @@ schism_monopolist_bar = {
 	}
 	start_value = 10
 	min_value = 0
-	max_value = 500
+	max_value = 600
 }

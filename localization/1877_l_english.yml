@@ -34,7 +34,7 @@
  directorate_unlocks_list_tt: "Directorate #b Distributions of Power#! include:\n• [GetLawType('law_executive_absolutism').GetName]\n• [GetLawType('law_scientific_management').GetName]\n• [GetLawType('law_oligopoly').GetName]\n• [GetLawType('law_managed_democracy').GetName]\n• [GetLawType('law_polycentric_law').GetName]"
  directorate_unlocks_2_tt: "Unlocks a set of unique #tooltippable;tooltip:[GetPlayer.GetTooltipTag],directorate_unlocks_list_2_tt Labor Associations#! [Concept('concept_law','$concept_laws$')]"
  directorate_unlocks_list_2_tt: "Directorate #b Labor Associations#! include:\n• [GetLawType('law_voluntary_association').GetName]\n• [GetLawType('law_internal_arbitration').GetName]\n• [GetLawType('law_corporate_peonage').GetName]\n• [GetLawType('law_equity_compensation').GetName]"
- fixes_civil_service_tt: "[GetInstitutionType('institution_civil_service').GetName] will no longer increase [concept_tax_waste]"
+ fixes_civil_service_tt: "[GetInstitutionType('institution_civil_service').GetName] will no longer decrease [concept_unrealized_taxes]"
  close_the_borders_tt: "[GetLawType('law_closed_borders').GetName] is recommended prior to enacting this [concept_law]"
  halves_exile_cooldown_tt: "Can 'Exile Dissident' twice as often"
  public_liquidation_added_tt: "The #variable Liquidating the Public Trust#! [concept_journal_entry] will be added to the Journal of [ROOT.GetCountry.GetName]"
@@ -266,7 +266,9 @@
  country_disable_support_separatism_bool_desc: "[GetDiplomaticActionType('support_separatism').GetName] is no longer allowed as [Concept('concept_primary_cultures','$nationality$')] has no bearing on [concept_dividends] under the [GetLawType('law_directorate').GetName]"
  nationality: "Nationality"
  state_cannot_construct_government_administration_bool: "Disable Government Administration Construction"
- state_cannot_construct_government_administration_bool_desc: "New construction of [GetBuildingType('building_government_administration').GetName] disallowed "
+ state_cannot_construct_government_administration_bool_desc: "New construction of [GetBuildingType('building_government_administration').GetName] disallowed"
+ state_capitalists_investment_efficiency_per_franchise_mult:1 "$capitalists$ [concept_investment_pool] contribution efficiency per #bold Franchisee#!"
+ state_capitalists_investment_efficiency_per_franchise_mult_desc:1 "An increase or decrease to how much the invested profits from $capitalists$ will contribute to the [concept_investment_pool] per junior [concept_power_bloc_member] with the [GetLawType('law_directorate').GetName] [concept_law]"
 
  # COUNTRIES & POLITICS
   ## GOVERNMENT TYPES
@@ -298,7 +300,7 @@
  RULER_SUPREME_EXECUTIVE: "Supreme Executive"
  gov_shareholder_monopoly_desc: "This is a $gov_megacorporation$ where major concessions have been given to its employees.\n\n$TRANSFER_OF_POWER_NAME_DESC$"
  gov_corporate_subsidiary: "Corporate Subsidiary"
- gov_corporate_subsidiary_desc: "This is a [GetLawType('law_sovereign_monopoly').GetName] acting as a regional branch of it's overlord.\n\n$TRANSFER_OF_POWER_NAME_DESC$"
+ gov_corporate_subsidiary_desc: "This country is ruled by a Board of Directors acting as a regional branch of it's overlord.\n\n$TRANSFER_OF_POWER_NAME_DESC$"
  RULER_REGIONAL_MANAGER: "Regional Manager"
   ## PARTIES
  national_trust_party: "National Trust Party"

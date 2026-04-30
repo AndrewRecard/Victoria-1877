@@ -512,12 +512,13 @@ REPLACE:law_laissez_faire = {
 	}
 
 	modifier = {
-		country_loan_interest_rate_mult = -0.25
 		country_free_charters_add = -1
+		country_loan_interest_rate_mult = -0.25
 		country_private_construction_allocation_mult = 0.75
 		country_government_dividends_reinvestment_add = 1.0
 		country_max_companies_add = 1
-		country_disable_nationalization_bool = yes
+		building_nationalization_cost_mult = 0.25
+		building_nationalization_radicals_mult = 0.25
 		country_force_privatization_bool = yes
 		country_forbid_monopoly_bool = yes
 	}

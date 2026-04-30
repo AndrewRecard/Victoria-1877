@@ -6,8 +6,20 @@
 
  	monthly_progress = {
 		add = {
-			value = 1
+			value = 100
 			desc = monthly_progress
+		}
+
+		if = {
+			limit = {
+				ig:ig_armed_forces = {
+					ig_counts_as_marginal = yes
+				}
+			}
+			add = {
+				value = -0.5
+				desc = "armed_forces_marginalized"
+			}
 		}
 
 		if = {
@@ -57,31 +69,6 @@
 			}
 		}
 
-
-		if = {
-			limit = {
-				ig:ig_armed_forces = {
-					ig_counts_as_marginal = no
-				}
-			}
-			add = {
-				value = ig:ig_armed_forces.ig_clout
-				multiply = 2
-				desc = "armed_forces_clout"
-			}
-			add = {
-				value = ig:ig_armed_forces.ig_approval
-				multiply = 0.05
-				desc = "armed_forces_approval"
-			}
-
-		}else = {
-			add = {
-				value = -0.5
-				desc = "armed_forces_marginalized"
-			}
-		}
-
 		add = {
 			ig:ig_armed_forces = {
 				leader = {
@@ -91,6 +78,31 @@
 			subtract = 50
 			multiply = 0.01
 			desc = "armed_forces_leader_loyalty"
+		}
+
+		add = {
+			desc = "average_loyalty_of_generals"
+			every_scope_character = {
+				limit = {
+					has_role_of_type = general
+				}
+				add = {
+					add = {
+						add = loyalty
+						subtract = 50
+					}
+					multiply = prominence
+				}
+			}
+			divide = {
+				every_scope_character = {
+					limit = {
+						has_role_of_type = general
+					}
+					add = prominence
+				}
+			}
+			multiply = 0.01
 		}
 
 		if = {

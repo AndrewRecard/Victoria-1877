@@ -171,3 +171,10 @@ state_cannot_construct_government_administration_bool = {
     boolean = yes
     color = neutral
 }
+
+state_capitalists_investment_efficiency_per_franchise_mult = {
+    script_only = yes
+    decimals = 0
+    color = good
+    percent = yes
+}

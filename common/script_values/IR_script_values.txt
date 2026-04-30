@@ -73,3 +73,16 @@ purchase_poltician_value = {
 	value = gold_reserves_limit
 	multiply = -0.1
 }
+
+franchise_directorate_count_value = {
+	value = 0
+	power_bloc = {
+		every_power_bloc_member = {
+			limit = {
+				NOT = { is_power_bloc_leader = yes }
+				has_law_or_variant = law_type:law_directorate
+			}
+			add = 1
+		}
+	}
+}

@@ -293,27 +293,27 @@ directorate_events.4 = {
             weight = {
                 factor = 1
                 modifier = {
-                    factor = 1.2
+                    factor = 1.5
                     trigger = {
-                        average_sol = {
+                        average_sol <= {
                             value = root.average_sol
                             subtract = 1
                         }
                     }
                 }
                 modifier = {
-                    factor = 1.5
+                    factor = 2
                     trigger = {
-                        average_sol = {
+                        average_sol <= {
                             value = root.average_sol
                             subtract = 2
                         }
                     }
                 }
                 modifier = {
-                    factor = 2
+                    factor = 3
                     trigger = {
-                        average_sol = {
+                        average_sol <= {
                             value = root.average_sol
                             subtract = 3
                         }

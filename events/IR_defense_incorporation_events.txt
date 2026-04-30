@@ -341,7 +341,7 @@ defense_incorporation.4 = {
 	option = {
 		name = defense_incorporation.4.a
 		add_modifier = {
-			name = legitimacy_5_modifier
+			name = ir_local_authority_modifier
 			days = normal_modifier_time
 		}
 		scope:mercenary_state = {
@@ -453,7 +453,7 @@ defense_incorporation.5 = {
 			limit = { is_capital = yes }
 			add_loyalists_in_state = {
 				strata = lower
-				value = medium_radicals
+				value = large_radicals
 			}
 		}
 		custom_tooltip = {
@@ -482,7 +482,7 @@ defense_incorporation.5 = {
 			}
 			add_loyalists_in_state = {
 				strata = upper
-				value = large_radicals
+				value = very_large_radicals
 			}
 		}
 	}
@@ -525,8 +525,96 @@ defense_incorporation.6 = {
 			name = ir_defense_agencies_investment_modifier
 			years = 10
 		}
-
 		remove_modifier = ir_defense_agencies_drain_modifier
+		every_scope_character = {
+			limit = {
+				has_role_of_type = general
+				propertarian_or_market_liberal = no
+				loyalty >= 75
+			}
+			if = {
+				limit = {
+					owner = {
+						NOT = {
+						    any_political_movement = {
+								is_political_movement_type = movement_propertarian
+							}
+						}
+					}
+				}
+				set_ideology = ideology:ideology_market_liberal
+			}else_if = {
+				limit = {
+					owner = {
+						NOT = {
+							has_law_or_variant = law_type:law_directorate
+						}
+					}
+				}
+				random_list = {
+					50 = {
+						set_ideology = ideology:ideology_market_liberal
+					}
+					50 = {
+						set_ideology = ideology:ideology_minarchist_leader
+					}
+				}
+			}else_if = {
+				limit = {
+					owner = {
+						has_law = law_type:law_dedicated_police
+					}
+				}
+				random_list = {
+					50 = {
+						set_ideology = ideology:ideology_minarchist_leader
+					}
+					25 = {
+						set_ideology = ideology:ideology_molinarist_leader
+					}
+					25 = {
+						set_ideology = ideology:ideology_monopolist_leader
+					}
+				}
+			}else_if = {
+				limit = {
+					owner = {
+						has_law = law_type:law_militarized_police
+					}
+				}
+				random_list = {
+					50 = {
+						set_ideology = ideology:ideology_monopolist_leader
+					}
+					25 = {
+						set_ideology = ideology:ideology_molinarist_leader
+					}
+					25 = {
+						set_ideology = ideology:ideology_minarchist_leader
+					}
+				}
+			}else = {
+				random_list = {
+					50 = {
+						set_ideology = ideology:ideology_molinarist_leader
+					}
+					25 = {
+						set_ideology = ideology:ideology_monopolist_leader
+					}
+					25 = {
+						set_ideology = ideology:ideology_minarchist_leader
+					}
+				}
+			}
+		}
+		every_scope_character = {
+			limit = {
+				has_role_of_type = general
+				propertarian_or_market_liberal = no
+				loyalty < 75
+			}
+			remove_character_role = general
+		}
 	}
 }
 

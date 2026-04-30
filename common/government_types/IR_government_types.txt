@@ -1,4 +1,32 @@
-﻿gov_free_market_enclave = {
+﻿gov_corporate_subsidiary = {
+    transfer_of_power = presidential_elective
+
+    male_ruler = "RULER_REGIONAL_MANAGER"
+    female_ruler = "RULER_REGIONAL_MANAGER"
+
+    possible = {
+        has_law_or_variant = law_type:law_directorate
+        OR = {
+            AND = {
+                overlord = {
+                    has_law_or_variant = law_type:law_directorate
+                }
+            }
+            power_bloc_leader = {
+                has_law_or_variant = law_type:law_directorate
+            }
+        }
+    }
+
+    on_government_type_change = {
+        change_to_presidential_elective = yes
+    }
+    on_post_government_type_change = {
+        post_change_to_presidential_elective = yes
+    }
+}
+
+gov_free_market_enclave = {
     transfer_of_power = parliamentary_elective
     new_leader_on_reform_government = yes
 
@@ -180,26 +208,6 @@ gov_shareholder_monopoly = {
         has_law_or_variant = law_type:law_command_economy
         has_law_or_variant = law_type:law_right_to_associate
         is_subject = no
-    }
-
-    on_government_type_change = {
-        change_to_dictatorial = yes
-    }
-    on_post_government_type_change = {
-        post_change_to_dictatorial = yes
-    }
-}
-
-gov_corporate_subsidiary = {
-    transfer_of_power = dictatorial
-
-    male_ruler = "RULER_REGIONAL_MANAGER"
-    female_ruler = "RULER_REGIONAL_MANAGER"
-
-    possible = {
-        has_law_or_variant = law_type:law_directorate
-        has_law_or_variant = law_type:law_command_economy
-        is_subject = yes
     }
 
     on_government_type_change = {

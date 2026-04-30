@@ -80,6 +80,11 @@ INJECT:law_worker_protections = {
 }
 
 INJECT:law_guild_system = {
+	is_visible = {
+		NOT = {
+			has_law_or_variant = law_type:law_directorate
+		}
+	}
 	can_enact = {
 		OR = {
 			hidden_trigger = {

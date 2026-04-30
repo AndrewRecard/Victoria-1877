@@ -79,7 +79,7 @@ je_molinarist_mandate = {
 	on_complete = {
 		set_variable = molinarists_victorious
 		add_modifier = {
-			name = ir_privatized_peace_modifier
+			name = ir_production_of_security_modifier
 		}
 		add_modifier = {
 			name = ir_schism_resolved_modifier

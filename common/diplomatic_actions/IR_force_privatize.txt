@@ -30,7 +30,7 @@
 			current_cohesion_percentage >= 0.5
 		}
 		scope:target_country = {
-			tenure_in_current_power_bloc_years >= 2
+			tenure_in_current_power_bloc_years >= 1
 		}
 		prestige >= {
 			value = scope:target_country.prestige
@@ -64,6 +64,14 @@
 			}
 			if = {
 				limit = {
+					NOT = {
+						has_law_or_variant = law_type:law_merchant_navy
+					}
+				}
+				activate_law = law_type:law_merchant_navy
+			}
+			if = {
+				limit = {
 					OR = {
 						has_law_or_variant = law_type:law_religious_schools
 						has_law_or_variant = law_type:law_public_schools
@@ -73,10 +81,7 @@
 			}
 			if = {
 				limit = {
-					OR = {
-						has_law_or_variant = law_type:law_public_health_insurance
-						has_law_or_variant = law_type:law_charitable_health_system
-					}
+					has_law_or_variant = law_type:law_public_health_insurance
 				}
 				activate_law = law_type:law_private_health_insurance
 			}
@@ -88,6 +93,39 @@
 					}
 				}
 				activate_law = law_type:law_poor_laws
+			}
+			if = {
+				limit = {
+					has_law_or_variant = law_type:law_guaranteed_liberties
+				}
+				activate_law = law_type:law_national_guard
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						ig:ig_intelligentsia = {
+							has_ideology = ideology:ideology_republican
+						}
+					}
+					ig:ig_intelligentsia = {
+						remove_ideology = ideology_republican
+						add_ideology = ideology_market_rationalist
+					}
+				}else_if = {
+					limit = {
+						ig:ig_intelligentsia = {
+							has_ideology = ideology:ideology_constitutionalist
+						}
+					}
+					ig:ig_intelligentsia = {
+						remove_ideology = ideology_constitutionalist
+						add_ideology = ideology_market_rationalist
+					}
+				}
+				add_modifier = {
+					name = ir_free_market_commons_modifier
+				}
+				set_variable = public_liquidation_completed
 			}
 			add_modifier = {
 				name = installed_regime

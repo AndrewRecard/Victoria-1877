@@ -41,13 +41,9 @@
 
 	modifier = {
 		country_authority_add = 100
-
-		state_bureaucracy_population_base_cost_factor_mult = -0.25
 		state_contiguous_incorporation_speed_mult = 0.25
-
 		state_assimilation_mult = -0.25
 		country_disable_support_separatism_bool = yes
-		country_primary_culture_fervor_from_laws_add = -10
 
 		#If primary culture, only apply this value
 		country_acceptance_primary_culture_add = 100

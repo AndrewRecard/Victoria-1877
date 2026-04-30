@@ -132,7 +132,7 @@ ideology_molinarist_leader_disfavoured_laws = {
 	if = {
 		limit = {
 			NOT = {
-				has_law_or_variant = law_type:law_polycentric_law
+				has_law = law_type:law_polycentric_law
 			}
 		}
 		add = 1

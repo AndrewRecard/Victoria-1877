@@ -56,6 +56,13 @@ types IR_defense_incorporation_types
 					blend_mode = alphamultiply
 				}
 			}
+
+			button = {
+				size = { 320 100% }
+				parentanchor = left|vcenter
+				onclick = "[InformationPanelBar.OpenCharacterPanel(Character.AccessSelf)]"
+				tooltip = "GO_TO_BUTTON_CHARACTER"
+			}
 		}
 
 		# frame (always visible — purely decorative)
@@ -225,7 +232,7 @@ flowcontainer = {
 						}
 					}
 					blockoverride "label" {
-						text = "LOYALTY"
+						raw_text = "[concept_loyalty]"
 					}
 					blockoverride "text" {
 						text = "[LabelingHelper.GetLabelForLoyaltyCFixedPoint(Character.GetLoyalty)]"

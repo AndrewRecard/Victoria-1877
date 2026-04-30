@@ -81,6 +81,9 @@ depose_armed_forces_leader_button = {
 			}
 			is_powerful = no
 			is_insurrectionary = no
+			leader = {
+				prominence < 80
+			}
 			custom_tooltip = {
 				text = character_involved_in_coup_tt
 				leader = {
@@ -102,7 +105,7 @@ depose_armed_forces_leader_button = {
 	effect = {
 		ig:ig_armed_forces = {
 			leader = {
-				remove_character_role = politician
+				remove_as_interest_group_leader = yes
 			}
 		}
 		if = {
@@ -129,36 +132,55 @@ depose_armed_forces_leader_button = {
 					ideology = ideology:ideology_market_liberal
 				}
 			}
-		}
-		else = {
-			random_list = {
-				40 = {
-					create_character = {
-						interest_group = ig:ig_armed_forces
-						ig_leader = yes
-						ideology = ideology:ideology_minarchist_leader
-					}
-				}
-				30 = {
-					create_character = {
-						interest_group = ig:ig_armed_forces
-						ig_leader = yes
-						ideology = ideology:ideology_molinarist_leader
-					}
-				}
-				30 = {
-					create_character = {
-						interest_group = ig:ig_armed_forces
-						ig_leader = yes
-						ideology = ideology:ideology_monopolist_leader
-					}
-				}
+		}else_if = {
+			limit = {
+				has_law_or_variant = law_type:law_dedicated_police
+			}
+			create_character = {
+				interest_group = ig:ig_armed_forces
+				ig_leader = yes
+				ideology = ideology:ideology_minarchist_leader
+			}
+		}else_if = {
+			limit = {
+				has_law_or_variant = law_type:law_militarized_police
+			}
+			create_character = {
+				interest_group = ig:ig_armed_forces
+				ig_leader = yes
+				ideology = ideology:ideology_monopolist_leader
+			}
+		}else = {
+			create_character = {
+				interest_group = ig:ig_armed_forces
+				ig_leader = yes
+				ideology = ideology:ideology_molinarist_leader
 			}
 		}
 
 		add_radicals = {
 			pop_type = officers
 			value = very_large_radicals
+		}
+
+		if = {
+			limit = {
+				ig:ig_armed_forces = {
+					leader = {
+						popularity >= 0
+					}
+				}
+			}
+			every_scope_character = {
+				limit = {
+					has_role_of_type = general
+					propertarian_or_market_liberal = no
+				}
+				add_modifier = {
+					name = ir_ousted_popular_leader
+					days = normal_modifier_time
+				}
+			}
 		}
 	}
 

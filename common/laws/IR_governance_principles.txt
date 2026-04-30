@@ -64,8 +64,8 @@
 			limit = { has_modifier = ir_guilded_charter_modifier}
 			remove_modifier = ir_guilded_charter_modifier
 		}else_if = {
-			limit = { has_modifier = ir_privatized_peace_modifier }
-			remove_modifier = ir_privatized_peace_modifier
+			limit = { has_modifier = ir_production_of_security_modifier }
+			remove_modifier = ir_production_of_security_modifier
 		}else_if = {
 			limit = { has_modifier = ir_monopolized_integration_modifier }
 			remove_modifier = ir_monopolized_integration_modifier

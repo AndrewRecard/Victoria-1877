@@ -56,6 +56,9 @@
 				has_ideology = ideology:ideology_martial_corporatist
 			}
 		}
+		hidden_trigger = {
+			is_ai = no
+		}
 	}
 
 	status_desc = {
@@ -148,7 +151,6 @@
 			limit = { type = law_type:law_directorate }
 			save_scope_as = directorate_scope
 		}
-		set_variable = boardroom_schism_je_marker
 		set_variable = {
 			name = minarchist_effects_var
 			value = 0
@@ -173,7 +175,7 @@
 			if = {
 				limit = {
 					scope:journal_entry = {
-						"scripted_bar_progress(schism_molinarist_bar)" >= 500
+						"scripted_bar_progress(schism_molinarist_bar)" >= 600
 					}
 					NOT = {
 						has_variable = boardroom_schism_freeze
@@ -187,7 +189,7 @@
 			if = {
 				limit = {
 					scope:journal_entry = {
-						"scripted_bar_progress(schism_monopolist_bar)" >= 500
+						"scripted_bar_progress(schism_monopolist_bar)" >= 600
 					}
 					NOT = {
 						has_variable = boardroom_schism_freeze
@@ -201,7 +203,7 @@
 			if = {
 				limit = {
 					scope:journal_entry = {
-						"scripted_bar_progress(schism_minarchist_bar)" >= 500
+						"scripted_bar_progress(schism_minarchist_bar)" >= 600
 					}
 					NOT = {
 						has_variable = boardroom_schism_freeze

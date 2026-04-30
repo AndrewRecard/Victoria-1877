@@ -266,7 +266,7 @@ law_private_administration = {
 		interest_group_ig_industrialists_pol_str_mult = 0.05
 		country_company_throughput_bonus_add = 0.02
 		country_company_construction_efficiency_bonus_add = 0.03
-		state_tax_waste_add = 0.01
+		state_tax_collection_mult = -0.01
 	}
 
 	on_enact = {

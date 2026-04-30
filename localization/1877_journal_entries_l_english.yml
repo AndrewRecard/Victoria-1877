@@ -6,6 +6,7 @@
  ir_defense_agencies_reform_modifier: "Military Reconstruction"
  ir_defense_agencies_drain_modifier: "Patriotic Exodus"
  ir_defense_agencies_investment_modifier: "Corporate Arms Race"
+ ir_leading_restructure_modifier: "Leading Restructuring Effort"
  repeal_defense_agencies_button: "Revoke Contracts"
  repeal_defense_agencies_button_desc: "The privatization of our armed forces has been a disastrous miscalculation. Immediately void the contracts and forcibly restore the traditional military apparatus."
  depose_armed_forces_leader_button: "Appoint Security Executive"
@@ -13,6 +14,7 @@
  market_liberal_armed_forces_leader_tt: "The [GetInterestGroupVariant('ig_armed_forces',GetPlayer).GetNameWithCountryVariant] are led by a [GetIdeology('ideology_market_liberal').GetName] or #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! [concept_leader]"
  no_market_liberal_armed_forces_leader_tt: "The [GetInterestGroupVariant('ig_armed_forces',GetPlayer).GetNameWithCountryVariant] are not led by a [GetIdeology('ideology_market_liberal').GetName] or #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! [concept_leader]"
  character_involved_in_coup_tt: "The leader of the [GetInterestGroupVariant('ig_armed_forces',GetPlayer).GetName] is not attempting a #variable Coup!#!"
+ ir_ousted_popular_leader: "Ousted Popular Leader"
 
  armed_forces_marginalized: "[GetInterestGroupVariant('ig_armed_forces',GetPlayer).GetNameWithCountryVariant] [concept_marginalized]"
  ig_defense_contractors: "Defense Contractors"
@@ -28,11 +30,11 @@
  ir_defense_incorporation_bar_desc: "Incorporation Progress: #variable [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#! ([JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|1]/100)"
  monthly_progress: "Monthly Progress"
  armed_forces_clout: "[GetInterestGroupVariant('ig_armed_forces',GetPlayer).GetNameWithCountryVariant] [concept_clout]"
- armed_forces_approval: "[GetInterestGroupVariant('ig_armed_forces',GetPlayer).GetNameWithCountryVariant] [concept_approval]"
  officers_radicals: "[GetPopType('officers').GetName] [Concept('concept_loyalist','$radicals_fraction$')]"
  officers_loyalists: "[GetPopType('officers').GetName] [Concept('concept_loyalist','$loyalists_fraction$')]"
  radicals_fraction: "Radicals Fraction"
  loyalists_fraction: "Loyalists Fraction"
+ average_loyalty_of_generals: "Average [concept_loyalty] of [Concept('concept_general','$concept_generals$')]"
  propertarian_armed_forces_leader: "[GetIdeology('ideology_market_liberal').GetName] or #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! [GetInterestGroupVariant('ig_armed_forces',GetPlayer).GetNameWithCountryVariant] [concept_leader]"
  armed_forces_leader_loyalty: "[concept_loyalty] of [ROOT.Var('af_leader_var').GetCharacter.GetFullName]"
  ir_repealed_pda_modifier: "Repealed Private Defense Agencies"
@@ -107,12 +109,10 @@
  # Boardroom Schism
  je_boardroom_schism: "Boardroom Schism"
  je_boardroom_schism_reason: "With the state apparatus now privatized, the Propertarian movement has fractured. The Directorate must have a cohesive ideology if it is to provide market stability and shareholder certainty, lest our dividends be put to removing human capital from the nation's GDP figures."
-
-
  je_schism_resulting_je: "The most influential out of the [GetIdeology('ideology_monopolist_leader').GetName] or [GetIdeology('ideology_molinarist_leader').GetName] lobbies will receive a mandate to implement their ideology. The [GetIdeology('ideology_minarchist_leader').GetName] lobby will be exempt, as they wish to maintain status-quo."
  je_schism_complete: "One of the three #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! lobbies have won over the Board and suited the Directorate to their ideals."
  je_schism_no_mandate: "Either of the [GetIdeology('ideology_monopolist_leader').GetName] or [GetIdeology('ideology_molinarist_leader').GetName] lobbies fail to implement their mandate."
- je_schism_early_laws: "Enacting [GetLawType('law_sovereign_monopoly').GetName] or [GetLawType('law_polycentric_law').GetName] early will invalidate the [concept_journal_entry] and void any potential rewards."
+ je_schism_early_laws: "Prematurely enacting [GetLawType('law_sovereign_monopoly').GetName] or [GetLawType('law_polycentric_law').GetName] will invalidate the [concept_journal_entry] and #red #bold void any potential rewards#!#!."
 
  status_no_winner: "No lobby is ahead of the other"
  status_monopolist_mandate: "The [GetIdeology('ideology_monopolist_leader').GetName] lobby has received a Mandate"
@@ -127,16 +127,16 @@
  ir_funding_lobbies_modifier: "Funding Propertarian Lobbies"
  ir_schism_failed_modifier: "Protracted Lobby War"
  ir_guilded_charter_modifier: "Guilded Charter"
- ir_privatized_peace_modifier: "Privatized Peace"
+ ir_production_of_security_modifier: "Production of Security"
  ir_monopolized_integration_modifier: "Monopolized Integration"
  ir_disbanded_company_modifier: "Nationalized Ideologically-Aligned Company"
 
  monopolism_bar: "Monopolist Lobby Pressure"
- monopolism_bar_desc: "Monopolist Lobby Pressure: #v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#! ([JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|1]/400)"
+ monopolism_bar_desc: "Monopolist Lobby Pressure: #v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#! ([JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|1]/600)"
  minarchism_bar: "Minarchist Lobby Pressure"
- minarchism_bar_desc: "Minarchist Lobby Pressure: #v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#! ([JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|1]/400)"
+ minarchism_bar_desc: "Minarchist Lobby Pressure: #v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#! ([JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|1]/600)"
  molinarism_bar: "Molinarist Lobby Pressure"
- molinarism_bar_desc: "Molinarist Lobby Pressure: #v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#! ([JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|1]/400)"
+ molinarism_bar_desc: "Molinarist Lobby Pressure: #v [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#! ([JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|1]/600)"
  ## PROGRESS BARS
  monopolism_progress_from_funding_tt: "Funding [GetIdeology('ideology_monopolist_leader').GetName] Lobbies"
  monopolism_progress_from_igs_tt: "[concept_clout] of [Concept('concept_interest_group', '$concept_interest_groups$')] with [GetIdeology('ideology_monopolist_leader').GetName] [Concept('concept_leader', '$concept_leaders$')]"
