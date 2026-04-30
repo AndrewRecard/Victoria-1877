@@ -19,8 +19,11 @@
 	}
 
 	possible = {
-		hidden_trigger = {
+		custom_tooltip = {
+			text = molinari_happened_tt
 			has_global_variable = molinari_happened
+		}
+		hidden_trigger = {
 			NOR = {
 				has_journal_entry = je_communism_1
 				has_journal_entry = je_fascism_1
@@ -35,26 +38,28 @@
 		OR = {
 			any_interest_group = {
 				OR = {
+					has_ideology = ideology:ideology_socialist
+					leader = {
+						has_socialist_fascist_ideology = yes
+					}
+				}
+				OR = {
 					AND = {
 					    is_powerful = yes
     					is_in_government = yes
 					}
 					is_insurrectionary = yes
 				}
-				OR = {
-					has_ideology = ideology:ideology_socialist
-					leader = {
-						has_socialist_fascist_ideology = yes
-					}
-				}
 			}
 			any_interest_group = {
 				is_interest_group_type = ig_industrialists
-				leader = {
-					propertarian_or_market_liberal = yes
+				NOR = {
+				    leader = {
+    					has_ideology = ideology:ideology_protectionist
+    				}
+					has_ideology = ideology:ideology_interventionist
 				}
-				is_powerful = yes
-				ig_approval < 0
+				ig_approval <= define:NPolitics|APPROVAL_THRESHOLD_UNHAPPY
 			}
 		}
 	}

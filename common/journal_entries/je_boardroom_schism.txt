@@ -21,12 +21,6 @@
 		container = "custom_widget_container_je_icon"
 	}
 
-	widget = {
-		gui = "gui/journal_entry_widgets/IR_boardroom_schism_widgets.gui"
-		name = "widget_je_boardroom_schism_propertarian_list"
-		container = "custom_widget_container_4"
-	}
-
 	is_shown_when_inactive = {
 		has_technology_researched = corporate_charters
 	}
@@ -155,7 +149,6 @@
 			save_scope_as = directorate_scope
 		}
 		set_variable = boardroom_schism_je_marker
-		update_propertarian_characters_list = yes
 		set_variable = {
 			name = minarchist_effects_var
 			value = 0
@@ -172,7 +165,6 @@
 
 	on_weekly_pulse = {
 		effect = {
-			update_propertarian_characters_list = yes
 			remove_modifier = ir_funding_lobbies_modifier
 			add_modifier = {
 				name = ir_funding_lobbies_modifier

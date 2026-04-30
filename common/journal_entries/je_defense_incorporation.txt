@@ -15,6 +15,12 @@ je_defense_incorporation = {
 
 	scripted_progress_bar = ir_defense_incorporation_bar
 
+	widget = {
+		gui = "gui/journal_entry_widgets/IR_defense_incorporation_widgets.gui"
+		name = "widget_je_defense_incorporation_leader"
+		container = "custom_widget_container_je_icon"
+	}
+
 	status_desc = {
 		first_valid = {
 			triggered_desc = {
@@ -74,7 +80,31 @@ je_defense_incorporation = {
 	}
 	
 	immediate = {
+		set_variable = defense_incorporation_je_marker
+		ig:ig_armed_forces = {
+			leader = {
+				save_scope_as = af_leader_scope
+			}
+		}
+		set_variable = {
+			name = af_leader_var
+			value = scope:af_leader_scope
+		}
 		trigger_event = defense_incorporation.1
+	}
+
+	on_weekly_pulse = {
+		effect = {
+			ig:ig_armed_forces = {
+				leader = {
+					save_scope_as = af_leader_refresh
+				}
+			}
+			set_variable = {
+				name = af_leader_var
+				value = scope:af_leader_refresh
+			}
+		}
 	}
 
 	modifiers_while_active = {
@@ -95,11 +125,18 @@ je_defense_incorporation = {
 
 	on_complete = {
 		trigger_event = defense_incorporation.6
+		remove_variable = defense_incorporation_je_marker
+		remove_variable = af_leader_var
 	}
 
 	invalid = {
 		NOT = {
 			has_law_or_variant = law_type:law_private_defense_agencies
 		}
+	}
+
+	on_invalid = {
+		remove_variable = defense_incorporation_je_marker
+		remove_variable = af_leader_var
 	}
 }

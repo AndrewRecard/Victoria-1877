@@ -98,18 +98,6 @@
 
 		if = {
 			limit = {
-				NOT = {
-					has_law_or_variant = law_type:law_private_defense_agencies
-				}
-			}
-			add = {
-				value = 5
-				desc = "law_no_private_defense_agencies"
-			}
-		}
-
-		if = {
-			limit = {
 				scaled_gold_reserves > 0
 			}
 			add = {
@@ -134,10 +122,10 @@
 		add = {
 			value = {
 				add = relative_bureaucracy
-				min = 1
-				max = -1
+				multiply = -5
 			}
-			multiply = 5
+			min = -5
+			max = 5
 			desc = "bureaucracy_any"
 		}
 	}

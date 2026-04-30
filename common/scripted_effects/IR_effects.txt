@@ -1,6 +1,9 @@
 ﻿ir_defense_contractors_evolution_effect = {
 	ig:ig_armed_forces ?= {
 		set_interest_group_name = ig_defense_contractors
+		set_ig_trait = ig_trait:ig_trait_lethal_incentives
+		set_ig_trait = ig_trait:ig_trait_military_industrial_synergy
+		set_ig_trait = ig_trait:ig_trait_predatory_contracting
 		if = {
 			limit = {
 				has_ideology = ideology:ideology_loyalist
@@ -54,6 +57,9 @@ ir_defense_contractors_reversal_effect = {
 		}else = {
 			add_ideology = ideology_loyalist
 		}
+		set_ig_trait = ig_trait:ig_trait_materiel_waste
+		set_ig_trait = ig_trait:ig_trait_veteran_consultation
+		set_ig_trait = ig_trait:ig_trait_patriotic_fervor
 		add_ideology = ideology_jingoist
 		add_ideology = ideology_patriotic
 		remove_ideology = ideology_martial_corporatist

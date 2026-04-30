@@ -6,7 +6,7 @@
 
  	monthly_progress = {
 		add = {
-			value = 500
+			value = 1
 			desc = monthly_progress
 		}
 
@@ -80,6 +80,17 @@
 				value = -0.5
 				desc = "armed_forces_marginalized"
 			}
+		}
+
+		add = {
+			ig:ig_armed_forces = {
+				leader = {
+					add = loyalty
+				}
+			}
+			subtract = 50
+			multiply = 0.01
+			desc = "armed_forces_leader_loyalty"
 		}
 
 		if = {

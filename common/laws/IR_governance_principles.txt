@@ -133,7 +133,6 @@
 		}
 		if = {
 			limit = {
-				has_law_or_variant = law_type:law_private_defense_agencies
 				NOT = { has_law_or_variant = law_type:law_guaranteed_liberties }
 				NOT = { has_law = law_type:law_public_health_insurance }
 				OR = {
@@ -176,9 +175,7 @@
 			}
 			set_variable = public_liquidation_completed
 		}else = {
-			add_journal_entry = {
-				type = je_public_liquidation
-			}
+			custom_tooltip = public_liquidation_added_tt
 		}
 	}
 

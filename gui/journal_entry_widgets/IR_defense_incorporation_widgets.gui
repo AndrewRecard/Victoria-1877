@@ -1,9 +1,9 @@
 ### TYPES
-types IR_boardroom_schism_types
+types IR_defense_incorporation_types
 {
-	type IR_boardroom_schism_ruler_with_background = widget {
+	type IR_defense_incorporation_leader_with_background = widget {
 
-		datacontext = "[JournalEntry.GetCountry.GetRuler]"
+		datacontext = "[JournalEntry.GetCountry.MakeScope.Var('af_leader_var').GetCharacter]"
 
 		# background
 		widget = {
@@ -11,12 +11,12 @@ types IR_boardroom_schism_types
 			position = { 0 1 }
 
 			background = {
-				texture = "gfx/interface/character_panel/backgrounds/char_role_executive.dds"
+				texture = "gfx/interface/character_panel/backgrounds/char_role_rulergeneral.dds"
 				fittype = centercrop
 			}
 		}
 
-		# everything character-dependent: only show if ruler is valid
+		# everything character-dependent: only show if leader is valid
 		widget = {
 			size = { 100% 100% }
 			visible = "[Character.IsValid]"
@@ -82,13 +82,13 @@ types IR_boardroom_schism_types
 
 ### WIDGETS
 flowcontainer = {
-	name = "widget_je_boardroom_schism_ruler"
+	name = "widget_je_defense_incorporation_leader"
 	ignoreinvisible = yes
 
 	flowcontainer = {
 		direction = vertical
 
-		IR_boardroom_schism_ruler_with_background = {
+		IR_defense_incorporation_leader_with_background = {
 			layoutpolicy_horizontal = expanding
 			layoutpolicy_vertical = expanding
 			minimumsize = { 520 280 }
@@ -101,8 +101,9 @@ flowcontainer = {
 				size = { 110% 110% }
 			}
 
-			# ruler stats panel — only built if ruler is valid
+			# leader stats panel — only built if leader is valid
 			flowcontainer = {
+				datacontext = "[JournalEntry.GetCountry.MakeScope.Var('af_leader_var').GetCharacter]"
 				visible = "[Character.IsValid]"
 				parentanchor = right|top
 				position = { -8 5 }
@@ -128,7 +129,7 @@ flowcontainer = {
 					blockoverride "ruler_icon" {
 						icon = {
 							size = { 35 35 }
-							texture = "gfx/interface/icons/law_icons/state_capitalism.dds"
+							texture = "gfx/interface/icons/ig_icons/armed_forces.dds"
 						}
 					}
 					blockoverride "label" {
@@ -195,9 +196,40 @@ flowcontainer = {
 					}
 				}
 
-				### TRAITS
-				character_traits_no_label = {
-					parentanchor = right
+				### LOYALTY
+				ruler_stats_entry = {
+					tooltip = "LOYALTY_BREAKDOWN"
+
+					blockoverride "ruler_icon" {
+						widget = {
+							size = { 35 35 }
+
+							icon = {
+								visible = "[GreaterThanOrEqualTo_CFixedPoint(Character.GetLoyalty, '(CFixedPoint)75')]"
+								parentanchor = center
+								size = { 35 35 }
+								texture = "gfx/interface/icons/generic_icons/approval_icon.dds"
+							}
+							icon = {
+								visible = "[Between_CFixedPoint(Character.GetLoyalty, '(CFixedPoint)25', '(CFixedPoint)75')]"
+								parentanchor = center
+								size = { 35 35 }
+								texture = "gfx/interface/icons/generic_icons/maybe_icon.dds"
+							}
+							icon = {
+								visible = "[LessThanOrEqualTo_CFixedPoint(Character.GetLoyalty, '(CFixedPoint)25')]"
+								parentanchor = center
+								size = { 35 35 }
+								texture = "gfx/interface/icons/generic_icons/disapproval_icon.dds"
+							}
+						}
+					}
+					blockoverride "label" {
+						text = "LOYALTY"
+					}
+					blockoverride "text" {
+						text = "[LabelingHelper.GetLabelForLoyaltyCFixedPoint(Character.GetLoyalty)]"
+					}
 				}
 			}
 

@@ -2,7 +2,7 @@
  # Defense Incorporation
  je_group_propertarianism: "Propertarianism"
  je_defense_incorporation: "Defense, Incorporated"
- je_defense_incorporation_reason: "The sudden privatization of the military has provoked a mass exodus of traditionalist officers and loyal foot-soldiers. As it stands, our military readiness is crippled; therefore we must weather the social and economic restructuring process by allowing enough time for the defense agencies' incorporation process as well as the government's adaptation to this new system.\n\nWhen all is said and done, the outcome should be the most profitable and efficient military-industrial sector the world has ever seen."
+ je_defense_incorporation_reason: "The sudden privatization of the military has provoked a mass exodus of traditionalist officers and loyal foot-soldiers. As it stands, our military readiness is crippled; therefore we must weather the social and economic restructuring process by allowing enough time for the defense agencies' incorporation process, as well as the government's adaptation to this new system.\n\nWhen all is said and done, the outcome should be the most profitable and efficient military-industrial sector the world has ever seen."
  ir_defense_agencies_reform_modifier: "Military Reconstruction"
  ir_defense_agencies_drain_modifier: "Patriotic Exodus"
  ir_defense_agencies_investment_modifier: "Corporate Arms Race"
@@ -12,11 +12,18 @@
  depose_armed_forces_leader_button_desc: "Force the early retirement of the military's bureaucratic old guard and install a [GetIdeology('ideology_market_liberal').GetName] or #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! politician who agrees with the new defense paradigm."
  market_liberal_armed_forces_leader_tt: "The [GetInterestGroupVariant('ig_armed_forces',GetPlayer).GetNameWithCountryVariant] are led by a [GetIdeology('ideology_market_liberal').GetName] or #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! [concept_leader]"
  no_market_liberal_armed_forces_leader_tt: "The [GetInterestGroupVariant('ig_armed_forces',GetPlayer).GetNameWithCountryVariant] are not led by a [GetIdeology('ideology_market_liberal').GetName] or #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! [concept_leader]"
+ character_involved_in_coup_tt: "The leader of the [GetInterestGroupVariant('ig_armed_forces',GetPlayer).GetName] is not attempting a #variable Coup!#!"
 
  armed_forces_marginalized: "[GetInterestGroupVariant('ig_armed_forces',GetPlayer).GetNameWithCountryVariant] [concept_marginalized]"
  ig_defense_contractors: "Defense Contractors"
  ig_defense_contractors_desc: "Managing directors of munitions trusts, industrial machinists, and career servicemen whose livelihoods and bonuses depend entirely on the next lucrative defense contract."
- 
+ ig_trait_lethal_incentives: "Lethal Incentives"
+ ig_trait_lethal_incentives_desc: "Why rely on patriotism when a generous performance bonus guarantees results? Our contractors fight with devastating efficiency for their bounties. Besides, it's cheaper to hire new recruits than pay medical pensions."
+ ig_trait_military_industrial_synergy: "Military-Industrial Synergy"
+ ig_trait_military_industrial_synergy_desc: "War is an industry that demands innovation. With our margins secured by a cooperative government, we are free to reinvest our dividends into bleeding-edge weapons development and elite executive training."
+ ig_trait_predatory_contracting: "Predatory Contracting"
+ ig_trait_predatory_contracting_desc: "A mercenary's loyalty only goes as far as their paycheck. If the government insists on acting against our interests, they will find that hazard pay and renegotiation costs have suddenly skyrocketed."
+
  ir_defense_incorporation_bar: "Defense Incorporation"
  ir_defense_incorporation_bar_desc: "Incorporation Progress: #variable [JournalEntry.GetCurrentBarProgress(ScriptedProgressBar.Self)|%]#! ([JournalEntry.GetCurrentBarValue(ScriptedProgressBar.Self)|1]/100)"
  monthly_progress: "Monthly Progress"
@@ -26,8 +33,8 @@
  officers_loyalists: "[GetPopType('officers').GetName] [Concept('concept_loyalist','$loyalists_fraction$')]"
  radicals_fraction: "Radicals Fraction"
  loyalists_fraction: "Loyalists Fraction"
- law_no_private_defense_agencies: "No Private Defense Agencies"
  propertarian_armed_forces_leader: "[GetIdeology('ideology_market_liberal').GetName] or #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! [GetInterestGroupVariant('ig_armed_forces',GetPlayer).GetNameWithCountryVariant] [concept_leader]"
+ armed_forces_leader_loyalty: "[concept_loyalty] of [ROOT.Var('af_leader_var').GetCharacter.GetFullName]"
  ir_repealed_pda_modifier: "Repealed Private Defense Agencies"
  ir_repealed_pda_opinion_modifier: "Repealed Private Defense Agencies"
  defense_incorporation_progress_increase_5_tt: "#bold Increases Defense Incorporation Progress#! by #variable 5#!"
@@ -79,11 +86,12 @@
  industry_and_integrity_progress_increase_10_tt: "#bold Increases Industry and Integrity Progress#! by #variable 10#!"
  industry_and_integrity_progress_decrease_25_tt: "#bold Decreases Industry and Integrity Progress#! by #variable 25#!"
 
+ molinari_happened_tt: "#bold Gustave de Molinari#! has published #italic The Production of Security#!"
  propertarians_in_government_tt: "#tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! [Concept('concept_politician', '$concept_politicians$')] are currently [concept_in_government]"
  propertarians_out_of_government_tt: "#tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! [Concept('concept_politician', '$concept_politicians$')] are currently #bold not#! [concept_in_government]"
  has_socialist_fascist_ideology_tt: "Has any #tooltippable;tooltip:[GetPlayer.GetTooltipTag],socialist_ideologies_list_tt Socialist#! or #tooltippable;tooltip:[GetPlayer.GetTooltipTag],fascist_ideologies_list_tt Fascist#! [concept_ideology]"
  minarchist_agitator_appears_tt: "A [GetIdeology('ideology_minarchist_leader').GetName] [concept_agitator] will appear in [ROOT.GetCountry.GetNameNoFlag]"
- existent_propertarian_character_tt: "The #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! movement has a [concept_character] to propagate their [concept_ideology]"
+ existent_propertarian_character_tt: "The #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! movement has an aligned [concept_character]"
  propertarian_leader_seizes_control_tt: "[SCOPE.sCharacter('propertarian_leader').GetFullName] will implement Propertarian thought in the [SCOPE.gsInterestGroup('propertarian_ig').GetName]"
  propertarian_characters_return_to_normal_tt: "The rate at which #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! characters appear will return to normal"
  propertarian_characters_stays_increased_tt: "The rate at which #tooltippable;tooltip:[GetPlayer.GetTooltipTag],propertarian_ideologies_list_tt Propertarian#! characters appear will remain elevated"
@@ -253,5 +261,3 @@
  ir_mandate_opposed_ig_modifier: "Propertarian Backlash"
  ir_schism_resolved_modifier: "Resolved Boardroom Schism"
  je_schism_fail: "The Boardroom Schism [concept_journal_entry] will fail."
-
- PROPERTARIAN_CHARACTERS_LIST_HEADER: "Propertarian Characters"

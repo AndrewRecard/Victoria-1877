@@ -107,7 +107,10 @@
 	}
 
 	interest_group_leader_weight = {
-		value = 100
+		value = {
+			add = 100
+			desc = "base_value"
+		}
 
 		if = {
 			limit = {
@@ -116,6 +119,7 @@
 			add = {
 				value = owner.ideology_minarchist_leader_disfavoured_laws
 				multiply = 7  # less ideological, more profit driven
+				desc = "DISFAVORED_LAWS"
 			}
 		}
 
@@ -126,6 +130,7 @@
 			subtract = {
 				value = owner.ideology_minarchist_leader_favoured_laws
 				multiply = 7
+				desc = "FAVORED_LAWS"
 			}
 		}
 
@@ -142,7 +147,10 @@
 					}
 				}
 			}
-			add = 25
+			add = {
+				value = 25
+				desc = "BANKRUPTCY"
+			}
 		}
 		# Less likely in council republic
 		if = {
@@ -151,7 +159,10 @@
 					has_law_or_variant = law_type:law_council_republic
 				}
 			}
-			add = -75
+			add = {
+				value = -75
+				desc = "COUNCIL_REPUBLIC_LAW"
+			}
 		}
 		# Less likely in theocracy
 		if = {
@@ -160,7 +171,10 @@
 					has_law_or_variant = law_type:law_theocracy
 				}
 			}
-			add = -50
+			add = {
+				value = -50
+				desc = "THEOCRACY_LAW"
+			}
 		}
 		# Less likely in corporate state due to facilitated interaction between classes
 		if = {
@@ -169,7 +183,10 @@
 					has_law_or_variant = law_type:law_corporate_state
 				}
 			}
-			add = -25
+			add = {
+				value = -25
+				desc = "CORPORATE_STATE_LAW"
+			}
 		}
 		# More likely in presidential republic due to polarisation
 		if = {
@@ -183,7 +200,7 @@
 		# more likely if angry (non directorate)
 		if = {
 			limit = {
-				ig_approval <= -5
+				ig_approval <= define:NPolitics|APPROVAL_THRESHOLD_UNHAPPY
 				owner = {
 					NOR = {
 						has_law_or_variant = law_type:law_directorate
@@ -195,12 +212,13 @@
 			subtract = {
 				value = ig_approval
 				multiply = 5
+				desc = "IG_APPROVAL_BELOW_UNHAPPY"
 			}
 		}
 		# even more likely if angry under powerful trade unions or rivals
 		if = {
 			limit = {
-				ig_approval <= -5
+				ig_approval <= define:NPolitics|APPROVAL_THRESHOLD_UNHAPPY
 				owner = {
 					any_interest_group = {
 						OR = {
@@ -220,6 +238,7 @@
 			subtract = {
 				value = ig_approval
 				multiply = 5
+				desc = "IG_APPROVAL_BELOW_UNHAPPY_ENEMIES"
 			}
 		}
 		# less likely if content without moderate directorate
@@ -232,11 +251,12 @@
 						has_law = law_type:law_managed_democracy
 					}
 				}
-				ig_approval >= 5
+				ig_approval >= define:NPolitics|APPROVAL_THRESHOLD_HAPPY
 			}
 			subtract = {
 				value = ig_approval
 				multiply = 5
+				desc = "HAPPY_WITHOUT_MODERATE_DIRECTORATE"
 			}
 		}
 		# more likely if content with moderate directorate
@@ -249,11 +269,12 @@
 						has_law_or_variant = law_type:law_wealth_voting
 					}
 				}
-				ig_approval >= 5
+				ig_approval >= define:NPolitics|APPROVAL_THRESHOLD_HAPPY
 			}
 			add = {
 				value = ig_approval
 				multiply = 5
+				desc = "HAPPY_WITH_MODERATE_DIRECTORATE"
 			}
 		}
 		# more likely for industrialists
@@ -261,7 +282,10 @@
 			limit = {
 				is_interest_group_type = ig_industrialists
 			}
-			add = 50
+			add = {
+				value = 50
+				desc = "ig_industrialists"
+			}
 		}
 		# more likely for landowners with radical land reforms
 		if = {
@@ -277,7 +301,10 @@
 					}
 				}
 			}
-			add = 25
+			add = {
+				value = 25
+				desc = "LANDOWNERS_RADICAL_LAND_REFORMS"
+			}
 		}
 		# more likely for intelligentsia in laissez-faire economic system
 		if = {
@@ -291,7 +318,10 @@
 					has_law_or_variant = law_type:law_laissez_faire
 				}
 			}
-			add = 25
+			add = {
+				value = 25
+				desc = "INTELLIGENTSIA_LAISSEZ_FAIRE_SYSTEM"
+			}
 		}
 		# more likely for rural folk owning property in laissez-faire system
 		if = {
@@ -305,7 +335,10 @@
 					}
 				}
 			}
-			add = 50 # cut in half when socialism
+			add = {
+				value = 50 # cut in half when socialism
+				desc = "RURAL_FOLK_PEASANT_PROPRIETORSHIP_LAISSEZ_FAIRE"
+			}
 		}
 		# less likely for PB with fascist movement
 		if = {
@@ -317,7 +350,10 @@
 					}
 				}
 			}
-			add = -25
+			add = {
+				value = -25
+				desc = "PB_FASCIST_MOVEMENT"
+			}
 		}
 		# less likely for rural folk with socialism
 		if = {
@@ -327,7 +363,10 @@
 					has_technology_researched = socialism
 				}
 			}
-			add = -25
+			add = {
+				value = -25
+				desc = "RURAL_FOLK_SOCIALISM"
+			}
 		}
 		# much more likely for defense contractors in general (without directorate)
 		if = {
@@ -340,7 +379,10 @@
 					}
 				}
 			}
-			add = 50
+			value = {
+				add = 50
+				desc = "ig_defense_contractors"
+			}
 		}
 		# less likely for non private defense agencies
 		if = {
@@ -350,7 +392,10 @@
 					has_ideology = ideology:ideology_martial_corporatist
 				}
 			}
-			add = -25
+			add = {
+				value = -25
+				desc = "ig_armed_forces"
+			}
 		}
 		# more likely if in government with directorate/oligarchy/wealth voting
 		if = {
@@ -364,7 +409,10 @@
 				}
 				is_in_government = yes
 			}
-			add = 50
+			add = {
+				value = 50
+				desc = "IN_GOVERNMENT_WITH_MODERATE_DIRECTORATE"
+			}
 		}
 		# more likely for defense contractors with dedicated police (in directorate)
 		if = {
@@ -376,7 +424,10 @@
 					has_law_or_variant = law_type:law_directorate
 				}
 			}
-			multiply = 1.5
+			multiply = {
+				value = 1.5
+				desc = "DEDICATED_POLICE"
+			}
 		}
 		# more likely if supporting
 		if = {
@@ -386,7 +437,10 @@
 					has_variable = supporting_minarchism_var
 				}
 			}
-			multiply = 1.25
+			multiply = {
+				value = 1.25
+				desc = "SUPPORTING_MINARCHISM"
+			}
 		}
 		# propertarian JE causes an uptick in propertarianism
 		if = {
@@ -398,7 +452,10 @@
 					}
 				}
 			}
-			multiply = 1.25
+			multiply = {
+				value = 1.25
+				desc = "INDUSTRY_AND_INTEGRITY_EFFECTS"
+			}
 		}
 		if = {
 			limit = {
@@ -406,7 +463,10 @@
 					minarchists_failed_schism_trigger = yes
 				}
 			}
-			multiply = 0.5
+			multiply = {
+				value = 0.5
+				desc = "FAILED_SCHISM"
+			}
 		}
 		if = {
 			limit = {
@@ -419,7 +479,10 @@
 					has_variable = chose_fascism
 				}
 			}
-			multiply = 0.1
+			multiply = {
+				value = 0.1
+				desc = "CHOSE_A_DIFFERENT_PATH"
+			}
 		}
 	}
 

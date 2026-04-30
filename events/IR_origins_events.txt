@@ -20,8 +20,12 @@ propertarian_origins.1 = {
 		ig:ig_industrialists = {
 			ig_counts_as_marginal = no
 		}
+
 		ig:ig_intelligentsia= {
-			ig_counts_as_marginal = no
+			OR = {
+			    ig_counts_as_marginal = no
+				has_party = yes
+			}
 		}
 	}
 
@@ -964,11 +968,6 @@ propertarian_origins.7 = {
 					save_scope_as = popular_propertarian
 				}
 			}else = {
-				ig:ig_industrialists = {
-				    leader = {
-    					exile_character = yes
-    				}
-				}
 				create_character = {
 					ideology = ideology:ideology_minarchist_leader
 					interest_group = ig_industrialists

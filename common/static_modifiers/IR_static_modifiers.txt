@@ -192,6 +192,7 @@ ir_ditched_molinari_modifier = {
 ir_propertarian_figurehead_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
 	character_popularity_add = 50
+	character_prominence_add = 25
 }
 
 ir_propertarians_welcomed_modifier = {
@@ -223,6 +224,7 @@ ir_capital_strike_modifier = {
 ir_discredited_propertarian_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
 	character_popularity_add = -30
+	character_prominence_add = -5
 }
 
 ir_fading_propertarianism_modifier = {
@@ -233,6 +235,7 @@ ir_fading_propertarianism_modifier = {
 promoted_propertarian_leader_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
 	character_popularity_add = 35
+	character_prominence_add = 5
 }
 
 promoted_propertarian_leader_ig_modifier = {
@@ -243,6 +246,7 @@ promoted_propertarian_leader_ig_modifier = {
 ignored_propertarian_leader_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
 	character_popularity_add = -15
+	character_prominence_add = -5
 }
 
 ignored_propertarian_leader_ig_modifier = {

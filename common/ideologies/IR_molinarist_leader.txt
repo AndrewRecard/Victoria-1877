@@ -98,7 +98,10 @@
 	}
 
 	interest_group_leader_weight = {
-		value = 100
+		value = {
+			add = 100
+			desc = "base_value"
+		}
 
 		if = {
 			limit = {
@@ -107,6 +110,7 @@
 			add = {
 				value = owner.ideology_molinarist_leader_disfavoured_laws
 				multiply = 7  # less ideological, more profit driven
+				desc = "DISFAVORED_LAWS"
 			}
 		}
 		if = {
@@ -116,13 +120,14 @@
 			subtract = {
 				value = owner.ideology_molinarist_leader_favoured_laws
 				multiply = 7
+				desc = "FAVORED_LAWS"
 			}
 		}
 
 		# more likely if angry (non polycentric law)
 		if = {
 			limit = {
-				ig_approval <= -5
+				ig_approval <= define:NPolitics|APPROVAL_THRESHOLD_UNHAPPY
 				owner = {
 					NOT = {
 						has_law = law_type:law_polycentric_law
@@ -132,12 +137,13 @@
 			subtract = {
 				value = ig_approval
 				multiply = 5
+				desc = "IG_APPROVAL_BELOW_UNHAPPY"
 			}
 		}
 		# even more likely if angry under powerful rivals
 		if = {
 			limit = {
-				ig_approval <= -5
+				ig_approval <= define:NPolitics|APPROVAL_THRESHOLD_UNHAPPY
 				owner = {
 					any_interest_group = {
 						leader = {
@@ -154,6 +160,7 @@
 			subtract = {
 				value = ig_approval
 				multiply = 5
+				desc = "IG_APPROVAL_BELOW_UNHAPPY_ENEMIES"
 			}
 		}
 		# less likely if content without polycentric law
@@ -165,11 +172,12 @@
 						has_journal_entry = je_boardroom_schism
 					}
 				}
-				ig_approval >= 5
+				ig_approval >= define:NPolitics|APPROVAL_THRESHOLD_HAPPY
 			}
 			subtract = {
 				value = ig_approval
 				multiply = 5
+				desc = "HAPPY_WITHOUT_POLYCENTRIC_LAW"
 			}
 		}
 		# more likely if content with polycentric law
@@ -178,11 +186,12 @@
 				owner = {
 					has_law = law_type:law_polycentric_law
 				}
-				ig_approval >= 5
+				ig_approval >= define:NPolitics|APPROVAL_THRESHOLD_HAPPY
 			}
 			add = {
 				value = ig_approval
 				multiply = 5
+				desc = "HAPPY_WITH_POLYCENTRIC_LAW"
 			}
 		}
 		# home of the intelligentsia and rural folk
@@ -193,7 +202,10 @@
 					is_interest_group_type = ig_rural_folk
 				}
 			}
-			add = 50
+			add = {
+				value = 50
+				desc = "INTELLIGENTSIA_OR_RURAL_FOLK"
+			}
 		}
 		# more likely for defense contractors in general
 		if = {
@@ -202,14 +214,20 @@
 				has_ideology = ideology:ideology_martial_corporatist
 
 			}
-			add = 25
+			add = {
+				value = 25
+				desc = "ig_defense_contractors"
+			}
 		}
 		# less likely for PB
 		if = {
 			limit = {
 				is_interest_group_type = ig_petty_bourgeoisie
 			}
-			add = -25
+			add = {
+				value = -25
+				desc = "ig_petty_bourgeoisie"
+			}
 		}
 		# less likely for PB with fascist movement
 		if = {
@@ -221,26 +239,20 @@
 					}
 				}
 			}
-			add = -25
-		}
-		# less likely for PB with fascist movement
-		if = {
-			limit = {
-				is_interest_group_type = ig_petty_bourgeoisie
-				owner = {
-					any_political_movement = {
-						is_political_movement_type = movement_fascist
-					}
-				}
+			add = {
+				value = -25
+				desc = "PB_FASCIST_MOVEMENT"
 			}
-			add = -25
 		}
 		# much less likely for devout
 		if = {
 			limit = {
 				is_interest_group_type = ig_devout
 			}
-			add = -50
+			add = {
+				value = -50
+				desc = "ig_devout"
+			}
 		}
 		# more likely if in government with polycentric law
 		if = {
@@ -250,14 +262,20 @@
 				}
 				is_in_government = yes
 			}
-			add = 50
+			add = {
+				value = 50
+				desc = "IN_GOVERNMENT_POLYCENTRIC_LAW"
+			}
 		}
 		# slightly more likely if not powerful
 		if = {
 			limit = {
 				is_powerful = no
 			}
-			add = 25
+			add = {
+				value = 25
+				desc = "IG_NOT_POWERFUL"
+			}
 		}
 		# more likely for defense contractors with no/local police
 		if = {
@@ -272,7 +290,10 @@
 				}
 
 			}
-			multiply = 1.5
+			multiply = {
+				value = 1.5
+				desc = "LOCAL_OR_NO_POLICE"
+			}
 		}
 		# more likely if supporting
 		if = {
@@ -282,7 +303,10 @@
 					has_variable = supporting_molinarism_var
 				}
 			}
-			multiply = 1.25
+			multiply = {
+				value = 1.25
+				desc = "SUPPORTING_MOLINARISM"
+			}
 		}
 		# propertarian JE causes an uptick in propertarianism
 		if = {
@@ -294,7 +318,10 @@
 					}
 				}
 			}
-			multiply = 1.25
+			multiply = {
+				value = 1.25
+				desc = "INDUSTRY_AND_INTEGRITY_EFFECTS"
+			}
 		}
 		if = {
 			limit = {
@@ -302,7 +329,10 @@
 					molinarists_failed_schism_trigger = yes
 				}
 			}
-			multiply = 0.5
+			multiply = {
+				value = 0.5
+				desc = "FAILED_SCHISM"
+			}
 		}
 		if = {
 			limit = {
@@ -315,7 +345,10 @@
 					has_variable = chose_fascism
 				}
 			}
-			multiply = 0.1
+			multiply = {
+				value = 0.1
+				desc = "CHOSE_A_DIFFERENT_PATH"
+			}
 		}
 	}
 

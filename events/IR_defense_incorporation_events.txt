@@ -268,15 +268,12 @@ defense_incorporation.4 = {
 
 	trigger = {
 		any_scope_state = {
-			any_scope_building = {
-				is_building_type = building_barrack
-			}
-			any_scope_building = {
-				OR = {
-					is_building_type = building_munition_plant
-					is_building_type = building_arms_industry
-					is_building_type = building_artillery_foundry
-				}
+			is_incorporated = yes
+			has_building = building_barrack
+			OR = {
+				has_building = building_munition_plant
+				has_building = building_arms_industry
+				has_building = building_artillery_foundry
 			}
 		}
 	}
@@ -284,15 +281,12 @@ defense_incorporation.4 = {
 	immediate = {
 		random_scope_state = {
 			limit = {
-				any_scope_building = {
-					is_building_type = building_barrack
-				}
-				any_scope_building = {
-					OR = {
-						is_building_type = building_munition_plant
-						is_building_type = building_arms_industry
-						is_building_type = building_artillery_foundry
-					}
+				is_incorporated = yes
+				has_building = building_barrack
+				OR = {
+					has_building = building_munition_plant
+					has_building = building_arms_industry
+					has_building = building_artillery_foundry
 				}
 			}
 			weight = {
@@ -300,15 +294,17 @@ defense_incorporation.4 = {
 				modifier = {
 					factor = 3
 					trigger = {
-						any_scope_building = {
-							is_building_type = building_barrack
+						b:building_barrack = {
 							level >= 10
 						}
-						any_scope_building = {
-							OR = {
-								is_building_type = building_munition_plant
-								is_building_type = building_arms_industry
-								is_building_type = building_artillery_foundry
+						OR = {
+							b:building_munition_plant = {
+								level >= 5
+							}
+							b:building_arms_industry = {
+								level >= 5
+							}
+							b:building_artillery_foundry = {
 								level >= 5
 							}
 						}
@@ -317,15 +313,17 @@ defense_incorporation.4 = {
 				modifier = {
 					factor = 3
 					trigger = {
-						any_scope_building = {
-							is_building_type = building_barrack
+						b:building_barrack = {
 							level >= 20
 						}
-						any_scope_building = {
-							OR = {
-								is_building_type = building_munition_plant
-								is_building_type = building_arms_industry
-								is_building_type = building_artillery_foundry
+						OR = {
+							b:building_munition_plant = {
+								level >= 10
+							}
+							b:building_arms_industry = {
+								level >= 10
+							}
+							b:building_artillery_foundry = {
 								level >= 10
 							}
 						}
@@ -527,6 +525,7 @@ defense_incorporation.6 = {
 			name = ir_defense_agencies_investment_modifier
 			years = 10
 		}
+
 		remove_modifier = ir_defense_agencies_drain_modifier
 	}
 }

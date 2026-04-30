@@ -116,6 +116,7 @@
 			add = {
 				value = owner.ideology_monopolist_leader_disfavoured_laws
 				multiply = 8  # 1 less law than mins/mols so slightly more impactful
+				desc = "DISFAVORED_LAWS"
 			}
 		}
 		if = {
@@ -125,13 +126,14 @@
 			subtract = {
 				value = owner.ideology_monopolist_leader_favoured_laws
 				multiply = 8
+				desc = "FAVORED_LAWS"
 			}
 		}
 
 		# more likely if angry (non sov mon)
 		if = {
 			limit = {
-				ig_approval <= -5
+				ig_approval <= define:NPolitics|APPROVAL_THRESHOLD_UNHAPPY
 				owner = {
 					NOT = {
 						has_law = law_type:law_sovereign_monopoly
@@ -141,12 +143,13 @@
 			subtract = {
 				value = ig_approval
 				multiply = 5
+				desc = "IG_APPROVAL_BELOW_UNHAPPY"
 			}
 		}
 		# even more likely if angry under powerful rivals
 		if = {
 			limit = {
-				ig_approval <= -5
+				ig_approval <= define:NPolitics|APPROVAL_THRESHOLD_UNHAPPY
 				owner = {
 					any_interest_group = {
 						leader = {
@@ -163,6 +166,7 @@
 			subtract = {
 				value = ig_approval
 				multiply = 5
+				desc = "IG_APPROVAL_BELOW_UNHAPPY_ENEMIES"
 			}
 		}
 		# less likely if content without sov mon
@@ -174,11 +178,12 @@
 						has_journal_entry = je_boardroom_schism
 					}
 				}
-				ig_approval >= 5
+				ig_approval >= define:NPolitics|APPROVAL_THRESHOLD_HAPPY
 			}
 			subtract = {
 				value = ig_approval
 				multiply = 5
+				desc = "HAPPY_WITHOUT_SOV_MON"
 			}
 		}
 		# more likely if content with sov mon
@@ -187,11 +192,12 @@
 				owner = {
 					has_law = law_type:law_sovereign_monopoly
 				}
-				ig_approval >= 5
+				ig_approval >= define:NPolitics|APPROVAL_THRESHOLD_HAPPY
 			}
 			add = {
 				value = ig_approval
 				multiply = 5
+				desc = "HAPPY_WITH_SOV_MON"
 			}
 		}
 		# home of the landowners
@@ -199,14 +205,20 @@
 			limit = {
 					is_interest_group_type = ig_landowners
 			}
-			add = 50
+			add = {
+				value = 50
+				desc = "ig_landowners"
+			}
 		}
 		# more likely for PB
 		if = {
 			limit = {
 				is_interest_group_type = ig_petty_bourgeoisie
 			}
-			add = 25
+			add = {
+				value = 25
+				desc = "ig_petty_bourgeoisie"
+			}
 		}
 		# becomes home for PB with fascist movement
 		if = {
@@ -218,7 +230,10 @@
 					}
 				}
 			}
-			add = 25
+			add = {
+				value = 25
+				desc = "PB_FASCIST_MOVEMENT"
+			}
 		}
 		# becomes home for intelligentsia with scientific management
 		if = {
@@ -228,14 +243,28 @@
 					has_law = law_type:law_scientific_management
 				}
 			}
-			add = 50
+			add = {
+				value = 50
+				desc = "INTELLENTSIA_SCIENTIFIC_MANAGEMENT"
+			}
 		}
-		# much less likely for devout
+		# much less likely for devout (unless they control the monopoly somehow)
 		if = {
 			limit = {
 				is_interest_group_type = ig_devout
+				NOT = {
+					is_powerful = yes
+					is_in_government = yes
+					owner = {
+						has_law = law_type:law_sovereign_monopoly
+						religion = rel:protestant
+					}
+				}
 			}
-			add = -50
+			add = {
+				value = -50
+				desc = "ig_devout"
+			}
 		}
 		# more likely if in government with sovereign monopoly
 		if = {
@@ -245,14 +274,20 @@
 				}
 				is_in_government = yes
 			}
-			add = 50
+			add = {
+				value = 50
+				desc = "IN_GOVERNMENT_SOV_MON"
+			}
 		}
 		# slightly more likely if powerful
 		if = {
 			limit = {
 				is_powerful = yes
 			}
-			add = 25
+			add = {
+				value = 25
+				desc = "IG_POWERFUL"
+			}
 		}
 		# more likely for defense contractors with militarized police
 		if = {
@@ -264,7 +299,10 @@
 				}
 
 			}
-			multiply = 1.5
+			multiply = {
+				value = 1.5
+				desc = "MILITARIZED_POLICE"
+			}
 		}
 		# more likely if supporting
 		if = {
@@ -274,7 +312,10 @@
 					has_variable = supporting_monopolism_var
 				}
 			}
-			multiply = 1.25
+			multiply = {
+				value = 1.25
+				desc = "SUPPORTING_MONOPOLISM"
+			}
 		}
 		# propertarian JE causes an uptick in propertarianism
 		if = {
@@ -286,7 +327,10 @@
 					}
 				}
 			}
-			multiply = 1.25
+			multiply = {
+				value = 1.25
+				desc = "INDUSTRY_AND_INTEGRITY_EFFECTS"
+			}
 		}
 		if = {
 			limit = {
@@ -294,7 +338,10 @@
 					monopolists_failed_schism_trigger = yes
 				}
 			}
-			multiply = 0.5
+			multiply = {
+				value = 0.5
+				desc = "FAILED_SCHISM"
+			}
 		}
 		if = {
 			limit = {
@@ -307,7 +354,10 @@
 					has_variable = chose_fascism
 				}
 			}
-			multiply = 0.1
+			multiply = {
+				value = 0.1
+				desc = "CHOSE_A_DIFFERENT_PATH"
+			}
 		}
 	}
 

@@ -150,12 +150,6 @@ REPLACE:law_peasant_levies = {
 	disallowing_laws = {
 		law_council_republic
 	}
-	can_enact = {
-		custom_tooltip = {
-			text = public_institutions_liquidated_tt
-			modifier:country_public_institutions_liquidated_bool = no
-		}
-	}
 
 	modifier = {
 		country_can_only_conscript_peasants_bool = yes
@@ -260,12 +254,6 @@ REPLACE:law_professional_army = {
 		law_intermediate_edo_system
 	}
 
-	can_enact = {
-		custom_tooltip = {
-			text = public_institutions_liquidated_tt
-			modifier:country_public_institutions_liquidated_bool = no
-		}
-	}
 	modifier = {
 		unit_morale_loss_mult = -0.1
 		state_conscription_rate_add = 0.01
@@ -396,10 +384,6 @@ REPLACE:law_national_militia = {
 	}
 
 	can_enact = {
-		custom_tooltip = {
-			text = public_institutions_liquidated_tt
-			modifier:country_public_institutions_liquidated_bool = no
-		}
 		OR = {
 			is_power_bloc_leader = no
 			power_bloc ?= {
@@ -486,12 +470,6 @@ REPLACE:law_mass_conscription = {
 		law_intermediate_edo_system
 	}
 
-	can_enact = {
-		custom_tooltip = {
-			text = public_institutions_liquidated_tt
-			modifier:country_public_institutions_liquidated_bool = no
-		}
-	}
 	modifier = {
 		unit_morale_loss_mult = 0.05
 		state_conscription_rate_add = 0.03

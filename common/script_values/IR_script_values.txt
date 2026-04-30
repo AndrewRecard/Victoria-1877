@@ -50,14 +50,6 @@ invite_exile_cooldown = {
 	}
 }
 
-converted_relative_bureaucracy = {
-	value = bureaucracy_usage
-	subtract = produced_bureaucracy
-	divide = produced_bureaucracy
-	min = -1
-	max = 1
-}
-
 sovereign_monopoly_throughput_conversion = {
 	value = modifier:country_company_throughput_bonus_add
 }

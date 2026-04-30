@@ -9,12 +9,11 @@ je_public_liquidation = {
 		NOR = {
 			has_modifier = ir_free_market_commons_modifier
 			has_modifier = ir_market_commons_modifier
-			has_law_or_variant = law_type:law_directorate
 		}
 	}
 
 	possible = {
-		always = no
+		has_law_or_variant = law_type:law_directorate
 	}
 
 	modifiers_while_active = {
@@ -24,10 +23,10 @@ je_public_liquidation = {
 
 	on_monthly_pulse = {
 		random_events = {
-			1 = 0
-			100 = directorate_events.3
-			100 = directorate_events.4
-			100 = directorate_events.5
+			20 = 0
+			1 = directorate_events.3
+			1 = directorate_events.4
+			1 = directorate_events.5
 		}
 	}
 
@@ -37,7 +36,6 @@ je_public_liquidation = {
 	scripted_progress_bar = ir_insolvency_bar
 
 	complete = {
-		has_law = law_type:law_private_defense_agencies
 		NOT = { has_law = law_type:law_guaranteed_liberties }
 		NOT = { has_law = law_type:law_public_health_insurance }
 		OR = {

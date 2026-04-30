@@ -2,40 +2,6 @@
     add_treasury = purchase_poltician_value
 }
 
-update_propertarian_characters_list = {
-    if = {
-        limit = { has_variable_list = propertarian_characters_list }
-        clear_variable_list = propertarian_characters_list
-    }
-    if = {
-        limit = {
-            any_scope_character = {
-                has_propertarian_ideology = yes
-                OR = {
-                    has_role_of_type = poltician
-                    has_role_of_type = magnate
-                    has_role_of_type = executive
-                    has_role_of_type = agitator
-                }
-            }
-        }
-        every_scope_character = {
-            limit = {
-                has_propertarian_ideology = yes
-                OR = {
-                    has_role_of_type = poltician
-                    has_role_of_type = magnate
-                    has_role_of_type = executive
-                    has_role_of_type = agitator
-                }
-            }
-            add_to_variable_list = {
-                name = propertarian_characters_list
-            }
-        }
-    }
-}
-
 clear_boardroom_schism_variables = {
     remove_variable = minarchists_victorious
     remove_variable = molinarists_victorious

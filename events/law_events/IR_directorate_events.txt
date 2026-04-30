@@ -158,7 +158,7 @@ directorate_events.3 = {
         taking_loans = yes
         scaled_debt >= 0.2
         je:je_public_liquidation = {
-            "scripted_bar_progress(ir_insolvency_bar)" >= 200
+            scripted_bar_progress = { name = ir_insolvency_bar value >= 200 }
         }
     }
 
@@ -393,6 +393,12 @@ directorate_events.4 = {
                     name = ir_insolvency_bar
                 }
             }
+        }
+    }
+
+    cancellation_trigger = {
+        NOT = {
+            has_journal_entry = je_public_liquidation
         }
     }
 }

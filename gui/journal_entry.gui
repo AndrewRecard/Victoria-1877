@@ -130,11 +130,11 @@ types journal_entry_panel_types
 				}
 
 				### TIMED MODIFIERS ALT
-				# IR mod: hide for je_boardroom_schism — modifier icon is rendered inside the custom character widget instead.
+				# IR mod: hide for JEs that render the modifier icon inside their custom character widget (boardroom_schism, defense_incorporation).
 				widget = {
 					size = { @panel_width_plus_20 60 }
 					parentanchor = hcenter
-					visible = "[And(And(JournalEntry.HasCustomWidget('custom_widget_container_je_icon'), Not(IsDataModelEmpty(JournalEntry.GetTimedModifiers)) ), Not(JournalEntry.MakeScope.Var('boardroom_schism_je_marker').IsValid))]"
+					visible = "[And(And(JournalEntry.HasCustomWidget('custom_widget_container_je_icon'), Not(IsDataModelEmpty(JournalEntry.GetTimedModifiers)) ), And(Not(JournalEntry.GetCountry.MakeScope.Var('boardroom_schism_je_marker').IsValid), Not(JournalEntry.GetCountry.MakeScope.Var('defense_incorporation_je_marker').IsValid)))]"
 
 					flowcontainer = {
 						background = {
