@@ -79,7 +79,6 @@
 						has_ideology = ideology:ideology_positivist
 						has_ideology = ideology:ideology_protectionist
 						has_ideology = ideology:ideology_corporatist
-						has_ideology = ideology:ideology_traditionalist
 						has_ideology = ideology:ideology_slaver
 					}
 				}
@@ -92,6 +91,12 @@
 		if = {
 			limit = {
 				is_interest_group_type = ig_armed_forces
+				OR = {
+					leader = {
+						propertarian_or_market_liberal = yes
+					}
+					has_ideology = ideology:ideology_martial_corporatist
+				}
 				owner = {
 						has_law_or_variant = law_type:law_militarized_police
 				}
@@ -99,14 +104,6 @@
 			add = {
 				value = 15
 				desc = "law_militarized_police"
-			}
-		}else_if = {
-			limit = {
-				is_interest_group_type = ig_armed_forces
-			}
-			add = {
-				value = 5
-				desc = "ig_armed_forces"
 			}
 		}
 		if = {
@@ -150,17 +147,6 @@
 			multiply = {
 				value = 0.5
 				desc = "centrist_alliance_countering_vl"
-			}
-		}
-		if = {
-			limit = {
-				scope:number <= 1
-				is_powerful = no
-				ig_counts_as_marginal = no
-			}
-			multiply = {
-				value = 2
-				desc = "from_influential_supporting_member"
 			}
 		}
 	}

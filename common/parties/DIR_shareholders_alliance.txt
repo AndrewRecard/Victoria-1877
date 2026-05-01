@@ -78,13 +78,41 @@
 				desc = "from_minarchist_leader"
 			}
 		}
+
+		if = {
+			limit = {
+				is_interest_group_type = ig_industrialists
+				leader = {
+					has_ideology = ideology:ideology_moderate
+				}
+			}
+			add = {
+				value = 15
+				desc = "from_archetype_party"
+			}
+		}
+		if = {
+			limit = {
+				is_interest_group_type = ig_devout
+				leader = {
+					NOR = {
+						has_ideology = ideology:ideology_monopolist_leader
+						has_ideology = ideology:ideology_molinarist_leader
+					}
+				}
+				owner = {
+					religion = rel:protestant
+				}
+			}
+			add = {
+				value = 10
+				desc = "protestant"
+			}
+		}
 		if = {
 			limit = {
 				leader ?= {
-					OR = {
-						has_ideology = ideology:ideology_moderate
 						has_ideology = ideology:ideology_market_liberal
-					}
 				}
 			}
 			add = {
@@ -95,20 +123,10 @@
 		if = {
 			limit = {
 				is_interest_group_type = ig_armed_forces
-				owner = {
-					has_law_or_variant = law_type:law_dedicated_police
-				}
+				has_ideology = ideology:ideology_martial_corporatist
 			}
 			add = {
-				value = 15
-				desc = "law_dedicated_police"
-			}
-		}else_if = {
-			limit = {
-				is_interest_group_type = ig_armed_forces
-			}
-			add = {
-				value = 10
+				value = 5
 				desc = "ig_armed_forces"
 			}
 		}
@@ -184,18 +202,6 @@
 			add = {
 				value = 25
 				desc = "centrist_alliance_countering_vl"
-			}
-		}
-
-		if = {
-			limit = {
-				scope:number <= 1
-				is_powerful = no
-				ig_counts_as_marginal = no
-			}
-			multiply = {
-				value = 2
-				desc = "from_influential_supporting_member"
 			}
 		}
 	}

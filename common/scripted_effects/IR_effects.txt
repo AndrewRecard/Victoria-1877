@@ -377,3 +377,57 @@ propertarian_split_effect = {
 		}
 	}
 }
+
+upgrade_entrepeneur_trait_twice_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = basic_entrepreneur
+				has_trait = experienced_entrepreneur
+				has_trait = expert_entrepreneur
+			}
+		}
+		add_trait = experienced_entrepreneur
+	}
+	else_if = {
+		limit = {
+			has_trait = basic_entrepreneur
+		}
+		remove_trait = basic_entrepreneur
+		add_trait = expert_entrepreneur
+	}
+	else_if = {
+		limit = {
+			has_trait = experienced_entrepreneur
+		}
+		remove_trait = experienced_entrepreneur
+		add_trait = expert_entrepreneur
+	}
+}
+
+upgrade_entrepeneur_trait_once_effect = {
+	if = {
+		limit = {
+			NOR = {
+				has_trait = basic_entrepreneur
+				has_trait = experienced_entrepreneur
+				has_trait = expert_entrepreneur
+			}
+		}
+		add_trait = basic_entrepreneur
+	}
+	else_if = {
+		limit = {
+			has_trait = basic_entrepreneur
+		}
+		remove_trait = basic_entrepreneur
+		add_trait = experienced_entrepreneur
+	}
+	else_if = {
+		limit = {
+			has_trait = experienced_entrepreneur
+		}
+		remove_trait = experienced_entrepreneur
+		add_trait = expert_entrepreneur
+	}
+}

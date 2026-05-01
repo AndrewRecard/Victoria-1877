@@ -134,7 +134,7 @@ types journal_entry_panel_types
 				widget = {
 					size = { @panel_width_plus_20 60 }
 					parentanchor = hcenter
-					visible = "[And(And(JournalEntry.HasCustomWidget('custom_widget_container_je_icon'), Not(IsDataModelEmpty(JournalEntry.GetTimedModifiers)) ), And(Not(JournalEntry.GetCountry.MakeScope.Var('minarchist_effects_var').IsValid), Not(JournalEntry.GetCountry.MakeScope.Var('af_leader_var').IsValid)))]"
+					visible = "[And(And(JournalEntry.HasCustomWidget('custom_widget_container_je_icon'), Not(IsDataModelEmpty(JournalEntry.GetTimedModifiers)) ), Not(GetScriptedGui('IR_je_has_custom_modifier_display_sgui').IsValid( GuiScope.SetRoot( JournalEntry.GetCountry.MakeScope ).End )))]"
 
 					flowcontainer = {
 						background = {

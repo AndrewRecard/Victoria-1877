@@ -140,6 +140,24 @@
 		if = {
 			limit = {
 				owner = {
+					has_law_or_variant = law_type:law_directorate
+				}
+				is_interest_group_type = ig_armed_forces
+				NOR = {
+					leader = {
+						propertarian_or_market_liberal = yes
+					}
+					has_ideology = ideology:ideology_martial_corporatist
+				}
+			}
+			add = {
+				value = 10
+				desc = "non_propertarian_armed_forces"
+			}
+		}
+		if = {
+			limit = {
+				owner = {
 					c:BIC ?= this
 					is_subject = yes
 					OR = {

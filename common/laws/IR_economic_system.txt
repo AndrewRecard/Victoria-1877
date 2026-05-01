@@ -521,6 +521,7 @@ REPLACE:law_laissez_faire = {
 		building_nationalization_radicals_mult = 0.25
 		country_force_privatization_bool = yes
 		country_forbid_monopoly_bool = yes
+		country_disable_nationalization_without_compensation_bool = yes
 	}
 	can_impose = {
 		OR = {

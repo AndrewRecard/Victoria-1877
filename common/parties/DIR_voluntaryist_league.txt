@@ -21,7 +21,7 @@
 			has_law_or_variant = law_type:law_directorate
 			country_has_voting_franchise = yes
 			OR = {
-				py:national_trust_party ?= {
+				py:voluntaryist_league ?= {
 					any_member = {}
 				}
 				any_interest_group = {
@@ -85,6 +85,12 @@
 		if = {
 			limit = {
 				is_interest_group_type = ig_armed_forces
+				OR = {
+					leader = {
+						propertarian_or_market_liberal = yes
+					}
+					has_ideology = ideology:ideology_martial_corporatist
+				}
 				owner = {
 					OR = {
 						has_law_or_variant = law_type:law_no_police
@@ -95,14 +101,6 @@
 			add = {
 				value = 15
 				desc = "no_or_local_police"
-			}
-		}else_if = {
-			limit = {
-				is_interest_group_type = ig_armed_forces
-			}
-			add = {
-				value = 5
-				desc = "ig_armed_forces"
 			}
 		}
 		if = {
@@ -146,17 +144,6 @@
 			multiply = {
 				value = 0.5
 				desc = "centrist_alliance_countering_ntp"
-			}
-		}
-		if = {
-			limit = {
-				scope:number <= 1
-				is_powerful = no
-				ig_counts_as_marginal = no
-			}
-			multiply = {
-				value = 2
-				desc = "from_influential_supporting_member"
 			}
 		}
 	}

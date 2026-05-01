@@ -202,9 +202,9 @@
  convene_egm_button: "Convene an #bold E.G.M#!"
  convene_egm_button_desc: "The ideological cold war within the Boardroom is bleeding our margins. Bypass the standard bureaucratic channels and call an #bold Extraordinary General Meeting#!.\n\nTo secure the proxy votes necessary to force a binding resolution, we will need to issue a massive 'special dividend' from the Directorate's gold reserves."
  not_convened_egm: "Has not already convened an #bold E.G.M#!"
- monopolism_progress_200: "#bold Monopolist Lobby Pressure#! is at least #variable 200#!"
- minarchism_progress_200: "#bold Minarchist Lobby Pressure#! is at least #variable 200#!"
- molinarism_progress_200: "#bold Molinarist Lobby Pressure#! is at least #variable 200#!"
+ monopolism_progress_400: "#bold Monopolist Lobby Pressure#! is at least #variable 400#!"
+ minarchism_progress_400: "#bold Minarchist Lobby Pressure#! is at least #variable 400#!"
+ molinarism_progress_400: "#bold Molinarist Lobby Pressure#! is at least #variable 400#!"
  ## PROGRESS TOOLTIPS
  monopolism_progress_increase_10_tt: "#bold Increases#! the #bold Progress#! of #bold Monopolism#! by #variable 10#!"
  monopolism_progress_increase_100_tt: "#bold Increases#! the #bold Progress#! of #bold Monopolism#! by #variable 100#!"

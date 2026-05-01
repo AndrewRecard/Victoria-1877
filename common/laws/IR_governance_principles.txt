@@ -13,7 +13,6 @@
 	}
 
 	can_enact = {
-		has_technology_researched = military_statistics
 		trigger_if = {
 			limit = {
 				is_subject = no
@@ -56,17 +55,20 @@
 		if = {
 			limit = { has_modifier = ir_free_market_commons_modifier }
 			remove_modifier = ir_free_market_commons_modifier
-		}else_if = {
+		}
+		else_if = {
 			limit = { has_modifier = ir_market_commons_modifier }
 			remove_modifier = ir_market_commons_modifier
 		}
 		if = {
 			limit = { has_modifier = ir_guilded_charter_modifier}
 			remove_modifier = ir_guilded_charter_modifier
-		}else_if = {
+		}
+		else_if = {
 			limit = { has_modifier = ir_production_of_security_modifier }
 			remove_modifier = ir_production_of_security_modifier
-		}else_if = {
+		}
+		else_if = {
 			limit = { has_modifier = ir_monopolized_integration_modifier }
 			remove_modifier = ir_monopolized_integration_modifier
 		}
@@ -159,7 +161,8 @@
 					remove_ideology = ideology_republican
 					add_ideology = ideology_market_rationalist
 				}
-			}else_if = {
+			}
+			else_if = {
 				limit = {
 					ig:ig_intelligentsia = {
 						has_ideology = ideology:ideology_constitutionalist
@@ -174,7 +177,8 @@
 				name = ir_free_market_commons_modifier
 			}
 			set_variable = public_liquidation_completed
-		}else = {
+		}
+		else = {
 			custom_tooltip = public_liquidation_added_tt
 		}
 	}

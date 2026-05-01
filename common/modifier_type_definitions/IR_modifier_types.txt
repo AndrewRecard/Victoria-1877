@@ -178,3 +178,9 @@ state_capitalists_investment_efficiency_per_franchise_mult = {
     color = good
     percent = yes
 }
+
+country_allow_ruler_selection_bool = {
+    script_only = yes
+    boolean = yes
+    color = good
+}

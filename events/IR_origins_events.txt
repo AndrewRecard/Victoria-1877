@@ -972,6 +972,7 @@ propertarian_origins.7 = {
 					ideology = ideology:ideology_minarchist_leader
 					interest_group = ig_industrialists
 					ig_leader = yes
+					save_scope_as = popular_propertarian
 				}
 			}
 		}else = {
@@ -994,7 +995,7 @@ propertarian_origins.7 = {
 		}
 	}
 	after = {
-		scope:popular_propertarian = {
+		scope:popular_propertarian ?= {
 			set_variable = propertarian_char_var
 			add_modifier = {
 				name = ir_propertarian_figurehead_modifier

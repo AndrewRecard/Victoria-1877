@@ -1,0 +1,10 @@
+INJECT:ai_strategy_default = {
+	institution_scores = {
+		institution_civil_service = {
+			value = 100
+		}
+		institution_corporate_unions = {
+			value = 10
+		}
+	}
+}

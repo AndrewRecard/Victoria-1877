@@ -5,27 +5,27 @@
  	default_green = yes
 
  	monthly_progress = {
-		add = {
-			value = 100
-			desc = monthly_progress
-		}
-
 		if = {
-			limit = {
-				ig:ig_armed_forces = {
-					ig_counts_as_marginal = yes
-				}
-			}
-			add = {
-				value = -0.5
-				desc = "armed_forces_marginalized"
-			}
-		}
-
-		if = {
-			limit = {
+		    limit = {
 				has_journal_entry = je_defense_incorporation
-			}
+		    }
+		    add = {
+    			value = 1
+    			desc = monthly_progress
+    		}
+
+    		if = {
+    			limit = {
+    				ig:ig_armed_forces = {
+    					ig_counts_as_marginal = yes
+    				}
+    			}
+    			add = {
+    				value = -0.5
+    				desc = "armed_forces_marginalized"
+    			}
+    		}
+
 			add = {
 				desc = officers_radicals
 				add = {
@@ -67,56 +67,56 @@
 				}
 				multiply = 1
 			}
-		}
 
-		add = {
-			ig:ig_armed_forces = {
-				leader = {
-					add = loyalty
-				}
-			}
-			subtract = 50
-			multiply = 0.01
-			desc = "armed_forces_leader_loyalty"
-		}
+			add = {
+    			ig:ig_armed_forces = {
+    				leader = {
+    					add = loyalty
+    				}
+    			}
+    			subtract = 50
+    			multiply = 0.01
+    			desc = "armed_forces_leader_loyalty"
+    		}
 
-		add = {
-			desc = "average_loyalty_of_generals"
-			every_scope_character = {
-				limit = {
-					has_role_of_type = general
-				}
-				add = {
-					add = {
-						add = loyalty
-						subtract = 50
-					}
-					multiply = prominence
-				}
-			}
-			divide = {
+			add = {
+				desc = "average_loyalty_of_generals"
 				every_scope_character = {
 					limit = {
 						has_role_of_type = general
 					}
-					add = prominence
-				}
-			}
-			multiply = 0.01
-		}
-
-		if = {
-			limit = {
-				ig:ig_armed_forces = {
-					leader = {
-						propertarian_or_market_liberal = yes
+					add = {
+						add = {
+							add = loyalty
+							subtract = 50
+						}
+						multiply = prominence
 					}
 				}
+				divide = {
+					every_scope_character = {
+						limit = {
+							has_role_of_type = general
+						}
+						add = prominence
+					}
+				}
+				multiply = 0.01
 			}
-			add = {
-				value = 1
-				desc = "propertarian_armed_forces_leader"
-			}
+
+			if = {
+    			limit = {
+    				ig:ig_armed_forces = {
+    					leader = {
+    						propertarian_or_market_liberal = yes
+    					}
+    				}
+    			}
+    			add = {
+    				value = 1
+    				desc = "propertarian_armed_forces_leader"
+    			}
+    		}
 		}
 	}
 

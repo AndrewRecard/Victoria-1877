@@ -484,3 +484,13 @@ ir_franchising_level_3_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
 	state_capitalists_investment_pool_efficiency_mult = 0.04
 }
+
+ir_best_executive_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
+	character_popularity_add = 50
+}
+
+ir_better_executive_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
+	character_popularity_add = 25
+}

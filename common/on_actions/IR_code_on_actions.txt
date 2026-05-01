@@ -47,6 +47,28 @@ on_monthly_pulse_country = {
     }
 }
 
+on_election_campaign_start = {
+    events = {
+        caciquismo.3
+    }
+}
+
+on_new_ruler = {
+    on_actions = {
+        select_executive_effect
+    }
+}
+
+
+select_executive_effect = {
+   effect = {
+        owner ?= {
+            trigger_event = { id = caciquismo.4 days = 7 }
+            trigger_event = { id = caciquismo.5 days = 7 }
+        }
+   }
+}
+
 franchise_investment_efficiency_on_action = {
     effect = {
         remove_modifier = ir_franchising_level_1_modifier

@@ -6,11 +6,10 @@
 
     possible = {
         has_law_or_variant = law_type:law_directorate
+        is_power_bloc_leader = no
         OR = {
-            AND = {
-                overlord = {
-                    has_law_or_variant = law_type:law_directorate
-                }
+            overlord = {
+                has_law_or_variant = law_type:law_directorate
             }
             power_bloc_leader = {
                 has_law_or_variant = law_type:law_directorate

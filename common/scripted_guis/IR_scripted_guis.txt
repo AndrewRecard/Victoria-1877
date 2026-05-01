@@ -1,0 +1,12 @@
+﻿# Checks if the active JE has its own timed modifier display (boardroom_schism or defense_incorporation).
+# Used in journal_entry.gui to hide the generic modifier panel for those JEs.
+IR_je_has_custom_modifier_display_sgui = {
+    scope = country
+
+    is_valid = {
+        OR = {
+            exists = var:minarchist_effects_var
+            exists = var:af_leader_var
+        }
+    }
+}

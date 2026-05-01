@@ -295,7 +295,7 @@ sponsor_thinktanks_button = {
 	}
 
 	cooldown = {
-		years = 2
+		days = normal_modifier_time
 	}
 
 	possible = {
@@ -377,16 +377,16 @@ convene_egm_button = {
 			je:je_boardroom_schism = {
 				OR = {
 					custom_tooltip = {
-						text = monopolism_progress_200
-						scripted_bar_progress = { name = schism_monopolist_bar value >= 200 }
+						text = monopolism_progress_400
+						scripted_bar_progress = { name = schism_monopolist_bar value >= 400 }
 					}
 					custom_tooltip = {
-						text = minarchism_progress_200
-						scripted_bar_progress = { name = schism_minarchist_bar value >= 200 }
+						text = minarchism_progress_400
+						scripted_bar_progress = { name = schism_minarchist_bar value >= 400 }
 					}
 					custom_tooltip = {
-						text = molinarism_progress_200
-						scripted_bar_progress = { name = schism_molinarist_bar value >= 200 }
+						text = molinarism_progress_400
+						scripted_bar_progress = { name = schism_molinarist_bar value >= 400 }
 					}
 				}
 			}

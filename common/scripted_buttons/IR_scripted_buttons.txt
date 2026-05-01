@@ -88,7 +88,7 @@ depose_armed_forces_leader_button = {
 				text = character_involved_in_coup_tt
 				leader = {
 					NOT = {
-						has_variable = golpista_general
+						has_variable = golpista_var
 					}
 				}
 			}
