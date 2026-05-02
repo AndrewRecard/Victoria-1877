@@ -133,7 +133,7 @@
  law_executive_absolutism: "Executive Absolutism"
  law_executive_absolutism_desc: "Through ruthless consolidation of market interests, the office of the Chairman exerts considerable political and economic sway over the Board of Directors."
  law_managed_democracy: "Managed Democracy"
- law_managed_democracy_desc: "Public elections are held on schedule; however, the results are decided in the boardroom. There is no certainty as to whether a laborer's vote is ever counted."
+ law_managed_democracy_desc: "Public elections are held on schedule; though the results are heavily weighted toward corporate interests. There is no certainty as to whether a laborer's vote is ever counted."
  law_scientific_management: "Scientific Management"
  law_scientific_management_desc: "Stripped of political sentiment, the Board of Directors operates purely on statistical targets and performance metrics, viewing every aspect of society as a variable to be measured, managed, and maximized."
   ## AMENDMENTS
@@ -254,8 +254,6 @@
  country_invite_exile_cooldown_mult_desc: "The #variable Invite Exile#! character interaction cooldown is modified by the stated amount."
  country_public_institutions_liquidated_bool: "The Directorate has Permanently Liquidated the Public Sector"
  country_public_institutions_liquidated_bool_desc: "Disables multiple [Concept('concept_law', '$concept_laws$')] which are not possible under a [GetLawType('law_directorate').GetName]."
- country_militarized_police_discount_bool: "Reduced Militarized Police Force costs"
- country_militarized_police_discount_bool_desc: "Removes the [concept_bureaucracy] Cost Penalty from [GetLawType('law_militarized_police').GetName]\nNote: this may take up to 6 months to take effect."
  country_barracks_scaling_turmoil_bool: "Barracks provide Turmoil Effects Reduction"
  country_barracks_scaling_turmoil_bool_desc: "#variable Barracks#! provide a scaling $state_turmoil_effects_mult$ reduction modifier up to #green #bold 15%#!#! at #variable 100 #!levels as per the [concept_production_method]"
  country_sovereign_monopoly_conversion_bool: "Company Construction and Throughput is applied to Country"

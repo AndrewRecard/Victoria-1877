@@ -10,7 +10,6 @@
 				any_interest_group = {
 					is_in_government = yes
 					leader = {
-						has_variable = propertarian_char_var
 						has_propertarian_ideology = yes
 					}
 				}

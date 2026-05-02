@@ -209,9 +209,8 @@ INJECT:law_corporatized_unions = {
 	}
 	institution = institution_corporate_unions
 	institution_modifier = {
-		interest_group_ig_petty_bourgeoisie_pop_attraction_mult = 0.04
+		interest_group_ig_petty_bourgeoisie_pop_attraction_mult = 0.05
 		state_radicals_and_loyalists_from_sol_change_mult = 0.05
-		building_minimum_wage_mult = 0.03
 		state_pop_support_movement_communist_mult = -0.04
 		state_pop_support_movement_anarchist_mult = -0.04
 		state_pop_support_movement_socialist_mult = -0.04

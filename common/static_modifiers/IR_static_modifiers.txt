@@ -89,12 +89,6 @@ ir_fickle_welfare_state_modifier = {
 	state_radicals_from_political_movements_mult = 0.25
 }
 
-ir_private_militarized_police = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_coins_positive.dds
-	country_institution_cost_institution_police_mult = -0.25
-	country_military_wages_mult = -0.15
-}
-
 ir_sm_throughput_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
 	building_group_bg_manufacturing_throughput_add = 1

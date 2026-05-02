@@ -31,18 +31,17 @@
 
 	modifier = {
 		country_influence_mult = -0.25
+		country_institution_cost_institution_police_mult = -0.25
 		country_max_companies_add = 1
 		country_machinists_pol_str_mult = 0.25
 		country_officers_pol_str_mult = 0.25
 		state_building_barrack_max_level_add = 100
 		country_military_wages_mult = 0.25
-		building_group_bg_military_industry_throughput_add = 0.1
 		unit_kill_rate_add = 0.1
-		unit_experience_gain_mult = 1.0
-		unit_devastation_mult = 0.5
+		unit_experience_gain_mult = 1
+		unit_devastation_mult = 1
 		unit_morale_loss_mult = 0.1
 		country_barracks_scaling_turmoil_bool = yes
-		country_militarized_police_discount_bool = yes
 	}
 
 	can_impose = {

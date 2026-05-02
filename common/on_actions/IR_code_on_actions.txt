@@ -214,34 +214,7 @@ fix_special_laws_on_action = {
 
 on_half_yearly_pulse_country = {
     on_actions = {
-        evaluate_police_synergy
         sovereign_monopoly_conversion_effect
-    }
-}
-
-evaluate_police_synergy = {
-    effect  = {
-        if = {
-            limit = {
-                has_law_or_variant = law_type:law_private_defense_agencies
-                has_law_or_variant = law_type:law_militarized_police
-                NOT = {
-                    has_modifier = ir_private_militarized_police
-                }
-            }
-            add_modifier = {
-                name = ir_private_militarized_police
-            }
-        }else_if = {
-            limit = {
-                has_modifier = ir_private_militarized_police
-                NOT = {
-                    has_law_or_variant = law_type:law_private_defense_agencies
-                    has_law_or_variant = law_type:law_militarized_police
-                }
-            }
-            remove_modifier = ir_private_militarized_police
-        }
     }
 }
 

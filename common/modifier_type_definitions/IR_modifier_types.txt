@@ -136,12 +136,6 @@ country_barracks_scaling_turmoil_bool = {
     color = good
 }
 
-country_militarized_police_discount_bool = {
-    script_only = yes
-    boolean = yes
-    color = good
-}
-
 power_bloc_leader_can_force_privatize_bool = {
     script_only = yes
     boolean = yes

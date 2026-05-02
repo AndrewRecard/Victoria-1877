@@ -274,6 +274,7 @@ propertarian_origins.2 = { # A Capital Strike
 
 	option = {
 		name = propertarian_origins.2.a
+		default_option = yes
 		trigger = {
 			NOT = {
 				has_law_or_variant = law_type:law_council_republic
@@ -359,7 +360,6 @@ propertarian_origins.2 = { # A Capital Strike
 
 	option = {
 		name = propertarian_origins.2.b
-		default_option = yes
 		scope:origins_propertarian_ig = {
 			add_modifier = {
 				name = ir_propertarians_rebuked_modifier
@@ -386,6 +386,7 @@ propertarian_origins.2 = { # A Capital Strike
 
 	option = {
 		name = propertarian_origins.2.c
+		highlighted_option = yes
 		trigger = {
 			NOT = {
 				has_law_or_variant = law_type:law_laissez_faire
@@ -758,6 +759,11 @@ propertarian_origins.5 = {
 
 	option = {
 		name = propertarian_origins.5.b
+		trigger = {
+			NOT = {
+				has_law_or_variant = law_type:law_no_police
+			}
+		}
 		add_radicals = {
 			interest_group = ig:ig_industrialists
 			value = small_radicals
