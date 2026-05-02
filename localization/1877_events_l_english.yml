@@ -266,5 +266,5 @@
  caciquismo.5.f: ""Sentiment is a rounding error. Charisma is a rounding error. What governs a modern nation is the same thing that governs a modern factory — the careful elimination of waste motion."\n\n"The man whose firm produces the most per worker is, by definition, the man best suited to extract the most from a citizenry. The mathematics is unambiguous. We need only consult the figures and crown the winner.""
  caciquismo.5.a: "[SCOPE.sCharacter('executive_1').GetFullName]'s productivity figures are unmatched."
  caciquismo.5.b: "Elevate [SCOPE.sCharacter('executive_2').GetFullName], whose metrics are within a standard deviation of the lead."
- caciquismo.5.c: "[SCOPE.sCharacter('executive_3').GetFullName] is a statistically sound and uncontroversial choice."
+ caciquismo.5.c: "[SCOPE.sCharacter('executive_3').GetFullName] is a statistically sound choice."
  caciquismo.5.e: "Trust in the expertise of [SCOPE.sCharacter('engineer_candidate').GetFullName]."

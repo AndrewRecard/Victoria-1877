@@ -31,6 +31,13 @@
 			}
 			remove_modifier = ir_guilded_charter_modifier
 		}
+		hidden_effect = {
+			trigger_event = {
+				id = caciquismo.4
+				popup = yes
+				days = 7
+			}
+		}
 	}
 
 	modifier = {
@@ -144,6 +151,13 @@ law_scientific_management = {
 				has_modifier = ir_guilded_charter_modifier
 			}
 			remove_modifier = ir_guilded_charter_modifier
+		}
+		hidden_effect = {
+			trigger_event = {
+				id = caciquismo.5
+				popup = yes
+				days = 7
+			}
 		}
 	}
 

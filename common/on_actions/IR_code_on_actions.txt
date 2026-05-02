@@ -63,8 +63,16 @@ on_new_ruler = {
 select_executive_effect = {
    effect = {
         owner ?= {
-            trigger_event = { id = caciquismo.4 days = 7 }
-            trigger_event = { id = caciquismo.5 days = 7 }
+            trigger_event = {
+                id = caciquismo.4
+                popup = yes
+                days = 7
+            }
+            trigger_event = {
+                id = caciquismo.5
+                popup = yes
+                days = 7
+            }
         }
    }
 }
