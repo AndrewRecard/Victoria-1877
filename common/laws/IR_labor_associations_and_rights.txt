@@ -254,7 +254,6 @@ law_national_labor_service = {
 	modifier = {
 		state_lower_strata_expected_sol_add = -2
 		state_middle_strata_expected_sol_add = -1
-		state_pop_support_movement_fascist_mult = 0.25
 		interest_group_ig_trade_unions_pol_str_mult = -0.25
 		country_institution_cost_institution_corporate_unions_mult = 0.25
 		country_authority_add = 200
@@ -265,10 +264,10 @@ law_national_labor_service = {
 		interest_group_ig_petty_bourgeoisie_pol_str_mult = 0.05
 		interest_group_ig_armed_forces_pol_str_mult = 0.1
 		country_radicals_from_legitimacy_mult = 0.2
-		country_military_goods_cost_mult = -0.02
 		building_minimum_wage_mult = -0.05
 		state_birth_rate_mult = -0.01
 		building_group_bg_heavy_industry_throughput_add = 0.05
+		building_group_bg_military_industry_throughput_add = 0.05
 	}
 
 	on_enact = {

@@ -154,6 +154,19 @@ REPLACE:law_appointed_bureaucrats = {
 		}
 	}
 
+	on_activate = {
+		if = {
+			limit = {
+				root = c:CHI
+			}
+			add_modifier = {
+				name = ir_more_tax_capacity_modifier
+				years = 20
+				is_decaying = yes
+			}
+		}
+	}
+
 	ai_enact_weight_modifier = { #Petitions
 		value = 0
 

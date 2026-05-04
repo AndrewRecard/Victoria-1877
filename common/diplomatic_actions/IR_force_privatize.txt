@@ -30,7 +30,7 @@
 			current_cohesion_percentage >= 0.5
 		}
 		scope:target_country = {
-			tenure_in_current_power_bloc_years >= 1
+			tenure_in_current_power_bloc_years >= 2
 		}
 		prestige >= {
 			value = scope:target_country.prestige
@@ -61,14 +61,6 @@
 					}
 				}
 				activate_law = law_type:law_private_defense_agencies
-			}
-			if = {
-				limit = {
-					NOT = {
-						has_law_or_variant = law_type:law_merchant_navy
-					}
-				}
-				activate_law = law_type:law_merchant_navy
 			}
 			if = {
 				limit = {
@@ -104,20 +96,14 @@
 				if = {
 					limit = {
 						ig:ig_intelligentsia = {
-							has_ideology = ideology:ideology_republican
+							OR = {
+								has_ideology = ideology:ideology_republican
+								has_ideology = ideology:ideology_constitutionalist
+							}
 						}
 					}
 					ig:ig_intelligentsia = {
 						remove_ideology = ideology_republican
-						add_ideology = ideology_market_rationalist
-					}
-				}else_if = {
-					limit = {
-						ig:ig_intelligentsia = {
-							has_ideology = ideology:ideology_constitutionalist
-						}
-					}
-					ig:ig_intelligentsia = {
 						remove_ideology = ideology_constitutionalist
 						add_ideology = ideology_market_rationalist
 					}
@@ -143,7 +129,6 @@
 				add_liberty_desire = 20
 			}
 		}
-
 		power_bloc = {
 			add_cohesion_percent = scaled_cohesion_cost
 		}
@@ -153,7 +138,6 @@
 		evaluation_chance = {
 			value = 0.05
 		}
-
 		will_propose = {
 			power_bloc = { current_cohesion_percentage >= 0.75 }
 			OR = {

@@ -14,8 +14,8 @@ ir_defense_agencies_drain_modifier = {
 
 ir_defense_agencies_reform_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_rifle_negative.dds
-	unit_army_offense_mult = -0.15
-	unit_army_defense_mult = -0.15
+	unit_army_offense_mult = -0.2
+	unit_army_defense_mult = -0.2
 	military_formation_mobilization_speed_mult = -0.5
 	military_formation_organization_gain_mult = -0.5
 }
@@ -191,7 +191,7 @@ ir_ditched_molinari_modifier = {
 ir_propertarian_figurehead_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
 	character_popularity_add = 50
-	character_prominence_add = 25
+	character_prominence_add = 10
 }
 
 ir_propertarians_welcomed_modifier = {
@@ -487,4 +487,9 @@ ir_best_executive_modifier = {
 ir_better_executive_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
 	character_popularity_add = 25
+}
+
+ir_more_tax_capacity_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
+	state_tax_capacity_mult = 0.2
 }

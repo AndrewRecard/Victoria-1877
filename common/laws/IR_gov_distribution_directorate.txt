@@ -428,9 +428,6 @@ law_polycentric_law = {
 		has_law_or_variant = law_type:law_directorate
 	}
 
-	disallowing_laws = {
-	}
-
 	unlocking_technologies = {
 		anarchism
 	}

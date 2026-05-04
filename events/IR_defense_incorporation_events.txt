@@ -617,4 +617,3 @@ defense_incorporation.6 = {
 		}
 	}
 }
-

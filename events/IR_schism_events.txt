@@ -1069,7 +1069,6 @@ boardroom_schism.7 = {
 		trigger = {
 			has_law_or_variant = law_type:law_secret_police
 		}
-
 		if = {
 			limit = { has_variable = defector_from_monopolist_var }
 			custom_tooltip = {

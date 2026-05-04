@@ -168,6 +168,9 @@ INJECT:law_multicultural = {
 }
 
 INJECT:law_no_migration_controls = {
+	disallowing_laws = {
+		law_ministry_of_truth
+	}
 	modifier = {
 		country_authority_mult = -0.15
 		country_influence_mult = 0.15

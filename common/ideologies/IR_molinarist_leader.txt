@@ -18,7 +18,7 @@
 		law_oligarchy = neutral
 		law_technocracy = strongly_disapprove
 		law_landed_voting = disapprove
-		law_wealth_voting = disapprove
+		law_wealth_voting = neutral
 		law_universal_suffrage = disapprove
 		law_census_voting = disapprove
 		law_anarchy = strongly_approve

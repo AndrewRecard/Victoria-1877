@@ -11,7 +11,7 @@
 		    }
 		    add = {
     			value = 1
-    			desc = monthly_progress
+				desc = monthly_progress
     		}
 
     		if = {
@@ -117,6 +117,16 @@
     				desc = "propertarian_armed_forces_leader"
     			}
     		}
+
+			if = {
+				limit = {
+					is_at_war = yes
+				}
+				add = {
+					value = 1
+					desc = "at_war"
+				}
+			}
 		}
 	}
 

@@ -118,16 +118,6 @@
 				desc = "loans_any"
 			}
 		}
-
-		add = {
-			value = {
-				add = relative_bureaucracy
-				multiply = -5
-			}
-			min = -5
-			max = 5
-			desc = "bureaucracy_any"
-		}
 	}
 
 	start_value = 0

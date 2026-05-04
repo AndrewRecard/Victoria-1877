@@ -45,3 +45,256 @@ INJECT:GBR = {
 		}
 	}
 }
+
+INJECT:USA = {
+	dynamic_country_name = {
+		name = dyn_c_united_boards
+		adjective = dyn_c_united_boards_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+}
+
+INJECT:GER = {
+	dynamic_country_name = {
+		name = dyn_c_deutsche_konzern
+		adjective = dyn_c_deutsche_konzern_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+}
+
+INJECT:AUS = {
+	dynamic_country_name = {
+		name = dyn_c_austria_gmbh
+		adjective = dyn_c_austria_gmbh_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+}
+
+INJECT:RUS = {
+	dynamic_country_name = {
+		name = dyn_c_imperial_trust
+		adjective = dyn_c_imperial_trust_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+}
+
+INJECT:SWE = {
+	dynamic_country_name = {
+		name = dyn_c_svea_konsortium
+		adjective = dyn_c_svea_konsortium_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+}
+
+INJECT:IBE = {
+	dynamic_country_name = {
+		name = dyn_c_iberia_sa
+		adjective = dyn_c_iberia_sa_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+}
+
+INJECT:ITA = {
+	dynamic_country_name = {
+		name = dyn_c_united_signorie
+		adjective = dyn_c_united_signorie_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+}
+
+INJECT:CHI = {
+	dynamic_country_name = {
+		name = dyn_c_peoples_board
+		adjective = dyn_c_peoples_board_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+}
+
+INJECT:JAP = {
+	dynamic_country_name = {
+		name = dyn_c_yamato_holdings
+		adjective = dyn_c_yamato_holdings_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+	dynamic_country_name = {
+		name = dyn_c_arasaka
+		adjective = dyn_c_yamato_holdings_adj
+
+		is_main_tag_only = yes
+		priority = 20
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+				has_company = company_type:company_arasaka
+			}
+		}
+	}
+}
+
+BRZ = {
+	dynamic_country_name = {
+		name = dyn_c_united_fazendas
+		adjective = dyn_c_united_fazendas_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+}
+
+NET = {
+	dynamic_country_name = {
+		name = dyn_c_voc_revival
+		adjective = dyn_c_voc_revival_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+}
+
+INJECT:BEL = {
+	dynamic_country_name = {
+		name = dyn_c_societe_generale
+		adjective = dyn_c_societe_generale_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+}
+
+INJECT:TUR = {
+	dynamic_country_name = {
+		name = dyn_c_ottoman_directorate
+		adjective = dyn_c_ottoman_directorate_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+}
+
+INJECT:PER = {
+	dynamic_country_name = {
+		name = dyn_c_strait_tolls
+		adjective = dyn_c_strait_tolls_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+}

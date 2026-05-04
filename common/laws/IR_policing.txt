@@ -134,7 +134,7 @@ REPLACE:law_militarized_police = {
 		country_institution_cost_institution_police_mult = 0.25
 		unit_experience_gain_mult = 0.25
 		country_military_goods_cost_mult = 0.1
-		country_military_wages_mult = 0.15
+		country_military_wages_mult = 0.1
 		country_authority_add = 200
 	}
 
