@@ -233,10 +233,29 @@
  ir_defector_martyred_modifier: "Defector Martyred"
 
  boardroom_schism.8.t: "Working Within The System"
- boardroom_schism.8.d: ""
- boardroom_schism.8.f: ""
- boardroom_schism.8.a: "give concessions"
- boardroom_schism.8.b: "increase spending"
+ boardroom_schism.8.d: "[SCOPE.sCharacter('liberal_politician').GetFullName], one of the last credible reformers in the [SCOPE.sCharacter('liberal_politician').GetInterestGroup.GetName], has spent months denouncing the Directorate from the floor of every public hall that would still seat [SCOPE.sCharacter('liberal_politician').GetHerHim]. The Board, weary of the press [SCOPE.sCharacter('liberal_politician').GetSheHe] generates, has prepared an unusual offer: a chairmanship on a newly-formed Citizens' Oversight Commission, with full salary, a private secretariat, and the comforting illusion of regulatory teeth."
+ boardroom_schism.8.f: ""You misunderstand the offer, [SCOPE.sCharacter('liberal_politician').GetLastNameNoFormatting]. We are not asking you to abandon your principles. We are asking you to apply them, from inside, where they might actually amount to something."\n\n[SCOPE.sCharacter('liberal_politician').GetFirstNameNoFormatting] turned the embossed letter over in [SCOPE.sCharacter('liberal_politician').GetHerHis] hands. The stipend alone was more than [SCOPE.sCharacter('liberal_politician').GetSheHe] had earned in a decade of pamphleteering. The Commission's charter, [SCOPE.sCharacter('liberal_politician').GetSheHe] noted, conspicuously omitted any mention of binding authority.\n\n"A man who shouts from the street corner is a nuisance," the executive continued, pouring two glasses without asking. "A man who shouts from a chairman's office is a partner. The choice, of course, is entirely yours.""
+ boardroom_schism.8.a: "Offer [SCOPE.sCharacter('liberal_politician').GetHerHim] a seat on the Oversight Commission."
+ boardroom_schism.8.b: "There is no seat at this table for reformers."
+ ir_co_opted_reformer_modifier: "Co-opted Reformer"
+ ir_compromised_reform_movement_modifier: "Compromised Reform Movement"
+ ir_radicalized_reformers_modifier: "Radicalized Reformers"
+
+ boardroom_schism.10.t: ""
+ boardroom_schism.10.d: ""
+ boardroom_schism.10.f: ""
+ boardroom_schism.10.a: ""
+ boardroom_schism.10.b: ""
+
+ boardroom_schism.9.t: "The Pamphlet War"
+ boardroom_schism.9.d: "The presses have not slept in weeks. Three rival broadsheets, each the unacknowledged organ of one Propertarian faction, - have spent the quarter slinging libel, leaked memoranda, and barely-fictionalized cartoons at one another. The Chairman is asked, somewhat reluctantly, what to do about the noise."
+ boardroom_schism.9.f: ""Your weekly digest, sir. The Monopolist sheet is alleging the Molinarist editor is a foreign agent. The Molinarist sheet is alleging the Minarchist editor is a closet bureaucrat. And the Minarchist sheet has dedicated its entire Sunday edition to a thirty-stanza poem mocking the other two."\n\nThe Chairman did not look up from the ledger. "Circulation?"\n\n"Tripled across all three, sir. Newsprint is now our second-largest import line."\n\n"And the public?"\n\n"Reading every word.""
+ boardroom_schism.9.a: "The market has spoken. Amplify the leading press."
+ boardroom_schism.9.b: "Enforce a code of conduct. Libel is a contractual matter."
+ boardroom_schism.9.c: "Let them tear each other to pieces."
+ ir_subsidized_press_modifier: "Subsidized Press"
+ ir_press_neutrality_modifier: "Enforced Press Neutrality"
+ ir_tabloid_anarchy_modifier: "Tabloid Anarchy"
 
  # OTHER
  caciquismo.3.t: "The House Always Wins"

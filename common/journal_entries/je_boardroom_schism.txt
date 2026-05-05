@@ -254,6 +254,8 @@
 		random_events = {
 			12 = 0
 			1 = boardroom_schism.7
+			1 = boardroom_schism.8
+			1 = boardroom_schism.9
 		}
 	}
 

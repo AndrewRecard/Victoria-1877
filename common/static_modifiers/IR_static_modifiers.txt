@@ -408,6 +408,34 @@ ir_defector_martyred_modifier = {
 	country_legitimacy_ideological_incoherence_mult = -0.1
 }
 
+ir_co_opted_reformer_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_negative.dds
+	character_prominence_add = 15
+	character_popularity_add = -25
+}
+
+ir_compromised_reform_movement_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
+	interest_group_pop_attraction_mult = -0.15
+}
+
+ir_subsidized_press_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_authority_add = -50
+	state_pop_support_movement_propertarian_mult = 0.15
+}
+
+ir_press_neutrality_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	country_legitimacy_base_add = 5
+	political_movement_pop_attraction_mult = -0.1
+}
+
+ir_tabloid_anarchy_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_negative.dds
+	state_radicals_from_political_movements_mult = 0.1
+}
+
 ir_suspended_lobbying_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
 	country_authority_add = -100
