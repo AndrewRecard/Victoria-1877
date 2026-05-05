@@ -1,7 +1,7 @@
 ﻿INJECT:law_no_police = {
 	modifier = {
 		interest_group_ig_rural_folk_pol_str_mult = 0.25
-		country_radicals_from_legitimacy_mult = -0.15
+		country_radicals_from_legitimacy_mult = -0.25
 		state_lower_strata_expected_sol_add = -1
 	}
 	on_enact = {

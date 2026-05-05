@@ -132,7 +132,7 @@
 						leader ?= {
 							propertarian_or_market_liberal = yes
 						}
-						has_ideology = ideology:ideology_martial_corporatist
+						is_defense_contractors = yes
 					}
 				}
 			}
@@ -222,6 +222,7 @@
 					leader ?= {
 						propertarian_or_market_liberal = yes
 					}
+					is_defense_contractors = yes
 					has_ideology = ideology:ideology_laissez_faire
 				}
 			}
@@ -300,8 +301,11 @@
 						is_powerful = yes
 					}
 				}
-				leader ?= {
-					propertarian_or_market_liberal = yes
+				OR = {
+					is_defense_contractors = yes
+				    leader ?= {
+    					propertarian_or_market_liberal = yes
+    				}
 				}
 			}
 			add = {
@@ -312,6 +316,7 @@
 		if = { # landowners and industrialists hate labor rights
 			limit = {
 				OR = {
+					is_defense_contractors = yes
 					has_hierarchic_ideology = yes
 					has_ideology = ideology:ideology_laissez_faire
 					has_ideology = ideology:ideology_interventionist

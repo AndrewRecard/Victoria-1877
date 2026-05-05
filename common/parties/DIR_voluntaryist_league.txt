@@ -84,27 +84,6 @@
 		}
 		if = {
 			limit = {
-				is_interest_group_type = ig_armed_forces
-				OR = {
-					leader = {
-						propertarian_or_market_liberal = yes
-					}
-					has_ideology = ideology:ideology_martial_corporatist
-				}
-				owner = {
-					OR = {
-						has_law_or_variant = law_type:law_no_police
-						has_law_or_variant = law_type:law_local_police
-					}
-				}
-			}
-			add = {
-				value = 15
-				desc = "no_or_local_police"
-			}
-		}
-		if = {
-			limit = {
 				is_interest_group_type = ig_intelligentsia
 			}
 			add = {

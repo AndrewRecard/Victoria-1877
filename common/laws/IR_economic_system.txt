@@ -19,10 +19,6 @@
 		law_scientific_management
 	}
 
-	can_enact = {
-		has_law = law_type:law_private_defense_agencies
-	}
-
 	unlocking_technologies = {
 		corporate_management
 	}

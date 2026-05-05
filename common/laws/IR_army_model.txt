@@ -200,9 +200,7 @@ REPLACE:law_peasant_levies = {
 	on_activate = {
 		if = {
 			limit = {
-				ig:ig_armed_forces ?= {
-					has_ideology = ideology:ideology_martial_corporatist
-				}
+				has_defense_contractors = yes
 			}
 			ir_defense_contractors_reversal_effect = yes
 			add_modifier = {
@@ -297,9 +295,7 @@ REPLACE:law_professional_army = {
 	on_activate = {
 		if = {
 			limit = {
-				ig:ig_armed_forces ?= {
-					has_ideology = ideology:ideology_martial_corporatist
-				}
+				has_defense_contractors = yes
 			}
 			ir_defense_contractors_reversal_effect = yes
 			add_modifier = {
@@ -414,9 +410,7 @@ REPLACE:law_national_militia = {
 	on_activate = {
 		if = {
 			limit = {
-				ig:ig_armed_forces ?= {
-					has_ideology = ideology:ideology_martial_corporatist
-				}
+				has_defense_contractors = yes
 			}
 			ir_defense_contractors_reversal_effect = yes
 			add_modifier = {
@@ -514,9 +508,7 @@ REPLACE:law_mass_conscription = {
 	on_activate = {
 		if = {
 			limit = {
-				ig:ig_armed_forces ?= {
-					has_ideology = ideology:ideology_martial_corporatist
-				}
+				has_defense_contractors = yes
 			}
 			ir_defense_contractors_reversal_effect = yes
 			add_modifier = {

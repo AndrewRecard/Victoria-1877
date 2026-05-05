@@ -371,11 +371,10 @@
 		# much more likely for defense contractors in general (without directorate)
 		if = {
 			limit = {
-				is_interest_group_type = ig_armed_forces
-				has_ideology = ideology:ideology_martial_corporatist
+				is_defense_contractors = yes
 				owner = {
 					NOT = {
-						has_law_or_variant = law_type:law_directorate
+						has_variable = unlock_ideologies_var
 					}
 				}
 			}
@@ -387,10 +386,7 @@
 		# less likely for non private defense agencies
 		if = {
 			limit = {
-				is_interest_group_type = ig_armed_forces
-				NOT = {
-					has_ideology = ideology:ideology_martial_corporatist
-				}
+				is_defense_contractors = no
 			}
 			add = {
 				value = -25
@@ -417,11 +413,10 @@
 		# more likely for defense contractors with dedicated police (in directorate)
 		if = {
 			limit = {
-				is_interest_group_type = ig_armed_forces
-				has_ideology = ideology:ideology_martial_corporatist
+				is_defense_contractors = yes
 				owner = {
 					has_law_or_variant = law_type:law_dedicated_police
-					has_law_or_variant = law_type:law_directorate
+					has_variable = unlock_ideologies_var
 				}
 			}
 			multiply = {
@@ -714,11 +709,11 @@
 			limit = {
 				is_interest_group_type = ig_armed_forces
 				interest_group = {
-					has_ideology = ideology:ideology_martial_corporatist
+					is_defense_contractors = yes
 				}
 				owner = {
 					NOT = {
-						has_law_or_variant = law_type:law_directorate
+						has_variable = unlock_ideologies_var
 					}
 				}
 			}
@@ -730,7 +725,7 @@
 				is_interest_group_type = ig_armed_forces
 				NOT = {
 					interest_group = {
-						has_ideology = ideology:ideology_martial_corporatist
+						is_defense_contractors = yes
 					}
 				}
 			}
@@ -757,11 +752,11 @@
 			limit = {
 				is_interest_group_type = ig_armed_forces
 				interest_group = {
-					has_ideology = ideology:ideology_martial_corporatist
+					is_defense_contractors = yes
 				}
 				owner = {
 					has_law_or_variant = law_type:law_dedicated_police
-					has_law_or_variant = law_type:law_directorate
+					has_variable = unlock_ideologies_var
 				}
 			}
 			multiply = 1.5

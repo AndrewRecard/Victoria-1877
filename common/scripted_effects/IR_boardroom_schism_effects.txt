@@ -2,9 +2,13 @@
     remove_variable = minarchists_victorious
     remove_variable = molinarists_victorious
     remove_variable = monopolists_victorious
+	remove_variable = chose_initial_propertarian_philosophy
     remove_variable = mandate_wasted
     remove_variable = paused_lobbying_var
-    remove_variable = convened_egm
+	remove_variable = pause_lobby_cooldown
+	remove_variable = resume_lobby_cooldown
+	remove_variable = support_selection_cooldown
+	remove_variable = convened_egm
     remove_variable = boardroom_schism_freeze
     remove_variable = supporting_monopolism_var
     remove_variable = supporting_molinarism_var
@@ -18,6 +22,7 @@
     remove_variable = defector_to_monopolist_var
     remove_variable = defector_to_minarchist_var
     remove_variable = defector_to_molinarist_var
+
 }
 
 ## agitator spawning lotteries for boardroom_schism.1 ##
@@ -50,8 +55,7 @@ spawn_molinarist_agitator_effect = {
 				modifier = {
 					factor = 4
 					trigger = {
-						is_interest_group_type = ig_armed_forces
-						has_ideology = ideology:ideology_martial_corporatist
+						is_defense_contractors = yes
 					}
 				}
 				modifier = {
@@ -158,8 +162,7 @@ spawn_minarchist_agitator_effect = {
 				}
 				modifier = {
 					trigger = {
-						is_interest_group_type = ig_armed_forces
-						has_ideology = ideology:ideology_martial_corporatist
+						is_defense_contractors = yes
 					}
 					factor = 4
 				}

@@ -450,7 +450,6 @@ law_polycentric_law = {
 	can_enact = {
 		has_law = law_type:law_voluntary_association
 		has_law_or_variant = law_type:law_laissez_faire
-		has_law_or_variant = law_type:law_private_defense_agencies
 		NOR = {
 			has_law_or_variant = law_type:law_militarized_police
 			has_law_or_variant = law_type:law_dedicated_police

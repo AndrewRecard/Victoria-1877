@@ -30,6 +30,7 @@
 		law_industry_banned
 		law_extraction_economy
 		law_serfdom
+		law_agrarianism
 		law_women_in_the_fields
 	}
 
@@ -43,35 +44,9 @@
 	}
 
 	on_deactivate = {
-		if = {
-			limit = {
-				has_law = law_type:law_sovereign_monopoly
-			}
-			activate_law = law_type:law_interventionism
-		}
-		activate_law = law_type:law_census_voting
-		activate_law = law_type:law_right_to_associate
+		abolish_directorate_effect = yes
 		remove_variable = public_liquidation_completed
-		if = {
-			limit = { has_modifier = ir_free_market_commons_modifier }
-			remove_modifier = ir_free_market_commons_modifier
-		}
-		else_if = {
-			limit = { has_modifier = ir_market_commons_modifier }
-			remove_modifier = ir_market_commons_modifier
-		}
-		if = {
-			limit = { has_modifier = ir_guilded_charter_modifier}
-			remove_modifier = ir_guilded_charter_modifier
-		}
-		else_if = {
-			limit = { has_modifier = ir_production_of_security_modifier }
-			remove_modifier = ir_production_of_security_modifier
-		}
-		else_if = {
-			limit = { has_modifier = ir_monopolized_integration_modifier }
-			remove_modifier = ir_monopolized_integration_modifier
-		}
+		remove_variable = unlock_ideologies_var
 		ig:ig_intelligentsia = {
 			remove_ideology = ideology_market_rationalist
 			add_ideology = ideology_republican
@@ -89,94 +64,8 @@
 				days = 7
 			}
 		}
-		if = {
-			limit = {
-				OR = {
-					has_law_or_variant = law_type:law_command_economy
-					has_law_or_variant = law_type:law_cooperative_ownership
-				}
-			}
-			activate_law = law_type:law_interventionism
-		}
-		if = {
-			limit = {
-				has_law_or_variant = law_type:law_collectivized_agriculture
-			}
-			if = {
-				limit = {
-					capital ?= {
-						is_in_geographic_region = geographic_region_old_world
-					}
-				}
-				activate_law = law_type:law_peasant_proprietorship
-			}else = {
-				activate_law = law_type:law_homesteading
-			}
-		}
-		if = {
-			limit = {
-				has_law_or_variant = law_type:law_protected_speech
-			}
-			activate_law = law_type:law_right_of_assembly
-		}
-		hidden_effect = {
-		    if = {
-    			limit = {
-    				NOT = {
-    					any_political_movement = {
-    						is_political_movement_type = movement_propertarian
-    					}
-    				}
-    			}
-    			create_political_movement = {
-    				type = movement_propertarian
-    			}
-    		}
-		}
-		if = {
-			limit = {
-				NOT = { has_law_or_variant = law_type:law_guaranteed_liberties }
-				NOT = { has_law = law_type:law_public_health_insurance }
-				OR = {
-					has_law_or_variant = law_type:law_private_schools
-					has_law_or_variant = law_type:law_no_schools
-				}
-				OR = {
-					has_law_or_variant = law_type:law_poor_laws
-					has_law_or_variant = law_type:law_no_social_security
-				}
-			}
-			custom_tooltip = public_liquidation_bypassed_tt
-			if = {
-				limit = {
-					ig:ig_intelligentsia = {
-						has_ideology = ideology:ideology_republican
-					}
-				}
-				ig:ig_intelligentsia = {
-					remove_ideology = ideology_republican
-					add_ideology = ideology_market_rationalist
-				}
-			}
-			else_if = {
-				limit = {
-					ig:ig_intelligentsia = {
-						has_ideology = ideology:ideology_constitutionalist
-					}
-				}
-				ig:ig_intelligentsia = {
-					remove_ideology = ideology_constitutionalist
-					add_ideology = ideology_market_rationalist
-				}
-			}
-			add_modifier = {
-				name = ir_free_market_commons_modifier
-			}
-			set_variable = public_liquidation_completed
-		}
-		else = {
-			custom_tooltip = public_liquidation_added_tt
-		}
+		remove_incompatible_directorate_laws_effect = yes
+		check_liquidation_bypass_effect = yes
 	}
 
 	can_impose = {

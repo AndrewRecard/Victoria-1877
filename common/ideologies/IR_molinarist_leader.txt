@@ -210,9 +210,7 @@
 		# more likely for defense contractors in general
 		if = {
 			limit = {
-				is_interest_group_type = ig_armed_forces
-				has_ideology = ideology:ideology_martial_corporatist
-
+				is_defense_contractors = yes
 			}
 			add = {
 				value = 25
@@ -280,13 +278,13 @@
 		# more likely for defense contractors with no/local police
 		if = {
 			limit = {
-				is_interest_group_type = ig_armed_forces
-				has_ideology = ideology:ideology_martial_corporatist
+				is_defense_contractors = yes
 				owner = {
 					OR = {
 						has_law_or_variant = law_type:law_local_police
 						has_law_or_variant = law_type:law_no_police
 					}
+					has_variable = unlock_ideologies_var
 				}
 
 			}
@@ -455,7 +453,7 @@
 			limit = {
 				is_interest_group_type = ig_armed_forces
 				interest_group = {
-					has_ideology = ideology:ideology_martial_corporatist
+					is_defense_contractors = yes
 				}
 			}
 			add = 25
@@ -524,7 +522,7 @@
 			limit = {
 				is_interest_group_type = ig_armed_forces
 				interest_group = {
-					has_ideology = ideology:ideology_martial_corporatist
+					is_defense_contractors = yes
 				}
 				owner = {
 					OR = {

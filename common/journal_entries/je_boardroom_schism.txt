@@ -51,10 +51,7 @@
 		}
 		custom_tooltip = {
 			text = completed_defense_incorporation_tt
-			any_interest_group = {
-				is_interest_group_type = ig_armed_forces
-				has_ideology = ideology:ideology_martial_corporatist
-			}
+			has_defense_contractors = yes
 		}
 		hidden_trigger = {
 			is_ai = no
@@ -164,6 +161,18 @@
 			name = monopolist_effects_var
 			value = 0
 		}
+		if = {
+			limit = {
+				NOT = {
+					any_political_movement = {
+						is_political_movement_type = movement_propertarian
+					}
+				}
+			}
+			create_political_movement = {
+				type = movement_propertarian
+			}
+		}
 	}
 
 	on_weekly_pulse = {
@@ -262,7 +271,6 @@
 	}
 
 	complete = {
-		has_law = law_type:law_directorate
 		custom_tooltip = {
 			text = je_schism_complete
 			OR = {

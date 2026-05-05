@@ -6,11 +6,7 @@ je_defense_incorporation = {
 
 	is_shown_when_inactive = {
 		has_technology_researched = general_staff
-		ig:ig_armed_forces = {
-			NOT = { 
-				has_ideology = ideology:ideology_martial_corporatist
-			}
-		}
+		has_defense_contractors = no
 	}
 
 	scripted_progress_bar = ir_defense_incorporation_bar

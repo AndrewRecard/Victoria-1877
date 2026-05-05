@@ -292,8 +292,7 @@
 		# more likely for defense contractors with militarized police
 		if = {
 			limit = {
-				is_interest_group_type = ig_armed_forces
-				has_ideology = ideology:ideology_martial_corporatist
+				is_defense_contractors = yes
 				owner = {
 					has_law_or_variant = law_type:law_militarized_police
 				}
@@ -518,7 +517,7 @@
 			limit = {
 				is_interest_group_type = ig_armed_forces
 				interest_group = {
-					has_ideology = ideology:ideology_martial_corporatist
+					is_defense_contractors = yes
 				}
 				owner = {
 					has_law_or_variant = law_type:law_militarized_police

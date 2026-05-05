@@ -122,8 +122,7 @@
 		}
 		if = {
 			limit = {
-				is_interest_group_type = ig_armed_forces
-				has_ideology = ideology:ideology_martial_corporatist
+				is_defense_contractors = yes
 			}
 			add = {
 				value = 5
