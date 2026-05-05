@@ -75,7 +75,8 @@
 	}
 
 	country_trigger = {
-		has_variable = unlock_ideologies_var
+		has_technology_researched = anarchism
+		has_law_or_variant = law_type:law_directorate
 	}
 
 	interest_group_leader_trigger = {
@@ -284,7 +285,6 @@
 						has_law_or_variant = law_type:law_local_police
 						has_law_or_variant = law_type:law_no_police
 					}
-					has_variable = unlock_ideologies_var
 				}
 
 			}
@@ -520,7 +520,6 @@
 		# more likely for defense contractors with no/local police
 		if = {
 			limit = {
-				is_interest_group_type = ig_armed_forces
 				interest_group = {
 					is_defense_contractors = yes
 				}

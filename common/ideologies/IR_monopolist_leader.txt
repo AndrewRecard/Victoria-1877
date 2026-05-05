@@ -84,7 +84,8 @@
 	}
 
 	country_trigger = {
-		has_variable = unlock_ideologies_var
+		has_technology_researched = corporate_management
+		has_law_or_variant = law_type:law_directorate
 	}
 
 	interest_group_leader_trigger = {
@@ -296,7 +297,6 @@
 				owner = {
 					has_law_or_variant = law_type:law_militarized_police
 				}
-
 			}
 			multiply = {
 				value = 1.5

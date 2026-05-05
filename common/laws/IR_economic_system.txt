@@ -25,6 +25,12 @@
 
 	on_activate = {
 		custom_tooltip = bureaucrats_industrialists_ig_shift_effect_tt
+		if = {
+			limit = {
+				has_modifier = ir_guilded_charter_modifier
+			}
+			remove_modifier = ir_guilded_charter_modifier
+		}
 	}
 
 	on_deactivate = {

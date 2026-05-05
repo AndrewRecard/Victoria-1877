@@ -32,7 +32,7 @@
 					multiply = 5
 				}
 			}
-			### From Leaders
+			### From Popularity
 			if = {
 				limit = {
 					any_scope_character = {
@@ -41,6 +41,7 @@
 							has_role_of_type = politician
 							has_role_of_type = executive
 							has_role_of_type = agitator
+							has_role_of_type = magnate
 						}
 					}
 				}
@@ -53,33 +54,40 @@
 								has_role_of_type = politician
 								has_role_of_type = executive
 								has_role_of_type = agitator
+								has_role_of_type = magnate
 							}
 						}
-						add = this.popularity
+						add = {
+							add = popularity
+							multiply = {
+								add = prominence
+								divide = 100
+							}
+						}
 					}
 					divide = 100
 				}
 			}
-			### From Executives
+			### From Prominence of Execs and Magnates
 			if = {
 				limit = {
 					any_scope_character = {
-						has_role_of_type = executive
 						has_ideology = ideology:ideology_minarchist_leader
 					}
 				}
 				add = {
-					desc = "minarchism_progress_from_company_productivity_tt"
-					every_company = {
+					desc = "minarchism_progress_from_prominence_tt"
+					every_scope_character = {
 						limit = {
-							company_is_prosperous = yes
-							executive ?= {
-								has_ideology = ideology:ideology_minarchist_leader
+							OR = {
+								has_role_of_type = magnate
+								has_role_of_type = executive
 							}
+							has_ideology = ideology:ideology_minarchist_leader
 						}
 						add = {
-							add = company_productivity
-							divide = 20
+							add = prominence
+							divide = 100
 						}
 					}
 				}
@@ -120,7 +128,7 @@
 				add = {
 					desc = "minarchism_progress_from_minarchist_legitimacy_tt"
 					value = legitimacy
-					multiply = 0.05
+					multiply = 0.1
 					subtract = 2.5
 				}
 			}
@@ -182,6 +190,7 @@ schism_molinarist_bar = {
 							has_role_of_type = politician
 							has_role_of_type = executive
 							has_role_of_type = agitator
+							has_role_of_type = magnate
 						}
 					}
 				}
@@ -194,33 +203,44 @@ schism_molinarist_bar = {
 								has_role_of_type = politician
 								has_role_of_type = executive
 								has_role_of_type = agitator
+								has_role_of_type = magnate
 							}
 						}
-						add = this.popularity
+						add = {
+							add = popularity
+							multiply = {
+								add = prominence
+								divide = 100
+							}
+						}
 					}
 					divide = 100
 				}
 			}
-			### From Company Productivity
+			### From Prominence of Execs and Magnates
 			if = {
 				limit = {
 					any_scope_character = {
-						has_role_of_type = executive
 						has_ideology = ideology:ideology_molinarist_leader
+						OR = {
+							has_role_of_type = magnate
+							has_role_of_type = executive
+						}
 					}
 				}
 				add = {
-					desc = "molinarism_progress_from_company_productivity_tt"
-					every_company = {
+					desc = "molinarism_progress_from_prominence_tt"
+					every_scope_character = {
 						limit = {
-							company_is_prosperous = yes
-							executive = {
-								has_ideology = ideology:ideology_molinarist_leader
+							OR = {
+								has_role_of_type = magnate
+								has_role_of_type = executive
 							}
+							has_ideology = ideology:ideology_molinarist_leader
 						}
 						add = {
-							add = company_productivity
-							divide = 20
+							add = prominence
+							divide = 100
 						}
 					}
 				}
@@ -317,6 +337,7 @@ schism_monopolist_bar = {
 							has_role_of_type = politician
 							has_role_of_type = executive
 							has_role_of_type = agitator
+							has_role_of_type = magnate
 						}
 					}
 				}
@@ -329,33 +350,44 @@ schism_monopolist_bar = {
 								has_role_of_type = politician
 								has_role_of_type = executive
 								has_role_of_type = agitator
+								has_role_of_type = magnate
 							}
 						}
-						add = this.popularity
+						add = {
+							add = popularity
+							multiply = {
+								add = prominence
+								divide = 100
+							}
+						}
 					}
 					divide = 100
 				}
 			}
-			### From Company Productivity
+			### From Prominence of Execs and Magnates
 			if = {
 				limit = {
 					any_scope_character = {
-						has_role_of_type = executive
 						has_ideology = ideology:ideology_monopolist_leader
+						OR = {
+							has_role_of_type = magnate
+							has_role_of_type = executive
+						}
 					}
 				}
 				add = {
-					desc = "monopolism_progress_from_company_productivity_tt"
-					every_company = {
+					desc = "monopolism_progress_from_prominence_tt"
+					every_scope_character = {
 						limit = {
-							company_is_prosperous = yes
-							executive = {
-								has_ideology = ideology:ideology_monopolist_leader
+							OR = {
+								has_role_of_type = magnate
+								has_role_of_type = executive
 							}
+							has_ideology = ideology:ideology_monopolist_leader
 						}
 						add = {
-							add = company_productivity
-							divide = 20
+							add = prominence
+							divide = 100
 						}
 					}
 				}

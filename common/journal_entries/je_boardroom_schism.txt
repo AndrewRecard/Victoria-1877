@@ -33,18 +33,6 @@
 		has_technology_researched = corporate_management
 		has_technology_researched = anarchism
 		has_technology_researched = corporatism
-		calc_true_if = {
-			amount >= 2
-			any_scope_politician = {
-				has_ideology = ideology:ideology_minarchist_leader
-			}
-			any_scope_politician = {
-				has_ideology = ideology:ideology_monopolist_leader
-			}
-			any_scope_politician = {
-				has_ideology = ideology:ideology_molinarist_leader
-			}
-		}
 		custom_tooltip = {
 			text = completed_public_liquidation_tt
 			has_variable = public_liquidation_completed
@@ -140,7 +128,6 @@
 	}
 
 	immediate = {
-		set_variable = unlock_ideologies_var
 		custom_tooltip = {
 			text = propertarian_split_effect_tt
 			propertarian_split_effect = yes

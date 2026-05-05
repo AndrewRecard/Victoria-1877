@@ -374,7 +374,7 @@
 				is_defense_contractors = yes
 				owner = {
 					NOT = {
-						has_variable = unlock_ideologies_var
+						has_law_or_variant = law_type:law_directorate
 					}
 				}
 			}
@@ -416,7 +416,7 @@
 				is_defense_contractors = yes
 				owner = {
 					has_law_or_variant = law_type:law_dedicated_police
-					has_variable = unlock_ideologies_var
+					has_law_or_variant = law_type:law_directorate
 				}
 			}
 			multiply = {
@@ -713,7 +713,7 @@
 				}
 				owner = {
 					NOT = {
-						has_variable = unlock_ideologies_var
+						has_law_or_variant = law_type:law_directorate
 					}
 				}
 			}
@@ -756,7 +756,7 @@
 				}
 				owner = {
 					has_law_or_variant = law_type:law_dedicated_police
-					has_variable = unlock_ideologies_var
+					has_law_or_variant = law_type:law_directorate
 				}
 			}
 			multiply = 1.5

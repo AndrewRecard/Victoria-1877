@@ -25,12 +25,6 @@
 		scripted_effect_parties_disappearence = yes
 		cleanup_voting_strength_modifiers = yes
 		custom_tooltip = fixes_civil_service_tt
-		if = {
-			limit = {
-				has_modifier = ir_guilded_charter_modifier
-			}
-			remove_modifier = ir_guilded_charter_modifier
-		}
 		hidden_effect = {
 			trigger_event = {
 				id = caciquismo.4
@@ -146,12 +140,6 @@ law_scientific_management = {
 		cleanup_voting_strength_modifiers = yes
 		custom_tooltip = fixes_civil_service_tt
 		custom_tooltip = compulsory_private_school_tt
-		if = {
-			limit = {
-				has_modifier = ir_guilded_charter_modifier
-			}
-			remove_modifier = ir_guilded_charter_modifier
-		}
 		hidden_effect = {
 			trigger_event = {
 				id = caciquismo.5
@@ -438,8 +426,6 @@ law_polycentric_law = {
 		country_legitimacy_govt_size_add = 1
 		country_loyalists_from_legitimacy_mult = -1
 		country_radicals_from_legitimacy_mult = -1
-		
-		country_bureaucracy_investment_cost_factor_mult = 0.25
 		state_pop_pol_str_add = -1
 		country_authority_mult = -0.5
 		country_influence_mult = -0.15

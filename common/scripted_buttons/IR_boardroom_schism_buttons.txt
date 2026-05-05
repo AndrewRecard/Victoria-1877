@@ -307,6 +307,12 @@ sponsor_thinktanks_button = {
 			text = has_gold_reserves
 			scaled_gold_reserves > 0
 		}
+		custom_tooltip = {
+			text = not_sponsored_thinktanks_tt
+			NOT = {
+				has_variable = sponsored_thinktanks
+			}
+		}
 		je:je_boardroom_schism = {
 			custom_tooltip = {
 				text = monopolism_progress_25
@@ -324,9 +330,10 @@ sponsor_thinktanks_button = {
 	}
 
 	effect = {
+		set_variable = sponsored_thinktanks
 		add_modifier = {
 			name = ir_sponsored_thinktanks_modifier
-			years = 2
+			years = 5
 		}
 		trigger_event = {
 			id = boardroom_schism.3
@@ -336,6 +343,21 @@ sponsor_thinktanks_button = {
 		add_treasury = {
 			value = gold_reserves_limit
 			multiply = -0.25
+		}
+		custom_tooltip = {
+			text = sponsored_thinktanks_progress_tt
+			change_variable = {
+				name = minarchist_effects_var
+				add = 1
+			}
+			change_variable = {
+				name = molinarist_effects_var
+				add = 1
+			}
+			change_variable = {
+				name = monopolist_effects_var
+				add = 1
+			}
 		}
 	}
 }

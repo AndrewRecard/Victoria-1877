@@ -19,7 +19,7 @@ boardroom_schism.1 = {
 				has_propertarian_ideology = yes
 			}
 			order_by = prominence
-			check_range_bounds = no
+			position = 0
 			save_scope_as = prominent_propertarian
 		}
 	}
@@ -697,36 +697,36 @@ boardroom_schism.7 = {
 		if = {
 			limit = { has_variable = defector_from_monopolist_var }
 			custom_tooltip = {
-				text = monopolism_progress_decrease_20_tt
+				text = monopolism_progress_decrease_25_tt
 				je:je_boardroom_schism = {
-					add_progress = { value = -20 name = schism_monopolist_bar }
+					add_progress = { value = -25 name = schism_monopolist_bar }
 				}
 			}
 		}
 		if = {
 			limit = { has_variable = defector_from_minarchist_var }
 			custom_tooltip = {
-				text = minarchism_progress_decrease_20_tt
+				text = minarchism_progress_decrease_25_tt
 				je:je_boardroom_schism = {
-					add_progress = { value = -20 name = schism_minarchist_bar }
+					add_progress = { value = -25 name = schism_minarchist_bar }
 				}
 			}
 		}
 		if = {
 			limit = { has_variable = defector_from_molinarist_var }
 			custom_tooltip = {
-				text = molinarism_progress_decrease_20_tt
+				text = molinarism_progress_decrease_25_tt
 				je:je_boardroom_schism = {
-					add_progress = { value = -20 name = schism_molinarist_bar }
+					add_progress = { value = -25 name = schism_molinarist_bar }
 				}
 			}
 		}
 		if = {
 			limit = { has_variable = defector_to_monopolist_var }
 			custom_tooltip = {
-				text = monopolism_progress_increase_20_tt
+				text = monopolism_progress_increase_25_tt
 				je:je_boardroom_schism = {
-					add_progress = { value = 20 name = schism_monopolist_bar }
+					add_progress = { value = 25 name = schism_monopolist_bar }
 				}
 			}
 			scope:defector_executive = {
@@ -736,9 +736,9 @@ boardroom_schism.7 = {
 		if = {
 			limit = { has_variable = defector_to_minarchist_var }
 			custom_tooltip = {
-				text = minarchism_progress_increase_20_tt
+				text = minarchism_progress_increase_25_tt
 				je:je_boardroom_schism = {
-					add_progress = { value = 20 name = schism_minarchist_bar }
+					add_progress = { value = 25 name = schism_minarchist_bar }
 				}
 			}
 			scope:defector_executive = {
@@ -748,9 +748,9 @@ boardroom_schism.7 = {
 		if = {
 			limit = { has_variable = defector_to_molinarist_var }
 			custom_tooltip = {
-				text = molinarism_progress_increase_20_tt
+				text = molinarism_progress_increase_25_tt
 				je:je_boardroom_schism = {
-					add_progress = { value = 20 name = schism_molinarist_bar }
+					add_progress = { value = 25 name = schism_molinarist_bar }
 				}
 			}
 			scope:defector_executive = {
@@ -846,6 +846,9 @@ boardroom_schism.7 = {
 	option = {
 		name = boardroom_schism.7.c
 		highlighted_option = yes
+		show_as_unavailable = {
+			always = yes
+		}
 		trigger = {
 			has_law_or_variant = law_type:law_secret_police
 		}
@@ -931,21 +934,35 @@ boardroom_schism.8 = {
 				is_interest_group_type = ig_trade_unions
 			}
 			OR = {
-				has_ideology = ideology:ideology_moderate
 				has_ideology = ideology:ideology_reformer
 				has_ideology = ideology:ideology_liberal_leader
 			}
-			has_role_of_type = politician
+			is_interest_group_leader = yes
 		}
 	}
 
 	immediate = {
-
+		random_scope_character = {
+			limit = {
+			    NOR = {
+    				is_interest_group_type = ig_armed_forces
+    				is_interest_group_type = ig_trade_unions
+    			}
+    			OR = {
+    				has_ideology = ideology:ideology_reformer
+    				has_ideology = ideology:ideology_liberal_leader
+    			}
+    			is_interest_group_leader = yes
+			}
+			save_scope_as = liberal_politician
+		}
 	}
 
 	option = {
 		name = boardroom_schism.8.a
+		scope:liberal_politician = {
 
+		}
 	}
 
 	option = {

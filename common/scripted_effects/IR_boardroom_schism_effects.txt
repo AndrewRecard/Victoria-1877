@@ -8,6 +8,7 @@
 	remove_variable = pause_lobby_cooldown
 	remove_variable = resume_lobby_cooldown
 	remove_variable = support_selection_cooldown
+	remove_variable = sponsored_thinktanks
 	remove_variable = convened_egm
     remove_variable = boardroom_schism_freeze
     remove_variable = supporting_monopolism_var

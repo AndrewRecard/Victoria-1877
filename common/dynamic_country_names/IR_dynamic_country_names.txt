@@ -298,3 +298,20 @@ INJECT:PER = {
 		}
 	}
 }
+
+INJECT:UNL = {
+	dynamic_country_name = {
+		name = dyn_c_benelux_exchange
+		adjective = dyn_c_benelux_exchange_adj
+
+		is_main_tag_only = yes
+		priority = 10
+
+		trigger = {
+			exists = scope:actor
+			scope:actor ?= {
+				has_law = law_type:law_directorate
+			}
+		}
+	}
+}
