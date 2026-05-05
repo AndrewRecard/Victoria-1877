@@ -75,7 +75,6 @@
 						has_ideology = ideology:ideology_luddite
 						has_ideology = ideology:ideology_liberal
 						has_ideology = ideology:ideology_reformer
-						has_ideology = ideology:ideology_ethno_nationalist
 					}
 				}
 			}

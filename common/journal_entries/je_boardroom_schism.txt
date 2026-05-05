@@ -143,13 +143,14 @@
 	}
 
 	immediate = {
+		set_variable = unlock_ideologies_var
+		custom_tooltip = {
+			text = propertarian_split_effect_tt
+			propertarian_split_effect = yes
+		}
 		trigger_event = {
 			id = boardroom_schism.1
 			popup = yes
-		}
-		random_law = {
-			limit = { type = law_type:law_directorate }
-			save_scope_as = directorate_scope
 		}
 		set_variable = {
 			name = minarchist_effects_var

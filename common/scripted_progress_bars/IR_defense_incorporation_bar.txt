@@ -79,29 +79,36 @@
     			desc = "armed_forces_leader_loyalty"
     		}
 
-			add = {
-				desc = "average_loyalty_of_generals"
-				every_scope_character = {
-					limit = {
+			if = {
+			    limit = {
+					any_scope_character = {
 						has_role_of_type = general
 					}
-					add = {
-						add = {
-							add = loyalty
-							subtract = 50
-						}
-						multiply = prominence
-					}
-				}
-				divide = {
-					every_scope_character = {
-						limit = {
-							has_role_of_type = general
-						}
-						add = prominence
-					}
-				}
-				multiply = 0.01
+			    }
+			    add = {
+    				desc = "average_loyalty_of_generals"
+    				every_scope_character = {
+    					limit = {
+    						has_role_of_type = general
+    					}
+    					add = {
+    						add = {
+    							add = loyalty
+    							subtract = 50
+    						}
+    						multiply = prominence
+    					}
+    				}
+    				divide = {
+    					every_scope_character = {
+    						limit = {
+    							has_role_of_type = general
+    						}
+    						add = prominence
+    					}
+    				}
+    				multiply = 0.01
+    			}
 			}
 
 			if = {

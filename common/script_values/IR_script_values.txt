@@ -69,7 +69,7 @@ lobbying_expenditure_value = {
 	}
 }
 
-purchase_poltician_value = {
+purchase_politician_value = {
 	value = gold_reserves_limit
 	multiply = -0.1
 }

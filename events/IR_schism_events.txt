@@ -13,31 +13,19 @@ boardroom_schism.1 = {
 
 	cooldown = { days = normal_modifier_time }
 
-	trigger = {
-		NOT = { has_variable = boardroom_schism_startup_var }
-	}
-
 	immediate = {
-		set_variable = boardroom_schism_startup_var
-
-		ordered_interest_group = {
+		ordered_scope_character = {
 			limit = {
-				leader = {
-					has_propertarian_ideology = yes
-				}
+				has_propertarian_ideology = yes
 			}
-			order_by = {
-				value = ig_clout
-			}
+			order_by = prominence
 			check_range_bounds = no
-			leader = {
-				save_scope_as = influential_propertarian
-			}
+			save_scope_as = prominent_propertarian
 		}
 	}
 
 	gui_window = event_window_1char_tabloid
-	left_icon = scope:influential_propertarian
+	left_icon = scope:prominent_propertarian
 
 	option = {
 		name = boardroom_schism.1.a
@@ -45,70 +33,7 @@ boardroom_schism.1 = {
 		custom_tooltip = {
 			text = supporting_molinarism_tt
 		}
-		if = {
-			limit = {
-				NOT = {
-					any_scope_character = {
-						has_ideology = ideology:ideology_molinarist_leader
-						OR = {
-							has_role_of_type = politician
-							has_role_of_type = agitator
-						}
-					}
-				}
-			}
-			random_interest_group = {
-				limit = {
-					ig_counts_as_marginal = no
-				}
-				weight = {
-					factor = 0
-					modifier = {
-						factor = 2
-						trigger = {  # too much bureaucracy / boring if agitator
-							is_interest_group_type = ig_industrialists
-						}
-					}
-					modifier = {  # really want total monopoly on violence
-						factor = 4
-						trigger = {
-							is_interest_group_type = ig_armed_forces
-							has_ideology = ideology:ideology_martial_corporatist
-						}
-					}
-					modifier = {  # radical particularism
-						factor = 5
-						trigger = {
-							is_interest_group_type = ig_rural_folk
-						}
-					}
-					modifier = {
-						factor = 5
-						trigger = {  # take philosophies to their logical (or in this case ideal) conclusion
-							is_interest_group_type = ig_intelligentsia
-						}
-					}
-				}
-				save_scope_as = agitator_lottery
-			}
-			create_character = {
-				is_agitator = yes
-				ideology = ideology_molinarist_leader
-				interest_group = scope:agitator_lottery
-			}
-		}
-		if = {
-			limit = {
-				has_variable = supporting_monopolism_var
-			}
-			remove_variable = supporting_monopolism_var
-		}
-		if = {
-			limit = {
-				has_variable = supporting_minarchism_var
-			}
-			remove_variable = supporting_minarchism_var
-		}
+		spawn_molinarist_agitator_effect = yes
 		custom_tooltip = {
 			text = molinarism_progress_increase_10_tt
 			je:je_boardroom_schism = {
@@ -124,70 +49,7 @@ boardroom_schism.1 = {
 		custom_tooltip = {
 			text = supporting_minarchism_tt
 		}
-		if = {
-			limit = {
-				has_variable = supporting_molinarism_var
-			}
-			remove_variable = supporting_molinarism_var
-		}
-		if = {
-			limit = {
-				has_variable = supporting_minarchism_var
-			}
-			remove_variable = supporting_minarchism_var
-		}
-		if = {
-			limit = {
-				NOT = {
-					any_scope_character = {
-						has_ideology = ideology:ideology_monopolist_leader
-						OR = {
-							has_role_of_type = politician
-							has_role_of_type = agitator
-						}
-					}
-				}
-			}
-			random_interest_group = {
-				limit = {
-					ig_counts_as_marginal = no
-				}
-				weight = {
-					factor = 0
-					modifier = {
-						trigger = {   # they're involved enough as it is
-							is_interest_group_type = ig_industrialists
-						}
-						factor = 4
-					}
-					modifier = {
-						trigger = {  # authoritarians
-							is_interest_group_type = ig_landowners
-						}
-						factor = 5
-					}
-					modifier = {
-						trigger = {
-							# fascists
-							is_interest_group_type = ig_petty_bourgeoisie
-						}
-						factor = 5
-					}
-					modifier = {
-						trigger = {  # scientific management ? mainly molinarists tho
-							is_interest_group_type = ig_intelligentsia
-						}
-						factor = 2
-					}
-				}
-				save_scope_as = agitator_lottery
-			}
-			create_character = {
-				is_agitator = yes
-				ideology = ideology_monopolist_leader
-				interest_group = scope:agitator_lottery
-			}
-		}
+		spawn_monopolist_agitator_effect = yes
 		custom_tooltip = {
 			text = monopolism_progress_increase_10_tt
 			je:je_boardroom_schism = {
@@ -204,83 +66,7 @@ boardroom_schism.1 = {
 		custom_tooltip = {
 			text = supporting_minarchism_tt
 		}
-		if = {
-			limit = {
-				has_variable = supporting_molinarism_var
-			}
-			remove_variable = supporting_molinarism_var
-		}
-		if = {
-			limit = {
-				has_variable = supporting_monopolism_var
-			}
-			remove_variable = supporting_monopolism_var
-		}
-		if = {
-			limit = {
-				NOT = {
-					any_scope_character = {
-						has_ideology = ideology:ideology_minarchist_leader
-						OR = {
-							has_role_of_type = politician
-							has_role_of_type = agitator
-						}
-					}
-				}
-			}
-			random_interest_group = {
-				limit = {
-					ig_counts_as_marginal = no
-				}
-				weight = {
-					factor = 0
-					modifier = {
-						trigger = {   # status quo enjoyers
-							is_interest_group_type = ig_industrialists
-						}
-						factor = 5
-					}
-					modifier = {
-						trigger = {  # should be powerful, also status quo enjoyers
-							is_interest_group_type = ig_armed_forces
-							has_ideology = ideology:ideology_martial_corporatist
-						}
-						factor = 4
-					}
-					modifier = {
-						trigger = { # should pick a side if influential, usually have neutrality in their hearts on this matter
-							is_interest_group_type = ig_devout
-							is_powerful = yes
-						}
-						factor = 4
-					}
-					modifier = {
-						trigger = {  # other IGs more likely
-							is_interest_group_type = ig_petty_bourgeoisie
-						}
-						factor = 3
-					}
-					modifier = {
-						trigger = { # prefer monopolism
-							is_interest_group_type = ig_landowners
-						}
-						factor = 1
-					}
-					modifier = {
-						trigger = {  # prefer molinarism
-							is_interest_group_type = ig_rural_folk
-						}
-						factor = 1
-					}
-				}
-				save_scope_as = agitator_lottery
-			}
-			create_character = {
-				is_agitator = yes
-				ideology = ideology_minarchist_leader
-				interest_group = scope:agitator_lottery
-			}
-		}
+		spawn_minarchist_agitator_effect = yes
 		custom_tooltip = {
 			text = minarchism_progress_increase_10_tt
 			je:je_boardroom_schism = {
@@ -482,21 +268,15 @@ boardroom_schism.3 = {
 	immediate = {
 		set_variable = {
 			name = random_monopolism_progress
-			value = {
-				integer_range = { min = -25 max = 100 }
-			}
+			value = { -25 100 }
 		}
 		set_variable = {
 			name = random_minarchism_progress
-			value = {
-				integer_range = { min = -25 max = 100 }
-			}
+			value = { -25 100 }
 		}
 		set_variable = {
 			name = random_molinarism_progress
-			value = {
-				integer_range = { min = -25 max = 100 }
-			}
+			value = { -25 100 }
 		}
 	}
 
@@ -1145,10 +925,17 @@ boardroom_schism.8 = {
 			has_variable = boardroom_schism_freeze
 			has_variable = paused_lobbying_var
 		}
-		any_interest_group = {
-			is_interest_group_type = ig_trade_unions
-			ig_counts_as_marginal = no
-			is_in_government = no
+		any_scope_character = {
+			NOR = {
+				is_interest_group_type = ig_armed_forces
+				is_interest_group_type = ig_trade_unions
+			}
+			OR = {
+				has_ideology = ideology:ideology_moderate
+				has_ideology = ideology:ideology_reformer
+				has_ideology = ideology:ideology_liberal_leader
+			}
+			has_role_of_type = politician
 		}
 	}
 

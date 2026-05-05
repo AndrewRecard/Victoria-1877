@@ -207,10 +207,9 @@ ir_propertarians_rebuked_modifier = {
 }
 
 ir_government_restructure_modifier = {
-	country_enactment_success_chance_law_directorate_add = 0.1
-	country_enactment_success_chance_law_private_schools_add = 0.1
-	country_enactment_success_chance_law_private_health_insurance_add = 0.1
-	country_enactment_success_chance_law_private_defense_agencies_add = 0.1
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	country_enactment_success_chance_law_directorate_add = 0.25
+	country_law_enactment_time_mult = -0.2
 }
 
 ir_capital_strike_modifier = {
@@ -492,4 +491,9 @@ ir_better_executive_modifier = {
 ir_more_tax_capacity_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_positive.dds
 	state_tax_capacity_mult = 0.2
+}
+
+ir_industry_and_integrity_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
+	state_pop_support_movement_propertarian_mult = 0.25
 }

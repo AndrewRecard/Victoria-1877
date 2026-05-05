@@ -147,10 +147,6 @@
 				}
 			}
 			custom_tooltip = public_liquidation_bypassed_tt
-			custom_tooltip = {
-				text = propertarian_split_effect_tt
-				propertarian_split_effect = yes
-			}
 			if = {
 				limit = {
 					ig:ig_intelligentsia = {

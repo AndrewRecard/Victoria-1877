@@ -77,10 +77,6 @@ je_public_liquidation = {
 				add_ideology = ideology_market_rationalist
 			}
 		}
-		custom_tooltip = {
-			text = propertarian_split_effect_tt
-			propertarian_split_effect = yes
-		}
 		set_variable = public_liquidation_completed
 	}
 
@@ -103,10 +99,6 @@ je_public_liquidation = {
 				id = directorate_events.8
 				popup = yes
 			}
-		}
-		custom_tooltip = {
-			text = propertarian_split_effect_tt
-			propertarian_split_effect = yes
 		}
 		set_variable = public_liquidation_completed
 	}

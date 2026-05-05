@@ -178,3 +178,4 @@ country_allow_ruler_selection_bool = {
     boolean = yes
     color = good
 }
+

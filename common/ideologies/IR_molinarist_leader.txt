@@ -75,7 +75,7 @@
 	}
 
 	country_trigger = {
-		has_law_or_variant = law_type:law_directorate
+		has_variable = unlock_ideologies_var
 	}
 
 	interest_group_leader_trigger = {

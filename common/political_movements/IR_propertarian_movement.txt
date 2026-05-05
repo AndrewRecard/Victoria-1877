@@ -670,6 +670,13 @@
 	additional_radicalism_factors = {
 		owner = {
 			if = {
+				limit = { has_journal_entry = je_industry_and_integrity }
+				add = {
+					value = 0.25
+					desc = "je_industry_and_integrity"
+				}
+			}
+			if = {
 				limit = { has_law_or_variant = law_type:law_public_schools }
 				add = {
 					value = institution_investment_level:institution_schools

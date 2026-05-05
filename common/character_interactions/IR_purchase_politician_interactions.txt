@@ -48,7 +48,7 @@
 			}
 		}
 		owner = {
-			purchase_politician_cost_effect = yes
+			add_treasury = purchase_politician_value
 		}
 	}
 
@@ -111,7 +111,7 @@ sway_to_molinarism = {
 			}
 		}
 		owner = {
-			purchase_politician_cost_effect = yes
+			add_treasury = purchase_politician_value
 		}
 	}
 
@@ -174,7 +174,7 @@ sway_to_monopolism = {
 			}
 		}
 		owner = {
-			purchase_politician_cost_effect = yes
+			add_treasury = purchase_politician_value
 		}
 	}
 

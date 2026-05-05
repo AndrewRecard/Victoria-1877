@@ -9,6 +9,10 @@
 
 	timeout = 1095
 
+	modifiers_while_active = {
+		ir_industry_and_integrity_modifier
+	}
+
 	is_shown_when_inactive = {
 		NOR = {
 			has_variable = completed_industry_and_integrity
