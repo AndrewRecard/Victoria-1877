@@ -1080,7 +1080,7 @@ boardroom_schism.9 = {
 	immediate = {
 		if = {
 			limit = {
-				scope:journal_entry = {
+				je:je_boardroom_schism = {
 					"scripted_bar_progress(schism_monopolism_bar)" >= "scripted_bar_progress(schism_minarchism_bar)"
 					"scripted_bar_progress(schism_monopolism_bar)" >= "scripted_bar_progress(schism_molinarism_bar)"
 				}
@@ -1089,7 +1089,7 @@ boardroom_schism.9 = {
 		}
 		else_if = {
 			limit = {
-				scope:journal_entry = {
+				je:je_boardroom_schism = {
 					"scripted_bar_progress(schism_minarchism_bar)" >= "scripted_bar_progress(schism_molinarism_bar)"
 				}
 			}
@@ -1243,8 +1243,7 @@ boardroom_schism.10 = {
 
 	cooldown = { days = normal_modifier_time }
 
-	gui_window = event_window_1char_tabloid
-	left_icon = scope:converted_leader
+	event_image = { video = votp_monarch_holding_court }
 
 	trigger = {
 		NOR = {
@@ -1254,6 +1253,10 @@ boardroom_schism.10 = {
 		ruler = {
 			has_propertarian_ideology = yes
 			is_interest_group_type = ig_industrialists
+			NOR = {
+				has_trait = honorable
+				has_trait = cautious
+			}
 		}
 		OR = {
 		    AND = {
@@ -1299,16 +1302,15 @@ boardroom_schism.10 = {
 				}
 			}
 		}
-		calc_true_if = {
-			amount >= 2
+		OR ={
 			je:je_boardroom_schism = {
-				scripted_bar_progress = { name = schism_monopolism_bar value >= 300 }
+				scripted_bar_progress = { name = schism_monopolism_bar value >= 400 }
 			}
 			je:je_boardroom_schism = {
-				scripted_bar_progress = { name = schism_minarchism_bar value >= 300 }
+				scripted_bar_progress = { name = schism_minarchism_bar value >= 400 }
 			}
 			je:je_boardroom_schism = {
-				scripted_bar_progress = { name = schism_molinarism_bar value >= 300 }
+				scripted_bar_progress = { name = schism_molinarism_bar value >= 400 }
 			}
 		}
 	}

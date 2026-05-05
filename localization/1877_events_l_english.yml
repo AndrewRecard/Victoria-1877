@@ -241,11 +241,10 @@
  ir_compromised_reform_movement_modifier: "Compromised Reform Movement"
  ir_radicalized_reformers_modifier: "Radicalized Reformers"
 
- boardroom_schism.10.t: ""
- boardroom_schism.10.d: ""
- boardroom_schism.10.f: ""
- boardroom_schism.10.a: ""
- boardroom_schism.10.b: ""
+ boardroom_schism.10.t: "An Executive Pivot"
+ boardroom_schism.10.d: "The state has spent months underwriting a particular Propertarian faction, and the quarterly disclosures have made the position embarrassingly public: the investment is underwater. Rather than let the lobbying budget post a loss, [SCOPE.sCharacter('converted_leader').GetFullName] has scheduled an emergency press conference to announce a sudden — and highly convenient — realignment of [SCOPE.sCharacter('converted_leader').GetHerHis] corporate worldview, conveniently at the expense of the faction [SCOPE.sCharacter('converted_leader').GetSheHe] used to lead."
+ boardroom_schism.10.f: ""Ideology, gentlemen, is much like any other asset class," the Chairman explained to a room of bewildered reporters and suddenly-relieved lobbyists. "When one's personal portfolio diverges from the institutional position, the prudent executive does not cling to sentiment. One restructures. Having rigorously audited the Directorate's trajectory, I have elected to liquidate my prior stances and average down into the state's chosen paradigm — and, regrettably, to short the one I am leaving behind.""
+ boardroom_schism.10.a: "Mark the conviction to market."
 
  boardroom_schism.9.t: "The Pamphlet War"
  boardroom_schism.9.d: "The presses have not slept in weeks. Three rival broadsheets, each the unacknowledged organ of one Propertarian faction, - have spent the quarter slinging libel, leaked memoranda, and barely-fictionalized cartoons at one another. The Chairman is asked, somewhat reluctantly, what to do about the noise."

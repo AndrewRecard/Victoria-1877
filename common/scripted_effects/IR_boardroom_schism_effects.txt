@@ -26,6 +26,40 @@
 
 }
 
+promote_ideology_effect = {
+	remove_variable = supporting_monopolism_var
+	remove_variable = supporting_minarchism_var
+	remove_variable = supporting_molinarism_var
+	set_variable = supporting_$ism$_var
+	set_variable = {
+		name = support_selection_cooldown
+		value = 12
+	}
+	custom_tooltip = supporting_$ism$_tt
+	custom_tooltip = supporting_$ism$_2_tt
+	custom_tooltip = {
+		text = $ism$_progress_increase_10_tt
+		je:je_boardroom_schism = {
+			add_progress = { value = 10 name = schism_$ism$_bar }
+		}
+	}
+	custom_tooltip = support_selection_cooldown_tt
+	if = {
+		limit = {
+			has_modifier = ir_suspended_lobbying_modifier
+		}
+		remove_modifier = ir_suspended_lobbying_modifier
+	}
+	if = {
+		limit = { has_variable = paused_lobbying_var }
+		remove_variable = paused_lobbying_var
+		set_variable = {
+			name = resume_lobby_cooldown
+			value = 12
+		}
+	}
+}
+
 ## agitator spawning lotteries for boardroom_schism.1 ##
 
 spawn_molinarist_agitator_effect = {
@@ -205,66 +239,48 @@ spawn_minarchist_agitator_effect = {
 
 ## for the EXTRAORDINARY GENERAL MEETING ##
 
+egm_boost_effect = {
+    custom_tooltip = {
+        text = $boosted$_progress_increase_100_tt
+        je:je_boardroom_schism = {
+            add_progress = { value = 100 name = schism_$boosted$_bar }
+        }
+    }
+    custom_tooltip = {
+        text = $other1$_progress_decrease_25_tt
+        je:je_boardroom_schism = {
+            add_progress = { value = -25 name = schism_$other1$_bar }
+        }
+    }
+    custom_tooltip = {
+        text = $other2$_progress_decrease_25_tt
+        je:je_boardroom_schism = {
+            add_progress = { value = -25 name = schism_$other2$_bar }
+        }
+    }
+}
+
 egm_monopolists_boost_effect = {
-    custom_tooltip = {
-        text = monopolism_progress_increase_100_tt
-        je:je_boardroom_schism = {
-            add_progress = { value = 100 name = schism_monopolism_bar }
-        }
+    egm_boost_effect = {
+        boosted = monopolism
+        other1 = minarchism
+        other2 = molinarism
     }
-    custom_tooltip = {
-        text = minarchism_progress_decrease_25_tt
-        je:je_boardroom_schism = {
-            add_progress = { value = -25 name = schism_minarchism_bar }
-        }
-    }
-    custom_tooltip = {
-        text = molinarism_progress_decrease_25_tt
-        je:je_boardroom_schism = {
-            add_progress = { value = -25 name = schism_molinarism_bar }
-        }
-    }
-
 }
+
 egm_minarchists_boost_effect = {
-    custom_tooltip = {
-        text = minarchism_progress_increase_100_tt
-        je:je_boardroom_schism = {
-            add_progress = { value = 100 name = schism_minarchism_bar }
-        }
+    egm_boost_effect = {
+        boosted = minarchism
+        other1 = monopolism
+        other2 = molinarism
     }
-    custom_tooltip = {
-        text = monopolism_progress_decrease_25_tt
-        je:je_boardroom_schism = {
-            add_progress = { value = -25 name = schism_monopolism_bar }
-        }
-    }
-    custom_tooltip = {
-        text = molinarism_progress_decrease_25_tt
-        je:je_boardroom_schism = {
-            add_progress = { value = -25 name = schism_molinarism_bar }
-        }
-    }
-
 }
+
 egm_molinarists_boost_effect = {
-    custom_tooltip = {
-        text = molinarism_progress_increase_100_tt
-        je:je_boardroom_schism = {
-            add_progress = { value = 100 name = schism_molinarism_bar }
-        }
-    }
-    custom_tooltip = {
-        text = minarchism_progress_decrease_25_tt
-        je:je_boardroom_schism = {
-            add_progress = { value = -25 name = schism_minarchism_bar }
-        }
-    }
-    custom_tooltip = {
-        text = monopolism_progress_decrease_25_tt
-        je:je_boardroom_schism = {
-            add_progress = { value = -25 name = schism_monopolism_bar }
-        }
+    egm_boost_effect = {
+        boosted = molinarism
+        other1 = monopolism
+        other2 = minarchism
     }
 }
 

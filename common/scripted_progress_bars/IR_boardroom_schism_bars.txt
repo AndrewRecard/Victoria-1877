@@ -5,11 +5,10 @@
 	monthly_progress = {
 		if = {
 			limit = {
-				owner = {
-					NOR = {
-						has_variable = boardroom_schism_freeze
-						has_variable = paused_lobbying_var
-					}
+				has_journal_entry = je_boardroom_schism
+				NOR = {
+					has_variable = boardroom_schism_freeze
+					has_variable = paused_lobbying_var
 				}
 			}
 			### From Interest Groups
@@ -139,8 +138,29 @@
 					NOT = { var:minarchist_effects_var = 0 }
 				}
 				add = {
-					desc = "minarchism_progress_from_events_tt"
+					desc = "progress_from_events_tt"
 					value = owner.var:minarchist_effects_var
+				}
+			}
+			### From Mean Reversion — scales total monthly progress by distance from mean
+			### multiplier = 1 + (mean - this) / 600; at extremes (0/300/600) gives 1.5x / 1.0x / 0.5x
+			multiply = {
+				desc = "progress_from_mean_reversion_tt"
+				value = 1
+				add = {
+					add = {
+						je:je_boardroom_schism = { value = "scripted_bar_progress(schism_molinarism_bar)" }
+					}
+					add = {
+						je:je_boardroom_schism = { value = "scripted_bar_progress(schism_monopolism_bar)" }
+					}
+					subtract = {
+						add = {
+							je:je_boardroom_schism = { value = "scripted_bar_progress(schism_minarchism_bar)" }
+						}
+						multiply = 2
+					}
+					divide = 900
 				}
 			}
 		}
@@ -156,6 +176,7 @@ schism_molinarism_bar = {
 	monthly_progress = {
 		if = {
 			limit = {
+				has_journal_entry = je_boardroom_schism
 				NOR = {
 					has_variable = boardroom_schism_freeze
 					has_variable = paused_lobbying_var
@@ -247,7 +268,12 @@ schism_molinarism_bar = {
 			}
 			### Companies without Monopolies
 			if = {
-				limit = { num_companies > 0 }
+				limit = {
+					NOR = {
+						has_law_or_variant = law_type:law_laissez_faire
+						num_companies = 0
+					}
+				}
 				add = {
 					desc = "molinarism_progress_from_competition_tt"
 					every_company = {
@@ -260,7 +286,6 @@ schism_molinarism_bar = {
 						}
 					}
 					multiply = 2.5
-					subtract = 0.5
 				}
 			}
 			### Companies with Prestige Goods
@@ -286,8 +311,29 @@ schism_molinarism_bar = {
 					NOT = { var:molinarist_effects_var = 0 }
 				}
 				add = {
-					desc = "molinarism_progress_from_events_tt"
+					desc = "progress_from_events_tt"
 					value = owner.var:molinarist_effects_var
+				}
+			}
+			### From Mean Reversion — scales total monthly progress by distance from mean
+			### multiplier = 1 + (mean - this) / 600; at extremes (0/300/600) gives 1.5x / 1.0x / 0.5x
+			multiply = {
+				desc = "progress_from_mean_reversion_tt"
+				value = 1
+				add = {
+					add = {
+						je:je_boardroom_schism = { value = "scripted_bar_progress(schism_minarchism_bar)" }
+					}
+					add = {
+						je:je_boardroom_schism = { value = "scripted_bar_progress(schism_monopolism_bar)" }
+					}
+					subtract = {
+						add = {
+							je:je_boardroom_schism = { value = "scripted_bar_progress(schism_molinarism_bar)" }
+						}
+						multiply = 2
+					}
+					divide = 900
 				}
 			}
 		}
@@ -303,6 +349,7 @@ schism_monopolism_bar = {
 	monthly_progress = {
 		if = {
 			limit = {
+				has_journal_entry = je_boardroom_schism
 				NOR = {
 					has_variable = boardroom_schism_freeze
 					has_variable = paused_lobbying_var
@@ -394,7 +441,12 @@ schism_monopolism_bar = {
 			}
 			### From Company Monopolies
 			if = {
-				limit = { num_companies > 0 }
+				limit = {
+					NOR = {
+						has_law_or_variant = law_type:law_laissez_faire
+						num_companies = 0
+					}
+				}
 				add = {
 					desc = "monopolism_progress_from_monopolies_tt"
 					every_company = {
@@ -407,7 +459,6 @@ schism_monopolism_bar = {
 						}
 					}
 					multiply = 2.5
-					subtract = 0.5
 				}
 			}
 			### HHI Index
@@ -453,8 +504,29 @@ schism_monopolism_bar = {
 					NOT = { var:monopolist_effects_var = 0 }
 				}
 				add = {
-					desc = "monopolism_progress_from_events_tt"
+					desc = "progress_from_events_tt"
 					value = owner.var:monopolist_effects_var
+				}
+			}
+			### From Mean Reversion — scales total monthly progress by distance from mean
+			### multiplier = 1 + (mean - this) / 600; at extremes (0/300/600) gives 1.5x / 1.0x / 0.5x
+			multiply = {
+				desc = "progress_from_mean_reversion_tt"
+				value = 1
+				add = {
+					add = {
+						je:je_boardroom_schism = { value = "scripted_bar_progress(schism_minarchism_bar)" }
+					}
+					add = {
+						je:je_boardroom_schism = { value = "scripted_bar_progress(schism_molinarism_bar)" }
+					}
+					subtract = {
+						add = {
+							je:je_boardroom_schism = { value = "scripted_bar_progress(schism_monopolism_bar)" }
+						}
+						multiply = 2
+					}
+					divide = 900
 				}
 			}
 		}

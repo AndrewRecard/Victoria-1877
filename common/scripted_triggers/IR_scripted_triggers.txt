@@ -1,4 +1,35 @@
-﻿has_defense_contractors = {
+﻿can_promote_ideology_trigger = {
+	any_interest_group = {
+		is_in_government = yes
+		leader = {
+			has_ideology = ideology:ideology_$ist$_leader
+		}
+	}
+	custom_tooltip = {
+		text = legitimate_government_tt
+		legitimacy >= 25
+	}
+	custom_tooltip = {
+		text = not_already_supporting_$ism$
+		NOT = { has_variable = supporting_$ism$_var }
+	}
+	custom_tooltip = {
+		text = not_recently_suspended_lobbying_tt
+		OR = {
+			has_variable = paused_lobbying_var
+			NOT = { has_variable = pause_lobby_cooldown }
+		}
+	}
+	custom_tooltip = {
+		text = support_selection_on_cooldown_tt
+		OR = {
+			has_variable = paused_lobbying_var
+			NOT = { has_variable = support_selection_cooldown }
+		}
+	}
+}
+
+has_defense_contractors = {
 	ig:ig_armed_forces = {
 		has_ideology = ideology:ideology_martial_corporatist
 	}
