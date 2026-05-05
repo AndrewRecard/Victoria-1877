@@ -1,4 +1,4 @@
-﻿schism_minarchist_bar = {
+﻿schism_minarchism_bar = {
 	name = "minarchism_bar"
 	desc = "minarchism_bar_desc"
 	default_bad = yes
@@ -149,7 +149,7 @@
 	min_value = 0
 	max_value = 600
 }
-schism_molinarist_bar = {
+schism_molinarism_bar = {
 	name = "molinarism_bar"
 	desc = "molinarism_bar_desc"
 	default_green = yes
@@ -296,7 +296,7 @@ schism_molinarist_bar = {
 	min_value = 0
 	max_value = 600
 }
-schism_monopolist_bar = {
+schism_monopolism_bar = {
 	name = "monopolism_bar"
 	desc = "monopolism_bar_desc"
 	default = yes

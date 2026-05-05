@@ -58,7 +58,7 @@
 		custom_tooltip = {
 			text = monopolism_progress_increase_10_tt
 			je:je_boardroom_schism = {
-				add_progress = { value = 10 name = schism_monopolist_bar }
+				add_progress = { value = 10 name = schism_monopolism_bar }
 			}
 		}
 		custom_tooltip = support_selection_cooldown_tt
@@ -139,7 +139,7 @@ promote_minarchism_button = {
 		custom_tooltip = {
 			text = minarchism_progress_increase_10_tt
 			je:je_boardroom_schism = {
-				add_progress = { value = 10 name = schism_minarchist_bar }
+				add_progress = { value = 10 name = schism_minarchism_bar }
 			}
 		}
 		custom_tooltip = support_selection_cooldown_tt
@@ -217,7 +217,7 @@ promote_molinarism_button = {
 		custom_tooltip = {
 			text = molinarism_progress_increase_10_tt
 			je:je_boardroom_schism = {
-				add_progress = { value = 10 name = schism_molinarist_bar }
+				add_progress = { value = 10 name = schism_molinarism_bar }
 			}
 		}
 		custom_tooltip = support_selection_cooldown_tt
@@ -316,15 +316,15 @@ sponsor_thinktanks_button = {
 		je:je_boardroom_schism = {
 			custom_tooltip = {
 				text = monopolism_progress_25
-				scripted_bar_progress = { name = schism_monopolist_bar value >= 50 }
+				scripted_bar_progress = { name = schism_monopolism_bar value >= 50 }
 			}
 			custom_tooltip = {
 				text = minarchism_progress_25
-				scripted_bar_progress = { name = schism_minarchist_bar value >= 50 }
+				scripted_bar_progress = { name = schism_minarchism_bar value >= 50 }
 			}
 			custom_tooltip = {
 				text = molinarism_progress_25
-				scripted_bar_progress = { name = schism_molinarist_bar value >= 50 }
+				scripted_bar_progress = { name = schism_molinarism_bar value >= 50 }
 			}
 		}
 	}
@@ -400,15 +400,15 @@ convene_egm_button = {
 				OR = {
 					custom_tooltip = {
 						text = monopolism_progress_400
-						scripted_bar_progress = { name = schism_monopolist_bar value >= 400 }
+						scripted_bar_progress = { name = schism_monopolism_bar value >= 400 }
 					}
 					custom_tooltip = {
 						text = minarchism_progress_400
-						scripted_bar_progress = { name = schism_minarchist_bar value >= 400 }
+						scripted_bar_progress = { name = schism_minarchism_bar value >= 400 }
 					}
 					custom_tooltip = {
 						text = molinarism_progress_400
-						scripted_bar_progress = { name = schism_molinarist_bar value >= 400 }
+						scripted_bar_progress = { name = schism_molinarism_bar value >= 400 }
 					}
 				}
 			}

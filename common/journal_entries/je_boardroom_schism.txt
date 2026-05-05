@@ -4,9 +4,9 @@
 	should_be_pinned_by_default_uninvolved_or_context = yes
 	weight = 100
 
-	scripted_progress_bar = schism_monopolist_bar
-	scripted_progress_bar = schism_minarchist_bar
-	scripted_progress_bar = schism_molinarist_bar
+	scripted_progress_bar = schism_monopolism_bar
+	scripted_progress_bar = schism_minarchism_bar
+	scripted_progress_bar = schism_molinarism_bar
 
 	scripted_button = promote_monopolism_button
 	scripted_button = promote_minarchism_button
@@ -72,8 +72,8 @@
 				desc = status_monopolism_winning
 				trigger = {
 					scope:journal_entry = {
-						"scripted_bar_progress(schism_monopolist_bar)" > "scripted_bar_progress(schism_minarchist_bar)"
-						"scripted_bar_progress(schism_monopolist_bar)" > "scripted_bar_progress(schism_molinarist_bar)"
+						"scripted_bar_progress(schism_monopolism_bar)" > "scripted_bar_progress(schism_minarchism_bar)"
+						"scripted_bar_progress(schism_monopolism_bar)" > "scripted_bar_progress(schism_molinarism_bar)"
 					}
 				}
 			}
@@ -81,8 +81,8 @@
 				desc = status_molinarism_winning
 				trigger = {
 					scope:journal_entry = {
-						"scripted_bar_progress(schism_molinarist_bar)" > "scripted_bar_progress(schism_minarchist_bar)"
-						"scripted_bar_progress(schism_molinarist_bar)" > "scripted_bar_progress(schism_monopolist_bar)"
+						"scripted_bar_progress(schism_molinarism_bar)" > "scripted_bar_progress(schism_minarchism_bar)"
+						"scripted_bar_progress(schism_molinarism_bar)" > "scripted_bar_progress(schism_monopolism_bar)"
 					}
 				}
 			}
@@ -90,8 +90,8 @@
 				desc = status_minarchism_winning
 				trigger = {
 					scope:journal_entry = {
-						"scripted_bar_progress(schism_minarchist_bar)" > "scripted_bar_progress(schism_molinarist_bar)"
-						"scripted_bar_progress(schism_minarchist_bar)" > "scripted_bar_progress(schism_monopolist_bar)"
+						"scripted_bar_progress(schism_minarchism_bar)" > "scripted_bar_progress(schism_molinarism_bar)"
+						"scripted_bar_progress(schism_minarchism_bar)" > "scripted_bar_progress(schism_monopolism_bar)"
 					}
 				}
 			}
@@ -172,7 +172,7 @@
 			if = {
 				limit = {
 					scope:journal_entry = {
-						"scripted_bar_progress(schism_molinarist_bar)" >= 600
+						"scripted_bar_progress(schism_molinarism_bar)" >= 600
 					}
 					NOT = {
 						has_variable = boardroom_schism_freeze
@@ -186,7 +186,7 @@
 			if = {
 				limit = {
 					scope:journal_entry = {
-						"scripted_bar_progress(schism_monopolist_bar)" >= 600
+						"scripted_bar_progress(schism_monopolism_bar)" >= 600
 					}
 					NOT = {
 						has_variable = boardroom_schism_freeze
@@ -200,7 +200,7 @@
 			if = {
 				limit = {
 					scope:journal_entry = {
-						"scripted_bar_progress(schism_minarchist_bar)" >= 600
+						"scripted_bar_progress(schism_minarchism_bar)" >= 600
 					}
 					NOT = {
 						has_variable = boardroom_schism_freeze
