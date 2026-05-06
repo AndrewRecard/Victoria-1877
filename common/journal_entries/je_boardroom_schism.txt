@@ -252,10 +252,14 @@
 			}
 		}
 		random_events = {
-			12 = 0
+			24 = 0
 			1 = boardroom_schism.7
 			1 = boardroom_schism.8
 			1 = boardroom_schism.9
+			2 = boardroom_schism.10
+			4 = boardroom_schism.11
+			1 = boardroom_schism.12
+			2 = boardroom_schism.13
 		}
 	}
 

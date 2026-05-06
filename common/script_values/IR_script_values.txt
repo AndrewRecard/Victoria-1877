@@ -59,8 +59,8 @@ sovereign_monopoly_construction_conversion = {
 }
 
 lobbying_expenditure_value = {
-	value = gdp
-	divide = 1000
+	value = fixed_income
+	multiply = 0.15
 	if = {
 		limit = {
 			has_variable = paused_lobbying_var

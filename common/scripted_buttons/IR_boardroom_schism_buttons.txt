@@ -129,24 +129,14 @@ sponsor_thinktanks_button = {
 		NOT = { has_variable = boardroom_schism_freeze }
 	}
 
-	cooldown = {
-		days = normal_modifier_time
+	selected = {
+		has_modifier = ir_sponsored_thinktanks_modifier
 	}
 
 	possible = {
 		has_law = law_type:law_private_schools
 		NOT = {
 			has_law = law_type:law_outlawed_dissent
-		}
-		custom_tooltip = {
-			text = has_gold_reserves
-			scaled_gold_reserves > 0
-		}
-		custom_tooltip = {
-			text = not_sponsored_thinktanks_tt
-			NOT = {
-				has_variable = sponsored_thinktanks
-			}
 		}
 		je:je_boardroom_schism = {
 			custom_tooltip = {
@@ -161,6 +151,13 @@ sponsor_thinktanks_button = {
 				text = molinarism_progress_25
 				scripted_bar_progress = { name = schism_molinarism_bar value >= 50 }
 			}
+		}
+		NOT = {
+			has_modifier = ir_sponsored_thinktanks_modifier
+		}
+		custom_tooltip = {
+			text = has_gold_reserves
+			scaled_gold_reserves > 0
 		}
 	}
 
