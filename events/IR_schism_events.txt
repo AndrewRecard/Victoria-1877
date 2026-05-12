@@ -2159,6 +2159,7 @@ boardroom_schism.16 = {
 				has_variable = philanthropist_var
 			}
 			save_scope_as = philanthropist
+			set_character_busy_and_immortal = no
 		}
 	}
 
@@ -2169,21 +2170,12 @@ boardroom_schism.16 = {
 			name = ir_chartered_welfare_sector_modifier
 			days = long_modifier_time
 		}
-		hidden_effect = {
-		    scope:philanthropist ?= {
-    			set_character_busy_and_immortal = no
-    		}
-		}
 	}
 
 	option = {
 		name = boardroom_schism.16.b
 		scope:philanthropist ?= {
 			kill_character = yes
-		}
-		add_modifier = {
-			name = ir_secret_cartel_modifier
-			days = normal_modifier_time
 		}
 		add_radicals = {
 			strata = lower
