@@ -1,10 +1,10 @@
 ﻿{
   "name" : "Victoria 1877",
-  "id" : "victoria1877",
+  "id" : "https://github.com/AndrewRecard/Victoria-1877",
   "version" : "1.0",
   "game_id" : "victoria3",
   "supported_game_version" : "1.13*",
-  "short_description" : "",
+  "short_description" : "Dismantle the Bureaucratic State!",
   "tags" : [ "1.13" ],
   "relationships" : [],
   "game_custom_data" : {
