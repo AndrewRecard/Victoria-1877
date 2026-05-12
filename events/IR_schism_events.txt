@@ -1745,7 +1745,6 @@ boardroom_schism.13 = {
 
 	trigger = {
 		has_law_or_variant = law_type:law_laissez_faire
-		has_variable = supporting_monopolism_var
 		NOR = {
 			has_variable = boardroom_schism_freeze
 			has_variable = paused_lobbying_var
@@ -1877,6 +1876,318 @@ boardroom_schism.13 = {
 			je:je_boardroom_schism = {
 				add_progress = { value = -25 name = schism_monopolism_bar }
 			}
+		}
+	}
+
+	cancellation_trigger = {
+		OR = {
+			has_variable = boardroom_schism_freeze
+			NOT = {
+				has_journal_entry = je_boardroom_schism
+			}
+		}
+	}
+}
+
+boardroom_schism.14 = {
+	type = country_event
+	title = boardroom_schism.14.t
+	desc = boardroom_schism.14.d
+	flavor = boardroom_schism.14.f
+	duration = 3
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	event_image = { video = "ip3_police_raid" }
+
+	cooldown = { days = long_modifier_time }
+
+	trigger = {
+		has_law_or_variant = law_type:law_private_health_insurance
+		active_law:lawgroup_health_system = {
+			NOT = { has_amendment = amendment_type:amendment_comprehensive_care_provisions }
+		}
+		NOR = {
+			has_variable = boardroom_schism_freeze
+			has_variable = paused_lobbying_var
+		}
+		any_scope_character = {
+			has_role_of_type = executive
+			is_interest_group_leader = no
+			is_ruler_of_own_country = no
+			has_propertarian_ideology = no
+		}
+		any_scope_state = {
+			is_incorporated = yes
+		}
+		OR = {
+			je:je_boardroom_schism = {
+				scripted_bar_progress = { name = schism_monopolism_bar value >= 40 }
+			}
+			je:je_boardroom_schism = {
+				scripted_bar_progress = { name = schism_minarchism_bar value >= 40 }
+			}
+			je:je_boardroom_schism = {
+				scripted_bar_progress = { name = schism_molinarism_bar value >= 40 }
+			}
+		}
+	}
+
+	immediate = {
+		random_scope_state = {
+			limit = {
+				is_incorporated = yes
+				state_population > 100000
+			}
+			save_scope_as = raid_state
+		}
+		random_scope_character = {
+			limit = {
+				has_role_of_type = executive
+				is_interest_group_leader = no
+				is_ruler_of_own_country = no
+				has_propertarian_ideology = no
+			}
+			set_variable = philanthropist_var
+			set_character_busy_and_immortal = yes
+			save_scope_as = philanthropist
+			interest_group = {
+				save_scope_as = philanthropist_ig
+			}
+		}
+	}
+
+	option = {
+		name = boardroom_schism.14.a
+		default_option = yes
+		scope:philanthropist = {
+			exile_character = yes
+			set_character_busy_and_immortal = no
+		}
+		add_modifier = {
+			name = ir_unlicensed_philanthropy_modifier
+			days = normal_modifier_time
+		}
+		scope:raid_state = {
+			add_radicals_in_state = {
+				strata = lower
+				value = medium_radicals
+			}
+		}
+		custom_tooltip = {
+			text = monopolism_progress_increase_75_tt
+			je:je_boardroom_schism = {
+				add_progress = { value = 75 name = schism_monopolism_bar }
+			}
+		}
+		hidden_effect = {
+			trigger_event = {
+				id = boardroom_schism.15
+				days = 90
+			}
+		}
+	}
+
+	option = {
+		name = boardroom_schism.14.b
+		scope:raid_state = {
+			add_modifier = {
+				name = ir_voluntary_welfare_zone_modifier
+				days = normal_modifier_time
+			}
+		}
+		scope:philanthropist = {
+			add_modifier = {
+				name = ir_charitable_capitalist_modifier
+				days = normal_modifier_time
+			}
+		}
+		ig:ig_devout = {
+			add_modifier = {
+				name = ir_endorsed_charities_modifier
+				days = normal_modifier_time
+			}
+		}
+		hidden_effect = {
+			trigger_event = {
+				id = boardroom_schism.16
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = boardroom_schism.14.c
+		highlighted_option = yes
+		trigger = {
+			trigger_if = {
+				limit = { has_variable = supporting_monopolism_var }
+				custom_tooltip = {
+					text = is_supporting_monopolism
+					has_variable = supporting_monopolism_var
+				}
+			}
+			trigger_else = {
+				custom_tooltip = {
+					text = is_not_supporting_monopolism
+					has_variable = supporting_monopolism_var
+				}
+			}
+			NOT = {
+				has_law_or_variant = law_type:law_laissez_faire
+			}
+		}
+		show_as_unavailable = {
+			always = yes
+		}
+		active_law:lawgroup_health_system = {
+			add_amendment = {
+				type = amendment_comprehensive_care_provisions
+				sponsor = PREV.ig:ig_trade_unions
+				cooldown = normal_modifier_time
+			}
+		}
+		scope:philanthropist = {
+			exile_character = yes
+			set_character_busy_and_immortal = no
+		}
+		custom_tooltip = {
+			text = monopolism_progress_increase_25_tt
+			je:je_boardroom_schism = {
+				add_progress = { value = 25 name = schism_monopolism_bar }
+			}
+		}
+	}
+
+	cancellation_trigger = {
+		OR = {
+			has_variable = boardroom_schism_freeze
+			NOT = {
+				has_journal_entry = je_boardroom_schism
+			}
+		}
+	}
+}
+
+# Follow-up to boardroom_schism.14 option A (Liquidate). Fires 6 months later.
+# The "fiscal terrorist" goes on trial; press coverage radicalizes liberals
+# toward minarchism rather than the monopolism the raiders wanted.
+boardroom_schism.15 = {
+	type = country_event
+	title = boardroom_schism.15.t
+	desc = boardroom_schism.15.d
+	flavor = boardroom_schism.15.f
+	duration = 3
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	event_image = { video = "europenorthamerica_london_center" }
+
+	trigger = {
+		has_journal_entry = je_boardroom_schism
+		NOT = {
+			has_variable = boardroom_schism_freeze
+		}
+	}
+
+	option = {
+		name = boardroom_schism.15.a
+		default_option = yes
+		add_modifier = {
+			name = ir_philanthropist_martyred_modifier
+			days = normal_modifier_time
+			is_decaying = yes
+		}
+		custom_tooltip = {
+			text = minarchism_progress_monthly_0.5_tt
+			change_variable = {
+				name = minarchist_effects_var
+				value = 0.5
+			}
+		}
+		custom_tooltip = {
+			text = monopolism_progress_decrease_50_tt
+			je:je_boardroom_schism = {
+				add_progress = { value = -50 name = schism_monopolism_bar }
+			}
+		}
+	}
+
+	option = {
+		name = boardroom_schism.15.b
+		add_modifier = {
+			name = ir_censured_trial_modifier
+			days = normal_modifier_time
+		}
+		add_radicals = {
+			strata = middle
+			value = medium_radicals
+		}
+	}
+
+	cancellation_trigger = {
+		OR = {
+			has_variable = boardroom_schism_freeze
+			NOT = {
+				has_journal_entry = je_boardroom_schism
+			}
+		}
+	}
+}
+
+boardroom_schism.16 = {
+	type = country_event
+	title = boardroom_schism.16.t
+	desc = boardroom_schism.16.d
+	flavor = boardroom_schism.16.f
+	duration = 3
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_scales.dds"
+	event_image = { video = "europenorthamerica_rich_and_poor" }
+
+	trigger = {
+		has_journal_entry = je_boardroom_schism
+		NOT = {
+			has_variable = boardroom_schism_freeze
+		}
+	}
+
+	immediate = {
+		random_scope_character = {
+			limit = {
+				has_variable = philanthropist_var
+			}
+			save_scope_as = philanthropist
+		}
+	}
+
+	option = {
+		name = boardroom_schism.16.a
+		default_option = yes
+		add_modifier = {
+			name = ir_chartered_welfare_sector_modifier
+			days = long_modifier_time
+		}
+		hidden_effect = {
+		    scope:philanthropist ?= {
+    			set_character_busy_and_immortal = no
+    		}
+		}
+	}
+
+	option = {
+		name = boardroom_schism.16.b
+		scope:philanthropist ?= {
+			kill_character = yes
+		}
+		add_modifier = {
+			name = ir_secret_cartel_modifier
+			days = normal_modifier_time
+		}
+		add_radicals = {
+			strata = lower
+			value = medium_radicals
 		}
 	}
 

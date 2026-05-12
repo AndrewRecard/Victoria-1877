@@ -9,18 +9,9 @@ propertarian_origins.1 = {
 
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
-	event_image = {
-		video = "votp_realist_household"
-	}
-
-
 	trigger = {
 		has_technology_researched = shareholder_primacy
 		NOT = { has_global_variable = molinari_happened }
-		ig:ig_industrialists = {
-			ig_counts_as_marginal = no
-		}
-
 		ig:ig_intelligentsia= {
 			OR = {
 			    ig_counts_as_marginal = no
@@ -49,6 +40,26 @@ propertarian_origins.1 = {
 	option = { #support propertarianism not molinari
 		name = propertarian_origins.1.a
 		default_option = yes
+		ai_chance = {
+			base = 1
+			modifier = {
+				multiply = 3
+				trigger = {
+					ig:ig_industrialists= {
+						ig_counts_as_marginal = no
+						is_powerful = no
+					}
+				}
+			}
+			modifier = {
+				multiply = 0.5
+				trigger = {
+					ig:ig_intelligentsia= {
+						ig_counts_as_marginal = yes
+					}
+				}
+			}
+		}
 		if = {
 			limit = {
 				any_political_movement = {
@@ -97,6 +108,35 @@ propertarian_origins.1 = {
 
 	option = {
 		name = propertarian_origins.1.b
+		ai_chance = {
+			base = 1
+			modifier = {
+				multiply = 2
+				trigger = {
+					ig:ig_intelligentsia = {
+						is_powerful = yes
+						is_in_government = yes
+					}
+				}
+			}
+			modifier = {
+				multiply = 5
+				trigger = {
+					ig:ig_industrialists = {
+						is_powerful = yes
+						is_in_government = yes
+					}
+				}
+			}
+			modifier = {
+				multiply = 0
+				trigger = {
+					ig:ig_intelligentsia = {
+						ig_counts_as_marginal = yes
+					}
+				}
+			}
+		}
 		if = {
 			limit = {
 				any_political_movement = {
@@ -121,7 +161,6 @@ propertarian_origins.1 = {
 				days = normal_modifier_time
 			}
 		}
-
 		if = {
 			limit = {
 				is_not_in_geographic_region = geographic_region_north_america
@@ -142,7 +181,8 @@ propertarian_origins.1 = {
 					remove_character_role = agitator
 				}
 			}
-		}else = {
+		}
+		else = {
 			create_character = {
 				template = agitator_gustave_de_molinari
 				on_created = {
@@ -156,6 +196,34 @@ propertarian_origins.1 = {
 
 	option = { #get rid of this man
 		name = propertarian_origins.1.c
+		ai_chance = {
+			base = 1
+			modifier = {
+				multiply = 5
+				trigger = {
+					ig:ig_trade_unions = {
+						is_powerful = yes
+						is_in_government = yes
+					}
+				}
+			}
+			modifier = {
+				multiply = 5
+				trigger = {
+					ig:ig_industrialists = {
+						ig_counts_as_marginal = yes
+					}
+				}
+			}
+			modifier = {
+				multiply = 5
+				trigger = {
+					ig:ig_intelligentsia = {
+						ig_counts_as_marginal = yes
+					}
+				}
+			}
+		}
 		ig:ig_intelligentsia ?= {
 			add_modifier = {
 				name = ir_ditched_molinari_modifier
@@ -188,7 +256,8 @@ propertarian_origins.1 = {
 						exile_character_with_martyrdom = yes
 					}
 				}
-			}else = {
+			}
+			else = {
 				create_character = {
 					template = agitator_gustave_de_molinari
 					on_created = {

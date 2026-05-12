@@ -44,6 +44,17 @@ entrenched_entitlements_timer_effect = {
 on_monthly_pulse_country = {
     on_actions = {
         franchise_investment_efficiency_on_action
+        defense_incorporation_monthly_events
+    }
+}
+
+defense_incorporation_monthly_events = {
+    trigger = {
+        has_defense_contractors = yes
+    }
+    random_events = {
+        chance_to_happen = 5
+        1 = defense_incorporation.7
     }
 }
 

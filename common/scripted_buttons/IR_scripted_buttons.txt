@@ -93,9 +93,6 @@ depose_armed_forces_leader_button = {
 				}
 			}
 		}
-		NOR = {
-			has_law_or_variant = law_type:law_guaranteed_liberties
-		}
 	}
 
 	cooldown = {

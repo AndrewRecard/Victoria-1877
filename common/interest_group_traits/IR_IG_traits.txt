@@ -3,7 +3,7 @@
 	min_approval = loyal
 
 	modifier = {
-		unit_kill_rate_add = 0.125
+		unit_kill_rate_add = 0.15
 		unit_recovery_rate_add = -0.05
 	}
 }

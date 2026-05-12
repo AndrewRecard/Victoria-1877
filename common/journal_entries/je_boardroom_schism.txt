@@ -252,14 +252,15 @@
 			}
 		}
 		random_events = {
-			24 = 0
-			1 = boardroom_schism.7
-			1 = boardroom_schism.8
-			1 = boardroom_schism.9
-			2 = boardroom_schism.10
-			4 = boardroom_schism.11
-			1 = boardroom_schism.12
-			2 = boardroom_schism.13
+			23 = 0
+			1 = boardroom_schism.7 #Random executive flip
+			1 = boardroom_schism.8 #Liberal switch to minarchism
+			1 = boardroom_schism.9 #Random progress
+			2 = boardroom_schism.10 #Leader switch to player lobby
+			2 = boardroom_schism.11 #Fascist switch to monopolism
+			1 = boardroom_schism.12 #Molinarism (private police)
+			2 = boardroom_schism.13 #Monopolism under laissez-faire
+			1 = boardroom_schism.14 #Molinarism (unlicensed philanthropy)
 		}
 	}
 

@@ -344,7 +344,7 @@ REPLACE:ideology_particularist = {
 		law_professional_army = neutral
 		law_mass_conscription = disapprove
 		law_peasant_levies = disapprove
-		law_private_defense_agencies = approve
+		law_private_defense_agencies = neutral
 	}
 
 	lawgroup_slavery = {
@@ -359,7 +359,7 @@ REPLACE:ideology_particularist = {
 		law_combination_acts = neutral
 		law_guild_system = disapprove
 		law_anti_strike_laws = neutral
-		law_corporatized_unions = neutral
+		law_corporatized_unions = disapprove
 		law_right_to_associate = neutral
 		law_factory_councils = neutral
 		law_national_labor_service = strongly_disapprove

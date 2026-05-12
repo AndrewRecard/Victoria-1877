@@ -29,8 +29,14 @@
 	}
 }
 
+ig_marginal_no_party = {
+	ig_counts_as_marginal = yes
+	has_party = no
+}
+
 has_defense_contractors = {
-	ig:ig_armed_forces = {
+	any_interest_group = {
+		is_interest_group_type = ig_armed_forces
 		has_ideology = ideology:ideology_martial_corporatist
 	}
 }

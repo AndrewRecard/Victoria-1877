@@ -46,9 +46,16 @@
 	on_deactivate = {
 		abolish_directorate_effect = yes
 		remove_variable = public_liquidation_completed
-		ig:ig_intelligentsia = {
-			remove_ideology = ideology_market_rationalist
-			add_ideology = ideology_republican
+		if = {
+			limit = {
+				ig:ig_intelligentsia = {
+					has_ideology = ideology:ideology_market_rationalist
+				}
+			}
+			ig:ig_intelligentsia = {
+				remove_ideology = ideology_market_rationalist
+				add_ideology = ideology_republican
+			}
 		}
 	}
 

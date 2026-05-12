@@ -436,7 +436,7 @@ ir_tabloid_anarchy_modifier = {
 
 ir_suspended_lobbying_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
-	country_authority_add = -100
+	country_authority_mult = -0.1
 	country_legitimacy_ideological_incoherence_mult = 0.15
 }
 
@@ -595,4 +595,51 @@ ir_market_verdict_modifier = {
 ir_monopolist_rebuked_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
 	interest_group_approval_add = -4
+}
+
+ir_unlicensed_philanthropy_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
+	state_radicals_from_political_movements_mult = 0.1
+}
+
+ir_voluntary_welfare_zone_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	state_mortality_turmoil_mult = -0.003
+	state_radicals_from_political_movements_mult = -0.15
+}
+
+ir_philanthropist_martyred_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
+	country_legitimacy_base_add = -5
+}
+
+ir_chartered_welfare_sector_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	country_loyalists_from_legitimacy_mult = 0.15
+	country_authority_add = -50
+}
+
+ir_interventionist_protocols_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
+	interest_group_approval_add = -2
+}
+
+ir_protocols_enforced_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
+	interest_group_approval_add = 2
+}
+
+ir_charitable_capitalist_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	character_popularity_add = 50
+}
+
+ir_endorsed_charities_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	interest_group_approval_add = 1
+}
+
+ir_censured_trial_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
+	country_authority_add = -100
 }

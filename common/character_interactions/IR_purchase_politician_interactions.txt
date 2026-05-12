@@ -89,8 +89,7 @@ sway_to_molinarism = {
 		custom_tooltip = {
 			text = sway_to_molinarism_compatible_ideology_tt
 			NOR = {
-				has_ideology = ideology:ideology_integralist
-				has_ideology = ideology:ideology_fascist
+				has_ideology = ideology:ideology_monopolist_leader
 				has_ideology = ideology:ideology_nihilist
 				has_ideology = ideology:ideology_radical
 				has_ideology = ideology:ideology_social_democrat
@@ -98,6 +97,7 @@ sway_to_molinarism = {
 				has_ideology = ideology:ideology_vanguardist
 				has_ideology = ideology:ideology_anarchist
 				has_ideology = ideology:ideology_humanitarian
+				has_ideology = ideology:ideology_luddite
 			}
 		}
 	}
@@ -152,6 +152,7 @@ sway_to_monopolism = {
 		custom_tooltip = {
 			text = sway_to_monopolism_compatible_ideology_tt
 			NOR = {
+				has_ideology = ideology:ideology_molinarist_leader
 				has_ideology = ideology:ideology_integralist
 				has_ideology = ideology:ideology_fascist
 				has_ideology = ideology:ideology_nihilist
@@ -161,6 +162,7 @@ sway_to_monopolism = {
 				has_ideology = ideology:ideology_vanguardist
 				has_ideology = ideology:ideology_anarchist
 				has_ideology = ideology:ideology_humanitarian
+				has_ideology = ideology:ideology_luddite
 			}
 		}
 	}

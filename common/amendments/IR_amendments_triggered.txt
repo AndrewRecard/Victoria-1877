@@ -10,7 +10,6 @@
 	modifier = {
 		state_pop_pol_str_add = 1
 		interest_group_ig_trade_unions_pop_attraction_mult = -0.1
-		state_pop_support_movement_labor_mult = -0.15
 		country_enactment_success_chance_law_no_social_security_add = -0.10
 		country_enactment_success_chance_law_poor_laws_add = -0.10
 		country_enactment_success_chance_law_wage_subsidies_add = -0.10
@@ -37,6 +36,50 @@
 
 	can_repeal = {
 		always = no
+	}
+
+	amendment_activism_multiplier = 0.1
+}
+
+amendment_unregulated_militias = {
+	parent = law_national_militia
+	allowed_laws = {
+		law_private_defense_agencies
+	}
+
+	modifier = {
+		country_farmers_pol_str_mult = 0.25
+		state_farmers_investment_pool_efficiency_mult = 0.25
+		country_authority_add = -50
+	}
+
+	possible = {
+		always = yes
+	}
+
+	would_sponsor = {
+		OR = {
+			is_interest_group_type = ig_trade_unions
+			is_interest_group_type = ig_petty_bourgeoisie
+			AND = {
+				is_interest_group_type = ig_armed_forces
+				has_ideology = ideology:ideology_loyalist_2
+			}
+		}
+	}
+
+	ai_will_revoke = {
+		any_interest_group = {
+			is_in_government = yes
+			law_stance = {
+				law = law_type:law_laissez_faire
+				value < neutral
+			}
+		}
+	}
+
+	can_repeal = {
+		legitimacy >= legitimacy_to_repeal_amendment
 	}
 
 	amendment_activism_multiplier = 0.1

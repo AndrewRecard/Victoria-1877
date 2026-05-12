@@ -617,3 +617,110 @@ defense_incorporation.6 = {
 		}
 	}
 }
+
+defense_incorporation.7 = {
+	type = country_event
+	placement = root
+	title = defense_incorporation.7.t
+	desc = defense_incorporation.7.d
+	flavor = defense_incorporation.7.f
+	duration = 3
+
+	on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/pops_icons/farmers_15.dds"
+	event_image = {
+		video = "ip3_officer_inspecting_peasant_conscripts"
+	}
+
+	cooldown = {
+		days = never_fire_again_modifier_time
+	}
+
+	trigger = {
+		ig:ig_rural_folk = {
+			ig_marginal_no_party = no
+		}
+		NOT = {
+			has_law_or_variant = law_type:law_serfdom
+		}
+		any_scope_state = {
+			OR = {
+			    has_farm_building = yes
+				has_subsistence_building =  yes
+			}
+			has_military_building = yes
+		}
+	}
+
+	immediate = {
+		ordered_scope_state = {
+			limit = {
+				OR = {
+					has_farm_building = yes
+					has_subsistence_building =  yes
+				}
+				has_military_building = yes
+			}
+			order_by = ig:ig_rural_folk.ig_clout
+			position = 0
+			save_scope_as = rural_state
+		}
+	}
+
+	option = {
+		name = defense_incorporation.7.a
+		scope:rural_state = {
+			kill_population_in_state = {
+    			pop_type = soldiers
+    			value = 500
+    		}
+		}
+		ig:ig_armed_forces = {
+			add_modifier = {
+				name = ir_protocols_enforced_modifier
+				days = normal_modifier_time
+			}
+		}
+		ig:ig_rural_folk = {
+			add_modifier = {
+				name = ir_interventionist_protocols_modifier
+				days = normal_modifier_time
+			}
+		}
+	}
+
+	option = {
+		name = defense_incorporation.7.b
+		default_option = yes
+		scope:rural_state = {
+			add_loyalists_in_state = {
+				value = medium_radicals
+				pop_type = farmers
+			}
+			add_loyalists_in_state = {
+				value = medium_radicals
+				pop_type = peasants
+			}
+		}
+		add_radicals = {
+			pop_type = officers
+			value = small_radicals
+		}
+		set_variable = sub_prime_leaders_var
+		active_law:lawgroup_army_model = {
+			add_amendment = {
+				type = amendment_unregulated_militias
+				sponsor = PREV.ig:ig_rural_folk
+				cooldown = normal_modifier_time
+			}
+		}
+		custom_tooltip = molinarist_leaders.tt
+		custom_tooltip = properatarian_rural_folk.tt
+	}
+
+	cancellation_trigger = {
+		NOT = {
+			has_law_or_variant = law_type:law_private_defense_agencies
+		}
+	}
+}

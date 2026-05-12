@@ -125,7 +125,6 @@
 
  law_private_defense_agencies: "Private Defense Agencies"
  law_private_defense_agencies_desc: "National defense is outsourced to competing private military corporations, replacing patriotic duty with highly lethal employment contracts."
- ir_private_militarized_police: "Private Militarized Police"
 
  law_polycentric_law: "Polycentric Law"
  law_polycentric_law_desc: "The central government is dissolved in favor of a web of private contracts, with society being governed by competing networks of private courts and corporate defense contractors."
@@ -162,6 +161,8 @@
  amendment_native_homesteading_desc: "Agricultural land ownership is legally restricted to native citizens, protecting local farmers from foreign landlords."
  amendment_racial_science_institutes: "Racial Science Institutes"
  amendment_racial_science_institutes_desc: "State universities are heavily funded to study scientific racism and manage the genetic purity of the population."
+ amendment_unregulated_militias: "Unregulated Militias"
+ amendment_unregulated_militias_desc: "Rural communities are permitted to raise and arm their own militias outside the oversight of the chartered defense contractors, providing the countryside with cheap protection at the expense of the established firms."
  # PRODUCTION METHODS
  pm_private_subcontracting: "Private Subcontractors"
  pmg_defense_agencies_financial_districts: "Defense Investment"
@@ -357,7 +358,7 @@
  dyn_c_voc_revival_adj: "Dutch"
  dyn_c_ottoman_directorate: "Ottoman Directorate"
  dyn_c_ottoman_directorate_adj: "Ottoman"
- dyn_c_strait_tolls: "Hormuz Toll & Transit Board"
+ dyn_c_strait_tolls: "Persian Gulf Strait Authority"
  dyn_c_strait_tolls_adj: "Iranian"
 
  # TECHS
