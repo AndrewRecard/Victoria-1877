@@ -321,8 +321,8 @@
 					has_ideology = ideology:ideology_laissez_faire
 					has_ideology = ideology:ideology_interventionist
 				}
-				OR = {
-					owner = {
+				owner = {
+					OR = {
 						has_law_or_variant = law_type:law_regulatory_bodies
 						has_law_or_variant = law_type:law_worker_protections
 					}
@@ -339,8 +339,8 @@
 					has_hierarchic_ideology = yes
 					has_ideology = ideology:ideology_individualist
 				}
-				OR = {
-					owner = {
+				owner = {
+					OR = {
 						has_law_or_variant = law_type:law_wage_subsidies
 						has_law_or_variant = law_type:law_old_age_pension
 					}

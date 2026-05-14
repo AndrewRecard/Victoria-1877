@@ -361,6 +361,9 @@
 
 		state_weight = {
 			value = state_urbanization_rate
+			add = scope:clout
+			add = { value = this.turmoil divide = 2 }
+			subtract = this.loyalists
 		}
 	}
 
@@ -376,6 +379,8 @@
 
 		state_weight = {
 			value = state_urbanization_rate
+			add = { value = this.turmoil divide = 2 }
+			subtract = this.loyalists
 		}
 	}
 
@@ -1240,6 +1245,7 @@ REPLACE:movement_reactionary = {
 
 		state_weight = {
 			value = 1
+			add = scope:clout
 		}
 	}
 
@@ -1760,7 +1766,10 @@ REPLACE:movement_fascist = {
 		}
 
 		state_weight = {
-			value = 1
+			value = 0.25
+			add = scope:clout
+			add = { value = this.turmoil divide = 2 }
+			subtract = this.loyalists
 		}
 	}
 
@@ -2062,7 +2071,8 @@ REPLACE:movement_feminist = {
 		}
 
 		state_weight = {
-			value = 1
+			value = 0.5
+			add = scope:clout
 		}
 	}
 
@@ -2455,6 +2465,9 @@ REPLACE:movement_liberal = {
 
 		state_weight = {
 			value = state_urbanization_rate
+			add = scope:clout
+			add = { value = this.turmoil divide = 2 }
+			subtract = this.loyalists
 		}
 	}
 
@@ -2470,6 +2483,8 @@ REPLACE:movement_liberal = {
 
 		state_weight = {
 			value = state_urbanization_rate
+			add = { value = this.turmoil divide = 2 }
+			subtract = this.loyalists
 		}
 	}
 

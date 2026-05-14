@@ -241,15 +241,19 @@
 				}
 			}
 		}
-		NOR = {
+		NOT = {
 			is_pop_type = aristocrats
-			trigger_if = {
-				limit = {
-					NOT = {
-						c:BIC ?= owner
-					}
-				}
+		}
+		OR = {
+			NOT = {
 				is_pop_type = capitalists
+			}
+			custom_tooltip = {
+				text = capitalist_in_british_india_tt
+				AND = {
+					is_pop_type = capitalists
+					c:BIC ?= owner
+				}
 			}
 		}
 		OR = {
@@ -401,12 +405,6 @@
 					pop_employment_building_group = bg_agriculture
 					pop_employment_building_group = bg_ranching
 					pop_employment_building_group = bg_plantations
-					AND = {
-						owner = {
-							has_law_or_variant = law_type:law_private_defense_agencies
-						}
-						is_pop_type = officers
-					}
 				}
 			}
 			add = {
