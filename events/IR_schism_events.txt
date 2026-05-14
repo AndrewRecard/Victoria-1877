@@ -2170,6 +2170,13 @@ boardroom_schism.16 = {
 			name = ir_chartered_welfare_sector_modifier
 			days = long_modifier_time
 		}
+		custom_tooltip = {
+			text = molinarism_progress_monthly_0.5_tt
+			change_variable = {
+				name = molinarist_effects_var
+				value = 0.5
+			}
+		}
 	}
 
 	option = {

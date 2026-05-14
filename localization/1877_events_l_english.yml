@@ -322,9 +322,9 @@
  ir_censured_trial_modifier: "Suppressed Coverage"
 
  boardroom_schism.16.t: "The Philanthropist Returns"
- boardroom_schism.16.d: "The eccentric industrialist we declined to prosecute has used the breathing room to scale his experiment dramatically. His Voluntary Welfare Zone now spans three districts. He has petitioned the Board, not for protection, but for a formal charter — a legal recognition that private mutual-aid syndicates may operate parallel to, and independent of, state services. Rival industrialists have quietly suggested that the matter could also be resolved by other means. [SCOPE.sCharacter('philanthropist').GetFirstNameNoFormatting] is, after all, only one man."
+ boardroom_schism.16.d: "The eccentric industrialist we declined to prosecute has used the breathing room to scale his experiment dramatically. His Voluntary Welfare Zone now spans three districts. He is now petitioning the Board for a formal charter, a legal recognition that private mutual-aid syndicates may operate parallel to, and independent of, state services. Rival industrialists have quietly suggested that the matter could also be resolved by other means. [SCOPE.sCharacter('philanthropist').GetFirstNameNoFormatting] is, after all, only one man."
  boardroom_schism.16.f: ""He came to the antechamber alone, no counsel, no security," the clerk wrote. "He said he had not come to ask permission. He had come to give us the chance to claim credit. 'A charter costs you nothing,' he told the Chairman, 'and grants you what you cannot otherwise possess — the loyalty of the men I have already fed.' The Chairman did not answer. The other gentleman in the room, the one from the Coal Trust, was smiling in a way I did not care for.""
- boardroom_schism.16.a: "Grant him a real charter. Let voluntary welfare become an institution."
+ boardroom_schism.16.a: "Grant him a charter, the market must be able to stand on its own."
  boardroom_schism.16.b: "Some men are best resolved by other means."
 
  # OTHER
