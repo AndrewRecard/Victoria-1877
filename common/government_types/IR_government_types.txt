@@ -15,8 +15,10 @@
             }
             AND = {
                 is_power_bloc_leader = no
-                power_bloc_leader ?= {
-                    has_law_or_variant = law_type:law_directorate
+                power_bloc ?= {
+                    power_bloc_leader ?= {
+                        has_law_or_variant = law_type:law_directorate
+                    }
                 }
             }
         }

@@ -4,12 +4,6 @@
     percent = yes
 }
 
-country_institution_cost_institution_home_affairs_mult = {
-    decimals = 0
-    color = bad
-    percent = yes
-}
-
 country_institution_cost_institution_corporate_unions_mult = {
     decimals = 0
     color = bad

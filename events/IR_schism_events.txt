@@ -2044,7 +2044,6 @@ boardroom_schism.14 = {
 			add_amendment = {
 				type = amendment_comprehensive_care_provisions
 				sponsor = PREV.ig:ig_trade_unions
-				cooldown = normal_modifier_time
 			}
 		}
 		scope:philanthropist = {
@@ -2102,7 +2101,7 @@ boardroom_schism.15 = {
 			text = minarchism_progress_monthly_0.5_tt
 			change_variable = {
 				name = minarchist_effects_var
-				value = 0.5
+				add = 0.5
 			}
 		}
 		custom_tooltip = {
@@ -2174,7 +2173,7 @@ boardroom_schism.16 = {
 			text = molinarism_progress_monthly_0.5_tt
 			change_variable = {
 				name = molinarist_effects_var
-				value = 0.5
+				add = 0.5
 			}
 		}
 	}

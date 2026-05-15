@@ -223,9 +223,11 @@
  state_pop_support_movement_propertarian_mult_desc: "$political_movement_pop_attraction_mult_desc$"
 
  country_institution_cost_institution_workplace_safety_mult: "@bur![Nbsp][concept_bureaucracy] Cost of [GetInstitutionType('institution_workplace_safety').GetName]"
- country_institution_cost_institution_home_affairs_mult: "@bur![Nbsp][concept_bureaucracy] Cost of [GetInstitutionType('institution_home_affairs').GetName]"
+ country_institution_cost_institution_workplace_safety_mult_desc: "An increase or reduction to the @bur![Nbsp][concept_bureaucracy] cost of bringing [GetInstitutionType('institution_workplace_safety').GetName] to the citizens"
  country_institution_cost_institution_corporate_unions_mult: "@bur![Nbsp][concept_bureaucracy] Cost of [GetInstitutionType('institution_corporate_unions').GetName]"
+ country_institution_cost_institution_corporate_unions_mult_desc: "An increase or reduction to the @bur![Nbsp][concept_bureaucracy] cost of bringing [GetInstitutionType('institution_corporate_unions').GetName] to the citizens"
  country_institution_cost_institution_civil_service_mult: "@bur![Nbsp][concept_bureaucracy] Cost of [GetInstitutionType('institution_civil_service').GetName]"
+ country_institution_cost_institution_civil_service_mult_desc: "An increase or reduction to the @bur![Nbsp][concept_bureaucracy] cost of bringing [GetInstitutionType('institution_civil_service').GetName] to the citizens"
 
  country_enactment_success_chance_law_directorate_add: "[concept_enactment_success] chance for [GetLawType('law_directorate').GetName]"
  country_enactment_success_chance_law_directorate_add_desc: "A flat percentage point increase to the likelihood of enacting the specific law"

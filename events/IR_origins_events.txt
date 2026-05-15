@@ -43,7 +43,7 @@ propertarian_origins.1 = {
 		ai_chance = {
 			base = 1
 			modifier = {
-				multiply = 3
+				factor = 3
 				trigger = {
 					ig:ig_industrialists= {
 						ig_counts_as_marginal = no
@@ -52,7 +52,7 @@ propertarian_origins.1 = {
 				}
 			}
 			modifier = {
-				multiply = 0.5
+				factor = 0.5
 				trigger = {
 					ig:ig_intelligentsia= {
 						ig_counts_as_marginal = yes
@@ -111,7 +111,7 @@ propertarian_origins.1 = {
 		ai_chance = {
 			base = 1
 			modifier = {
-				multiply = 2
+				factor = 2
 				trigger = {
 					ig:ig_intelligentsia = {
 						is_powerful = yes
@@ -120,7 +120,7 @@ propertarian_origins.1 = {
 				}
 			}
 			modifier = {
-				multiply = 5
+				factor = 5
 				trigger = {
 					ig:ig_industrialists = {
 						is_powerful = yes
@@ -129,7 +129,7 @@ propertarian_origins.1 = {
 				}
 			}
 			modifier = {
-				multiply = 0
+				factor = 0
 				trigger = {
 					ig:ig_intelligentsia = {
 						ig_counts_as_marginal = yes
@@ -199,7 +199,7 @@ propertarian_origins.1 = {
 		ai_chance = {
 			base = 1
 			modifier = {
-				multiply = 5
+				factor = 5
 				trigger = {
 					ig:ig_trade_unions = {
 						is_powerful = yes
@@ -208,7 +208,7 @@ propertarian_origins.1 = {
 				}
 			}
 			modifier = {
-				multiply = 5
+				factor = 5
 				trigger = {
 					ig:ig_industrialists = {
 						ig_counts_as_marginal = yes
@@ -216,7 +216,7 @@ propertarian_origins.1 = {
 				}
 			}
 			modifier = {
-				multiply = 5
+				factor = 5
 				trigger = {
 					ig:ig_intelligentsia = {
 						ig_counts_as_marginal = yes
