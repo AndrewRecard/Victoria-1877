@@ -10,7 +10,7 @@
 				has_journal_entry = je_defense_incorporation
 		    }
 		    add = {
-    			value = 100
+    			value = 1
 				desc = monthly_progress
     		}
 
