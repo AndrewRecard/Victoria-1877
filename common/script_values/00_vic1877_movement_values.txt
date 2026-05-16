@@ -1,0 +1,15 @@
+﻿### VICTORIA 1877 movement weight overrides ###
+# Same filename as CMF's stub file so this version overrides it (Vic1877 loads after CMF).
+
+# Liberal movement loses all pop support under the Directorate government.
+vic1877_movement_liberal_pop_support_weight_mult = {
+	value = 1
+	if = {
+		limit = {
+			owner = {
+				has_law_or_variant = law_type:law_directorate
+			}
+		}
+		multiply = 0
+	}
+}

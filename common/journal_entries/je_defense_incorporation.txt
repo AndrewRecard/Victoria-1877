@@ -76,6 +76,10 @@ je_defense_incorporation = {
 	}
 	
 	immediate = {
+		# CMF: hide the default timed-modifier strip (custom widget renders its own)
+		scope:journal_entry = {
+			set_variable = com_hide_modifiers
+		}
 		ig:ig_armed_forces = {
 			leader = {
 				save_scope_as = af_leader_scope

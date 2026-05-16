@@ -1330,6 +1330,10 @@ caciquismo.4 = {	# For Executive Absolutism
 		}
 	}
 
+	cooldown = {
+		months = 3
+	}
+
 	immediate = {
 		ordered_company = {
 			order_by = company_employed_levels
@@ -1523,6 +1527,10 @@ caciquismo.5 = {	# For Scientific Management
 				has_trait = engineer
 			}
 		}
+	}
+
+	cooldown = {
+		months = 3
 	}
 
 	immediate = {

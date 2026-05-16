@@ -1,12 +1,20 @@
 {
   "name" : "Victoria 1877",
   "id" : "Victoria-1877",
-  "version" : "1.0",
+  "version" : "1.0.1",
   "game_id" : "victoria3",
   "supported_game_version" : "1.13*",
   "short_description" : "Dismantle the Bureaucratic State!",
   "tags" : [ "1.13" ],
-  "relationships" : [],
+  "relationships" : [
+    {
+      "rel_type" : "dependency",
+      "id" : "com.github.Victoria-3-Modding-Co-op.Community-Mod-Framework",
+      "display_name" : "Community Mod Framework",
+      "resource_type" : "mod",
+      "version" : "1.*"
+    }
+  ],
   "game_custom_data" : {
     "multiplayer_synchronized" : true
   }

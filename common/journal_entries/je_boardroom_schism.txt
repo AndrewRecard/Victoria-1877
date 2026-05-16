@@ -128,6 +128,10 @@
 	}
 
 	immediate = {
+		# CMF: hide the default timed-modifier strip (custom widget renders its own)
+		scope:journal_entry = {
+			set_variable = com_hide_modifiers
+		}
 		custom_tooltip = {
 			text = propertarian_split_effect_tt
 			propertarian_split_effect = yes

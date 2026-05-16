@@ -9,7 +9,7 @@ defense_incorporation.1 = {
 	duration = 3
 
 	on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
-	icon = "gfx/interface/icons/invention_icons/wargaming.dds"
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
 	event_image = {
 		video = "unspecific_signed_contract"
 	}
@@ -620,7 +620,7 @@ defense_incorporation.6 = {
 
 defense_incorporation.7 = {
 	type = country_event
-	placement = root
+	placement = scope:rural_state
 	title = defense_incorporation.7.t
 	desc = defense_incorporation.7.d
 	flavor = defense_incorporation.7.f
@@ -649,6 +649,7 @@ defense_incorporation.7 = {
 				has_subsistence_building =  yes
 			}
 			has_military_building = yes
+			is_incorporated = yes
 		}
 	}
 
@@ -660,8 +661,9 @@ defense_incorporation.7 = {
 					has_subsistence_building =  yes
 				}
 				has_military_building = yes
+				is_incorporated = yes
 			}
-			order_by = ig:ig_rural_folk.ig_clout
+			order_by = state_ruralness
 			position = 0
 			save_scope_as = rural_state
 		}
@@ -711,7 +713,6 @@ defense_incorporation.7 = {
 			add_amendment = {
 				type = amendment_unregulated_militias
 				sponsor = PREV.ig:ig_rural_folk
-				cooldown = normal_modifier_time
 			}
 		}
 		custom_tooltip = molinarist_leaders.tt

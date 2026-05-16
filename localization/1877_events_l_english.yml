@@ -22,7 +22,7 @@
  directorate_events.1.a: "Allow them to buy their franchise."
  directorate_events.1.b: "The Board answers to no one but the market."
  directorate_events.1.c: "Our technocratic foundation has evolved."
- directorate_events.1.e: "Grant [SCOPE.sCharacter('incorporation_ruler').GetFullName] executive powers over the Board."
+ directorate_events.1.e: "Grant [SCOPE.sCharacter('incorporation_ruler').GetCustom('GetUniversalFullName')] executive powers over the Board."
 
  directorate_events.2.t: "Human Capital"
  directorate_events.2.d: "With the Directorate now formally established, the Board must address the persistent nuisance of organized labor. The [GetInterestGroupVariant('ig_trade_unions',GetPlayer).GetName] are threatening strikes, demanding to know how collective bargaining will function under the new regime. The interim Board is sharply divided on how to manage our most volatile asset: human capital."
@@ -32,7 +32,7 @@
 
  directorate_events.3.t: "Creditor Ultimatum"
  directorate_events.3.d: "The Directorate's books have crossed a line the bondholders will no longer ignore. A delegation of underwriters — led by men with significant stakes in the [SCOPE.sCompany('creditor_company').GetExecutive.GetInterestGroup.GetName] — has arrived to "renegotiate the terms of our facility." The implication is unsubtle: produce collateral, restructure, or watch our credit rating collapse alongside our remaining institutions."
- directorate_events.3.f: ""Gentlemen, we are not here to discuss whether the loan will be serviced. We are here to discuss how."— [SCOPE.sCompany('creditor_company').GetExecutive.GetFullName], [SCOPE.sCompany('creditor_company').GetName]"
+ directorate_events.3.f: ""Gentlemen, we are not here to discuss whether the loan will be serviced. We are here to discuss how."— [SCOPE.sCompany('creditor_company').GetExecutive.GetCustom('GetUniversalFullName')], [SCOPE.sCompany('creditor_company').GetName]"
  directorate_events.3.a: "Refinance on their terms."
  directorate_events.3.b: "Repudiate on the obligation."
  directorate_events.3.c: "Open the public ledgers to auction."
@@ -74,7 +74,7 @@
  propertarian_leaders.tt:0 "The [SCOPE.gsInterestGroup('new_propertarian_ig').GetName] will be much more likely to select Propertarian leaders when [Concept('concept_political_movement_pressure', '$concept_political_movement_pressured_short$')] by an applicable [concept_political_movement]."
 
  propertarian_origins.2.t: "A Capital Strike"
- propertarian_origins.2.d: "[SCOPE.sCharacter('origins_propertarian_leader').GetFullName] and a consortium of our wealthiest magnates have delivered a chilling ultimatum to the government in [ROOT.GetCountry.GetCapital.GetCityHubName]. Unless executive control of [ROOT.GetCountry.GetName] is surrendered to their representatives, they will freeze all domestic investment, shutter their industries, and bring the national economy to a grinding halt."
+ propertarian_origins.2.d: "[SCOPE.sCharacter('origins_propertarian_leader').GetCustom('GetUniversalFullName')] and a consortium of our wealthiest magnates have delivered a chilling ultimatum to the government in [ROOT.GetCountry.GetCapital.GetCityHubName]. Unless executive control of [ROOT.GetCountry.GetName] is surrendered to their representatives, they will freeze all domestic investment, shutter their industries, and bring the national economy to a grinding halt."
  propertarian_origins.2.f: ""We will no longer subsidize the inefficiencies of the state with the sweat of private enterprise. You have operated at a deficit for far too long. Hand over the ledgers, or we will demonstrate exactly who truly keeps the engines of this nation running.""
  propertarian_origins.2.a: "Appoint [SCOPE.sCharacter('origins_propertarian_leader').GetHerHim] to restructure the government."
  propertarian_origins.2.b: "Let them strike. The sovereign state cannot be bought."
@@ -93,11 +93,11 @@
  ir_fading_propertarianism_modifier: "Fading Propertarianism"
 
  propertarian_origins.4.t: "A Treatise on Property"
- propertarian_origins.4.d: "A widely circulated essay authored by [SCOPE.sCharacter('propertarian_leader').GetFullName], a prominent [SCOPE.sCharacter('propertarian_leader').GetIdeology.GetName], has become the primary topic of discussion in the nation's financial districts, universities, and private clubs. The unapologetic arguments for free-market absolutism are beginning to resonate deeply among the economic elite."
+ propertarian_origins.4.d: "A widely circulated essay authored by [SCOPE.sCharacter('propertarian_leader').GetCustom('GetUniversalFullName')], a prominent [SCOPE.sCharacter('propertarian_leader').GetIdeology.GetName], has become the primary topic of discussion in the nation's financial districts, universities, and private clubs. The unapologetic arguments for free-market absolutism are beginning to resonate deeply among the economic elite."
  propertarian_origins.4.f: ""The state, in all its bureaucratic majesty, produces absolutely nothing. It merely confiscates and redistributes the fruits of private enterprise under the threat of force. To subject the genius of industry to the whims of politicians is a crime against efficiency. When the provision of security and administration is finally submitted to the rigors of market competition, then, and only then, shall we see true prosperity.""
  propertarian_origins.4.a: "A flawless economic doctrine."
  propertarian_origins.4.b: "A dangerous disregard for sovereign authority."
- propertarian_origins.4.c: "[SCOPE.sCharacter('propertarian_leader_2').GetFullName] offers a more pragmatic approach."
+ propertarian_origins.4.c: "[SCOPE.sCharacter('propertarian_leader_2').GetCustom('GetUniversalFullName')] offers a more pragmatic approach."
  promoted_propertarian_leader_ig_modifier: "Promoted Propertarian Leader"
  promoted_propertarian_leader_modifier: "Promoted Propertarian Leader"
  ignored_propertarian_leader_ig_modifier: "Ignored Propertarian Leader"
@@ -115,7 +115,7 @@
  ir_monopoly_enforced_modifier: "Monopoly on Violence Enforced"
 
  propertarian_origins.6.t: "Propertarian in Government"
- propertarian_origins.6.d: "The sudden departure of the [SCOPE.sCharacter('new_propertarian_leader_scope').GetInterestGroup.GetName]'s old guard has left a vacuum, one filled by [SCOPE.sCharacter('new_propertarian_leader_scope').GetFullName]. As an outspoken [SCOPE.sCharacter('new_propertarian_leader_scope').GetIdeology.GetName], [SCOPE.sCharacter('new_propertarian_leader_scope').GetHerHis] appointment signals a sharp turn toward Propertarian ideals within the political establishment."
+ propertarian_origins.6.d: "The sudden departure of the [SCOPE.sCharacter('new_propertarian_leader_scope').GetInterestGroup.GetName]'s old guard has left a vacuum, one filled by [SCOPE.sCharacter('new_propertarian_leader_scope').GetCustom('GetUniversalFullName')]. As an outspoken [SCOPE.sCharacter('new_propertarian_leader_scope').GetIdeology.GetName], [SCOPE.sCharacter('new_propertarian_leader_scope').GetHerHis] appointment signals a sharp turn toward Propertarian ideals within the political establishment."
  propertarian_origins.6.f: ""[SCOPE.sCharacter('new_propertarian_leader_scope').GetLastNameNoFormatting] actually wants to privatize the administration. All of it. The tax collectors, the clerks, the lot!"\n\n"It's madness. You cannot run the government like a joint-stock company. We must pressure them to select a more moderate candidate."\n\n"Why? The bureaucracy is bleeding our taxes dry. Let [SCOPE.sCharacter('new_propertarian_leader_scope').GetHerHim] into the cabinet and see if [SCOPE.sCharacter('new_propertarian_leader_scope').GetSheHe] can actually balance the books. If [SCOPE.sCharacter('new_propertarian_leader_scope').GetSheHe] fails, we wash our hands of it.""
  propertarian_origins.6.a: "Let them test their theories in government."
  propertarian_origins.6.b: "The state is not a business. Force a leadership change."
@@ -129,7 +129,7 @@
 
  # DEFENSE INCORPORATION
  defense_incorporation.1.t: "The Business of War"
- defense_incorporation.1.d: "With a stroke of the pen, [SCOPE.sCharacter('head_of_state1').GetFullName] has liquidated the state's monopoly on violence. All of our military infrastructure is currently being transferred to the private sector. As soldiers are pushed to sign new employment contracts, the collapse of our traditional command structure has left us dangerously vulnerable during this period of reorganization."
+ defense_incorporation.1.d: "With a stroke of the pen, [SCOPE.sCharacter('head_of_state1').GetCustom('GetUniversalFullName')] has liquidated the state's monopoly on violence. All of our military infrastructure is currently being transferred to the private sector. As soldiers are pushed to sign new employment contracts, the collapse of our traditional command structure has left us dangerously vulnerable during this period of reorganization."
  defense_incorporation.1.f: ""I have bled for this nation. I have buried brothers-in-arms under our flag. And now you tell me that our sacrifices are to be auctioned off to the lowest bidder? That my men are to be commanded by accountants and stockjobbers? I will not turn my uniform into a corporate livery. Keep your contracts; you have bought yourselves an army of mercenaries, but you have sold the soul of the nation.""
  defense_incorporation.1.a: "Their patriotism does not pay the bills."
 
@@ -157,7 +157,7 @@
  ir_unrestrained_defense_agencies_modifier: "Unrestrained Personnel"
 
  defense_incorporation.5.t: "The Business of Politics"
- defense_incorporation.5.d: "A damning exposé has revealed rampant financial corruption within the government. [SCOPE.sCharacter('corrupt_leader').GetFullName] has been caught a large amount of shares in a newly formed defense corporation only days before the government awarded them an exclusive state defense contract. The public is outraged by this blatant war profiteering."
+ defense_incorporation.5.d: "A damning exposé has revealed rampant financial corruption within the government. [SCOPE.sCharacter('corrupt_leader').GetCustom('GetUniversalFullName')] has been caught a large amount of shares in a newly formed defense corporation only days before the government awarded them an exclusive state defense contract. The public is outraged by this blatant war profiteering."
  defense_incorporation.5.f: ""I vehemently resent the implication that my financial portfolio dictates my patriotism! I simply possess an unshakable faith in the free market to provide for our national security, and I have aligned my personal investments with that belief. It is not a crime to be prescient.""
  defense_incorporation.5.a: "[SCOPE.sCharacter('corrupt_leader').GetFirstName] must surrender his position immediately."
  defense_incorporation.5.b: "Let [SCOPE.sCharacter('corrupt_leader').GetHerHim] have [SCOPE.sCharacter('corrupt_leader').GetHerHis] dividends."
@@ -182,9 +182,9 @@
  ir_interventionist_protocols_modifier: "Slaughtered Local Militias"
  ir_protocols_enforced_modifier: "Regulations Enforced"
 
- propertarian_government_remains_tt: "[SCOPE.sCharacter('new_propertarian_leader_scope').GetFullName] will be allowed to take [SCOPE.sCharacter('new_propertarian_leader_scope').GetHerHis] seat in government"
+ propertarian_government_remains_tt: "[SCOPE.sCharacter('new_propertarian_leader_scope').GetCustom('GetUniversalFullName')] will be allowed to take [SCOPE.sCharacter('new_propertarian_leader_scope').GetHerHis] seat in government"
  propertarian_government_expelled_tt: "A [GetIdeology('ideology_moderate').GetName] [concept_politician] will assume leadership of the [SCOPE.sCharacter('new_propertarian_leader_scope').GetInterestGroup.GetName]"
- propertarian_becomes_agitator_tt: "[SCOPE.sCharacter('new_propertarian_leader_scope').GetFullName] will become an [concept_agitator]"
+ propertarian_becomes_agitator_tt: "[SCOPE.sCharacter('new_propertarian_leader_scope').GetCustom('GetUniversalFullName')] will become an [concept_agitator]"
  modifier_government_refused_propertarian_seat: "Refused Propertarian Government"
 
  # BOARDROOM SCHISM
@@ -215,25 +215,25 @@
  ir_boardroom_confidence_modifier: "Boardroom Confidence"
 
  boardroom_schism.4.t: "The Sovereign Buyout"
- boardroom_schism.4.d: "Following months of aggressive buyouts and backdoor dealings, the Monopolist lobby has achieved a supermajority within the Directorate. In a chillingly brief emergency session, [SCOPE.sCharacter('mandate_leader').GetFullName] invoked a controversial charter to forcibly acquire the assets of all remaining competitors."
+ boardroom_schism.4.d: "Following months of aggressive buyouts and backdoor dealings, the Monopolist lobby has achieved a supermajority within the Directorate. In a chillingly brief emergency session, [SCOPE.sCharacter('mandate_leader').GetCustom('GetUniversalFullName')] invoked a controversial charter to forcibly acquire the assets of all remaining competitors."
  boardroom_schism.4.f: ""You championed the free market, did you not? You wrote endless treatises on the absolute right of capital to accumulate, to outcompete, to consume the weak.\n\nThere is no longer a need for the chaos of competition. We have reached the logical conclusion of Propertarianism. The nation is now a subsidiary of our firm, and we demand absolute efficiency. You are hereby relieved of your positions. Please surrender your shares to our security personnel on the way out.""
  boardroom_schism.4.a: "Competition is a redundant waste of capital."
  boardroom_schism.4.b: "This is a blatant violation of anti-trust contracts."
 
  boardroom_schism.5.t: "Dissolution of the Board"
- boardroom_schism.5.d: "The Molinarist lobby has secured an ideological stranglehold over the Directorate's shareholders. In an unprecedented emergency session, [SCOPE.sCharacter('mandate_leader').GetFullName] introduced a binding resolution to completely liquidate the Board. Across the nation, subsidiary companies are declaring independence, private defense agencies are refusing orders from the capital, and the central administrative apparatus is rapidly collapsing."
- boardroom_schism.5.f: ""For years, we claimed to be the ultimate realization of the free market, yet we hypocritically clung to a central Board of Directors that held a monopoly on arbitration and security. A state by any other name is still a state," declared [SCOPE.sCharacter('mandate_leader').GetFullName] to a gallery of stunned executives.\n\n"Today, we liquidate the ultimate monopoly. From this moment forth, every subsidiary, every defense contractor, and every individual is a sovereign entity. We no longer answer to the Board. We answer only to the contract.""
+ boardroom_schism.5.d: "The Molinarist lobby has secured an ideological stranglehold over the Directorate's shareholders. In an unprecedented emergency session, [SCOPE.sCharacter('mandate_leader').GetCustom('GetUniversalFullName')] introduced a binding resolution to completely liquidate the Board. Across the nation, subsidiary companies are declaring independence, private defense agencies are refusing orders from the capital, and the central administrative apparatus is rapidly collapsing."
+ boardroom_schism.5.f: ""For years, we claimed to be the ultimate realization of the free market, yet we hypocritically clung to a central Board of Directors that held a monopoly on arbitration and security. A state by any other name is still a state," declared [SCOPE.sCharacter('mandate_leader').GetCustom('GetUniversalFullName')] to a gallery of stunned executives.\n\n"Today, we liquidate the ultimate monopoly. From this moment forth, every subsidiary, every defense contractor, and every individual is a sovereign entity. We no longer answer to the Board. We answer only to the contract.""
  boardroom_schism.5.a: "True liberty is found only in a polycentric market."
  boardroom_schism.5.b: "This is absolute, unmitigated anarchy!"
 
  boardroom_schism.6.t: "A Return to Fundamentals"
  boardroom_schism.6.d: "After months of crippling ideological volatility, the Minarchist establishment has secured a definitive victory. The latest General Meeting concluded with the sweeping expulsion of both Monopolist and Molinarist agitators from the executive committee. The Board of Directors has been restructured, stripping the radical elements of their voting shares and cementing a return to the foundational principles of corporate governance."
- boardroom_schism.6.f: ""A company without a regulator is a riot, and a company without competitors is a tomb," declared [SCOPE.sCharacter('mandate_leader').GetFullName], adjusting [SCOPE.sCharacter('mandate_leader').GetHerHis] cuffs as private security escorted the shouting radicals from the chamber.\n\n"The Directorate was not forged to be dismantled by anarchists, nor was it meant to become a bloated, monopolistic behemoth. It exists for one purpose: to protect property and enforce contracts. We are the night-watchmen of the market. Now, if you please, gentlemen... the markets have officially opened.""
+ boardroom_schism.6.f: ""A company without a regulator is a riot, and a company without competitors is a tomb," declared [SCOPE.sCharacter('mandate_leader').GetCustom('GetUniversalFullName')], adjusting [SCOPE.sCharacter('mandate_leader').GetHerHis] cuffs as private security escorted the shouting radicals from the chamber.\n\n"The Directorate was not forged to be dismantled by anarchists, nor was it meant to become a bloated, monopolistic behemoth. It exists for one purpose: to protect property and enforce contracts. We are the night-watchmen of the market. Now, if you please, gentlemen... the markets have officially opened.""
  boardroom_schism.6.a: "The Markets have opened."
  boardroom_schism.6.b: "Blacklist the agitators and liquidate their portfolios."
 
  boardroom_schism.7.t: "The Apostate Executive"
- boardroom_schism.7.d: "[SCOPE.sCharacter('defector_executive').GetFullName], the celebrated CEO of [SCOPE.sCompany('defector_company').GetNameNoFormatting], has renounced [SCOPE.sCharacter('defector_executive').GetHerHis] former creed before a packed press auditorium. The stock ticker is already bleeding; the quarterly conference call has devolved into open accusations of grift and insider dealing. The Board must decide what to do with the traitor before the market decides for them."
+ boardroom_schism.7.d: "[SCOPE.sCharacter('defector_executive').GetCustom('GetUniversalFullName')], the celebrated CEO of [SCOPE.sCompany('defector_company').GetNameNoFormatting], has renounced [SCOPE.sCharacter('defector_executive').GetHerHis] former creed before a packed press auditorium. The stock ticker is already bleeding; the quarterly conference call has devolved into open accusations of grift and insider dealing. The Board must decide what to do with the traitor before the market decides for them."
  boardroom_schism.7.f: ""For too long I have parroted the received wisdom of a movement which, upon rigorous praxeological audit, cannot even balance its own moral ledger. I have sold my fellow shareholders a defective product, and I will not make that sale again."
  boardroom_schism.7.a: "Elevate our new convert. This is a prospectus-level coup."
  boardroom_schism.7.b: "Brand [SCOPE.sCharacter('defector_executive').GetHerHim] a turncoat and have [SCOPE.sCharacter('defector_executive').GetHerHim] blacklisted."
@@ -244,7 +244,7 @@
  ir_defector_martyred_modifier: "Defector Martyred"
 
  boardroom_schism.8.t: "Working Within The System"
- boardroom_schism.8.d: "[SCOPE.sCharacter('liberal_politician').GetFullName], one of the last credible reformers in the [SCOPE.sCharacter('liberal_politician').GetInterestGroup.GetName], has spent months denouncing the Directorate from the floor of every public hall that would still seat [SCOPE.sCharacter('liberal_politician').GetHerHim]. The Board, weary of the press [SCOPE.sCharacter('liberal_politician').GetSheHe] generates, has prepared an unusual offer: a chairmanship on a newly-formed Citizens' Oversight Commission, with full salary, a private secretariat, and the comforting illusion of regulatory teeth."
+ boardroom_schism.8.d: "[SCOPE.sCharacter('liberal_politician').GetCustom('GetUniversalFullName')], one of the last credible reformers in the [SCOPE.sCharacter('liberal_politician').GetInterestGroup.GetName], has spent months denouncing the Directorate from the floor of every public hall that would still seat [SCOPE.sCharacter('liberal_politician').GetHerHim]. The Board, weary of the press [SCOPE.sCharacter('liberal_politician').GetSheHe] generates, has prepared an unusual offer: a chairmanship on a newly-formed Citizens' Oversight Commission, with full salary, a private secretariat, and the comforting illusion of regulatory teeth."
  boardroom_schism.8.f: ""You misunderstand the offer, [SCOPE.sCharacter('liberal_politician').GetLastNameNoFormatting]. We are not asking you to abandon your principles. We are asking you to apply them, from inside, where they might actually amount to something."\n\n[SCOPE.sCharacter('liberal_politician').GetFirstNameNoFormatting] turned the embossed letter over in [SCOPE.sCharacter('liberal_politician').GetHerHis] hands. The stipend alone was more than [SCOPE.sCharacter('liberal_politician').GetSheHe] had earned in a decade of pamphleteering. The Commission's charter, [SCOPE.sCharacter('liberal_politician').GetSheHe] noted, conspicuously omitted any mention of binding authority.\n\n"A man who shouts from the street corner is a nuisance," the executive continued, pouring two glasses without asking. "A man who shouts from a chairman's office is a partner. The choice, of course, is entirely yours.""
  boardroom_schism.8.a: "Offer [SCOPE.sCharacter('liberal_politician').GetHerHim] a seat on the Oversight Commission."
  boardroom_schism.8.b: "There is no seat at this table for reformers."
@@ -263,12 +263,12 @@
  ir_tabloid_anarchy_modifier: "Tabloid Anarchy"
 
  boardroom_schism.10.t: "An Executive Pivot"
- boardroom_schism.10.d: "The state has spent months underwriting a particular Propertarian faction, and the quarterly disclosures have made the position embarrassingly public: the investment is underwater. Rather than let the lobbying budget post a loss, [SCOPE.sCharacter('converted_leader').GetFullName] has scheduled an emergency press conference to announce a sudden — and highly convenient — realignment of [SCOPE.sCharacter('converted_leader').GetHerHis] corporate worldview, conveniently at the expense of the faction [SCOPE.sCharacter('converted_leader').GetSheHe] used to lead."
+ boardroom_schism.10.d: "The state has spent months underwriting a particular Propertarian faction, and the quarterly disclosures have made the position embarrassingly public: the investment is underwater. Rather than let the lobbying budget post a loss, [SCOPE.sCharacter('converted_leader').GetCustom('GetUniversalFullName')] has scheduled an emergency press conference to announce a sudden — and highly convenient — realignment of [SCOPE.sCharacter('converted_leader').GetHerHis] corporate worldview, conveniently at the expense of the faction [SCOPE.sCharacter('converted_leader').GetSheHe] used to lead."
  boardroom_schism.10.f: ""Ideology, gentlemen, is much like any other asset class," the Chairman explained to a room of bewildered reporters and suddenly-relieved lobbyists. "When one's personal portfolio diverges from the institutional position, the prudent executive does not cling to sentiment. One restructures. Having rigorously audited the Directorate's trajectory, I have elected to liquidate my prior stances and average down into the state's chosen paradigm — and, regrettably, to short the one I am leaving behind.""
  boardroom_schism.10.a: "Mark the conviction to market."
 
  boardroom_schism.11.t: "Brownshirts in the Boardroom"
- boardroom_schism.11.d: "[SCOPE.sCharacter('fascist_leader').GetFullName] has arrived at the quarterly strategy review flanked by men in matching, unsanctioned uniforms. While the Board bickers over market theories, [SCOPE.sCharacter('fascist_leader').GetSheHe] proposes a brutal synthesis: propertarianism enforced not just by contract, but by militant, nationalist discipline. The presentation frames this 'spiritual renewal' as the ultimate tool for workforce compliance and market stabilization.""
+ boardroom_schism.11.d: "[SCOPE.sCharacter('fascist_leader').GetCustom('GetUniversalFullName')] has arrived at the quarterly strategy review flanked by men in matching, unsanctioned uniforms. While the Board bickers over market theories, [SCOPE.sCharacter('fascist_leader').GetSheHe] proposes a brutal synthesis: propertarianism enforced not just by contract, but by militant, nationalist discipline. The presentation frames this 'spiritual renewal' as the ultimate tool for workforce compliance and market stabilization.""
  boardroom_schism.11.f: ""The free market is a beautiful machine, gentlemen, but machines require discipline to function," [SCOPE.sCharacter('fascist_leader').GetFirstNameNoFormatting] projected over the murmur of the boardroom. "You argue over abstract liberties while agitators threaten your profit margins. My associates and I offer a tangible solution. Marry the fervor of the nation to the goals of the Directorate. The shareholder and the soldier must become one entity. We are not asking to dismantle your monopolies; we are offering to militarize them.""
  boardroom_schism.11.a: "Find [SCOPE.sCharacter('fascist_leader').GetHerHim] a seat at our table."
  boardroom_schism.11.b: "We will not be hostage to thugs in suits."
@@ -281,7 +281,7 @@
 
  boardroom_schism.12.t: "de la Sécurité"
  boardroom_schism.12.d: "A jurisdictional crisis has erupted in [SCOPE.sState('protectorate_state').GetName]. Unilaterally terminating the local constabulary's contracts, [SCOPE.sCompany('protective_company').GetName] has declared the sector an 'Open Arbitration Zone' and deployed heavily armed private agents to sell subscription security directly to citizens. The resulting price war with rival defense firms has rapidly devolved into block-by-block urban combat."
- boardroom_schism.12.f: ""You object, gentlemen, that the State alone may furnish security," [SCOPE.sCharacter('protective_executive').GetFullName] argued, casually dismissing reports of artillery fire in the manufacturing districts. "I remind you that when the State alone furnishes the post, our letters arrive late and at twice the cost. By forcing defense firms to compete for subscriptions, we are discovering the true market equilibrium of violence. We simply must allow the invisible hand to pull the trigger.""
+ boardroom_schism.12.f: ""You object, gentlemen, that the State alone may furnish security," [SCOPE.sCharacter('protective_executive').GetCustom('GetUniversalFullName')] argued, casually dismissing reports of artillery fire in the manufacturing districts. "I remind you that when the State alone furnishes the post, our letters arrive late and at twice the cost. By forcing defense firms to compete for subscriptions, we are discovering the true market equilibrium of violence. We simply must allow the invisible hand to pull the trigger.""
  boardroom_schism.12.a: "Quarantine the experiment."
  boardroom_schism.12.b: "A brilliant model, extend it nationwide."
  boardroom_schism.12.c: "Perform a hostile takeover of the winning agency."
@@ -291,7 +291,7 @@
  ir_nationalized_security_trust_modifier: "Nationalised Security Trust"
 
  boardroom_schism.13.t: "Charter Without Force"
- boardroom_schism.13.d: "A crisis of market fragmentation has hit the Directorate. [SCOPE.sCompany('struggling_monopoly').GetName], a cornerstone of our industrial strategy, is bleeding capital to a swarm of deregulated upstart firms. Furious, [SCOPE.sCharacter('monopolist_executive').GetFullName] has submitted a memorandum demanding immediate action to protect the mega-trust, arguing that free-market competition has outlived its usefulness."
+ boardroom_schism.13.d: "A crisis of market fragmentation has hit the Directorate. [SCOPE.sCompany('struggling_monopoly').GetName], a cornerstone of our industrial strategy, is bleeding capital to a swarm of deregulated upstart firms. Furious, [SCOPE.sCharacter('monopolist_executive').GetCustom('GetUniversalFullName')] has submitted a memorandum demanding immediate action to protect the mega-trust, arguing that free-market competition has outlived its usefulness."
  boardroom_schism.13.f: ""Competition is a symptom of an immature market," [SCOPE.sCharacter('monopolist_executive').GetFirstNameNoFormatting] lectured, slamming the quarterly losses onto the table. "It is a waste of capital - a duplicated effort. The purists in this room cry that we are abandoning the free market. Let them cry. Laissez-Faire was merely the scaffolding we used to build the Directorate. You do not leave the scaffolding up once the tower is complete.""
  boardroom_schism.13.a: "Petition the Board to restore Interventionism."
  boardroom_schism.13.b: "Sign the cartel charter... off the rolls."
@@ -343,17 +343,17 @@
  caciquismo.4.t: "A Chairman for the Nation"
  caciquismo.4.d: "Under [ROOT.GetCountry.GetName]'s [GetLawType('law_executive_absolutism').GetName], the government operates as little more than a subsidiary to the great industrial trusts. With corporate payrolls dwarfing the national treasury, the tycoons of the realm dictate policy directly to compliant generals and rubber-stamp ministers. The highest office in the land is less a public trust than a controlling stake — and only a master of the boardroom is positioned to acquire it."
  caciquismo.4.f: ""Gentlemen, the question is not whether industry shall govern. That has been settled by the simple arithmetic of payroll. The question is which captain shall hold the helm."\n\n"A man who can run a hundred thousand workers can surely run a country. The reverse, history has shown, is rather less reliable.""
- caciquismo.4.a: "Hand the reins to [SCOPE.sCharacter('executive_1').GetFullName], whose enterprise employs more than any other."
- caciquismo.4.b: "[SCOPE.sCharacter('executive_2').GetFullName] has the temperament for the role."
- caciquismo.4.c: "[SCOPE.sCharacter('executive_3').GetFullName] commands a smaller empire, but a loyal one."
- caciquismo.4.e: "[SCOPE.sCharacter('local_magnate').GetFullName] already rules in all but name."
+ caciquismo.4.a: "Hand the reins to [SCOPE.sCharacter('executive_1').GetCustom('GetUniversalFullName')], whose enterprise employs more than any other."
+ caciquismo.4.b: "[SCOPE.sCharacter('executive_2').GetCustom('GetUniversalFullName')] has the temperament for the role."
+ caciquismo.4.c: "[SCOPE.sCharacter('executive_3').GetCustom('GetUniversalFullName')] commands a smaller empire, but a loyal one."
+ caciquismo.4.e: "[SCOPE.sCharacter('local_magnate').GetCustom('GetUniversalFullName')] already rules in all but name."
  ir_best_executive_modifier: "Majority Stakeholder"
  ir_better_executive_modifier: "Controlling Interest"
 
  caciquismo.5.t: "Government by Slide Rule"
  caciquismo.5.d: "[GetLawType('law_scientific_management').GetName] in [ROOT.GetCountry.GetName] holds that a state, like a factory floor, is best run by those who measure twice and waste nothing. The most productive enterprises have proven their fitness in the only ledger that matters: output per worker, profit per acre, efficiency per hour. Their executives, naturally, are the only candidates worth considering for the highest office."
  caciquismo.5.f: ""Sentiment is a rounding error. Charisma is a rounding error. What governs a modern nation is the same thing that governs a modern factory — the careful elimination of waste motion."\n\n"The man whose firm produces the most per worker is, by definition, the man best suited to extract the most from a citizenry. The mathematics is unambiguous. We need only consult the figures and crown the winner.""
- caciquismo.5.a: "[SCOPE.sCharacter('executive_1').GetFullName]'s productivity figures are unmatched."
- caciquismo.5.b: "Elevate [SCOPE.sCharacter('executive_2').GetFullName], whose metrics are within a standard deviation of the lead."
- caciquismo.5.c: "[SCOPE.sCharacter('executive_3').GetFullName] is a statistically sound choice."
- caciquismo.5.e: "Trust in the expertise of [SCOPE.sCharacter('engineer_candidate').GetFullName]."
+ caciquismo.5.a: "[SCOPE.sCharacter('executive_1').GetCustom('GetUniversalFullName')]'s productivity figures are unmatched."
+ caciquismo.5.b: "Elevate [SCOPE.sCharacter('executive_2').GetCustom('GetUniversalFullName')], whose metrics are within a standard deviation of the lead."
+ caciquismo.5.c: "[SCOPE.sCharacter('executive_3').GetCustom('GetUniversalFullName')] is a statistically sound choice."
+ caciquismo.5.e: "Trust in the expertise of [SCOPE.sCharacter('engineer_candidate').GetCustom('GetUniversalFullName')]."

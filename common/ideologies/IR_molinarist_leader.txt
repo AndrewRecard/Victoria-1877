@@ -1,4 +1,4 @@
-﻿ideology_molinarist_leader = {
+﻿REPLACE_OR_CREATE:ideology_molinarist_leader = {
 	icon = "gfx/interface/icons/ideology_icons/ideology_leader/unused/ideology_leader_individualist.dds"
 
 	character_ideology = yes

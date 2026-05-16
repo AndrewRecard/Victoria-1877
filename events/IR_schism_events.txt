@@ -1035,7 +1035,7 @@ boardroom_schism.9 = {
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
 
-	event_image = { video = "dlc/dlc010_ep1/gfx/event_pictures/ep1_octopus.bk2" }
+	event_image = { video = "ep1_octopus" }
 
 	cooldown = { days = normal_modifier_time }
 
@@ -1067,14 +1067,6 @@ boardroom_schism.9 = {
 				}
 			}
 			set_variable = press_leader_monopolist_var
-		}
-		else_if = {
-			limit = {
-				je:je_boardroom_schism = {
-					"scripted_bar_progress(schism_minarchism_bar)" >= "scripted_bar_progress(schism_molinarism_bar)"
-				}
-			}
-			set_variable = press_leader_minarchist_var
 		}
 		else = {
 			set_variable = press_leader_molinarist_var
@@ -1120,16 +1112,6 @@ boardroom_schism.9 = {
 				text = monopolism_progress_monthly_0.5_tt
 				change_variable = {
 					name = monopolist_effects_var
-					add = 0.5
-				}
-			}
-		}
-		if = {
-			limit = { has_variable = press_leader_minarchist_var }
-			custom_tooltip = {
-				text = minarchism_progress_monthly_0.5_tt
-				change_variable = {
-					name = minarchist_effects_var
 					add = 0.5
 				}
 			}
@@ -1193,7 +1175,6 @@ boardroom_schism.9 = {
 
 	after = {
 		remove_variable = press_leader_monopolist_var
-		remove_variable = press_leader_minarchist_var
 		remove_variable = press_leader_molinarist_var
 		remove_variable = random_minarchism_progress
 		remove_variable = random_molinarism_progress

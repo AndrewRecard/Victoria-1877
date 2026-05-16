@@ -31,27 +31,29 @@
 				}
 				any_interest_group = {
 					ig_counts_as_marginal = no
-					leader ?= {
-						NOR = {
-							has_ideology = ideology:ideology_molinarist_leader
-							has_ideology = ideology:ideology_monopolist_leader
-							has_ideology = ideology:ideology_integralist
-							has_ideology = ideology:ideology_fascist
-							has_ideology = ideology:ideology_nihilist
-							has_ideology = ideology:ideology_radical
-							has_ideology = ideology:ideology_social_democrat
-							has_ideology = ideology:ideology_communist
-							has_ideology = ideology:ideology_vanguardist
-							has_ideology = ideology:ideology_anarchist
-							has_ideology = ideology:ideology_humanitarian
-							has_ideology = ideology:ideology_republican_leader
-							has_ideology = ideology:ideology_authoritarian
-							has_ideology = ideology:ideology_positivist
-							has_ideology = ideology:ideology_royalist
-							has_ideology = ideology:ideology_traditionalist
-							has_ideology = ideology:ideology_liberal
-							has_ideology = ideology:ideology_reformer
-							has_ideology = ideology:ideology_ethno_nationalist
+					OR = {
+						is_interest_group_type = ig_industrialists
+						leader ?= {
+							NOR = {
+								has_ideology = ideology:ideology_molinarist_leader
+								has_ideology = ideology:ideology_monopolist_leader
+								has_ideology = ideology:ideology_corporatist_leader
+								has_ideology = ideology:ideology_integralist
+								has_ideology = ideology:ideology_fascist
+								has_ideology = ideology:ideology_nihilist
+								has_ideology = ideology:ideology_radical
+								has_ideology = ideology:ideology_social_democrat
+								has_ideology = ideology:ideology_communist
+								has_ideology = ideology:ideology_vanguardist
+								has_ideology = ideology:ideology_anarchist
+								has_ideology = ideology:ideology_humanitarian
+								has_ideology = ideology:ideology_republican_leader
+								has_ideology = ideology:ideology_authoritarian
+								has_ideology = ideology:ideology_positivist
+								has_ideology = ideology:ideology_royalist
+								has_ideology = ideology:ideology_traditionalist
+								has_ideology = ideology:ideology_ethno_nationalist
+							}
 						}
 					}
 				}
@@ -59,8 +61,6 @@
 		}
 	}
 
-	# Root - IG considering joining
-	# scope:number - the number of IGs that would join this party before the root IG
 	join_weight = {
 		value = {
 			value = -5
@@ -115,7 +115,15 @@
 					OR = {
 					    has_ideology = ideology:ideology_market_liberal
     					has_ideology = ideology:ideology_corporatist_leader
-    					has_ideology = ideology:ideology_moderate
+						has_ideology = ideology:ideology_liberal
+						has_ideology = ideology:ideology_reformer
+						AND = {
+							has_ideology = ideology:ideology_moderate
+							NOR = {
+								is_interest_group_type = ig_armed_forces
+								is_interest_group_type = ig_trade_unions
+							}
+						}
 					}
 				}
 			}
@@ -165,7 +173,6 @@
 					OR = {
 						has_ideology = ideology:ideology_molinarist_leader
 						has_ideology = ideology:ideology_anarchist
-						has_ideology = ideology:ideology_market_liberal
 						has_ideology = ideology:ideology_nihilist
 					}
 				}
@@ -196,9 +203,8 @@
 						has_ideology = ideology:ideology_integralist
 						has_ideology = ideology:ideology_positivist
 						has_ideology = ideology:ideology_protectionist
-						has_ideology = ideology:ideology_corporatist
-						has_ideology = ideology:ideology_traditionalist
 						has_ideology = ideology:ideology_slaver
+						has_ideology = ideology:ideology_corporatist_leader
 					}
 				}
 			}

@@ -68,17 +68,6 @@
 				multiply = 1
 			}
 
-			add = {
-    			ig:ig_armed_forces = {
-    				leader = {
-    					add = loyalty
-    				}
-    			}
-    			subtract = 50
-    			multiply = 0.01
-    			desc = "armed_forces_leader_loyalty"
-    		}
-
 			if = {
 			    limit = {
 					any_scope_character = {
@@ -109,6 +98,17 @@
     				}
     				multiply = 0.01
     			}
+			}
+
+			add = {
+				ig:ig_armed_forces = {
+					leader = {
+						add = loyalty
+					}
+				}
+				subtract = 50
+				multiply = 0.01
+				desc = "armed_forces_leader_loyalty"
 			}
 
 			if = {

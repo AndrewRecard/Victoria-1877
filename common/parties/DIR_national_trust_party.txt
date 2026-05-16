@@ -27,23 +27,16 @@
 				any_interest_group = {
 					ig_counts_as_marginal = no
 					OR = {
-						is_interest_group_type = ig_industrialists
 						leader ?= {
-							NOR = {
-								has_ideology = ideology:ideology_molinarist_leader
-								has_ideology = ideology:ideology_minarchist_leader
-								has_ideology = ideology:ideology_nihilist
-								has_ideology = ideology:ideology_radical
-								has_ideology = ideology:ideology_social_democrat
-								has_ideology = ideology:ideology_communist
-								has_ideology = ideology:ideology_vanguardist
-								has_ideology = ideology:ideology_anarchist
-								has_ideology = ideology:ideology_humanitarian
-								has_ideology = ideology:ideology_republican_leader
-								has_ideology = ideology:ideology_royalist
-								has_ideology = ideology:ideology_liberal
-								has_ideology = ideology:ideology_reformer
-								has_ideology = ideology:ideology_ethno_nationalist
+							OR = {
+								has_ideology = ideology:ideology_monopolist_leader
+								has_ideology = ideology:ideology_authoritarian
+								has_ideology = ideology:ideology_fascist
+								has_ideology = ideology:ideology_integralist
+								has_ideology = ideology:ideology_positivist
+								has_ideology = ideology:ideology_protectionist
+								has_ideology = ideology:ideology_slaver
+								has_ideology = ideology:ideology_corporatist_leader
 							}
 						}
 					}
@@ -78,8 +71,8 @@
 						has_ideology = ideology:ideology_integralist
 						has_ideology = ideology:ideology_positivist
 						has_ideology = ideology:ideology_protectionist
-						has_ideology = ideology:ideology_corporatist
 						has_ideology = ideology:ideology_slaver
+						has_ideology = ideology:ideology_corporatist_leader
 					}
 				}
 			}

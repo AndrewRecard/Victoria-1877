@@ -139,10 +139,10 @@ flowcontainer = {
 						}
 					}
 					blockoverride "label" {
-						text = "[Character.GetPrimaryRoleTitle]"
+						text = "[Character.GetCustom('GetUniversalTitle')]"
 					}
 					blockoverride "text" {
-						raw_text = "[Character.GetFullName]"
+						raw_text = "[Character.GetCustom('GetUniversalFullName')]"
 					}
 				}
 

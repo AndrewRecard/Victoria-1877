@@ -1,4 +1,4 @@
-﻿ideology_monopolist_leader = {
+﻿REPLACE_OR_CREATE:ideology_monopolist_leader = {
 	icon = "gfx/interface/icons/ideology_icons/ideology_leader/unused/idealogy_leader_technocratic.dds"
 
 	character_ideology = yes

@@ -86,3 +86,14 @@ franchise_directorate_count_value = {
 		}
 	}
 }
+
+state_ruralness = {
+	value = 1
+	subtract = {
+		value = total_urbanization
+		divide = state_population
+		multiply = 1000
+		min = 0
+		max = 1
+	}
+}

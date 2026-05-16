@@ -1,0 +1,23 @@
+﻿# Overrides for Community Mod Framework compatibility triggers.
+# Loaded AFTER CMF's 0_*.txt files (zz_ prefix) so REPLACE_OR_CREATE wins.
+
+REPLACE_OR_CREATE:vic1877_is_active = {
+	always = yes
+}
+
+REPLACE_OR_CREATE:vic1877_country_uses_alternate_parties = {
+	has_law_or_variant = law_type:law_directorate
+}
+
+REPLACE_OR_CREATE:vic1877_leader_is_propertarian = {
+	OR = {
+		has_ideology = ideology:ideology_molinarist_leader
+		has_ideology = ideology:ideology_minarchist_leader
+		has_ideology = ideology:ideology_monopolist_leader
+	}
+}
+
+REPLACE_OR_CREATE:vic1877_ig_is_defense_contractor = {
+	is_interest_group_type = ig_armed_forces
+	has_ideology = ideology:ideology_martial_corporatist
+}
