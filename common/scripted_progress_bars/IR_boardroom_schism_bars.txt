@@ -17,6 +17,9 @@
 					any_interest_group = {
 						leader = { has_ideology = ideology:ideology_minarchist_leader }
 						ig_counts_as_marginal = no
+						NOT = {
+							is_interest_group_type = ig_industrialists
+						}
 					}
 				}
 				add = {
@@ -25,10 +28,13 @@
 						limit = {
 							leader = { has_ideology = ideology:ideology_minarchist_leader }
 							ig_counts_as_marginal = no
+							NOT = {
+								is_interest_group_type = ig_industrialists
+							}
 						}
 						add = this.ig_clout
 					}
-					multiply = 5
+					multiply = 10
 				}
 			}
 			### From Popularity
@@ -91,6 +97,21 @@
 					}
 				}
 			}
+			### Defense Contractors Supporting
+			if = {
+				limit = {
+					any_interest_group = {
+						is_defense_contractors = yes
+						leader = {
+							has_ideology = ideology:ideology_minarchist_leader
+						}
+					}
+				}
+				add = {
+					add = 1
+					desc = "minarchism_progress_from_defense_contractors_tt"
+				}
+			}
 			### From Num Prosperous Companies
 			if = {
 				limit = { num_companies > 0 }
@@ -128,7 +149,7 @@
 					desc = "minarchism_progress_from_minarchist_legitimacy_tt"
 					value = legitimacy
 					multiply = 0.1
-					subtract = 2.5
+					subtract = 5
 				}
 			}
 			### From Effects (event/button nudges)
@@ -188,6 +209,9 @@ schism_molinarism_bar = {
 					any_interest_group = {
 						leader = { has_ideology = ideology:ideology_molinarist_leader }
 						ig_counts_as_marginal = no
+						NOT = {
+							is_interest_group_type = ig_industrialists
+						}
 					}
 				}
 				add = {
@@ -196,10 +220,13 @@ schism_molinarism_bar = {
 						limit = {
 							leader = { has_ideology = ideology:ideology_molinarist_leader }
 							ig_counts_as_marginal = no
+							NOT = {
+								is_interest_group_type = ig_industrialists
+							}
 						}
 						add = this.ig_clout
 					}
-					multiply = 5
+					multiply = 10
 				}
 			}
 			### From Characters Popularity
@@ -266,12 +293,47 @@ schism_molinarism_bar = {
 					}
 				}
 			}
+			### Defense Contractors Supporting
+			if = {
+				limit = {
+					any_interest_group = {
+						is_defense_contractors = yes
+						leader = {
+							has_ideology = ideology:ideology_molinarist_leader
+						}
+					}
+				}
+				add = {
+					add = 1
+					desc = "monopolism_progress_from_defense_contractors_tt"
+				}
+			}
+			### Laissez Faire
+			if = {
+				limit = {
+					has_law_or_variant = law_type:law_laissez_faire
+				}
+				add = {
+					add = 1
+					desc = "molinarism_progress_from_laissez_faire_tt"
+				}
+			}
+			### Voluntary Association
+			if = {
+				limit = {
+					has_law = law_type:law_voluntary_association
+				}
+				add = {
+					add = 1
+					desc = "molinarism_progress_from_voluntary_association_tt"
+				}
+			}
 			### Companies without Monopolies
 			if = {
 				limit = {
-					NOR = {
-						has_law_or_variant = law_type:law_laissez_faire
-						num_companies = 0
+					num_companies > 0
+					any_company = {
+						company_has_monopoly = no
 					}
 				}
 				add = {
@@ -288,20 +350,43 @@ schism_molinarism_bar = {
 					multiply = 2.5
 				}
 			}
-			### Companies with Prestige Goods
-			add = {
-				desc = "molinarism_progress_from_prestige_goods_tt"
-				every_company = {
-					limit = { is_producing_prestige_goods = yes }
+			### Inverse HHI Index (Market Fragmentation)
+			if = {
+				limit = {
+					num_companies > 0
+					any_company = { company_employed_levels > 0 }
+				}
+				add = {
+					desc = "molinarism_progress_market_fragmentation_tt"
+					value = 0.115
 					add = {
-						add = 0.5
-						if = {
-							limit = {
-								company_productivity > company_global_productivity_comparison
+						value = 1
+						divide = num_companies
+					}
+					subtract = {
+						value = {
+							every_company = {
+								add = {
+									value = company_employed_levels
+									multiply = company_employed_levels
+								}
 							}
-							multiply = 2
+						}
+						divide = {
+							value = {
+								every_company = {
+									add = company_employed_levels
+								}
+							}
+							multiply = {
+								every_company = {
+									add = company_employed_levels
+								}
+							}
 						}
 					}
+					multiply = 50
+					min = 0
 				}
 			}
 			### From Effects
@@ -361,6 +446,9 @@ schism_monopolism_bar = {
 					any_interest_group = {
 						leader = { has_ideology = ideology:ideology_monopolist_leader }
 						ig_counts_as_marginal = no
+						NOT = {
+							is_interest_group_type = ig_industrialists
+						}
 					}
 				}
 				add = {
@@ -369,10 +457,13 @@ schism_monopolism_bar = {
 						limit = {
 							leader = { has_ideology = ideology:ideology_monopolist_leader }
 							ig_counts_as_marginal = no
+							NOT = {
+								is_interest_group_type = ig_industrialists
+							}
 						}
 						add = this.ig_clout
 					}
-					multiply = 5
+					multiply = 10
 				}
 			}
 			### From Character Popularity
@@ -439,26 +530,59 @@ schism_monopolism_bar = {
 					}
 				}
 			}
-			### From Company Monopolies
+			### Defense Contractors Supporting
 			if = {
 				limit = {
-					NOR = {
-						has_law_or_variant = law_type:law_laissez_faire
-						num_companies = 0
+					any_interest_group = {
+						is_defense_contractors = yes
+						leader = {
+							has_ideology = ideology:ideology_monopolist_leader
+						}
 					}
 				}
 				add = {
-					desc = "monopolism_progress_from_monopolies_tt"
-					every_company = {
-						limit = { company_has_monopoly = yes }
-						add = company_employed_levels
-					}
-					divide = {
-						every_company = {
-							add = company_employed_levels
-						}
-					}
-					multiply = 2.5
+					add = 1
+					desc = "monopolism_progress_from_defense_contractors_tt"
+				}
+			}
+			### From Interventionism
+			if = {
+				limit = {
+					has_law_or_variant = law_type:law_interventionism
+				}
+				add = {
+					add = 1
+					desc = "monopolism_progress_from_interventionism_tt"
+				}
+			}
+			### From Internal Arbitration
+			if = {
+				limit = {
+					has_law = law_type:law_internal_arbitration
+				}
+				add = {
+					add = 1
+					desc = "monopolism_progress_from_internal_arbitration_tt"
+				}
+			}
+			### From Scientific Management
+			if = {
+				limit = {
+					has_law = law_type:law_scientific_management
+				}
+				add = {
+					add = 1
+					desc = "monopolism_progress_from_scientific_management_tt"
+				}
+			}
+			### From Executive Absolutism
+			if = {
+				limit = {
+					has_law = law_type:law_executive_absolutism
+				}
+				add = {
+					add = 1
+					desc = "monopolism_progress_from_executive_absolutism_tt"
 				}
 			}
 			### HHI Index
@@ -469,7 +593,6 @@ schism_monopolism_bar = {
 				}
 				add = {
 					desc = "monopolism_progress_market_consolidation_tt"
-					# Step 1: Add the SQUARE of every company's levels
 					add = {
 						every_company = {
 							add = {

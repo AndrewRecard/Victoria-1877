@@ -136,6 +136,10 @@ sway_to_monopolism = {
 
 	possible = {
 		custom_tooltip = {
+			text = cannot_sponsor_chairman_tt
+			is_ruler_of_own_country = no
+		}
+		custom_tooltip = {
 			text = sway_to_monopolism_correct_ig_in_government_tt
 			OR = {
 				has_role_of_type = executive
@@ -146,7 +150,6 @@ sway_to_monopolism = {
 				is_interest_group_type = ig_trade_unions
 				is_interest_group_type = ig_devout
 				is_interest_group_type = ig_rural_folk
-				is_ruler_of_own_country = yes
 			}
 		}
 		custom_tooltip = {

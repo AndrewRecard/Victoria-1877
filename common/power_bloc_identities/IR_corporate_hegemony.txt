@@ -20,7 +20,6 @@
 
 	member_modifier = {
 		country_free_charters_add = 1
-		interest_group_ig_industrialists_pol_str_mult = 0.25
 		country_nationalization_cost_non_members_mult = -0.5
 	}
 

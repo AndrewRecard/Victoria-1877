@@ -275,7 +275,7 @@ ir_propertarian_lobby_war_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_negative.dds
 	interest_group_ig_industrialists_pol_str_mult = -1
 	country_law_enactment_time_mult = 0.5
-	political_movement_radicalism_from_enactment_disapproval_mult = 0.5
+	country_legitimacy_ideological_incoherence_mult = 0.25
 	state_pop_support_movement_propertarian_mult = 0.25
 }
 

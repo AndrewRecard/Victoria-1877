@@ -10,7 +10,7 @@ directorate_events.1 = {
     on_opened_soundeffect = "event:/SFX/UI/Alerts/event_appear"
     icon = "gfx/interface/icons/event_icons/event_election.dds"
     event_image = {
-        video = "unspecific_signed_contract"
+        video = "europenorthamerica_capitalists_meeting"
     }
 
     immediate = {
@@ -336,10 +336,10 @@ directorate_events.4 = {
         name = directorate_events.4.a
         default_option = yes
         custom_tooltip = {
-            text = insolvency_bar_increase_75_tt
+            text = insolvency_bar_increase_50_tt
             je:je_public_liquidation = {
                 add_progress = {
-                    value = 75
+                    value = 50
                     name = ir_insolvency_bar
                 }
             }
