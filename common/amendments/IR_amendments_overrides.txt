@@ -13,29 +13,6 @@ INJECT:amendment_tradition_of_free_elections = {
 	}
 }
 
-INJECT:amendment_generic_sponsor_polstr_increase_negotiation_1 = {
-	sponsor_modifier = {
-		interest_group_in_government_approval_add = -1
-		interest_group_amenability_add = -4
-	}
-}
-
-INJECT:amendment_generic_sponsor_polstr_increase_negotiation_2 = {
-	sponsor_modifier = {
-		interest_group_in_government_approval_add = -2
-		interest_group_approval_add = 1
-		interest_group_amenability_add = -8
-	}
-}
-
-REPLACE:amendment_generic_sponsor_polstr_increase_negotiation_3 = {
-	sponsor_modifier = {
-		interest_group_in_government_approval_add = -3
-		interest_group_approval_add = 2
-		interest_group_amenability_add = -12
-	}
-}
-
 REPLACE:amendment_electoral_clientelism = {
 
 	parent = law_oligarchy
