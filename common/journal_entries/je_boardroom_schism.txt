@@ -176,38 +176,18 @@
 			if = {
 				limit = {
 					scope:journal_entry = {
-						"scripted_bar_progress(schism_molinarism_bar)" >= 600
-					}
-					NOT = {
-						has_variable = boardroom_schism_freeze
+						OR = {
+							scripted_bar_progress = { name = schism_monopolism_bar value >= 600 }
+							scripted_bar_progress = { name = schism_molinarism_bar value >= 600 }
+						}
 					}
 				}
 				set_variable = boardroom_schism_freeze
-				add_journal_entry = {
-					type = je_molinarist_mandate
-				}
 			}
 			if = {
 				limit = {
 					scope:journal_entry = {
-						"scripted_bar_progress(schism_monopolism_bar)" >= 600
-					}
-					NOT = {
-						has_variable = boardroom_schism_freeze
-					}
-				}
-				set_variable = boardroom_schism_freeze
-				add_journal_entry = {
-					type = je_monopolist_mandate
-				}
-			}
-			if = {
-				limit = {
-					scope:journal_entry = {
-						"scripted_bar_progress(schism_minarchism_bar)" >= 600
-					}
-					NOT = {
-						has_variable = boardroom_schism_freeze
+						scripted_bar_progress = { name = schism_minarchism_bar value >= 600 }
 					}
 				}
 				set_variable = boardroom_schism_freeze

@@ -282,6 +282,9 @@
  je_molinarist_mandate: "Molinarist Mandate"
  je_molinarist_mandate_reason: "As a result of a Boardroom supermajority, the Molinarist Lobby has a mandate to liquidate the Directorate and transition the state into a Polycentric Market."
 
+ monopolism_bar_full_tt: "The Monopolist bar is full"
+ molinarism_bar_full_tt: "The Molinarist bar is full"
+
  ir_schism_mandate_modifier: "Propertarian Mandate"
  ir_ig_mandate_modifier: "Mandate Granted"
  ir_schism_mandate: "Boardroom Mandate"

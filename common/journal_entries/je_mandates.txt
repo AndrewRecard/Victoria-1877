@@ -5,7 +5,18 @@
 	weight = 100
 
 	is_shown_when_inactive = {
-		always = no
+		has_journal_entry = je_boardroom_schism
+		NOT = {
+			has_journal_entry = je_monopolist_mandate
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			text = monopolism_bar_full_tt
+			je:je_boardroom_schism = {
+				scripted_bar_progress = { name = schism_monopolism_bar value >= 600 }
+			}
+		}
 	}
 
 	immediate = {
@@ -13,6 +24,10 @@
 			id = boardroom_schism.4
 			popup = yes
 		}
+	}
+
+	modifiers_while_active = {
+		ir_schism_mandate_modifier
 	}
 
 	complete = {
@@ -30,16 +45,12 @@
 		add_loyalists = {
 			value = large_radicals
 		}
-		remove_modifier = ir_schism_mandate_modifier
 	}
 
 	invalid = {
 		NOT = {
 			has_journal_entry = je_boardroom_schism
 		}
-	}
-	on_invalid = {
-		remove_modifier = ir_schism_mandate_modifier
 	}
 
 	timeout = short_modifier_time
@@ -52,7 +63,6 @@
 			set_core_ideology = ideology_propertarian_movement
 		}
 		set_variable = mandate_wasted
-		remove_modifier = ir_schism_mandate_modifier
 	}
 }
 
@@ -63,7 +73,18 @@ je_molinarist_mandate = {
 	weight = 100
 
 	is_shown_when_inactive = {
-		always = no
+		has_journal_entry = je_boardroom_schism
+		NOT = {
+			has_journal_entry = je_molinarist_mandate
+		}
+	}
+	possible = {
+		custom_tooltip = {
+			text = molinarism_bar_full_tt
+			je:je_boardroom_schism = {
+				scripted_bar_progress = { name = schism_molinarism_bar value >= 600 }
+			}
+		}
 	}
 
 	immediate = {
@@ -71,6 +92,10 @@ je_molinarist_mandate = {
 			id = boardroom_schism.5
 			popup = yes
 		}
+	}
+
+	modifiers_while_active = {
+		ir_schism_mandate_modifier
 	}
 
 	complete = {
@@ -88,16 +113,12 @@ je_molinarist_mandate = {
 		add_loyalists = {
 			value = large_radicals
 		}
-		remove_modifier = ir_schism_mandate_modifier
 	}
 
 	invalid = {
 		NOT = {
 			has_journal_entry = je_boardroom_schism
 		}
-	}
-	on_invalid = {
-		remove_modifier = ir_schism_mandate_modifier
 	}
 
 	timeout = short_modifier_time
@@ -110,6 +131,5 @@ je_molinarist_mandate = {
 			set_core_ideology = ideology_propertarian_movement
 		}
 		set_variable = mandate_wasted
-		remove_modifier = ir_schism_mandate_modifier
 	}
 }

@@ -396,10 +396,6 @@ boardroom_schism.4 = {
 				days = short_modifier_time
 			}
 		}
-		add_modifier = {
-			name = ir_schism_mandate_modifier
-			days = short_modifier_time
-		}
 		random_political_movement = {
 			limit = {
 				is_political_movement_type = movement_propertarian
@@ -488,10 +484,6 @@ boardroom_schism.5 = {
 				name = ir_ig_mandate_modifier
 				days = short_modifier_time
 			}
-		}
-		add_modifier = {
-			name = ir_schism_mandate_modifier
-			days = short_modifier_time
 		}
 		random_political_movement = {
 			limit = {
