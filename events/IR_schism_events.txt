@@ -386,14 +386,24 @@ boardroom_schism.4 = {
 		default_option = yes
 		every_interest_group = {
 			limit = {
-				ig_counts_as_marginal = no
 				leader = {
 					has_ideology = ideology:ideology_monopolist_leader
 				}
 			}
 			add_modifier = {
-				name = ir_ig_mandate_modifier
-				days = short_modifier_time
+				name = ir_monopolist_cabinet_modifier
+				days = normal_modifier_time
+			}
+		}
+		every_interest_group = {
+			limit = {
+				leader = {
+					has_ideology = ideology:ideology_minarchist_leader
+				}
+			}
+			add_modifier = {
+				name = ir_minarchists_paralyzed_modifier
+				days = normal_modifier_time
 			}
 		}
 		random_political_movement = {
@@ -408,7 +418,7 @@ boardroom_schism.4 = {
 		name = boardroom_schism.4.b
 		add_modifier = {
 			name = ir_mandate_opposed_authority_modifier
-			days = short_modifier_time
+			days = normal_modifier_time
 		}
 		every_interest_group = {
 			limit = {
@@ -422,11 +432,12 @@ boardroom_schism.4 = {
 			}
 			add_modifier = {
 				name = ir_mandate_opposed_ig_modifier
-				days = short_modifier_time
+				days = normal_modifier_time
 			}
 		}
 		add_radicals = {
-			value = large_radicals
+			value = very_large_radicals
+			strata = upper
 		}
 		random_political_movement = {
 			limit = {
@@ -475,14 +486,24 @@ boardroom_schism.5 = {
 		default_option = yes
 		every_interest_group = {
 			limit = {
-				ig_counts_as_marginal = no
 				leader = {
 					has_ideology = ideology:ideology_molinarist_leader
 				}
 			}
 			add_modifier = {
-				name = ir_ig_mandate_modifier
-				days = short_modifier_time
+				name = ir_molinarist_cabinet_modifier
+				days = normal_modifier_time
+			}
+		}
+		every_interest_group = {
+			limit = {
+				leader = {
+					has_ideology = ideology:ideology_minarchist_leader
+				}
+			}
+			add_modifier = {
+				name = ir_minarchists_paralyzed_modifier
+				days = normal_modifier_time
 			}
 		}
 		random_political_movement = {
@@ -497,7 +518,7 @@ boardroom_schism.5 = {
 		name = boardroom_schism.5.b
 		add_modifier = {
 			name = ir_mandate_opposed_authority_modifier
-			days = short_modifier_time
+			days = normal_modifier_time
 		}
 		every_interest_group = {
 			limit = {
@@ -511,11 +532,12 @@ boardroom_schism.5 = {
 			}
 			add_modifier = {
 				name = ir_mandate_opposed_ig_modifier
-				days = short_modifier_time
+				days = normal_modifier_time
 			}
 		}
 		add_radicals = {
-			value = large_radicals
+			value = very_large_radicals
+			strata = upper
 		}
 		random_political_movement = {
 			limit = {
@@ -562,18 +584,6 @@ boardroom_schism.6 = {
 	option = {
 		name = boardroom_schism.6.a
 		default_option = yes
-		every_interest_group = {
-			limit = {
-				ig_counts_as_marginal = no
-				leader = {
-					has_ideology = ideology:ideology_minarchist_leader
-				}
-			}
-			add_modifier = {
-				name = ir_ig_mandate_modifier
-				days = short_modifier_time
-			}
-		}
 		add_modifier = {
 			name = ir_guilded_charter_modifier
 		}
@@ -588,18 +598,6 @@ boardroom_schism.6 = {
 
 	option = {
 		name = boardroom_schism.6.b
-		every_interest_group = {
-			limit = {
-				ig_counts_as_marginal = no
-				leader = {
-					has_ideology = ideology:ideology_minarchist_leader
-				}
-			}
-			add_modifier = {
-				name = ir_ig_mandate_modifier
-				days = short_modifier_time
-			}
-		}
 		add_modifier = {
 			name = ir_guilded_charter_modifier
 		}
@@ -610,7 +608,7 @@ boardroom_schism.6 = {
 					has_ideology = ideology:ideology_monopolist_leader
 				}
 			}
-			kill_character = yes
+			exile_character = yes
 		}
 	}
 

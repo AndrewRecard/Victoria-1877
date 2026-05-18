@@ -45,6 +45,21 @@ on_monthly_pulse_country = {
     on_actions = {
         franchise_investment_efficiency_on_action
         defense_incorporation_monthly_events
+        remove_schism_funding_on_action
+    }
+}
+
+remove_schism_funding_on_action = {
+    effect = {
+        if = {
+            limit = {
+                has_modifier = ir_funding_lobbies_modifier
+                NOT = {
+                    has_journal_entry = je_boardroom_schism
+                }
+            }
+            remove_modifier = ir_funding_lobbies_modifier
+        }
     }
 }
 

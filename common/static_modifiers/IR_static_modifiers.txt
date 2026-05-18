@@ -345,8 +345,9 @@ ir_boardroom_confidence_modifier = {
 
 ir_schism_mandate_modifier = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	country_legitimacy_base_add = 10
 	country_law_enactment_time_mult = -1
-	country_law_enactment_stall_mult = -0.25
+	country_law_enactment_stall_mult = -1
 	state_loyalists_from_political_movements_mult = 0.25
 }
 
@@ -356,9 +357,19 @@ ir_schism_resolved_modifier = {
 	country_loyalists_from_legitimacy_mult = 0.25
 }
 
-ir_ig_mandate_modifier = {
-	icon = gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds
-	interest_group_pol_str_mult = 0.5
+ir_monopolist_cabinet_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	interest_group_pol_str_mult = 1
+}
+
+ir_molinarist_cabinet_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	interest_group_pol_str_mult = 1
+}
+
+ir_minarchists_paralyzed_modifier = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	interest_group_pol_str_mult = -1
 }
 
 ir_mandate_opposed_authority_modifier = {

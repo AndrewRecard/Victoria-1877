@@ -176,6 +176,13 @@ REPLACE:law_guaranteed_liberties = {
 		law_censorship
 	}
 
+	can_enact = {
+		custom_tooltip = {
+			text = public_institutions_liquidated_tt
+			modifier:country_public_institutions_liquidated_bool = no
+		}
+	}
+
 	on_enact = {
 		if = {
 			limit = {

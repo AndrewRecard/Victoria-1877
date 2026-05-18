@@ -229,8 +229,8 @@
  boardroom_schism.6.t: "A Return to Fundamentals"
  boardroom_schism.6.d: "After months of crippling ideological volatility, the Minarchist establishment has secured a definitive victory. The latest General Meeting concluded with the sweeping expulsion of both Monopolist and Molinarist agitators from the executive committee. The Board of Directors has been restructured, stripping the radical elements of their voting shares and cementing a return to the foundational principles of corporate governance."
  boardroom_schism.6.f: ""A company without a regulator is a riot, and a company without competitors is a tomb," declared [SCOPE.sCharacter('mandate_leader').GetCustom('GetUniversalFullName')], adjusting [SCOPE.sCharacter('mandate_leader').GetHerHis] cuffs as private security escorted the shouting radicals from the chamber.\n\n"The Directorate was not forged to be dismantled by anarchists, nor was it meant to become a bloated, monopolistic behemoth. It exists for one purpose: to protect property and enforce contracts. We are the night-watchmen of the market. Now, if you please, gentlemen... the markets have officially opened.""
- boardroom_schism.6.a: "The Markets have opened."
- boardroom_schism.6.b: "Blacklist the agitators and liquidate their portfolios."
+ boardroom_schism.6.a: "The Markets have officially opened."
+ boardroom_schism.6.b: "Liquidate the agitators' portfolios."
 
  boardroom_schism.7.t: "The Apostate Executive"
  boardroom_schism.7.d: "[SCOPE.sCharacter('defector_executive').GetCustom('GetUniversalFullName')], the celebrated CEO of [SCOPE.sCompany('defector_company').GetNameNoFormatting], has renounced [SCOPE.sCharacter('defector_executive').GetHerHis] former creed before a packed press auditorium. The stock ticker is already bleeding; the quarterly conference call has devolved into open accusations of grift and insider dealing. The Board must decide what to do with the traitor before the market decides for them."

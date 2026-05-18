@@ -172,6 +172,7 @@
 			add_modifier = {
 				name = ir_funding_lobbies_modifier
 				multiplier = lobbying_expenditure_value
+				months = 1
 			}
 			if = {
 				limit = {
@@ -263,6 +264,12 @@
 			text = je_schism_resulting_je
 			clear_boardroom_schism_variables = yes
 		}
+		if = {
+			limit = {
+				has_modifier = ir_funding_lobbies_modifier
+			}
+			remove_modifier = ir_funding_lobbies_modifier
+		}
 	}
 
 	fail = {
@@ -280,7 +287,10 @@
 
 	on_fail = {
 		if = {
-			limit = { has_variable = mandate_wasted }
+			limit = {
+				has_modifier = ir_funding_lobbies_modifier
+			}
+			remove_modifier = ir_funding_lobbies_modifier
 		}
 		add_modifier = {
 			name = ir_schism_failed_modifier
@@ -300,5 +310,11 @@
 	}
 	on_invalid = {
 		clear_boardroom_schism_variables = yes
+		if = {
+			limit = {
+				has_modifier = ir_funding_lobbies_modifier
+			}
+			remove_modifier = ir_funding_lobbies_modifier
+		}
 	}
 }

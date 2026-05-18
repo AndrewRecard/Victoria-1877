@@ -80,7 +80,7 @@
  DEDICATED_POLICE: "$ig_armed_forces$ with $law_dedicated_police$ [concept_law]"
  SUPPORTING_MINARCHISM: "Supporting Minarchism in the #bold $je_boardroom_schism$#! [concept_journal_entry]"
  INDUSTRY_AND_INTEGRITY_EFFECTS: "#bold $je_industry_and_integrity$#! [concept_journal_entry] effects"
- FAILED_SCHISM: "[concept_ideology] failed the #bold $je_boardroom_schism$#! [concept_journal_entry]"
+ FAILED_SCHISM: "Loser in the #bold Boardroom Schism#! [concept_journal_entry]"
  HAPPY_WITHOUT_POLYCENTRIC_LAW: "[concept_approval] is #v 0#! or above with #b no#! active [GetLawType('law_polycentric_law').GetName] [concept_law]"
  HAPPY_WITH_POLYCENTRIC_LAW: "[concept_approval] is #v 0#! or above with active [GetLawType('law_polycentric_law').GetName] [concept_law]"
  INTELLIGENTSIA_OR_RURAL_FOLK: "$ig_intelligentsia$ or $ig_rural_folk$"

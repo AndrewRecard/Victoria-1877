@@ -286,7 +286,9 @@
  molinarism_bar_full_tt: "The Molinarist bar is full"
 
  ir_schism_mandate_modifier: "Propertarian Mandate"
- ir_ig_mandate_modifier: "Mandate Granted"
+ ir_monopolist_cabinet_modifier: "Monopolist Charter"
+ ir_molinarist_cabinet_modifier: "Molinarist Charter"
+ ir_minarchists_paralyzed_modifier: "Minarchists Paralyzed"
  ir_schism_mandate: "Boardroom Mandate"
  ir_mandate_opposed_authority_modifier: "Chairman Seizing Authority"
  ir_mandate_opposed_ig_modifier: "Propertarian Backlash"
